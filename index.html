@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adham Style Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --bg-page: #ffffff;
+            --bg-section-alt: #f3f5f7; 
+            
+            /* THE SEALED CARD SHADOW */
+            --card-shadow: 
+                0 1px 3px 0 rgba(0, 0, 0, 0.08), 
+                0 10px 25px -8px rgba(0, 0, 0, 0.06),
+                0 1px 0 0 rgba(0, 0, 0, 0.02);
+
+            /* ADHAM'S REFINED SECTION DIVIDER:
+               We use a multi-layered approach:
+               1. A very faint 1px border at the bottom.
+               2. A tight, non-spreading shadow (negative spread) to create the depth.
+            */
+            --divider-shadow: 0 8px 16px -10px rgba(0, 0, 0, 0.12);
+        }
+
+        body {
+            background-color: var(--bg-page);
+            font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+            color: #1a1a1a;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* The Hero Section - Creating the physical 'ledge' */
+        .hero-section {
+            padding: 140px 24px 120px;
+            text-align: center;
+            background: white;
+            position: relative;
+            z-index: 20; 
+            /* The Border + Shadow combination seen in the zoom-in */
+            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+            box-shadow: var(--divider-shadow);
+        }
+
+        /* The Work Section - The "Bottom Layer" */
+        .work-section {
+            background-color: var(--bg-section-alt);
+            padding: 100px 24px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Card implementation */
+        .modern-card {
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(0, 0, 0, 0.04); 
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+            cursor: pointer;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modern-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 
+                0 4px 6px -1px rgba(0, 0, 0, 0.1), 
+                0 25px 45px -15px rgba(0, 0, 0, 0.1);
+        }
+
+        .preview-area {
+            background-color: #f3f5f7;
+            border-radius: 18px;
+            padding: 1.5rem;
+            margin: 1.25rem;
+            height: 220px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .status-tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 5px 14px;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            background: #ffffff;
+            border: 1px solid currentColor;
+        }
+
+        .tag-approved { color: #44a57b; border-color: rgba(68, 165, 123, 0.15); }
+
+        .tag-pill {
+            padding: 4px 12px;
+            background: #e2e8f0;
+            border-radius: 8px;
+            color: #64748b;
+            font-weight: 700;
+            font-size: 11px;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navigation -->
+    <nav class="bg-white flex justify-between items-center px-10 py-8 max-w-7xl mx-auto relative z-30">
+        <div class="font-black text-xl tracking-tighter">AD.</div>
+        <div class="flex gap-8 text-sm font-bold text-gray-400">
+            <a href="#" class="text-gray-900">Work</a>
+            <a href="#" class="hover:text-gray-900 transition-colors">About</a>
+            <a href="#" class="hover:text-gray-900 transition-colors">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-gray-400 font-bold tracking-[0.4em] text-[11px] mb-6 uppercase">Product Designer</h2>
+            <h1 class="text-5xl md:text-6xl font-black text-gray-900 leading-tight">
+                I design digital products that are <span class="text-blue-600">simple</span> and <span class="text-blue-600">beautiful</span>.
+            </h1>
+        </div>
+    </section>
+
+    <!-- Work Section -->
+    <section class="work-section">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col items-center mb-16">
+                <h2 class="text-gray-400 font-bold tracking-[0.4em] text-[11px] mb-4 uppercase">Latest Projects</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <!-- Project Card 1 -->
+                <div class="modern-card">
+                    <div class="preview-area">
+                        <div class="status-tag tag-approved">
+                            <span class="mr-1.5 text-[9px] border border-current rounded-full w-4 h-4 flex items-center justify-center">✓</span> Approved
+                        </div>
+                        <div class="flex items-center gap-4 mt-2">
+                             <div class="w-10 h-10 bg-white rounded-xl shadow-sm border border-gray-100 flex items-center justify-center text-xl">🎨</div>
+                             <div class="h-2.5 w-24 bg-gray-200/60 rounded"></div>
+                        </div>
+                        <div class="flex gap-2">
+                            <div class="tag-pill">UI</div>
+                            <div class="tag-pill">UX</div>
+                        </div>
+                    </div>
+                    <div class="px-8 pb-10">
+                        <h3 class="text-[22px] font-bold text-gray-900 leading-tight">Figma Design System</h3>
+                        <p class="text-[18px] text-gray-400 font-medium mt-1">Design system</p>
+                    </div>
+                </div>
+
+                <!-- Project Card 2 -->
+                <div class="modern-card">
+                    <div class="preview-area flex items-center justify-center">
+                        <div class="relative w-32 h-44 bg-blue-600 rounded-r-xl shadow-xl flex flex-col p-4 text-white transform -rotate-1">
+                            <div class="text-[8px] font-bold opacity-60 mb-1">PRACTICAL</div>
+                            <div class="font-bold text-sm leading-tight mb-auto">Practical UI</div>
+                            <div class="w-4 h-4 rounded-full bg-white/20"></div>
+                        </div>
+                    </div>
+                    <div class="px-8 pb-10">
+                        <h3 class="text-[22px] font-bold text-gray-900 leading-tight">UI Design Book</h3>
+                        <p class="text-[18px] text-gray-400 font-medium mt-1">Book</p>
+                    </div>
+                </div>
+
+                <!-- Project Card 3 -->
+                <div class="modern-card">
+                    <div class="preview-area">
+                        <div class="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm">
+                            <div class="flex items-center gap-2 mb-2">
+                                <div class="w-6 h-6 bg-blue-50 rounded-full flex items-center justify-center text-[10px]">🏉</div>
+                                <div class="h-2 w-20 bg-gray-100 rounded"></div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-2 mt-4">
+                                <div class="h-8 bg-gray-50 rounded-lg"></div>
+                                <div class="h-8 bg-gray-50 rounded-lg"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="px-8 pb-10">
+                        <h3 class="text-[22px] font-bold text-gray-900 leading-tight">Lean Design</h3>
+                        <p class="text-[18px] text-gray-400 font-medium mt-1">Design system</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Space -->
+    <footer class="py-20 bg-white text-center">
+        <p class="text-gray-400 font-bold tracking-[0.2em] text-[11px] uppercase">© 2024 Adham Style Design</p>
+    </footer>
+
+</body>
+</html>
