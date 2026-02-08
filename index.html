@@ -275,11 +275,81 @@
       text-transform: uppercase;
     }
 
+    /* WHAT WE BUILD section styles */
+    .what-section {
+      background: white;
+      padding-top: 72px;
+      padding-bottom: 96px;
+      position: relative;
+      z-index: 12;
+    }
+
+    .what-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    .what-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .what-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+
+    /* card content tweaks for "what" cards */
+    .what-card .preview-area {
+      height: 160px;
+      margin: 1rem;
+      border-radius: 14px;
+    }
+
+    .what-card .card-body {
+      padding: 1rem 1.25rem 1.75rem;
+    }
+
+    .what-card h3 {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .what-card p {
+      margin: .5rem 0 0;
+      color: #475569;
+      font-size: 14.5px;
+      line-height: 1.45;
+    }
+
+    .what-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      margin-top: .8rem;
+      color: var(--accent-blue);
+      font-weight: 700;
+      font-size: 13px;
+      text-decoration: none;
+    }
+
+    /* grid breakpoints */
+    @media (min-width: 720px) {
+      .what-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 1100px) {
+      .what-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
     /* tiny responsive tweaks */
     @media (max-width: 768px) {
       .nav-links { display: none; }
       .wordmark { font-size: 1.25rem; }
-      .preview-area { height: 180px; margin: 1rem; }
+      .preview-area { height: 140px; margin: 1rem; }
     }
   </style>
 </head>
@@ -404,6 +474,103 @@
             <p>Practical systems that grow with you — no overbuilt complexity, just reliable tools that scale as your business does.</p>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT WE BUILD (cards using modern-card shadow) -->
+  <section class="what-section" aria-label="What we build">
+    <div class="what-inner">
+      <div class="what-header">
+        <p class="text-[10px] font-bold uppercase tracking-[0.25em] text-slate-400 mb-3">What we build</p>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900">Practical internal systems your team will actually use</h2>
+        <p class="text-slate-500 mt-3 max-w-2xl mx-auto">We focus on internal workflows that reduce manual work, improve accuracy, and give teams back time — not vanity features.</p>
+      </div>
+
+      <div class="what-grid">
+        <!-- Card 1 -->
+        <article class="modern-card what-card" aria-labelledby="w1">
+          <div class="preview-area" aria-hidden="true">
+            <div class="flex items-center justify-center h-full">
+              <div style="width:92%;height:86%;border-radius:10px;background:linear-gradient(135deg,#eef2ff,#e0f2fe);display:flex;align-items:center;justify-content:center;font-size:36px;">📦</div>
+            </div>
+          </div>
+          <div class="card-body">
+            <h3 id="w1">Inventory Management Systems</h3>
+            <p>Real-time stock tracking, multi-location sync, barcode scanning flows, and automated reorder alerts so you never run out or overstock.</p>
+            <a class="what-cta" href="#" aria-label="Learn more about Inventory Systems">Learn more →</a>
+          </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="modern-card what-card" aria-labelledby="w2">
+          <div class="preview-area" aria-hidden="true">
+            <div class="flex items-center justify-center h-full">
+              <div style="width:92%;height:86%;border-radius:10px;background:linear-gradient(135deg,#f0fdf4,#ecfeff);display:flex;align-items:center;justify-content:center;font-size:36px;">📊</div>
+            </div>
+          </div>
+          <div class="card-body">
+            <h3 id="w2">Reporting & Analytics</h3>
+            <p>Custom dashboards, scheduled reports, and anomaly alerts that give stakeholders clear, accurate insights without drowning in spreadsheets.</p>
+            <a class="what-cta" href="#" aria-label="Learn more about Reporting & Analytics">Learn more →</a>
+          </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="modern-card what-card" aria-labelledby="w3">
+          <div class="preview-area" aria-hidden="true">
+            <div class="flex items-center justify-center h-full">
+              <div style="width:92%;height:86%;border-radius:10px;background:linear-gradient(135deg,#fff7ed,#fff1f2);display:flex;align-items:center;justify-content:center;font-size:36px;">⚙️</div>
+            </div>
+          </div>
+          <div class="card-body">
+            <h3 id="w3">Automation & Workflows</h3>
+            <p>Trigger-based automations and batch jobs that replace repetitive manual tasks — approvals, reconciliations, notifications and more.</p>
+            <a class="what-cta" href="#" aria-label="Learn more about Automation">Learn more →</a>
+          </div>
+        </article>
+
+        <!-- Card 4 -->
+        <article class="modern-card what-card" aria-labelledby="w4">
+          <div class="preview-area" aria-hidden="true">
+            <div class="flex items-center justify-center h-full">
+              <div style="width:92%;height:86%;border-radius:10px;background:linear-gradient(135deg,#eef2ff,#f0f9ff);display:flex;align-items:center;justify-content:center;font-size:36px;">🧭</div>
+            </div>
+          </div>
+          <div class="card-body">
+            <h3 id="w4">Internal Dashboards</h3>
+            <p>Role-based dashboards that surface the right metrics and actions for teams — faster decision-making, less back-and-forth.</p>
+            <a class="what-cta" href="#" aria-label="Learn more about Dashboards">Learn more →</a>
+          </div>
+        </article>
+
+        <!-- Card 5 -->
+        <article class="modern-card what-card" aria-labelledby="w5">
+          <div class="preview-area" aria-hidden="true">
+            <div class="flex items-center justify-center h-full">
+              <div style="width:92%;height:86%;border-radius:10px;background:linear-gradient(135deg,#f0f9ff,#ecfeff);display:flex;align-items:center;justify-content:center;font-size:36px;">🔌</div>
+            </div>
+          </div>
+          <div class="card-body">
+            <h3 id="w5">Integrations & APIs</h3>
+            <p>Connect your ERP, e-commerce, payment gateways and 3PL providers with robust APIs and sync strategies that keep systems consistent.</p>
+            <a class="what-cta" href="#" aria-label="Learn more about Integrations">Learn more →</a>
+          </div>
+        </article>
+
+        <!-- Card 6 -->
+        <article class="modern-card what-card" aria-labelledby="w6">
+          <div class="preview-area" aria-hidden="true">
+            <div class="flex items-center justify-center h-full">
+              <div style="width:92%;height:86%;border-radius:10px;background:linear-gradient(135deg,#fffaf0,#fff6ee);display:flex;align-items:center;justify-content:center;font-size:36px;">🧰</div>
+            </div>
+          </div>
+          <div class="card-body">
+            <h3 id="w6">Custom Internal Tools</h3>
+            <p>From admin panels to bespoke tooling — we shape systems around your exact operation, not the other way around.</p>
+            <a class="what-cta" href="#" aria-label="Learn more about Custom Tools">Learn more →</a>
+          </div>
+        </article>
       </div>
     </div>
   </section>
