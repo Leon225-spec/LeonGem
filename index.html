@@ -2,145 +2,215 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>ironbyte — Custom Software & Systems</title>
 
-  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Inter font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-          },
-          colors: {
-            brand: {
-              blue: '#2563eb',
-              dark: '#0f172a',
-              text: '#334155',
-              bg: '#ffffff',
-            }
-          },
-          boxShadow: {
-            'soft': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
-            'button': '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
-            'button-hover': '0 10px 15px -3px rgba(37, 99, 235, 0.2), 0 4px 6px -2px rgba(37, 99, 235, 0.1)',
-          }
-        }
-      }
-    }
-  </script>
-
   <style>
-    /* Custom Utilities */
-    body {
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-    
-    .glass-nav {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(8px);
+    /* 1. CONFIG */
+    :root{
+      --bg-page: #ffffff;
+      --accent-blue: #2563eb;
+      --text-main: #0f172a;
+      --text-muted: #475569;
     }
 
-    /* Logo Dot Animation */
-    .logo-group:hover .logo-dot {
-      transform: scale(1.2);
+    html,body{
+      background-color: var(--bg-page);
+      font-family: "Inter", sans-serif;
+      color: var(--text-main);
+      -webkit-font-smoothing: antialiased;
     }
-    .logo-dot {
-      transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+    /* 2. NAVIGATION */
+    nav {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px); /* Glassmorphism effect */
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.25rem;
+      letter-spacing: -0.03em;
+      color: #0f172a;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .logo .dot {
+      width: 8px;
+      height: 8px;
+      background: var(--accent-blue);
+      border-radius: 2px;
+      margin-top: 6px; /* Visual alignment with text baseline */
+    }
+
+    .nav-link {
+      font-weight: 500;
+      font-size: 0.95rem;
+      color: #64748b;
+      transition: color 0.2s ease;
+    }
+    .nav-link:hover { color: #0f172a; }
+
+    /* 3. HERO SECTION */
+    .hero-section {
+      padding-top: 6rem;
+      padding-bottom: 6rem;
+      background: 
+        radial-gradient(circle at 15% 50%, rgba(37, 99, 235, 0.04) 0%, transparent 25%),
+        radial-gradient(circle at 85% 30%, rgba(37, 99, 235, 0.04) 0%, transparent 25%);
+    }
+
+    /* Badge Style for "Custom Software" */
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 12px;
+      background-color: #eff6ff;
+      color: #2563eb;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border-radius: 999px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title {
+      font-weight: 800;
+      letter-spacing: -0.04em; /* Tight tracking for Inter makes it look premium */
+      line-height: 1.1;
+      color: #0f172a;
+    }
+
+    .hero-sub {
+      font-size: 1.125rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+      max-width: 60ch; /* Optimal reading length */
+    }
+
+    /* 4. BUTTONS */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 1.5rem;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary {
+      background-color: var(--accent-blue);
+      color: white;
+      box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2), 0 2px 4px -1px rgba(37, 99, 235, 0.1);
+    }
+    .btn-primary:hover {
+      background-color: #1d4ed8;
+      transform: translateY(-1px);
+      box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.25);
+    }
+
+    .btn-secondary {
+      background-color: white;
+      color: #334155;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    }
+    .btn-secondary:hover {
+      border-color: #cbd5e1;
+      background-color: #f8fafc;
+    }
+
+    /* 5. TECH LOGOS (Social Proof) */
+    .tech-logos {
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid #f1f5f9;
+    }
+    .tech-logos span {
+        font-weight: 600;
+        color: #94a3b8;
+        font-size: 0.85rem;
+        margin-bottom: 1rem;
+        display: block;
     }
   </style>
 </head>
 
-<body class="bg-white text-slate-900 flex flex-col min-h-screen">
+<body>
 
-  <!-- Navigation -->
-  <nav class="fixed w-full z-50 glass-nav border-b border-slate-100 transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-6 md:px-8 h-20 flex items-center justify-between">
+  <nav class="fixed w-full top-0 z-50">
+    <div class="max-w-6xl mx-auto px-6 h-20 flex justify-between items-center">
       
-      <!-- Logo -->
-      <a href="#" class="logo-group flex items-center gap-1.5 group">
-        <span class="font-bold text-xl tracking-tight text-slate-900">ironbyte</span>
-        <span class="logo-dot w-3 h-3 bg-brand-blue rounded-sm"></span>
+      <a href="#" class="logo">
+        ironbyte<span class="dot"></span>
       </a>
 
-      <!-- Desktop Links -->
       <div class="hidden md:flex items-center gap-8">
-        <a href="#services" class="text-sm font-medium text-slate-600 hover:text-brand-blue transition-colors">Services</a>
-        <a href="#how" class="text-sm font-medium text-slate-600 hover:text-brand-blue transition-colors">How it works</a>
-        <a href="#about" class="text-sm font-medium text-slate-600 hover:text-brand-blue transition-colors">About</a>
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#how" class="nav-link">How it Works</a>
+        <a href="#about" class="nav-link">About</a>
       </div>
 
-      <!-- CTA & Mobile Toggle -->
-      <div class="flex items-center gap-4">
-        <a href="#contact" class="hidden md:inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold text-white transition-all duration-200 bg-brand-blue rounded-lg shadow-button hover:shadow-button-hover hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-blue">
-          Get a quote
-        </a>
-        
-        <!-- Mobile Menu Button -->
-        <button class="md:hidden p-2 text-slate-600 hover:text-slate-900 focus:outline-none">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-          </svg>
-        </button>
+      <div class="hidden md:flex items-center gap-4">
+        <a href="#contact" class="btn btn-primary text-sm py-2.5 px-5">Get a quote</a>
+      </div>
+
+      <div class="md:hidden text-gray-600 cursor-pointer">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="6" x2="20" y2="6"></line><line x1="4" y1="18" x2="20" y2="18"></line></svg>
       </div>
     </div>
   </nav>
 
-  <!-- Hero Section -->
-  <main class="flex-grow flex items-center pt-20"> <!-- pt-20 accounts for fixed nav -->
-    <section class="w-full px-6 md:px-8 py-20 md:py-32 max-w-7xl mx-auto">
+  <section class="hero-section min-h-screen flex items-center pt-32">
+    <div class="max-w-6xl mx-auto px-6 w-full">
       
-      <div class="max-w-4xl">
-        <!-- Kicker -->
-        <div class="flex items-center gap-3 mb-8">
-          <span class="h-px w-8 bg-brand-blue/50"></span>
-          <span class="text-[11px] font-bold tracking-[0.2em] text-slate-500 uppercase">
-            Custom Software & System Design
-          </span>
+      <div class="max-w-3xl">
+        <div class="hero-badge">
+          Custom Software & System Design
         </div>
 
-        <!-- Headline -->
-        <h1 class="text-4xl sm:text-5xl md:text-[3.75rem] leading-[1.1] font-extrabold tracking-tight text-slate-900 mb-8">
-          Software, web apps, and systems built to keep your business moving.
+        <h1 class="hero-title text-4xl sm:text-5xl md:text-6xl mb-6">
+          Software and systems built to keep business moving.
         </h1>
 
-        <!-- Subtext -->
-        <p class="text-lg md:text-xl leading-relaxed text-slate-600 max-w-2xl mb-10 font-normal">
-          Reliable engineering, practical UX, and systems that scale — inventory, billing, dashboards, and business tools crafted to fit your workflow.
+        <p class="hero-sub mb-10">
+          Reliable engineering, practical UX, and systems that scale. We build inventory managers, billing dashboards, and internal tools crafted to fit your specific workflow.
         </p>
 
-        <!-- Buttons -->
-        <div class="flex flex-col sm:flex-row gap-4">
-          <a href="#contact" class="inline-flex items-center justify-center px-7 py-3.5 text-base font-semibold text-white transition-all duration-200 bg-brand-blue rounded-xl shadow-lg hover:shadow-brand-blue/30 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-blue">
-            Get a quote
+        <div class="flex flex-col sm:flex-row gap-4 mb-16">
+          <a href="#contact" class="btn btn-primary">
+            Start a Project
+            <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
           </a>
-          
-          <a href="#how" class="inline-flex items-center justify-center px-7 py-3.5 text-base font-semibold text-slate-700 transition-all duration-200 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 hover:border-slate-300 hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-200">
-            How it works
+          <a href="#how" class="btn btn-secondary">
+            See how it works
           </a>
         </div>
-        
-        <!-- Social Proof / Trust Indicators (Optional placeholder) -->
-        <div class="mt-16 pt-8 border-t border-slate-100">
-          <p class="text-sm font-medium text-slate-400 mb-4">Trusted by fast-moving teams</p>
-          <div class="flex gap-6 opacity-40 grayscale">
-            <!-- Simple SVG Placeholders for "Logos" to add weight to the bottom -->
-            <div class="h-6 w-20 bg-slate-300 rounded"></div>
-            <div class="h-6 w-24 bg-slate-300 rounded"></div>
-            <div class="h-6 w-20 bg-slate-300 rounded"></div>
-          </div>
-        </div>
-
       </div>
-    </section>
-  </main>
+
+      <div class="tech-logos">
+        <span>POWERING SYSTEMS WITH MODERN TECH</span>
+        <div class="flex flex-wrap gap-8 opacity-50 grayscale transition-all hover:grayscale-0">
+            <img src="https://cdn.worldvectorlogo.com/logos/react-2.svg" class="h-8" alt="React">
+            <img src="https://cdn.worldvectorlogo.com/logos/nodejs-icon.svg" class="h-8" alt="Node">
+            <img src="https://cdn.worldvectorlogo.com/logos/postgresql.svg" class="h-8" alt="Postgres">
+            <img src="https://cdn.worldvectorlogo.com/logos/aws-2.svg" class="h-8" alt="AWS">
+            <img src="https://cdn.worldvectorlogo.com/logos/tailwindcss.svg" class="h-8" alt="Tailwind">
+        </div>
+      </div>
+
+    </div>
+  </section>
 
 </body>
 </html>
