@@ -345,6 +345,110 @@
       .what-grid { grid-template-columns: repeat(3, 1fr); }
     }
 
+    /* HOW WE WORK section styles */
+    .how-section {
+      background: var(--bg-section-alt); /* subtle contrast */
+      padding-top: 72px;
+      padding-bottom: 88px;
+      position: relative;
+      z-index: 11;
+      border-top: 1px solid rgba(0,0,0,0.03);
+      box-shadow: 0 -10px 20px -18px rgba(0,0,0,0.03); /* soft top shadow to separate from previous white section */
+    }
+
+    .how-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    .how-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    /* Steps container */
+    .how-steps {
+      position: relative;
+      padding-top: 2.25rem;
+      padding-bottom: 0;
+      display: grid;
+      gap: 1.25rem;
+    }
+
+    /* horizontal connector line on larger screens */
+    .how-steps::before {
+      content: "";
+      position: absolute;
+      left: 6%;
+      right: 6%;
+      top: 44px; /* aligns with center of number circles */
+      height: 2px;
+      background: linear-gradient(90deg, rgba(15,23,42,0.06), rgba(15,23,42,0.02));
+      z-index: 0;
+      display: none;
+    }
+
+    .step {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      background: transparent;
+      padding: 0;
+    }
+
+    .step-number {
+      min-width: 48px;
+      min-height: 48px;
+      border-radius: 999px;
+      background: white;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      color: var(--accent-blue);
+      font-size: 15px;
+      border: 1px solid rgba(15,23,42,0.06);
+      box-shadow: 0 6px 18px rgba(15,23,42,0.04);
+      flex-shrink: 0;
+    }
+
+    .step-body h4 {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .step-body p {
+      margin: .5rem 0 0;
+      color: #475569;
+      font-size: 15px;
+      line-height: 1.5;
+      max-width: 44rem;
+    }
+
+    /* layout for medium+ screens: show steps in a row */
+    @media (min-width: 900px) {
+      .how-steps {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+      }
+      .how-steps::before { display: block; }
+      .step { flex-direction: column; align-items: center; text-align: center; padding-top: 0; }
+      .step-number { margin-bottom: 0.75rem; }
+      .step-body p { margin: .5rem 0 0; }
+    }
+
+    /* mobile stacking */
+    @media (max-width: 899px) {
+      .how-steps { display: grid; grid-template-columns: 1fr; }
+      .step { flex-direction: row; align-items: flex-start; }
+    }
+
     /* tiny responsive tweaks */
     @media (max-width: 768px) {
       .nav-links { display: none; }
@@ -571,6 +675,51 @@
             <a class="what-cta" href="#" aria-label="Learn more about Custom Tools">Learn more →</a>
           </div>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW WE WORK (process steps) -->
+  <section class="how-section" aria-label="How we work">
+    <div class="how-inner">
+      <div class="how-header">
+        <p class="text-[10px] font-bold uppercase tracking-[0.25em] text-slate-400 mb-3">How we work</p>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900">A simple, proven process</h2>
+        <p class="text-slate-500 mt-3 max-w-2xl mx-auto">We keep things practical: learn your problem, design the right solution, build it properly, and support you while it grows.</p>
+      </div>
+
+      <div class="how-steps" role="list">
+        <div class="step" role="listitem" aria-labelledby="step1">
+          <div class="step-number" aria-hidden="true">1</div>
+          <div class="step-body">
+            <h4 id="step1">Discovery</h4>
+            <p>We run focused discovery sessions to map your workflows, pain points and data sources — so we build what actually moves the needle.</p>
+          </div>
+        </div>
+
+        <div class="step" role="listitem" aria-labelledby="step2">
+          <div class="step-number" aria-hidden="true">2</div>
+          <div class="step-body">
+            <h4 id="step2">Design & Prototype</h4>
+            <p>Wireframes and quick prototypes validate concepts with stakeholders before we commit to engineering — fewer surprises, faster approvals.</p>
+          </div>
+        </div>
+
+        <div class="step" role="listitem" aria-labelledby="step3">
+          <div class="step-number" aria-hidden="true">3</div>
+          <div class="step-body">
+            <h4 id="step3">Build & Ship</h4>
+            <p>Iterative development, automated tests and staged deployments keep releases predictable and safe for your operations.</p>
+          </div>
+        </div>
+
+        <div class="step" role="listitem" aria-labelledby="step4">
+          <div class="step-number" aria-hidden="true">4</div>
+          <div class="step-body">
+            <h4 id="step4">Support & Improve</h4>
+            <p>We provide monitoring, fast support and short improvement cycles so the system stays reliable and continues to deliver value.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
