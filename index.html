@@ -41,16 +41,8 @@
     }
 
     .hero-title {
-      letter-spacing: -0.05em;
-      line-height: 0.95;
-    }
-
-    .ui-mockup {
-      border: 1px solid rgba(0,0,0,0.08);
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
-      background: white;
-      border-radius: 12px;
-      overflow: hidden;
+      letter-spacing: -0.02em;
+      line-height: 1.02; /* tighter but readable */
     }
 
     .btn-shine {
@@ -62,7 +54,7 @@
       position: absolute;
       top: -50%; left: -50%;
       width: 200%; height: 200%;
-      background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+      background: linear-gradient(45deg, transparent, rgba(255,255,255,0.08), transparent);
       transform: rotate(45deg);
       transition: 0.5s;
     }
@@ -77,29 +69,22 @@
   <nav class="fixed w-full top-0 z-50 px-6 py-4">
     <div class="max-w-6xl mx-auto flex justify-between items-center bg-white/70 backdrop-blur-xl border border-gray-200/50 px-5 py-2.5 rounded-2xl shadow-sm">
       
-      <a href="#" class="flex items-center">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 100" fill="none">
-  <g fill="#111111">
-    
-    <rect x="10" y="35" width="14" height="50"/>
-    
-    <path d="M45 35 H59 V48 C59 48 62 35 80 35 V49 C68 49 59 55 59 65 V85 H45 V35 Z"/>
-    
-    <path fill-rule="evenodd" d="M115 60 C115 74.3 103.3 86 89 86 C74.7 86 63 74.3 63 60 C63 45.7 74.7 34 89 34 C103.3 34 115 45.7 115 60 Z M101 60 C101 67 95.6 72.5 89 72.5 C82.4 72.5 77 67 77 60 C77 53 82.4 47.5 89 47.5 C95.6 47.5 101 53 101 60 Z"/>
-    
-    <path d="M125 35 H139 V46 C139 46 145 34 162 34 C175 34 182 42 182 55 V85 H168 V57 C168 50 165 47 159 47 C153 47 139 52 139 65 V85 H125 V35 Z"/>
-    
-    <path fill-rule="evenodd" d="M200 15 V42 C205 37 212 34 221 34 C239 34 252 46 252 60 C252 74 239 86 221 86 C210 86 204 81 200 77 V85 H186 V15 H200 Z M200 60 C200 68 206 73 214 73 C225 73 231 66 231 60 C231 54 226 47 218 47 C208 47 200 53 200 60 Z"/>
-    
-    <path d="M260 35 L276 68 L292 35 H308 L282 85 L275 98 H260 L269 81 L244 35 H260 Z"/>
-    
-    <path d="M325 20 V35 H315 V47 H325 V72 C325 80 330 85 340 85 H348 V73 H342 C339 73 339 71 339 69 V47 H350 V35 H339 V20 H325 Z"/>
-    
-    <path fill-rule="evenodd" d="M395 62 H368 C369 70 374 74 381 74 C386 74 390 71 392 68 L405 72 C401 81 392 86 381 86 C364 86 354 74 354 60 C354 46 364 34 380 34 C397 34 406 46 406 62 H395 Z M393 53 C391 45 386 43 380 43 C373 43 369 46 368 53 H393 Z"/>
-  </g>
-
-  <rect x="10" y="15" width="14" height="14" fill="#2563eb"/>
-</svg>
+      <a href="#" class="flex items-center text-slate-900" aria-label="ironbyte home">
+        <!-- SVG logo fixed: uses currentColor so it previews and scales. -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 100" class="w-40 h-8" role="img" aria-hidden="false">
+          <g fill="currentColor">
+            <rect x="10" y="35" width="14" height="50"/>
+            <path d="M45 35 H59 V48 C59 48 62 35 80 35 V49 C68 49 59 55 59 65 V85 H45 V35 Z"/>
+            <path fill-rule="evenodd" d="M115 60 C115 74.3 103.3 86 89 86 C74.7 86 63 74.3 63 60 C63 45.7 74.7 34 89 34 C103.3 34 115 45.7 115 60 Z M101 60 C101 67 95.6 72.5 89 72.5 C82.4 72.5 77 67 77 60 C77 53 82.4 47.5 89 47.5 C95.6 47.5 101 53 101 60 Z"/>
+            <path d="M125 35 H139 V46 C139 46 145 34 162 34 C175 34 182 42 182 55 V85 H168 V57 C168 50 165 47 159 47 C153 47 139 52 139 65 V85 H125 V35 Z"/>
+            <path fill-rule="evenodd" d="M200 15 V42 C205 37 212 34 221 34 C239 34 252 46 252 60 C252 74 239 86 221 86 C210 86 204 81 200 77 V85 H186 V15 H200 Z M200 60 C200 68 206 73 214 73 C225 73 231 66 231 60 C231 54 226 47 218 47 C208 47 200 53 200 60 Z"/>
+            <path d="M260 35 L276 68 L292 35 H308 L282 85 L275 98 H260 L269 81 L244 35 H260 Z"/>
+            <path d="M325 20 V35 H315 V47 H325 V72 C325 80 330 85 340 85 H348 V73 H342 C339 73 339 71 339 69 V47 H350 V35 H339 V20 H325 Z"/>
+            <path fill-rule="evenodd" d="M395 62 H368 C369 70 374 74 381 74 C386 74 390 71 392 68 L405 72 C401 81 392 86 381 86 C364 86 354 74 354 60 C354 46 364 34 380 34 C397 34 406 46 406 62 H395 Z M393 53 C391 45 386 43 380 43 C373 43 369 46 368 53 H393 Z"/>
+          </g>
+          <!-- small accent square — keep blue accent -->
+          <rect x="10" y="15" width="14" height="14" fill="#2563eb"/>
+        </svg>
       </a>
 
       <div class="hidden md:flex items-center gap-6 text-sm font-medium text-gray-500">
@@ -110,17 +95,18 @@
 
       <div class="flex items-center gap-4">
         <a href="#" class="hidden sm:block text-sm font-semibold text-gray-900">Support</a>
-        <a href="#" class="bg-slate-900 text-white text-sm font-semibold px-5 py-2.5 rounded-xl hover:bg-slate-800 transition-all btn-shine">
+        <a href="#" class="bg-slate-900 text-white text-sm font-semibold px-4 py-2 rounded-xl hover:bg-slate-800 transition-all btn-shine">
           Get a quote
         </a>
       </div>
     </div>
   </nav>
 
-  <section class="pt-40 pb-20 px-6">
-    <div class="max-w-4xl mx-auto text-center">
+  <!-- HERO: full-height minus nav so everything fits in first screen -->
+  <section class="px-6" style="min-height: calc(100vh - 88px);">
+    <div class="max-w-5xl mx-auto h-full flex flex-col items-center justify-center text-center">
       
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-xs font-bold mb-8 uppercase tracking-wider">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-xs font-bold mb-6 uppercase tracking-wider">
         <span class="relative flex h-2 w-2">
           <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
           <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-600"></span>
@@ -128,43 +114,33 @@
         Custom software studio
       </div>
 
-      <h1 class="hero-title text-5xl md:text-8xl font-black mb-8 bg-clip-text text-transparent bg-gradient-to-b from-slate-900 to-slate-600">
+      <!-- Reduced headline: smaller sizes, tighter spacing -->
+      <h1 class="hero-title text-4xl md:text-6xl font-extrabold mb-4 bg-clip-text text-transparent bg-gradient-to-b from-slate-900 to-slate-600">
         Systems built for <span class="text-blue-600">scale.</span>
       </h1>
 
-      <p class="text-lg md:text-xl text-slate-500 mb-10 max-w-2xl mx-auto leading-relaxed">
-        Reliable engineering meets practical UX. We build the high-performance internal tools, dashboards, and systems that keep your workflow seamless.
+      <p class="text-base md:text-lg text-slate-500 mb-6 max-w-2xl mx-auto leading-relaxed">
+        Reliable engineering meets practical UX. We build the high-performance internal tools and systems that keep your workflows seamless.
       </p>
 
-      <div class="flex flex-col sm:flex-row justify-center gap-4 mb-20">
-        <a href="#" class="bg-blue-600 text-white px-8 py-4 rounded-2xl font-bold text-lg shadow-lg shadow-blue-200 hover:bg-blue-700 hover:-translate-y-1 transition-all">
+      <div class="flex flex-col sm:flex-row justify-center gap-3 mb-6">
+        <a href="#" class="bg-blue-600 text-white px-6 py-3 rounded-2xl font-semibold text-sm shadow-sm hover:bg-blue-700 hover:-translate-y-0.5 transition-all">
           Start a Project
         </a>
-        <a href="#" class="bg-white border border-slate-200 px-8 py-4 rounded-2xl font-bold text-lg hover:bg-slate-50 transition-all">
+        <a href="#" class="bg-white border border-slate-200 px-6 py-3 rounded-2xl font-semibold text-sm hover:bg-slate-50 transition-all">
           View our Process
         </a>
       </div>
 
-      <div class="relative max-w-5xl mx-auto group">
-        <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-2xl blur opacity-10 group-hover:opacity-20 transition duration-1000"></div>
-        <div class="ui-mockup relative bg-white flex flex-col items-start p-2">
-            <div class="w-full h-6 border-b border-gray-100 flex items-center gap-1.5 px-3 mb-2">
-                <div class="w-2 h-2 rounded-full bg-gray-200"></div>
-                <div class="w-2 h-2 rounded-full bg-gray-200"></div>
-                <div class="w-2 h-2 rounded-full bg-gray-200"></div>
-            </div>
-            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=2000" class="rounded-lg grayscale-[0.5] hover:grayscale-0 transition-all duration-700" alt="Dashboard Preview">
-        </div>
-      </div>
-
-      <div class="mt-20">
-        <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 mb-8">Trusted technology stack</p>
-        <div class="flex flex-wrap justify-center items-center gap-10 md:gap-16 opacity-40 hover:opacity-100 transition-opacity duration-500">
-          <img class="h-6 md:h-8" src="https://cdn.worldvectorlogo.com/logos/react-2.svg" alt="React">
-          <img class="h-6 md:h-8" src="https://cdn.worldvectorlogo.com/logos/next-js.svg" alt="Next">
-          <img class="h-6 md:h-8" src="https://cdn.worldvectorlogo.com/logos/typescript.svg" alt="TS">
-          <img class="h-6 md:h-8" src="https://cdn.worldvectorlogo.com/logos/postgresql.svg" alt="Postgres">
-          <img class="h-6 md:h-8" src="https://cdn.worldvectorlogo.com/logos/aws-2.svg" alt="AWS">
+      <!-- Tech logos: smaller heights, tighter gaps so they fit on first screen -->
+      <div class="mt-2 w-full">
+        <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 mb-3">Trusted technology stack</p>
+        <div class="flex flex-wrap justify-center items-center gap-6 md:gap-10 opacity-70">
+          <img class="h-5 md:h-6" src="https://cdn.worldvectorlogo.com/logos/react-2.svg" alt="React">
+          <img class="h-5 md:h-6" src="https://cdn.worldvectorlogo.com/logos/next-js.svg" alt="Next">
+          <img class="h-5 md:h-6" src="https://cdn.worldvectorlogo.com/logos/typescript.svg" alt="TypeScript">
+          <img class="h-5 md:h-6" src="https://cdn.worldvectorlogo.com/logos/postgresql.svg" alt="Postgres">
+          <img class="h-5 md:h-6" src="https://cdn.worldvectorlogo.com/logos/aws-2.svg" alt="AWS">
         </div>
       </div>
 
@@ -172,3 +148,4 @@
   </section>
 </body>
 </html>
+
