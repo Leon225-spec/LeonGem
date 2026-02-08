@@ -1,205 +1,344 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adham Style Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        :root {
-            --bg-page: #ffffff;
-            --bg-section-alt: #f3f5f7; 
-            
-            /* THE SEALED CARD SHADOW */
-            --card-shadow: 
-                0 1px 3px 0 rgba(0, 0, 0, 0.08), 
-                0 10px 25px -8px rgba(0, 0, 0, 0.06),
-                0 1px 0 0 rgba(0, 0, 0, 0.02);
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Leon N. — Custom Software & Systems</title>
 
-            /* ADHAM'S REFINED SECTION DIVIDER:
-               We use a multi-layered approach:
-               1. A very faint 1px border at the bottom.
-               2. A tight, non-spreading shadow (negative spread) to create the depth.
-            */
-            --divider-shadow: 0 8px 16px -10px rgba(0, 0, 0, 0.12);
-        }
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
-        body {
-            background-color: var(--bg-page);
-            font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
-            color: #1a1a1a;
-            -webkit-font-smoothing: antialiased;
-        }
+  <!-- Inter font (body) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
 
-        /* The Hero Section - Creating the physical 'ledge' */
-        .hero-section {
-            padding: 140px 24px 120px;
-            text-align: center;
-            background: white;
-            position: relative;
-            z-index: 20; 
-            /* The Border + Shadow combination seen in the zoom-in */
-            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
-            box-shadow: var(--divider-shadow);
-        }
+  <style>
+    :root{
+      --bg-page: #ffffff;
+      --bg-section-alt: #f3f5f7;
+      --card-shadow:
+        0 1px 3px 0 rgba(0,0,0,0.08),
+        0 10px 25px -8px rgba(0,0,0,0.06),
+        0 1px 0 0 rgba(0,0,0,0.02);
+      --divider-shadow: 0 8px 16px -10px rgba(0,0,0,0.12);
+    }
 
-        /* The Work Section - The "Bottom Layer" */
-        .work-section {
-            background-color: var(--bg-section-alt);
-            padding: 100px 24px;
-            position: relative;
-            z-index: 10;
-        }
+    html,body{
+      height: 100%;
+      background-color: var(--bg-page);
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color: #111827;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
 
-        /* Card implementation */
-        .modern-card {
-            background: #ffffff;
-            border-radius: 24px;
-            box-shadow: var(--card-shadow);
-            border: 1px solid rgba(0, 0, 0, 0.04); 
-            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
-            cursor: pointer;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
+    /* Hero "ledge" treatment (keeps Adham-inspired feel) */
+    .hero-section{
+      padding: 110px 1.5rem 96px;
+      text-align: center;
+      background: white;
+      position: relative;
+      z-index: 20;
+      border-bottom: 1px solid rgba(0,0,0,0.04);
+      box-shadow: var(--divider-shadow);
+    }
 
-        .modern-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 
-                0 4px 6px -1px rgba(0, 0, 0, 0.1), 
-                0 25px 45px -15px rgba(0, 0, 0, 0.1);
-        }
+    /* Work / Services section */
+    .work-section{
+      background-color: var(--bg-section-alt);
+      padding: 84px 1.25rem;
+      position: relative;
+      z-index: 10;
+    }
 
-        .preview-area {
-            background-color: #f3f5f7;
-            border-radius: 18px;
-            padding: 1.5rem;
-            margin: 1.25rem;
-            height: 220px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            gap: 1rem;
-        }
+    .modern-card{
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: var(--card-shadow);
+      border: 1px solid rgba(0,0,0,0.04);
+      transition: transform .28s cubic-bezier(.34,1.56,.64,1), box-shadow .22s ease;
+      cursor: pointer;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
 
-        .status-tag {
-            display: inline-flex;
-            align-items: center;
-            padding: 5px 14px;
-            border-radius: 100px;
-            font-weight: 600;
-            font-size: 0.8rem;
-            background: #ffffff;
-            border: 1px solid currentColor;
-        }
+    .modern-card:hover{
+      transform: translateY(-6px);
+      box-shadow:
+        0 6px 12px -2px rgba(0,0,0,0.08),
+        0 24px 40px -18px rgba(0,0,0,0.12);
+    }
 
-        .tag-approved { color: #44a57b; border-color: rgba(68, 165, 123, 0.15); }
+    .preview-area{
+      background-color: #f8fafc;
+      border-radius: 16px;
+      padding: 1.25rem;
+      margin: 1rem;
+      height: 200px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.9rem;
+    }
 
-        .tag-pill {
-            padding: 4px 12px;
-            background: #e2e8f0;
-            border-radius: 8px;
-            color: #64748b;
-            font-weight: 700;
-            font-size: 11px;
-            text-transform: uppercase;
-        }
-    </style>
+    .status-tag{
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.78rem;
+      background: #ffffff;
+      border: 1px solid currentColor;
+    }
+
+    .tag-approved{ color: #2f855a; border-color: rgba(46, 141, 87, 0.14); }
+
+    /* small utility tweaks for consistent look */
+    .btn-primary{
+      display:inline-flex;
+      align-items:center;
+      gap:.6rem;
+      padding:.75rem 1.25rem;
+      border-radius:12px;
+      font-weight:700;
+      background:linear-gradient(180deg,#2563eb 0%,#1e40af 100%);
+      color:white;
+      box-shadow: 0 6px 18px -10px rgba(31,41,55,0.5);
+      transition: transform .14s ease, box-shadow .14s ease, opacity .12s ease;
+    }
+    .btn-primary:hover{ transform: translateY(-3px); opacity: .98; }
+
+    .btn-ghost{
+      display:inline-flex;
+      align-items:center;
+      gap:.5rem;
+      padding:.68rem 1rem;
+      border-radius:12px;
+      font-weight:700;
+      color:#1f2937;
+      background:transparent;
+      border: 1px solid rgba(31,41,55,0.06);
+    }
+    .btn-ghost:hover{ transform: translateY(-2px); background: rgba(31,41,55,0.03); }
+
+    /* responsive tweaks for hero buttons spacing */
+    @media (min-width: 768px){
+      .hero-actions{ display:inline-flex; gap:1rem; }
+    }
+  </style>
 </head>
+
 <body>
+  <!-- Header / Navigation -->
+  <nav class="bg-white flex justify-between items-center px-6 md:px-10 py-6 max-w-7xl mx-auto relative z-30">
+    <!-- Brand: change text to your brand/name -->
+    <div class="font-extrabold text-lg tracking-tighter">Leon N.</div>
 
-    <!-- Header / Navigation -->
-    <nav class="bg-white flex justify-between items-center px-10 py-8 max-w-7xl mx-auto relative z-30">
-        <div class="font-black text-xl tracking-tighter">AD.</div>
-        <div class="flex gap-8 text-sm font-bold text-gray-400">
-            <a href="#" class="text-gray-900">Work</a>
-            <a href="#" class="hover:text-gray-900 transition-colors">About</a>
-            <a href="#" class="hover:text-gray-900 transition-colors">Contact</a>
+    <div class="hidden md:flex items-center gap-8 text-sm font-semibold text-gray-500">
+      <a href="#services" class="text-gray-900 hover:underline">Services</a>
+      <a href="#work" class="hover:text-gray-900 transition-colors">Work</a>
+      <a href="#about" class="hover:text-gray-900 transition-colors">About</a>
+      <a href="#contact" class="hover:text-gray-900 transition-colors">Contact</a>
+    </div>
+
+    <!-- simple mobile menu placeholder (non-interactive) -->
+    <div class="md:hidden text-gray-500 font-semibold">Menu</div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="max-w-3xl mx-auto">
+      <p class="text-gray-400 font-bold tracking-[0.4em] text-[11px] mb-6 uppercase">Custom software & system design</p>
+
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-gray-900 leading-tight mb-6">
+        I build <span class="text-blue-600">custom software</span>, web apps, and reliable <span class="text-blue-600">systems</span> for businesses.
+      </h1>
+
+      <p class="text-gray-600 text-lg max-w-2xl mx-auto mb-8">
+        Clean engineering, pragmatic UX, and systems that scale — from stock & inventory to web platforms and business-specific tooling.
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+        <div class="hero-actions">
+          <a href="#contact" class="btn-primary">
+            <!-- simple inline SVG icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+            Get a quote
+          </a>
+
+          <a href="#services" class="btn-ghost">
+            View services
+          </a>
         </div>
-    </nav>
+      </div>
+    </div>
+  </section>
 
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="max-w-3xl mx-auto">
-            <h2 class="text-gray-400 font-bold tracking-[0.4em] text-[11px] mb-6 uppercase">Product Designer</h2>
-            <h1 class="text-5xl md:text-6xl font-black text-gray-900 leading-tight">
-                I design digital products that are <span class="text-blue-600">simple</span> and <span class="text-blue-600">beautiful</span>.
-            </h1>
-        </div>
-    </section>
+  <!-- Services (keeps the 'work' aesthetic but focused on offerings) -->
+  <section id="services" class="work-section">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex flex-col items-center mb-12">
+        <h2 class="text-gray-400 font-bold tracking-[0.4em] text-[11px] mb-4 uppercase">Services</h2>
+        <p class="text-gray-600 text-center max-w-2xl">
+          I help small and medium businesses digitize operations: custom backend systems, web apps, inventory & stock systems, and productized design systems.
+        </p>
+      </div>
 
-    <!-- Work Section -->
-    <section class="work-section">
-        <div class="max-w-6xl mx-auto">
-            <div class="flex flex-col items-center mb-16">
-                <h2 class="text-gray-400 font-bold tracking-[0.4em] text-[11px] mb-4 uppercase">Latest Projects</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Service Card 1 -->
+        <div class="modern-card p-0">
+          <div class="preview-area">
+            <div class="status-tag tag-approved">
+              <span class="mr-2 text-[10px] rounded-full w-5 h-5 flex items-center justify-center bg-green-50 text-green-600">✓</span>
+              Reliable
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                <!-- Project Card 1 -->
-                <div class="modern-card">
-                    <div class="preview-area">
-                        <div class="status-tag tag-approved">
-                            <span class="mr-1.5 text-[9px] border border-current rounded-full w-4 h-4 flex items-center justify-center">✓</span> Approved
-                        </div>
-                        <div class="flex items-center gap-4 mt-2">
-                             <div class="w-10 h-10 bg-white rounded-xl shadow-sm border border-gray-100 flex items-center justify-center text-xl">🎨</div>
-                             <div class="h-2.5 w-24 bg-gray-200/60 rounded"></div>
-                        </div>
-                        <div class="flex gap-2">
-                            <div class="tag-pill">UI</div>
-                            <div class="tag-pill">UX</div>
-                        </div>
-                    </div>
-                    <div class="px-8 pb-10">
-                        <h3 class="text-[22px] font-bold text-gray-900 leading-tight">Figma Design System</h3>
-                        <p class="text-[18px] text-gray-400 font-medium mt-1">Design system</p>
-                    </div>
-                </div>
-
-                <!-- Project Card 2 -->
-                <div class="modern-card">
-                    <div class="preview-area flex items-center justify-center">
-                        <div class="relative w-32 h-44 bg-blue-600 rounded-r-xl shadow-xl flex flex-col p-4 text-white transform -rotate-1">
-                            <div class="text-[8px] font-bold opacity-60 mb-1">PRACTICAL</div>
-                            <div class="font-bold text-sm leading-tight mb-auto">Practical UI</div>
-                            <div class="w-4 h-4 rounded-full bg-white/20"></div>
-                        </div>
-                    </div>
-                    <div class="px-8 pb-10">
-                        <h3 class="text-[22px] font-bold text-gray-900 leading-tight">UI Design Book</h3>
-                        <p class="text-[18px] text-gray-400 font-medium mt-1">Book</p>
-                    </div>
-                </div>
-
-                <!-- Project Card 3 -->
-                <div class="modern-card">
-                    <div class="preview-area">
-                        <div class="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm">
-                            <div class="flex items-center gap-2 mb-2">
-                                <div class="w-6 h-6 bg-blue-50 rounded-full flex items-center justify-center text-[10px]">🏉</div>
-                                <div class="h-2 w-20 bg-gray-100 rounded"></div>
-                            </div>
-                            <div class="grid grid-cols-2 gap-2 mt-4">
-                                <div class="h-8 bg-gray-50 rounded-lg"></div>
-                                <div class="h-8 bg-gray-50 rounded-lg"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="px-8 pb-10">
-                        <h3 class="text-[22px] font-bold text-gray-900 leading-tight">Lean Design</h3>
-                        <p class="text-[18px] text-gray-400 font-medium mt-1">Design system</p>
-                    </div>
-                </div>
+            <div class="flex items-center gap-4 mt-2">
+              <div class="w-12 h-12 bg-white rounded-xl border border-gray-100 flex items-center justify-center text-2xl">🧩</div>
+              <div class="flex-1">
+                <div class="h-3 w-36 bg-gray-200/60 rounded mb-2"></div>
+                <div class="h-2.5 w-28 bg-gray-100 rounded"></div>
+              </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Footer Space -->
-    <footer class="py-20 bg-white text-center">
-        <p class="text-gray-400 font-bold tracking-[0.2em] text-[11px] uppercase">© 2024 Adham Style Design</p>
-    </footer>
+            <div class="flex gap-2 mt-3">
+              <div class="tag-pill px-3 py-1" style="padding:6px 10px; background:#eef2ff; color:#3730a3; border-radius:10px; font-weight:700; font-size:11px;">Custom Software</div>
+            </div>
+          </div>
+
+          <div class="px-6 pb-8 pt-3">
+            <h3 class="text-[20px] font-bold text-gray-900 leading-tight">Custom Business Systems</h3>
+            <p class="text-[15px] text-gray-500 mt-2">Inventory & stock management, CRMs, billing tools — built to fit your workflow.</p>
+          </div>
+        </div>
+
+        <!-- Service Card 2 -->
+        <div class="modern-card p-0">
+          <div class="preview-area flex items-center justify-center">
+            <div class="relative w-32 h-44 bg-blue-600 rounded-r-xl shadow-xl flex flex-col p-4 text-white transform -rotate-1">
+              <div class="text-[8px] font-bold opacity-60 mb-1">PRODUCT</div>
+              <div class="font-bold text-sm leading-tight mb-auto">Web & SaaS Apps</div>
+              <div class="w-4 h-4 rounded-full bg-white/20"></div>
+            </div>
+          </div>
+
+          <div class="px-6 pb-8 pt-3">
+            <h3 class="text-[20px] font-bold text-gray-900 leading-tight">Web Applications</h3>
+            <p class="text-[15px] text-gray-500 mt-2">Responsive web apps, dashboards and client portals with attention to performance & UX.</p>
+          </div>
+        </div>
+
+        <!-- Service Card 3 -->
+        <div class="modern-card p-0">
+          <div class="preview-area">
+            <div class="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm">
+              <div class="flex items-center gap-2 mb-2">
+                <div class="w-6 h-6 bg-blue-50 rounded-full flex items-center justify-center text-[10px]">⚙️</div>
+                <div class="h-2 w-20 bg-gray-100 rounded"></div>
+              </div>
+              <div class="grid grid-cols-2 gap-2 mt-4">
+                <div class="h-8 bg-gray-50 rounded-lg"></div>
+                <div class="h-8 bg-gray-50 rounded-lg"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="px-6 pb-8 pt-3">
+            <h3 class="text-[20px] font-bold text-gray-900 leading-tight">System Design</h3>
+            <p class="text-[15px] text-gray-500 mt-2">Architecture, integration, and deployment plans so your tools scale without breaking a sweat.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Example Projects / Portfolio -->
+  <section id="work" class="py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="mb-8">
+        <h2 class="text-gray-400 font-bold tracking-[0.4em] text-[11px] mb-4 uppercase">Recent Work</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <article class="modern-card p-0">
+          <div class="preview-area">
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 bg-white rounded-xl border border-gray-100 flex items-center justify-center text-2xl">📦</div>
+              <div class="flex-1">
+                <div class="h-3 w-32 bg-gray-200/60 rounded mb-2"></div>
+                <div class="h-2 w-20 bg-gray-100 rounded"></div>
+              </div>
+            </div>
+            <div class="mt-3 flex gap-2">
+              <div class="tag-pill">Inventory</div>
+              <div class="tag-pill">Backend</div>
+            </div>
+          </div>
+          <div class="px-6 pb-6 pt-3">
+            <h3 class="font-bold text-lg">Store Stock Manager</h3>
+            <p class="text-gray-500 mt-1 text-sm">Inventory system used by multiple small retailers to track stock and sales.</p>
+          </div>
+        </article>
+
+        <article class="modern-card p-0">
+          <div class="preview-area flex items-center justify-center">
+            <div class="relative w-28 h-36 bg-indigo-600 rounded-xl shadow-md flex flex-col p-4 text-white">
+              <div class="text-[9px] opacity-70 mb-1">SAAS</div>
+              <div class="font-bold text-sm leading-tight mb-auto">Client Portal</div>
+            </div>
+          </div>
+          <div class="px-6 pb-6 pt-3">
+            <h3 class="font-bold text-lg">Client Portal</h3>
+            <p class="text-gray-500 mt-1 text-sm">Secure dashboard and billing portal for a service business.</p>
+          </div>
+        </article>
+
+        <article class="modern-card p-0">
+          <div class="preview-area">
+            <div class="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm">
+              <div class="flex items-center gap-2 mb-2">
+                <div class="w-6 h-6 bg-blue-50 rounded-full flex items-center justify-center text-[10px]">🧭</div>
+                <div class="h-2 w-20 bg-gray-100 rounded"></div>
+              </div>
+              <div class="grid grid-cols-2 gap-2 mt-4">
+                <div class="h-8 bg-gray-50 rounded-lg"></div>
+                <div class="h-8 bg-gray-50 rounded-lg"></div>
+              </div>
+            </div>
+          </div>
+          <div class="px-6 pb-6 pt-3">
+            <h3 class="font-bold text-lg">Operations Dashboard</h3>
+            <p class="text-gray-500 mt-1 text-sm">Realtime dashboards & alerts to help operations teams move faster.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Simple About & Contact anchors -->
+  <section id="about" class="py-14 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h3 class="text-xl font-bold text-gray-900 mb-3">About</h3>
+      <p class="text-gray-600">I'm Leon — I design and build practical systems and web apps for businesses that want to get stuff done. I focus on fast delivery, clear UX, and reliable architecture.</p>
+    </div>
+  </section>
+
+  <section id="contact" class="py-14 bg-white">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h3 class="text-xl font-bold text-gray-900 mb-3">Let's build something</h3>
+      <p class="text-gray-600 mb-6">Interested in a quote or want to show me your problem? Email <a href="mailto:hello@example.com" class="text-blue-600 font-semibold">hello@example.com</a> — or replace this with your contact form.</p>
+      <div class="flex justify-center">
+        <a href="mailto:hello@example.com" class="btn-primary">Get a quote</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-12 bg-white text-center">
+    <p class="text-gray-400 font-bold tracking-[0.2em] text-[11px] uppercase">© 2026 Leon N. — Custom Software & Systems</p>
+  </footer>
 
 </body>
 </html>
