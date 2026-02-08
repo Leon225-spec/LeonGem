@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Zalando+Sans+Expanded:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
 
-  <!-- Material Icons for contact card -->
+  <!-- Material icons for contact card -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
   <style>
@@ -19,14 +19,18 @@
       --bg-page: #ffffff;
       --accent-blue: #2563eb;
       --text-main: #0f172a;
-      --nav-height: 72px;
+      --nav-height: 72px; /* adjustable nav height */
 
-      /* preserved styles */
+      /* COPIED FROM ADHAM - exact card shadow & divider (kept as requested) */
       --bg-section-alt: #f3f5f7;
+
+      /* THE SEALED CARD SHADOW (copied exactly) */
       --card-shadow:
         0 1px 3px 0 rgba(0, 0, 0, 0.08),
         0 10px 25px -8px rgba(0, 0, 0, 0.06),
         0 1px 0 0 rgba(0, 0, 0, 0.02);
+
+      /* ADHAM'S REFINED SECTION DIVIDER (copied exactly) */
       --divider-shadow: 0 8px 16px -10px rgba(0, 0, 0, 0.12);
     }
 
@@ -38,110 +42,538 @@
       background: var(--bg-page);
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      /* reserve space so fixed nav doesn't overlap content */
       padding-top: var(--nav-height);
     }
 
-    /* NAV (unchanged) */
+    /* NAV */
     nav.site-nav {
       position: fixed;
-      top: 0; left: 0; right: 0;
+      top: 0;
+      left: 0;
+      right: 0;
       height: var(--nav-height);
-      display: flex; align-items: center;
+      display: flex;
+      align-items: center;
       z-index: 60;
       background: white;
       border-bottom: 1px solid rgba(15,23,42,0.06);
       box-shadow: 0 6px 18px rgba(15,23,42,0.04);
       padding: 0 1.25rem;
     }
-    .nav-inner { max-width:1200px; margin:0 auto; width:100%; display:flex; align-items:center; justify-content:space-between; gap:1rem; }
-    .wordmark { font-family:"Zalando Sans Expanded","Inter",sans-serif; font-weight:700; letter-spacing:-0.02em; font-size:1.5rem; color:var(--text-main); line-height:1; display:inline-block; text-decoration:none; }
-    .wordmark .accent-y{ color:var(--accent-blue); }
-    .nav-links{ display:flex; gap:1.25rem; align-items:center; color:#475569; font-weight:500; }
-    .nav-links a { color:inherit; text-decoration:none; }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 1rem;
+    }
+
+    /* Wordmark using Zalando Sans Expanded, slightly larger */
+    .wordmark {
+      font-family: "Zalando Sans Expanded", "Inter", system-ui, sans-serif;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      font-size: 1.5rem; /* ~24px - not too small */
+      color: var(--text-main);
+      line-height: 1;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .wordmark .accent-y { color: var(--accent-blue); } /* accent on 'y' */
+
+    .nav-links {
+      display:flex;
+      gap:1.25rem;
+      align-items:center;
+      color: #475569;
+      font-weight: 500;
+    }
+
+    .nav-links a { color: inherit; text-decoration: none; }
     .nav-cta { display:flex; gap:.75rem; align-items:center; }
 
-    /* preserved background/grid/glow */
-    .bg-grid { background-size:40px 40px; background-image:radial-gradient(circle, rgba(0,0,0,0.05) 1px, transparent 1px); position:absolute; top:0; left:0; right:0; height:100vh; z-index:-1; mask-image: radial-gradient(ellipse at top, black 20%, transparent 80%); }
-    .glow { position:absolute; top:0; left:50%; transform:translateX(-50%); width:600px; height:300px; background: radial-gradient(circle, rgba(37,99,235,0.08) 0%, transparent 70%); z-index:-1; filter: blur(60px); }
-
-    /* Hero + Who + What + How sections preserved (not repeated here to save scrolling) */
-    .hero-section { position:relative; z-index:20; background:white; border-bottom:1px solid rgba(0,0,0,0.04); box-shadow:var(--divider-shadow); }
-    .who-section { background-color:var(--bg-section-alt); position:relative; z-index:10; padding-top:72px; padding-bottom:92px; }
-    .what-section { background:white; padding-top:72px; padding-bottom:96px; position:relative; z-index:12; }
-    .how-section { background:var(--bg-section-alt); padding-top:72px; padding-bottom:88px; position:relative; z-index:11; border-top:1px solid rgba(0,0,0,0.03); box-shadow: 0 -10px 20px -18px rgba(0,0,0,0.03); }
-
-    /* modern-card preserved */
-    .modern-card { background:#fff; border-radius:24px; box-shadow:var(--card-shadow); border:1px solid rgba(0,0,0,0.04); transition: transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s ease; cursor:pointer; overflow:hidden; display:flex; flex-direction:column; }
-    .modern-card:hover { transform:translateY(-4px); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 25px 45px -15px rgba(0,0,0,0.1); }
-
-    /* Banner section */
-    .banner-section {
-      background: linear-gradient(90deg, rgba(37,99,235,0.06), rgba(14,165,233,0.03));
-      padding: 18px 1.25rem;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      gap:.75rem;
-      border-top:1px solid rgba(15,23,42,0.02);
-      border-bottom:1px solid rgba(15,23,42,0.02);
+    /* subtle background grid & glow from earlier layout */
+    .bg-grid {
+      background-size: 40px 40px;
+      background-image: radial-gradient(circle, rgba(0,0,0,0.05) 1px, transparent 1px);
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 100vh;
+      z-index: -1;
+      mask-image: radial-gradient(ellipse at top, black 20%, transparent 80%);
     }
-    .banner-inner { max-width:1200px; width:100%; padding:0 1rem; display:flex; gap:1rem; align-items:center; justify-content:space-between; }
-    .banner-left { display:flex; gap:.75rem; align-items:center; }
-    .banner-pill { font-size:12px; font-weight:700; text-transform:uppercase; color:var(--accent-blue); background:rgba(37,99,235,0.08); padding:6px 10px; border-radius:999px; border:1px solid rgba(37,99,235,0.08); }
-    .banner-text { font-weight:600; color:var(--text-main); }
-    .banner-cta { background:var(--accent-blue); color:white; padding:8px 12px; border-radius:10px; font-weight:700; text-decoration:none; box-shadow: 0 8px 24px rgba(37,99,235,0.08); }
 
-    /* Contact section layout */
-    .contact-section { background:white; padding-top:64px; padding-bottom:96px; }
-    .contact-inner { max-width:1200px; margin:0 auto; padding:0 1.25rem; display:grid; gap:1.25rem; grid-template-columns: 1fr; }
-    @media(min-width: 960px) { .contact-inner { grid-template-columns: 1fr 380px; align-items:start; } }
+    .glow {
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 600px; height: 300px;
+      background: radial-gradient(circle, rgba(37, 99, 235, 0.08) 0%, transparent 70%);
+      z-index: -1;
+      filter: blur(60px);
+    }
 
-    /* form styles */
-    .form-card { background: transparent; } /* keep it grounded */
-    form .form-group { margin-bottom: 1rem; }
-    .form-input, textarea {
-      width:100%;
-      padding: .9rem 1rem;
-      border-radius: 12px;
-      border: 1px solid rgba(15,23,42,0.08);
+    .hero-title { letter-spacing: -0.02em; line-height: 1.02; }
+
+    /* HERO: add subtle 'ledge' as a divider using the copied divider shadow */
+    .hero-section {
+      position: relative;
+      z-index: 20;
       background: white;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+      box-shadow: var(--divider-shadow);
+    }
+
+    /* WHO SECTION (grounded layout — minimal depth, reuse soft bg) */
+    .who-section {
+      background-color: var(--bg-section-alt);
+      position: relative;
+      z-index: 10;
+      padding-top: 72px;
+      padding-bottom: 92px;
+    }
+
+    .who-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .who-header {
+      text-align: center;
+      margin-bottom: 2.25rem;
+    }
+
+    /* grid of audience blocks */
+    .who-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem 1.25rem;
+    }
+
+    /* Each item is a grounded block — NO heavy shadow */
+    .who-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      padding: 1.25rem;
+      border-radius: 12px;
+      background: transparent; /* keep grounded on section bg */
+      transition: transform .18s ease, border-color .18s ease;
+      border-left: 3px solid transparent; /* accent on hover */
+    }
+
+    .who-item:hover {
+      transform: translateY(-4px);
+      border-left-color: var(--accent-blue);
+      background: rgba(255,255,255,0.02);
+    }
+
+    .who-icon {
+      min-width: 56px;
+      min-height: 56px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      background: white; /* small pop for the icon */
+      border: 1px solid rgba(15,23,42,0.04);
+    }
+
+    .who-content h3 {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-main);
+      line-height: 1.1;
+    }
+
+    .who-content p {
+      margin: .4rem 0 0;
+      color: #475569;
       font-size: 15px;
+      max-width: 44rem;
+    }
+
+    /* subtle divider between items on small screens for rhythm */
+    @media (max-width: 767px) {
+      .who-item {
+        border-radius: 8px;
+        padding: 1rem;
+        border-left: 3px solid transparent;
+        border-bottom: 1px solid rgba(15,23,42,0.03);
+      }
+    }
+
+    /* larger layout: grid to columns */
+    @media (min-width: 768px) {
+      .who-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.25rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .who-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    /* Card implementation (kept intact as requested) */
+    .modern-card {
+      background: #ffffff;
+      border-radius: 24px;
+      box-shadow: var(--card-shadow);
+      border: 1px solid rgba(0, 0, 0, 0.04);
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+      cursor: pointer;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .modern-card:hover {
+      transform: translateY(-4px);
+      box-shadow:
+        0 4px 6px -1px rgba(0, 0, 0, 0.1),
+        0 25px 45px -15px rgba(0, 0, 0, 0.1);
+    }
+
+    .preview-area {
+      background-color: #f3f5f7;
+      border-radius: 18px;
+      padding: 1.5rem;
+      margin: 1.25rem;
+      height: 220px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .status-tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 5px 14px;
+      border-radius: 100px;
+      font-weight: 600;
+      font-size: 0.8rem;
+      background: #ffffff;
+      border: 1px solid currentColor;
+    }
+
+    .tag-approved { color: #44a57b; border-color: rgba(68, 165, 123, 0.15); }
+
+    .tag-pill {
+      padding: 4px 12px;
+      background: #e2e8f0;
+      border-radius: 8px;
+      color: #64748b;
+      font-weight: 700;
+      font-size: 11px;
+      text-transform: uppercase;
+    }
+
+    /* WHAT WE BUILD section styles */
+    .what-section {
+      background: white;
+      padding-top: 72px;
+      padding-bottom: 96px;
+      position: relative;
+      z-index: 12;
+    }
+
+    .what-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    .what-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .what-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+
+    /* card content tweaks for "what" cards */
+    .what-card .preview-area {
+      height: 160px;
+      margin: 1rem;
+      border-radius: 14px;
+    }
+
+    .what-card .card-body {
+      padding: 1rem 1.25rem 1.75rem;
+    }
+
+    .what-card h3 {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .what-card p {
+      margin: .5rem 0 0;
+      color: #475569;
+      font-size: 14.5px;
+      line-height: 1.45;
+    }
+
+    .what-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      margin-top: .8rem;
+      color: var(--accent-blue);
+      font-weight: 700;
+      font-size: 13px;
+      text-decoration: none;
+    }
+
+    /* grid breakpoints */
+    @media (min-width: 720px) {
+      .what-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 1100px) {
+      .what-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    /* HOW WE WORK section styles */
+    .how-section {
+      background: var(--bg-section-alt); /* subtle contrast */
+      padding-top: 72px;
+      padding-bottom: 88px;
+      position: relative;
+      z-index: 11;
+      border-top: 1px solid rgba(0,0,0,0.03);
+      box-shadow: 0 -10px 20px -18px rgba(0,0,0,0.03); /* soft top shadow to separate from previous white section */
+    }
+
+    .how-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    .how-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    /* Steps container */
+    .how-steps {
+      position: relative;
+      padding-top: 2.25rem;
+      padding-bottom: 0;
+      display: grid;
+      gap: 1.25rem;
+    }
+
+    /* horizontal connector line on larger screens */
+    .how-steps::before {
+      content: "";
+      position: absolute;
+      left: 6%;
+      right: 6%;
+      top: 44px; /* aligns with center of number circles */
+      height: 2px;
+      background: linear-gradient(90deg, rgba(15,23,42,0.06), rgba(15,23,42,0.02));
+      z-index: 0;
+      display: none;
+    }
+
+    .step {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      background: transparent;
+      padding: 0;
+    }
+
+    .step-number {
+      min-width: 48px;
+      min-height: 48px;
+      border-radius: 999px;
+      background: white;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      color: var(--accent-blue);
+      font-size: 15px;
+      border: 1px solid rgba(15,23,42,0.06);
+      box-shadow: 0 6px 18px rgba(15,23,42,0.04);
+      flex-shrink: 0;
+    }
+
+    .step-body h4 {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .step-body p {
+      margin: .5rem 0 0;
+      color: #475569;
+      font-size: 15px;
+      line-height: 1.5;
+      max-width: 44rem;
+    }
+
+    /* layout for medium+ screens: show steps in a row */
+    @media (min-width: 900px) {
+      .how-steps {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+      }
+      .how-steps::before { display: block; }
+      .step { flex-direction: column; align-items: center; text-align: center; padding-top: 0; }
+      .step-number { margin-bottom: 0.75rem; }
+      .step-body p { margin: .5rem 0 0; }
+    }
+
+    /* mobile stacking */
+    @media (max-width: 899px) {
+      .how-steps { display: grid; grid-template-columns: 1fr; }
+      .step { flex-direction: row; align-items: flex-start; }
+    }
+
+    /* BANNER (simple announcement strip) */
+    .banner {
+      background: linear-gradient(90deg, rgba(37,99,235,0.06), rgba(14,165,233,0.03));
+      border: 1px solid rgba(37,99,235,0.06);
+      padding: 18px 1rem;
+      margin-top: 28px;
+    }
+    .banner-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+      display:flex;
+      gap:1rem;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+    }
+    .banner-text { color: #0f172a; font-weight:600; }
+    .banner-cta { background: var(--accent-blue); color: white; padding:10px 14px; border-radius:10px; text-decoration:none; font-weight:700; }
+
+    /* CONTACT SECTION */
+    .contact-section {
+      background: white;
+      padding-top: 72px;
+      padding-bottom: 72px;
+      position: relative;
+      z-index: 12;
+    }
+    .contact-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    /* left form */
+    .contact-form {
+      background: white;
+      padding: 1.25rem;
+      border-radius: 12px;
+      border: 1px solid rgba(15,23,42,0.04);
+      box-shadow: 0 6px 20px rgba(15,23,42,0.04);
+    }
+    .form-row { display:flex; gap:.75rem; }
+    .form-row .field { flex:1; display:flex; flex-direction:column; margin-bottom: .8rem; }
+    label { font-size: 13px; font-weight:600; color:#334155; margin-bottom:6px; }
+    input[type="text"], input[type="email"], input[type="tel"], textarea {
+      padding: 10px 12px;
+      border: 1px solid rgba(15,23,42,0.06);
+      border-radius: 8px;
+      font-size: 14px;
       color: var(--text-main);
       outline: none;
-      transition: box-shadow .15s, border-color .15s, transform .12s;
+      transition: box-shadow .12s ease, border-color .12s ease, transform .06s ease;
+      background: #fff;
     }
-    .form-input:focus, textarea:focus { border-color: var(--accent-blue); box-shadow: 0 6px 18px rgba(37,99,235,0.06); transform: translateY(-1px); }
-    textarea { min-height: 140px; resize: vertical; }
+    input:focus, textarea:focus {
+      box-shadow: 0 6px 20px rgba(37,99,235,0.06);
+      border-color: var(--accent-blue);
+    }
+    textarea { min-height: 120px; resize: vertical; padding-top:10px; }
 
     .form-submit {
+      display:inline-flex;
+      align-items:center;
+      gap:.6rem;
       background: var(--accent-blue);
       color: white;
-      padding: .9rem 1.1rem;
-      border-radius: 12px;
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-weight:700;
       border: none;
-      font-weight: 700;
-      cursor: pointer;
-      box-shadow: 0 10px 30px rgba(37,99,235,0.08);
+      cursor:pointer;
     }
-    .form-submit:disabled { opacity: .6; cursor: not-allowed; }
 
-    .form-note { color: #64748b; font-size:13px; margin-top:.5rem; }
+    /* right contact card - reuses modern-card shadow but smaller radius */
+    .contact-card {
+      padding: 1.25rem;
+      border-radius: 16px;
+      background: white;
+      box-shadow: var(--card-shadow);
+      border: 1px solid rgba(0,0,0,0.04);
+      display:flex;
+      flex-direction:column;
+      gap: 0.85rem;
+      justify-content:center;
+    }
 
-    /* contact info card (uses modern-card shadow) */
-    .contact-card { padding: 1.25rem; display:flex; flex-direction:column; gap:1rem; }
-    .contact-card .contact-row { display:flex; gap:.75rem; align-items:center; }
-    .material-icons { font-size:20px; color:var(--accent-blue); display:inline-block; }
+    .contact-line {
+      display:flex;
+      gap: .75rem;
+      align-items:center;
+      color:#334155;
+      font-weight:600;
+    }
+    .material-icons { font-size:20px; color:var(--accent-blue); }
 
-    .contact-meta h4 { margin:0; font-size:16px; font-weight:700; color:var(--text-main); }
-    .contact-meta p { margin:0; font-size:14px; color:#475569; }
+    .contact-sub { color: #64748b; font-weight:500; font-size:14px; margin-top:0; }
 
-    /* success message */
-    .form-success { background: #ecfdf5; color:#065f46; padding:10px 12px; border-radius:8px; border:1px solid rgba(4,120,87,0.08); display:none; margin-bottom:1rem; }
+    /* responsive layout */
+    @media (min-width: 900px) {
+      .contact-grid {
+        grid-template-columns: 1fr 360px;
+        align-items:start;
+      }
+    }
+
+    @media (max-width: 899px) {
+      .banner-inner { justify-content:center; text-align:center; }
+      .banner-cta { margin-top:8px; }
+    }
 
     /* tiny responsive tweaks */
     @media (max-width: 768px) {
-      .nav-links { display:none; }
-      .wordmark { font-size:1.25rem; }
+      .nav-links { display: none; }
+      .wordmark { font-size: 1.25rem; }
+      .preview-area { height: 140px; margin: 1rem; }
     }
   </style>
 </head>
@@ -153,12 +585,16 @@
   <!-- NAV -->
   <nav class="site-nav" role="navigation" aria-label="Main navigation">
     <div class="nav-inner">
+      <!-- Wordmark: highlight the 'y' -->
       <a href="#" class="wordmark" aria-label="ironbyte home">ironb<span class="accent-y">y</span>te</a>
+
+      <!-- center links (hidden on small screens) -->
       <div class="nav-links">
         <a href="#" class="text-sm hover:text-black transition">Services</a>
         <a href="#" class="text-sm hover:text-black transition">Process</a>
         <a href="#" class="text-sm hover:text-black transition">About</a>
       </div>
+
       <div class="nav-cta">
         <a href="#" class="hidden sm:inline text-sm font-semibold text-gray-700 hover:text-black">Support</a>
         <a href="#" class="inline-block bg-slate-900 text-white text-sm font-semibold px-4 py-2 rounded-md hover:bg-slate-800 transition">Get a quote</a>
@@ -166,9 +602,10 @@
     </div>
   </nav>
 
-  <!-- HERO (kept as before) -->
+  <!-- HERO: min-height accounts for nav so content sits below navbar -->
   <section class="hero-section px-6" style="min-height: calc(100vh - var(--nav-height)); display:flex; align-items:center;">
     <div class="max-w-5xl mx-auto w-full text-center">
+
       <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-xs font-bold mb-6 uppercase tracking-wider">
         <span class="relative flex h-2 w-2">
           <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
@@ -200,10 +637,11 @@
           <img class="h-5 md:h-6" src="https://cdn.worldvectorlogo.com/logos/aws-2.svg" alt="AWS">
         </div>
       </div>
+
     </div>
   </section>
 
-  <!-- WHO IT'S FOR (kept) -->
+  <!-- WHO IT'S FOR (grounded, not heavy cards) -->
   <section class="who-section" aria-label="Who it's for">
     <div class="who-inner">
       <div class="who-header">
@@ -264,7 +702,7 @@
     </div>
   </section>
 
-  <!-- WHAT WE BUILD (kept) -->
+  <!-- WHAT WE BUILD (cards using modern-card shadow) -->
   <section class="what-section" aria-label="What we build">
     <div class="what-inner">
       <div class="what-header">
@@ -273,9 +711,7 @@
         <p class="text-slate-500 mt-3 max-w-2xl mx-auto">We focus on internal workflows that reduce manual work, improve accuracy, and give teams back time — not vanity features.</p>
       </div>
 
-      <!-- cards... (kept as in your last version) -->
       <div class="what-grid">
-        <!-- six cards (Inventory, Reporting, Automation, Dashboards, Integrations, Custom Tools) -->
         <!-- Card 1 -->
         <article class="modern-card what-card" aria-labelledby="w1">
           <div class="preview-area" aria-hidden="true">
@@ -363,7 +799,7 @@
     </div>
   </section>
 
-  <!-- HOW WE WORK (kept) -->
+  <!-- HOW WE WORK (process steps) -->
   <section class="how-section" aria-label="How we work">
     <div class="how-inner">
       <div class="how-header">
@@ -408,131 +844,111 @@
     </div>
   </section>
 
-  <!-- BANNER: announcement about Inventory Intelligence system -->
-  <section class="banner-section" aria-label="Announcement">
+  <!-- BANNER (announcement) -->
+  <section class="banner" aria-label="Announcement banner">
     <div class="banner-inner">
-      <div class="banner-left">
-        <div class="banner-pill">Coming soon</div>
-        <div class="banner-text">We're building an <strong>Inventory Intelligence System</strong> — smarter reorder forecasts, demand signals, and actionable alerts. Interested in an early demo?</div>
+      <div class="banner-text">
+        We're currently building an <strong>Inventory Intelligence System</strong> — early demo and pilot available soon.
       </div>
       <div>
-        <a class="banner-cta" href="#contact-form">Notify me</a>
+        <a class="banner-cta" href="#contact" role="button">Join demo waitlist</a>
       </div>
     </div>
   </section>
 
-  <!-- CONTACT: form left, contact card right -->
+  <!-- CONTACT SECTION (form left, card right) -->
   <section class="contact-section" aria-label="Contact">
-    <div class="contact-inner">
-      <!-- Form (left) -->
-      <div class="form-card" id="contact-form">
-        <div style="max-width:760px;">
-          <p class="text-[10px] font-bold uppercase tracking-[0.25em] text-slate-400 mb-3">Get in touch</p>
-          <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 mb-2">Talk to us about your project</h2>
-          <p class="text-slate-500 mb-4">Leave your details and a short note — we'll get back within 1 business day.</p>
-
-          <div class="form-success" id="form-success">Thanks — your message was sent. We'll contact you soon.</div>
-
-          <form id="leadForm" novalidate>
-            <div class="form-group">
-              <label for="name" class="sr-only">Full name</label>
-              <input id="name" class="form-input" name="name" placeholder="Full name" required aria-required="true" />
-            </div>
-
-            <div class="form-group">
-              <label for="email" class="sr-only">Email</label>
-              <input id="email" class="form-input" name="email" type="email" placeholder="Email address" required aria-required="true" />
-            </div>
-
-            <div class="form-group">
-              <label for="company" class="sr-only">Company (optional)</label>
-              <input id="company" class="form-input" name="company" placeholder="Company (optional)" />
-            </div>
-
-            <div class="form-group">
-              <label for="message" class="sr-only">Message</label>
-              <textarea id="message" name="message" placeholder="Tell us about your project — what are you trying to solve?" required aria-required="true" minlength="10"></textarea>
-            </div>
-
-            <div style="display:flex; gap:.75rem; align-items:center; flex-wrap:wrap;">
-              <button type="submit" class="form-submit" id="submitBtn">Send message</button>
-              <div class="form-note">Or email us at <a href="mailto:hello@ironbyte.io">hello@ironbyte.io</a></div>
-            </div>
-          </form>
+    <div id="contact" class="contact-inner">
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:1rem;">
+        <div>
+          <p class="text-[10px] font-bold uppercase tracking-[0.25em] text-slate-400 mb-2">Contact</p>
+          <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900">Talk to us about your project</h2>
+          <p class="text-slate-500 mt-2 max-w-2xl">Leave your details and we'll reach out to scope a short discovery call — no long forms, just practical next steps.</p>
         </div>
       </div>
 
-      <!-- Contact Card (right) -->
-      <aside class="modern-card contact-card" aria-label="Contact details">
-        <div>
-          <h4 style="margin-bottom:6px;">Contact details</h4>
-          <p style="margin:0;color:#64748b;font-size:14px;">Prefer to reach out directly? Call, email, or visit.</p>
-        </div>
-
-        <div class="contact-row">
-          <span class="material-icons" aria-hidden="true">phone</span>
-          <div class="contact-meta">
-            <h4>+263 77 000 0000</h4>
-            <p><a href="tel:+263770000000" style="color:inherit;text-decoration:none;">Call us</a></p>
+      <div class="contact-grid" role="form" aria-labelledby="contact">
+        <!-- Left: Form -->
+        <form class="contact-form" action="#" method="post" novalidate>
+          <div class="form-row">
+            <div class="field">
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" placeholder="Your full name" required>
+            </div>
+            <div class="field">
+              <label for="company">Company</label>
+              <input id="company" name="company" type="text" placeholder="Company name (optional)">
+            </div>
           </div>
-        </div>
 
-        <div class="contact-row">
-          <span class="material-icons" aria-hidden="true">email</span>
-          <div class="contact-meta">
-            <h4>hello@ironbyte.io</h4>
-            <p><a href="mailto:hello@ironbyte.io" style="color:inherit;text-decoration:none;">Send an email</a></p>
+          <div class="form-row">
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="you@company.com" required>
+            </div>
+            <div class="field">
+              <label for="phone">Phone</label>
+              <input id="phone" name="phone" type="tel" inputmode="tel" pattern="^\+?[0-9\s\-()]{7,20}$" placeholder="+263 77 123 4567">
+            </div>
           </div>
-        </div>
 
-        <div class="contact-row">
-          <span class="material-icons" aria-hidden="true">place</span>
-          <div class="contact-meta">
-            <h4>Harare, Zimbabwe</h4>
-            <p>Local timezone & remote support worldwide</p>
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Short description of your needs (help us prioritise)" required></textarea>
           </div>
-        </div>
 
-        <div style="margin-top:auto; padding-top:.5rem;">
-          <p style="margin:0;color:#475569;font-size:13px;">We respond quickly to business inquiries. If you're a developer with a technical question, include system details and we'll reply faster.</p>
-        </div>
-      </aside>
+          <div style="display:flex;gap:.75rem;align-items:center;flex-wrap:wrap;">
+            <button type="submit" class="form-submit">Send message</button>
+            <div class="contact-sub" aria-hidden="true">We’ll typically reply within 1 business day.</div>
+          </div>
+        </form>
+
+        <!-- Right: Contact Card -->
+        <aside class="contact-card" aria-label="Contact details">
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <div>
+              <div style="font-weight:800;font-size:16px;color:var(--text-main)">Get in touch</div>
+              <div class="contact-sub">Prefer to call or email? Use the details below.</div>
+            </div>
+          </div>
+
+          <div style="height:1px;background:rgba(15,23,42,0.03);margin:6px 0 4px;border-radius:2px;"></div>
+
+          <div class="contact-line" aria-hidden="true">
+            <span class="material-icons" aria-hidden="true">phone</span>
+            <div>
+              <div>+263 77 123 4567</div>
+              <div class="contact-sub">Mon — Fri, 9am — 5pm (CAT)</div>
+            </div>
+          </div>
+
+          <div class="contact-line" style="margin-top:6px;">
+            <span class="material-icons" aria-hidden="true">email</span>
+            <div>
+              <div><a href="mailto:hello@ironbyte.io" style="color:inherit;text-decoration:none;font-weight:700;">hello@ironbyte.io</a></div>
+              <div class="contact-sub">Emails checked daily</div>
+            </div>
+          </div>
+
+          <div class="contact-line" style="margin-top:6px;">
+            <span class="material-icons" aria-hidden="true">location_on</span>
+            <div>
+              <div>Harare, Zimbabwe</div>
+              <div class="contact-sub">Remote friendly — on-site by request</div>
+            </div>
+          </div>
+
+          <div style="margin-top:10px;">
+            <a class="what-cta" href="tel:+263771234567" aria-label="Call us">Call us →</a>
+          </div>
+        </aside>
+      </div>
     </div>
   </section>
 
-  <!-- Footer (kept) -->
+  <!-- Footer -->
   <footer class="py-20 bg-white text-center">
     <p class="text-gray-400 font-bold tracking-[0.2em] text-[11px] uppercase">© 2026 ironbyte</p>
   </footer>
-
-  <!-- Small JS: basic client-side validation + UX -->
-  <script>
-    (function(){
-      const form = document.getElementById('leadForm');
-      const submitBtn = document.getElementById('submitBtn');
-      const successBox = document.getElementById('form-success');
-
-      form.addEventListener('submit', function(e){
-        e.preventDefault();
-        // basic HTML5 validity check
-        if (!form.checkValidity()) {
-          form.reportValidity();
-          return;
-        }
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Sending...';
-
-        // Simulate async send (replace with real API call)
-        setTimeout(() => {
-          successBox.style.display = 'block';
-          form.reset();
-          submitBtn.disabled = false;
-          submitBtn.textContent = 'Send message';
-          // scroll into view so user sees success on mobile
-          successBox.scrollIntoView({behavior:'smooth', block:'center'});
-        }, 850);
-      });
-    })();
-  </script>
 </body>
 </html>
