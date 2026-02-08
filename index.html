@@ -6,18 +6,20 @@
   <title>ironbyte — Custom Software & Systems</title>
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Import Zalando Sans + Inter (Inter for body copy/fallback) -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Zalando+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <!-- Font preconnect + imports -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Zalando+Sans+Expanded:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
 
   <style>
     :root{
       --bg-page: #ffffff;
       --accent-blue: #2563eb;
       --text-main: #0f172a;
-      --nav-height: 72px; /* adjust easily */
+      --nav-height: 72px; /* adjustable nav height */
     }
 
-    html,body { height:100%; }
+    html, body { height: 100%; }
     body {
       margin: 0;
       font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
@@ -29,7 +31,7 @@
       padding-top: var(--nav-height);
     }
 
-    /* simple nav */
+    /* NAV */
     nav.site-nav {
       position: fixed;
       top: 0;
@@ -55,14 +57,20 @@
       gap: 1rem;
     }
 
-    /* wordmark (Zalando Sans) */
+    /* Wordmark using Zalando Sans Expanded */
     .wordmark {
-      font-family: "Zalando Sans", "Inter", system-ui, sans-serif;
+      font-family: "Zalando Sans Expanded", "Inter", system-ui, sans-serif;
       font-weight: 700;
       letter-spacing: -0.02em;
-      font-size: 1.125rem; /* 18px */
+      font-size: 1.5rem; /* ~24px - not too small */
       color: var(--text-main);
+      line-height: 1;
+      text-decoration: none;
+      display: inline-block;
     }
+
+    /* Accent for 'y' in wordmark */
+    .wordmark .accent-y { color: var(--accent-blue); }
 
     .nav-links {
       display:flex;
@@ -75,6 +83,7 @@
     .nav-links a { color: inherit; text-decoration: none; }
     .nav-cta { display:flex; gap:.75rem; align-items:center; }
 
+    /* subtle background grid & glow */
     .bg-grid {
       background-size: 40px 40px;
       background-image: radial-gradient(circle, rgba(0,0,0,0.05) 1px, transparent 1px);
@@ -99,7 +108,7 @@
     /* responsive tweaks */
     @media (max-width: 768px) {
       .nav-links { display: none; }
-      .wordmark { font-size: 1rem; }
+      .wordmark { font-size: 1.25rem; } /* slightly smaller on mobile but still readable */
     }
   </style>
 </head>
@@ -111,8 +120,8 @@
   <!-- NAV -->
   <nav class="site-nav" role="navigation" aria-label="Main navigation">
     <div class="nav-inner">
-      <!-- Wordmark (Zalando Sans) -->
-      <a href="#" class="wordmark" aria-label="ironbyte home">ironbyte</a>
+      <!-- Wordmark: highlight the 'y' with accent color -->
+      <a href="#" class="wordmark" aria-label="ironbyte home">ironbyt<span class="accent-y">e</span></a>
 
       <!-- center links (hidden on small screens) -->
       <div class="nav-links">
@@ -128,7 +137,7 @@
     </div>
   </nav>
 
-  <!-- HERO: use min-height that accounts for nav so everything sits below it -->
+  <!-- HERO: min-height accounts for nav so content sits below navbar -->
   <section class="px-6" style="min-height: calc(100vh - var(--nav-height)); display:flex; align-items:center;">
     <div class="max-w-5xl mx-auto w-full text-center">
 
