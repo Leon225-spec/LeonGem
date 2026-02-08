@@ -18,7 +18,7 @@
       --text-main: #0f172a;
       --nav-height: 72px; /* adjustable nav height */
 
-      /* COPIED FROM ADHAM - exact card shadow & divider */
+      /* COPIED FROM ADHAM - exact card shadow & divider (kept as requested) */
       --bg-section-alt: #f3f5f7;
 
       /* THE SEALED CARD SHADOW (copied exactly) */
@@ -124,16 +124,103 @@
       box-shadow: var(--divider-shadow);
     }
 
-    /* WORK SECTION (copied bg color) */
-    .work-section {
+    /* WHO SECTION (grounded layout — minimal depth, reuse soft bg) */
+    .who-section {
       background-color: var(--bg-section-alt);
       position: relative;
       z-index: 10;
-      padding-top: 60px;
-      padding-bottom: 100px;
+      padding-top: 72px;
+      padding-bottom: 92px;
     }
 
-    /* Card implementation (copied EXACT shadow values) */
+    .who-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .who-header {
+      text-align: center;
+      margin-bottom: 2.25rem;
+    }
+
+    /* grid of audience blocks */
+    .who-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem 1.25rem;
+    }
+
+    /* Each item is a grounded block — NO heavy shadow */
+    .who-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      padding: 1.25rem;
+      border-radius: 12px;
+      background: transparent; /* keep grounded on section bg */
+      transition: transform .18s ease, border-color .18s ease;
+      border-left: 3px solid transparent; /* accent on hover */
+    }
+
+    .who-item:hover {
+      transform: translateY(-4px);
+      border-left-color: var(--accent-blue);
+      background: rgba(255,255,255,0.02);
+    }
+
+    .who-icon {
+      min-width: 56px;
+      min-height: 56px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      background: white; /* small pop for the icon */
+      border: 1px solid rgba(15,23,42,0.04);
+    }
+
+    .who-content h3 {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-main);
+      line-height: 1.1;
+    }
+
+    .who-content p {
+      margin: .4rem 0 0;
+      color: #475569;
+      font-size: 15px;
+      max-width: 44rem;
+    }
+
+    /* subtle divider between items on small screens for rhythm */
+    @media (max-width: 767px) {
+      .who-item {
+        border-radius: 8px;
+        padding: 1rem;
+        border-left: 3px solid transparent;
+        border-bottom: 1px solid rgba(15,23,42,0.03);
+      }
+    }
+
+    /* larger layout: grid to columns */
+    @media (min-width: 768px) {
+      .who-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.25rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .who-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    /* Card implementation (kept intact as requested) */
     .modern-card {
       background: #ffffff;
       border-radius: 24px;
@@ -260,72 +347,61 @@
     </div>
   </section>
 
-  <!-- LATEST PROJECTS (work section) - uses copied styles -->
-  <section class="work-section">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="flex flex-col items-center mb-12">
-        <h2 class="text-gray-400 font-bold tracking-[0.4em] text-[11px] mb-4 uppercase">Latest Projects</h2>
+  <!-- WHO IT'S FOR (grounded, not heavy cards) -->
+  <section class="who-section" aria-label="Who it's for">
+    <div class="who-inner">
+      <div class="who-header">
+        <p class="text-[10px] font-bold uppercase tracking-[0.25em] text-slate-400 mb-3">Who it's for</p>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900">Built for teams that need reliable internal systems</h2>
+        <p class="text-slate-500 mt-3 max-w-2xl mx-auto">If your business needs faster inventory, cleaner reporting, or smarter automation — we build the tools that make it happen.</p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-        <!-- Project Card 1 -->
-        <div class="modern-card">
-          <div class="preview-area">
-            <div class="status-tag tag-approved">
-              <span class="mr-1.5 text-[9px] border border-current rounded-full w-4 h-4 flex items-center justify-center">✓</span> Approved
-            </div>
-
-            <div class="flex items-center gap-4 mt-2">
-              <div class="w-10 h-10 bg-white rounded-xl shadow-sm border border-gray-100 flex items-center justify-center text-xl">🎨</div>
-              <div class="h-2.5 w-24 bg-gray-200/60 rounded"></div>
-            </div>
-
-            <div class="flex gap-2">
-              <div class="tag-pill">UI</div>
-              <div class="tag-pill">UX</div>
-            </div>
-          </div>
-
-          <div class="px-8 pb-10">
-            <h3 class="text-[22px] font-bold text-gray-900 leading-tight">Figma Design System</h3>
-            <p class="text-[18px] text-gray-400 font-medium mt-1">Design system</p>
+      <div class="who-grid">
+        <div class="who-item" role="article">
+          <div class="who-icon" aria-hidden="true">🏬</div>
+          <div class="who-content">
+            <h3>Retail & e-commerce</h3>
+            <p>Scale inventory across stores and online channels — automated stock reconciliation, low-stock alerts, and shipment tracking that actually works.</p>
           </div>
         </div>
 
-        <!-- Project Card 2 -->
-        <div class="modern-card">
-          <div class="preview-area flex items-center justify-center">
-            <div class="relative w-32 h-44 bg-blue-600 rounded-r-xl shadow-xl flex flex-col p-4 text-white transform -rotate-1">
-              <div class="text-[8px] font-bold opacity-60 mb-1">PRACTICAL</div>
-              <div class="font-bold text-sm leading-tight mb-auto">Practical UI</div>
-              <div class="w-4 h-4 rounded-full bg-white/20"></div>
-            </div>
-          </div>
-
-          <div class="px-8 pb-10">
-            <h3 class="text-[22px] font-bold text-gray-900 leading-tight">UI Design Book</h3>
-            <p class="text-[18px] text-gray-400 font-medium mt-1">Book</p>
+        <div class="who-item" role="article">
+          <div class="who-icon" aria-hidden="true">📦</div>
+          <div class="who-content">
+            <h3>Warehousing & Logistics</h3>
+            <p>Optimize your picking, receiving and cycle counts with internal tools tailored to your warehouse layout and processes.</p>
           </div>
         </div>
 
-        <!-- Project Card 3 -->
-        <div class="modern-card">
-          <div class="preview-area">
-            <div class="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm">
-              <div class="flex items-center gap-2 mb-2">
-                <div class="w-6 h-6 bg-blue-50 rounded-full flex items-center justify-center text-[10px]">🏉</div>
-                <div class="h-2 w-20 bg-gray-100 rounded"></div>
-              </div>
-              <div class="grid grid-cols-2 gap-2 mt-4">
-                <div class="h-8 bg-gray-50 rounded-lg"></div>
-                <div class="h-8 bg-gray-50 rounded-lg"></div>
-              </div>
-            </div>
+        <div class="who-item" role="article">
+          <div class="who-icon" aria-hidden="true">🏢</div>
+          <div class="who-content">
+            <h3>Operations teams</h3>
+            <p>Dashboards, custom reporting, and workflow automations that turn messy spreadsheets into reliable operational systems.</p>
           </div>
+        </div>
 
-          <div class="px-8 pb-10">
-            <h3 class="text-[22px] font-bold text-gray-900 leading-tight">Lean Design</h3>
-            <p class="text-[18px] text-gray-400 font-medium mt-1">Design system</p>
+        <div class="who-item" role="article">
+          <div class="who-icon" aria-hidden="true">🧾</div>
+          <div class="who-content">
+            <h3>Finance & Back-office</h3>
+            <p>Accurate transaction flows, reconciliations and audit-friendly records — internal tools to reduce manual errors and speed month-end.</p>
+          </div>
+        </div>
+
+        <div class="who-item" role="article">
+          <div class="who-icon" aria-hidden="true">⚙️</div>
+          <div class="who-content">
+            <h3>Product & Engineering</h3>
+            <p>Internal admin panels, staging tools and feature flags so your engineers can move faster and ship safer.</p>
+          </div>
+        </div>
+
+        <div class="who-item" role="article">
+          <div class="who-icon" aria-hidden="true">🚀</div>
+          <div class="who-content">
+            <h3>SMBs & startups</h3>
+            <p>Practical systems that grow with you — no overbuilt complexity, just reliable tools that scale as your business does.</p>
           </div>
         </div>
       </div>
