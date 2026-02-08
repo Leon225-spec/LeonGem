@@ -9,175 +9,147 @@
 
   <style>
     :root {
-      --accent: #2563eb;
-      --accent-glow: rgba(37, 99, 235, 0.15);
+      --bg-page: #ffffff;
+      --accent-blue: #2563eb;
+      --text-main: #0f172a;
     }
 
     body {
-      background-color: #ffffff;
-      font-family: 'Inter', sans-serif;
-      color: #0f172a;
+      background-color: var(--bg-page);
+      font-family: "Inter", sans-serif;
+      color: var(--text-main);
       -webkit-font-smoothing: antialiased;
     }
 
-    /* 1. ANIMATED MESH BACKGROUND */
-    .hero-bg {
+    /* ENHANCED GRID: Added a subtle radial fade */
+    .bg-grid {
+      background-size: 40px 40px;
+      background-image: radial-gradient(circle, rgba(0,0,0,0.05) 1px, transparent 1px);
       position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 100vh;
+      top: 0; left: 0; right: 0; height: 100vh;
       z-index: -1;
+      mask-image: radial-gradient(ellipse at top, black 20%, transparent 80%);
+    }
+
+    /* GLOW EFFECT */
+    .glow {
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 600px; height: 300px;
+      background: radial-gradient(circle, rgba(37, 99, 235, 0.08) 0%, transparent 70%);
+      z-index: -1;
+      filter: blur(60px);
+    }
+
+    .hero-title {
+      letter-spacing: -0.05em;
+      line-height: 0.95;
+    }
+
+    /* MOCKUP STYLING */
+    .ui-mockup {
+      border: 1px solid rgba(0,0,0,0.08);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+      background: white;
+      border-radius: 12px;
       overflow: hidden;
     }
 
-    .glass-spotlight {
-      position: absolute;
-      top: -10%; left: 50%;
-      transform: translateX(-50%);
-      width: 100vw;
-      height: 80vh;
-      background: radial-gradient(circle at 50% 0%, var(--accent-glow) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .grid-pattern {
-      position: absolute;
-      inset: 0;
-      background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
-      background-size: 40px 40px;
-      mask-image: radial-gradient(ellipse at top, black, transparent 80%);
-      opacity: 0.5;
-    }
-
-    /* 2. PREMIUM TYPOGRAPHY */
-    .pro-header {
-      letter-spacing: -0.05em;
-      line-height: 0.95;
-      background: linear-gradient(to bottom, #0f172a 60%, #475569);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    /* 3. BUTTONS WITH DEPTH */
-    .btn-pro-primary {
+    .btn-shine {
       position: relative;
-      background: #0f172a;
-      color: white;
-      padding: 0.8rem 2rem;
-      border-radius: 12px;
-      font-weight: 600;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: 0 4px 0 0 #000, 0 8px 16px rgba(0,0,0,0.1);
+      overflow: hidden;
     }
-
-    .btn-pro-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 0 0 #000, 0 12px 24px rgba(0,0,0,0.15);
-      background: #1e293b;
+    .btn-shine::after {
+      content: "";
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+      transform: rotate(45deg);
+      transition: 0.5s;
     }
-
-    .btn-pro-primary:active {
-      transform: translateY(2px);
-      box-shadow: 0 0px 0 0 #000;
-    }
-
-    .btn-pro-ghost {
-      padding: 0.8rem 2rem;
-      border-radius: 12px;
-      font-weight: 600;
-      color: #475569;
-      border: 1px solid #e2e8f0;
-      transition: all 0.2s;
-    }
-
-    .btn-pro-ghost:hover {
-      background: #f8fafc;
-      border-color: #cbd5e1;
-      color: #0f172a;
-    }
-
-    /* 4. TECH STACK FLOATING ANIMATION */
-    @keyframes float {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-5px); }
-      100% { transform: translateY(0px); }
-    }
-
-    .tech-icon-wrap {
-      animation: float 4s ease-in-out infinite;
-    }
-
-    /* 5. NAV BLUR */
-    nav {
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    }
+    .btn-shine:hover::after { left: 100%; }
   </style>
 </head>
 
-<body>
+<body class="overflow-x-hidden">
+  <div class="bg-grid"></div>
+  <div class="glow"></div>
 
-  <div class="hero-bg">
-    <div class="grid-pattern"></div>
-    <div class="glass-spotlight"></div>
-  </div>
+  <nav class="fixed w-full top-0 z-50 px-6 py-4">
+    <div class="max-w-6xl mx-auto flex justify-between items-center bg-white/70 backdrop-blur-xl border border-gray-200/50 px-5 py-2.5 rounded-2xl shadow-sm">
+      <a href="#" class="font-extrabold text-xl tracking-tighter flex items-center gap-1.5">
+        ironbyte<span class="w-2 h-2 bg-blue-600 rounded-sm mt-1"></span>
+      </a>
 
-  <nav class="fixed w-full top-0 z-50 bg-white/70">
-    <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
-      <div class="flex items-center gap-8">
-        <a href="#" class="flex items-center gap-1.5 font-extrabold text-xl tracking-tighter">
-          ironbyte<span class="w-2 h-2 bg-blue-600 rounded-sm mt-1"></span>
-        </a>
-        <div class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-500">
-          <a href="#" class="hover:text-slate-900 transition-colors">Services</a>
-          <a href="#" class="hover:text-slate-900 transition-colors">Process</a>
-          <a href="#" class="hover:text-slate-900 transition-colors">About</a>
-        </div>
+      <div class="hidden md:flex items-center gap-6 text-sm font-medium text-gray-500">
+        <a href="#" class="hover:text-black transition-colors">Services</a>
+        <a href="#" class="hover:text-black transition-colors">Process</a>
+        <a href="#" class="hover:text-black transition-colors">About</a>
       </div>
+
       <div class="flex items-center gap-4">
-        <a href="#" class="hidden sm:block text-sm font-semibold text-slate-600">Contact Support</a>
-        <a href="#" class="bg-slate-900 text-white px-5 py-2.5 rounded-xl text-sm font-bold hover:bg-slate-800 transition-all shadow-lg shadow-slate-200">
-          Get a Quote
+        <a href="#" class="hidden sm:block text-sm font-semibold text-gray-900">Support</a>
+        <a href="#" class="bg-slate-900 text-white text-sm font-semibold px-5 py-2.5 rounded-xl hover:bg-slate-800 transition-all btn-shine">
+          Get a quote
         </a>
       </div>
     </div>
   </nav>
 
-  <main class="relative pt-40 pb-20 px-6">
+  <section class="pt-40 pb-20 px-6">
     <div class="max-w-4xl mx-auto text-center">
       
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 mb-8 animate-fade-in">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-xs font-bold mb-8 uppercase tracking-wider">
         <span class="relative flex h-2 w-2">
           <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
           <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-600"></span>
         </span>
-        <span class="text-xs font-bold text-blue-700 uppercase tracking-widest">Available for Q1 Projects</span>
+        Custom software studio
       </div>
 
-      <h1 class="pro-header text-6xl md:text-8xl font-extrabold mb-8">
-        Systems built to keep your business moving.
+      <h1 class="hero-title text-5xl md:text-8xl font-black mb-8 bg-clip-text text-transparent bg-gradient-to-b from-slate-900 to-slate-600">
+        Systems built for <span class="text-blue-600">scale.</span>
       </h1>
 
-      <p class="text-lg md:text-xl text-slate-500 mb-12 max-w-2xl mx-auto leading-relaxed">
-        High-performance engineering meets practical design. We architect custom inventory managers, billing engines, and internal tools that scale with your growth.
+      <p class="text-lg md:text-xl text-slate-500 mb-10 max-w-2xl mx-auto leading-relaxed">
+        Reliable engineering meets practical UX. We build the high-performance internal tools, dashboards, and systems that keep your workflow seamless.
       </p>
 
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="#" class="btn-pro-primary w-full sm:w-auto">Start a Project</a>
-        <a href="#" class="btn-pro-ghost w-full sm:w-auto">View our Process</a>
+      <div class="flex flex-col sm:flex-row justify-center gap-4 mb-20">
+        <a href="#" class="bg-blue-600 text-white px-8 py-4 rounded-2xl font-bold text-lg shadow-lg shadow-blue-200 hover:bg-blue-700 hover:-translate-y-1 transition-all">
+          Start a Project
+        </a>
+        <a href="#" class="bg-white border border-slate-200 px-8 py-4 rounded-2xl font-bold text-lg hover:bg-slate-50 transition-all">
+          View our Process
+        </a>
       </div>
 
-      <div class="mt-24">
-        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.3em] mb-10">Trusted Architecture</p>
-        <div class="flex flex-wrap justify-center gap-10 md:gap-16 opacity-40 hover:opacity-100 transition-opacity duration-500">
-          <img src="https://cdn.simpleicons.org/react/61DAFB" class="h-8 tech-icon-wrap" style="animation-delay: 0s" alt="React">
-          <img src="https://cdn.simpleicons.org/nextdotjs/000000" class="h-8 tech-icon-wrap" style="animation-delay: 0.5s" alt="NextJS">
-          <img src="https://cdn.simpleicons.org/typescript/3178C6" class="h-8 tech-icon-wrap" style="animation-delay: 1s" alt="TS">
-          <img src="https://cdn.simpleicons.org/postgresql/4169E1" class="h-8 tech-icon-wrap" style="animation-delay: 1.5s" alt="Postgres">
-          <img src="https://cdn.simpleicons.org/amazons3/FF9900" class="h-8 tech-icon-wrap" style="animation-delay: 2s" alt="AWS">
+      <div class="relative max-w-5xl mx-auto group">
+        <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-2xl blur opacity-10 group-hover:opacity-20 transition duration-1000"></div>
+        <div class="ui-mockup relative bg-white flex flex-col items-start p-2">
+            <div class="w-full h-6 border-b border-gray-100 flex items-center gap-1.5 px-3 mb-2">
+                <div class="w-2 h-2 rounded-full bg-gray-200"></div>
+                <div class="w-2 h-2 rounded-full bg-gray-200"></div>
+                <div class="w-2 h-2 rounded-full bg-gray-200"></div>
+            </div>
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=2000" class="rounded-lg grayscale-[0.5] hover:grayscale-0 transition-all duration-700" alt="Dashboard Preview">
         </div>
       </div>
-    </div>
-  </main>
 
+      <div class="mt-20">
+        <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 mb-8">Trusted technology stack</p>
+        <div class="flex flex-wrap justify-center items-center gap-10 md:gap-16 opacity-40 hover:opacity-100 transition-opacity duration-500">
+          <img class="h-6 md:h-8" src="https://cdn.worldvectorlogo.com/logos/react-2.svg" alt="React">
+          <img class="h-6 md:h-8" src="https://cdn.worldvectorlogo.com/logos/next-js.svg" alt="Next">
+          <img class="h-6 md:h-8" src="https://cdn.worldvectorlogo.com/logos/typescript.svg" alt="TS">
+          <img class="h-6 md:h-8" src="https://cdn.worldvectorlogo.com/logos/postgresql.svg" alt="Postgres">
+          <img class="h-6 md:h-8" src="https://cdn.worldvectorlogo.com/logos/aws-2.svg" alt="AWS">
+        </div>
+      </div>
+
+    </div>
+  </section>
 </body>
 </html>
