@@ -6,7 +6,7 @@
   <title>ironbyte — Custom Software & Systems</title>
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Font preconnect + imports -->
+  <!-- Font preconnect + imports (Zalando Sans Expanded + Inter) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Zalando+Sans+Expanded:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
@@ -17,6 +17,18 @@
       --accent-blue: #2563eb;
       --text-main: #0f172a;
       --nav-height: 72px; /* adjustable nav height */
+
+      /* COPIED FROM ADHAM - exact card shadow & divider */
+      --bg-section-alt: #f3f5f7;
+
+      /* THE SEALED CARD SHADOW (copied exactly) */
+      --card-shadow:
+        0 1px 3px 0 rgba(0, 0, 0, 0.08),
+        0 10px 25px -8px rgba(0, 0, 0, 0.06),
+        0 1px 0 0 rgba(0, 0, 0, 0.02);
+
+      /* ADHAM'S REFINED SECTION DIVIDER (copied exactly) */
+      --divider-shadow: 0 8px 16px -10px rgba(0, 0, 0, 0.12);
     }
 
     html, body { height: 100%; }
@@ -57,7 +69,7 @@
       gap: 1rem;
     }
 
-    /* Wordmark using Zalando Sans Expanded */
+    /* Wordmark using Zalando Sans Expanded, slightly larger */
     .wordmark {
       font-family: "Zalando Sans Expanded", "Inter", system-ui, sans-serif;
       font-weight: 700;
@@ -68,9 +80,7 @@
       text-decoration: none;
       display: inline-block;
     }
-
-    /* Accent for 'y' in wordmark */
-    .wordmark .accent-y { color: var(--accent-blue); }
+    .wordmark .accent-y { color: var(--accent-blue); } /* accent on 'y' */
 
     .nav-links {
       display:flex;
@@ -83,7 +93,7 @@
     .nav-links a { color: inherit; text-decoration: none; }
     .nav-cta { display:flex; gap:.75rem; align-items:center; }
 
-    /* subtle background grid & glow */
+    /* subtle background grid & glow from earlier layout */
     .bg-grid {
       background-size: 40px 40px;
       background-image: radial-gradient(circle, rgba(0,0,0,0.05) 1px, transparent 1px);
@@ -105,10 +115,84 @@
 
     .hero-title { letter-spacing: -0.02em; line-height: 1.02; }
 
-    /* responsive tweaks */
+    /* HERO: add subtle 'ledge' as a divider using the copied divider shadow */
+    .hero-section {
+      position: relative;
+      z-index: 20;
+      background: white;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+      box-shadow: var(--divider-shadow);
+    }
+
+    /* WORK SECTION (copied bg color) */
+    .work-section {
+      background-color: var(--bg-section-alt);
+      position: relative;
+      z-index: 10;
+      padding-top: 60px;
+      padding-bottom: 100px;
+    }
+
+    /* Card implementation (copied EXACT shadow values) */
+    .modern-card {
+      background: #ffffff;
+      border-radius: 24px;
+      box-shadow: var(--card-shadow);
+      border: 1px solid rgba(0, 0, 0, 0.04);
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+      cursor: pointer;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .modern-card:hover {
+      transform: translateY(-4px);
+      box-shadow:
+        0 4px 6px -1px rgba(0, 0, 0, 0.1),
+        0 25px 45px -15px rgba(0, 0, 0, 0.1);
+    }
+
+    .preview-area {
+      background-color: #f3f5f7;
+      border-radius: 18px;
+      padding: 1.5rem;
+      margin: 1.25rem;
+      height: 220px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .status-tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 5px 14px;
+      border-radius: 100px;
+      font-weight: 600;
+      font-size: 0.8rem;
+      background: #ffffff;
+      border: 1px solid currentColor;
+    }
+
+    .tag-approved { color: #44a57b; border-color: rgba(68, 165, 123, 0.15); }
+
+    .tag-pill {
+      padding: 4px 12px;
+      background: #e2e8f0;
+      border-radius: 8px;
+      color: #64748b;
+      font-weight: 700;
+      font-size: 11px;
+      text-transform: uppercase;
+    }
+
+    /* tiny responsive tweaks */
     @media (max-width: 768px) {
       .nav-links { display: none; }
-      .wordmark { font-size: 1.25rem; } /* slightly smaller on mobile but still readable */
+      .wordmark { font-size: 1.25rem; }
+      .preview-area { height: 180px; margin: 1rem; }
     }
   </style>
 </head>
@@ -120,8 +204,8 @@
   <!-- NAV -->
   <nav class="site-nav" role="navigation" aria-label="Main navigation">
     <div class="nav-inner">
-      <!-- Wordmark: highlight the 'y' with accent color -->
-      <a href="#" class="wordmark" aria-label="ironbyte home">ironbyt<span class="accent-y">e</span></a>
+      <!-- Wordmark: highlight the 'y' -->
+      <a href="#" class="wordmark" aria-label="ironbyte home">ironb<span class="accent-y">y</span>te</a>
 
       <!-- center links (hidden on small screens) -->
       <div class="nav-links">
@@ -138,7 +222,7 @@
   </nav>
 
   <!-- HERO: min-height accounts for nav so content sits below navbar -->
-  <section class="px-6" style="min-height: calc(100vh - var(--nav-height)); display:flex; align-items:center;">
+  <section class="hero-section px-6" style="min-height: calc(100vh - var(--nav-height)); display:flex; align-items:center;">
     <div class="max-w-5xl mx-auto w-full text-center">
 
       <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-xs font-bold mb-6 uppercase tracking-wider">
@@ -175,5 +259,82 @@
 
     </div>
   </section>
+
+  <!-- LATEST PROJECTS (work section) - uses copied styles -->
+  <section class="work-section">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="flex flex-col items-center mb-12">
+        <h2 class="text-gray-400 font-bold tracking-[0.4em] text-[11px] mb-4 uppercase">Latest Projects</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <!-- Project Card 1 -->
+        <div class="modern-card">
+          <div class="preview-area">
+            <div class="status-tag tag-approved">
+              <span class="mr-1.5 text-[9px] border border-current rounded-full w-4 h-4 flex items-center justify-center">✓</span> Approved
+            </div>
+
+            <div class="flex items-center gap-4 mt-2">
+              <div class="w-10 h-10 bg-white rounded-xl shadow-sm border border-gray-100 flex items-center justify-center text-xl">🎨</div>
+              <div class="h-2.5 w-24 bg-gray-200/60 rounded"></div>
+            </div>
+
+            <div class="flex gap-2">
+              <div class="tag-pill">UI</div>
+              <div class="tag-pill">UX</div>
+            </div>
+          </div>
+
+          <div class="px-8 pb-10">
+            <h3 class="text-[22px] font-bold text-gray-900 leading-tight">Figma Design System</h3>
+            <p class="text-[18px] text-gray-400 font-medium mt-1">Design system</p>
+          </div>
+        </div>
+
+        <!-- Project Card 2 -->
+        <div class="modern-card">
+          <div class="preview-area flex items-center justify-center">
+            <div class="relative w-32 h-44 bg-blue-600 rounded-r-xl shadow-xl flex flex-col p-4 text-white transform -rotate-1">
+              <div class="text-[8px] font-bold opacity-60 mb-1">PRACTICAL</div>
+              <div class="font-bold text-sm leading-tight mb-auto">Practical UI</div>
+              <div class="w-4 h-4 rounded-full bg-white/20"></div>
+            </div>
+          </div>
+
+          <div class="px-8 pb-10">
+            <h3 class="text-[22px] font-bold text-gray-900 leading-tight">UI Design Book</h3>
+            <p class="text-[18px] text-gray-400 font-medium mt-1">Book</p>
+          </div>
+        </div>
+
+        <!-- Project Card 3 -->
+        <div class="modern-card">
+          <div class="preview-area">
+            <div class="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm">
+              <div class="flex items-center gap-2 mb-2">
+                <div class="w-6 h-6 bg-blue-50 rounded-full flex items-center justify-center text-[10px]">🏉</div>
+                <div class="h-2 w-20 bg-gray-100 rounded"></div>
+              </div>
+              <div class="grid grid-cols-2 gap-2 mt-4">
+                <div class="h-8 bg-gray-50 rounded-lg"></div>
+                <div class="h-8 bg-gray-50 rounded-lg"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="px-8 pb-10">
+            <h3 class="text-[22px] font-bold text-gray-900 leading-tight">Lean Design</h3>
+            <p class="text-[18px] text-gray-400 font-medium mt-1">Design system</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-20 bg-white text-center">
+    <p class="text-gray-400 font-bold tracking-[0.2em] text-[11px] uppercase">© 2026 ironbyte</p>
+  </footer>
 </body>
 </html>
