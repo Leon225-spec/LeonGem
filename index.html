@@ -1,365 +1,245 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Ironbyte - Practical UI Typography Calibration (750 Weight)</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ironbyte - Practical UI Typography Calibration (750 Weight)</title>
+    
+    <!-- 1. The Font: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        :root {
+            --font-inter: 'Inter', sans-serif;
+            --slate-950: #020617;
+            --slate-900: #0f172a;
+            --slate-600: #475569;
+            --blue-600: #2563eb;
+        }
 
-  <!-- Inter -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+        body {
+            font-family: var(--font-inter);
+            -webkit-font-smoothing: antialiased; 
+            -moz-osx-font-smoothing: grayscale;
+            background-color: #ffffff;
+            color: var(--slate-600);
+        }
 
-  <!-- Google "Material Symbols" for hamburger/close icons -->
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+        /* CALIBRATION: 
+           700 Weight + subtle text-shadow to hit that "750" sweet spot.
+           EXTREME scale for H1 and H2 to meet the "Biggest Text" requirement.
+        */
+        h1, h2, h3, h4 {
+            color: var(--slate-950);
+            font-weight: 700 !important;
+            letter-spacing: -0.05em; /* Even tighter for massive scales */
+            line-height: 0.95; /* Tighter line height for large display type */
+            text-shadow: 0 0 0.15px rgba(2, 6, 23, 0.5); 
+        }
 
-  <!-- Tailwind CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
+        /* MASSIVE HEADINGS */
+        h1 { font-size: clamp(4rem, 10vw, 8rem); }   /* Scaling from 64px up to 128px */
+        h2 { font-size: clamp(3rem, 8vw, 6rem); }    /* Scaling from 48px up to 96px */
+        h3 { font-size: 2.5rem; }                    /* 40px */
+        h4 { font-size: 1.5rem; }                    /* 24px */
 
-  <style>
-    :root{
-      --font-inter: 'Inter', sans-serif;
-      --slate-950: #020617;
-      --slate-900: #0f172a;
-      --slate-600: #475569;
-      --blue-600: #2563eb;
-    }
+        .bg-grid {
+            background-size: 40px 40px;
+            background-image: radial-gradient(circle, #e2e8f0 1.2px, transparent 1.2px);
+        }
 
-    html,body{height:100%}
-    body{
-      font-family:var(--font-inter);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      background:#fff;
-      color:var(--slate-600);
-      -webkit-font-feature-settings: "liga" 1;
-    }
+        .eyebrow {
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--blue-600);
+        }
 
-    /* Material symbol sizing helper */
-    .material-symbols-outlined{
-      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-      font-family: 'Material Symbols Outlined';
-      display:inline-block;
-      vertical-align:middle;
-      user-select:none;
-    }
+        .body-reading {
+            line-height: 1.6;
+            letter-spacing: -0.015em;
+            font-size: 1.25rem;
+        }
 
-    /* HEADINGS: make them unambiguously the biggest elements */
-    h1,h2,h3,h4{
-      color:var(--slate-950);
-      font-weight:800; /* heavier than body */
-      letter-spacing:-0.03em;
-      line-height:0.95;
-      margin:0;
-      text-wrap:balance; /* try to balance lines */
-    }
-
-    /* Largest display sizing (careful with viewport units + clamp) */
-    h1{
-      font-size: clamp(3rem, 9vw, 6.25rem); /* ~48px -> 100px */
-      line-height: 0.95;
-    }
-    h2{
-      font-size: clamp(2.25rem, 6.2vw, 3.75rem); /* ~36px -> 60px */
-      line-height: 0.98;
-    }
-    h3{ font-size: 1.5rem; line-height:1.05; }
-    h4{ font-size: 1.125rem; line-height:1.2; }
-
-    /* Smaller screens adjustments ensure headings remain largest but not break layout */
-    @media (max-width: 640px){
-      h1{ font-size: clamp(2.25rem, 9vw, 3.2rem); line-height:1; }
-      h2{ font-size: clamp(1.5rem, 6.5vw, 2.1rem); line-height:1.02; }
-    }
-
-    /* Utility visuals */
-    .bg-grid{
-      background-size: 40px 40px;
-      background-image: radial-gradient(circle, #e2e8f0 1.2px, transparent 1.2px);
-    }
-
-    .eyebrow{
-      font-size: 0.8125rem;
-      font-weight:700;
-      text-transform:uppercase;
-      letter-spacing:0.18em;
-      color:var(--blue-600);
-    }
-
-    .body-reading{
-      line-height:1.6;
-      letter-spacing:-0.01em;
-      font-size:1.125rem;
-    }
-
-    /* NAV: ensure hamburger appears on small screens */
-    .nav-desktop{ display: none; }
-    @media (min-width: 768px){
-      .nav-desktop{ display:flex; }
-      .nav-mobile-toggle{ display:none; } /* hide mobile toggle on desktop */
-    }
-
-    /* Mobile menu overlay */
-    .mobile-menu {
-      position: fixed;
-      inset: 0;
-      z-index: 60;
-      display: none;
-      align-items: flex-start;
-      justify-content: center;
-      padding-top: 4.5rem;
-      background: rgba(2,6,23,0.35);
-      backdrop-filter: blur(4px);
-    }
-    .mobile-menu.open { display: flex; }
-
-    .mobile-drawer {
-      width: 95%;
-      max-width: 420px;
-      background: #fff;
-      border-radius: 16px;
-      padding: 1.5rem;
-      box-shadow: 0 20px 40px rgba(2,6,23,0.12);
-    }
-
-    /* small niceties for focus outline */
-    button:focus, a:focus { outline: 3px solid rgba(37,99,235,0.12); outline-offset: 2px; border-radius: 8px; }
-
-    /* make sure hero CTA buttons don't overflow at tiny widths */
-    .cta-btn { min-width: 10rem; }
-    @media (max-width:420px){ .cta-btn{ min-width: auto; padding-left:1rem; padding-right:1rem; } }
-  </style>
+        /* Mobile specific overrides to prevent overflow while keeping it "Biggest" */
+        @media (max-width: 768px) {
+            h1 { font-size: 3.5rem; line-height: 1; }
+            h2 { font-size: 2.75rem; line-height: 1; }
+        }
+    </style>
 </head>
-<body class="antialiased">
+<body>
 
-  <!-- NAV -->
-  <nav class="w-full border-b border-slate-100 bg-white/95 backdrop-blur-md sticky top-0 z-50">
-    <div class="max-w-[1440px] mx-auto px-6 h-20 flex items-center justify-between">
-      <div class="flex items-center gap-6">
-        <div class="text-2xl font-extrabold text-slate-950 tracking-tighter">ironbyte</div>
-      </div>
-
-      <!-- desktop links -->
-      <div class="nav-desktop items-center gap-10 text-[14px] font-semibold text-slate-500">
-        <a href="#logic" class="hover:text-slate-950 transition-colors">The Logic</a>
-        <a href="#who" class="hover:text-slate-950 transition-colors">Who it's for</a>
-        <a href="#pricing" class="hover:text-slate-950 transition-colors">Pricing</a>
-      </div>
-
-      <!-- right actions + mobile toggle -->
-      <div class="flex items-center gap-4">
-        <div class="hidden md:flex items-center gap-4">
-          <button class="text-[14px] font-bold text-slate-950 px-4">Log in</button>
-          <button class="bg-blue-600 text-white text-[14px] font-bold px-6 py-3 rounded-xl hover:bg-blue-700 transition-all shadow-md">Get started</button>
-        </div>
-
-        <!-- mobile hamburger -->
-        <button id="mobileToggle" class="nav-mobile-toggle material-symbols-outlined text-3xl nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
-          menu
-        </button>
-      </div>
-    </div>
-  </nav>
-
-  <!-- MOBILE MENU OVERLAY -->
-  <div id="mobileMenu" class="mobile-menu" role="dialog" aria-modal="true" aria-hidden="true">
-    <div class="mobile-drawer">
-      <div class="flex items-center justify-between mb-6">
-        <div class="text-xl font-extrabold text-slate-950">ironbyte</div>
-        <button id="mobileClose" class="material-symbols-outlined text-3xl" aria-label="Close menu">close</button>
-      </div>
-
-      <nav class="flex flex-col gap-4 mb-6" aria-label="Mobile primary">
-        <a href="#logic" class="block py-3 px-2 font-semibold text-slate-700 rounded hover:bg-slate-50">The Logic</a>
-        <a href="#who" class="block py-3 px-2 font-semibold text-slate-700 rounded hover:bg-slate-50">Who it's for</a>
-        <a href="#pricing" class="block py-3 px-2 font-semibold text-slate-700 rounded hover:bg-slate-50">Pricing</a>
-      </nav>
-
-      <div class="flex gap-3">
-        <a href="#" class="flex-1 text-center py-3 rounded-lg border font-bold">Log in</a>
-        <a href="#" class="flex-1 text-center py-3 rounded-lg bg-blue-600 text-white font-bold">Get started</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- HERO -->
-  <header class="relative pt-28 pb-40 bg-grid overflow-hidden border-b border-slate-100">
-    <div class="max-w-7xl mx-auto px-6 text-center">
-      <p class="eyebrow mb-8">Performance Architecture</p>
-
-      <!-- Primary heading (largest on the page) -->
-      <h1 class="mb-8 max-w-4xl mx-auto">
-        The UI engine for<br />
-        high-stakes operations.
-      </h1>
-
-      <p class="text-2xl text-slate-500 leading-snug max-w-3xl mx-auto font-normal tracking-tight body-reading">
-        Ironbyte delivers precision interface blocks for complex data. Built for teams that can't afford a single missed click.
-      </p>
-
-      <div class="mt-12 flex flex-wrap justify-center gap-4">
-        <button class="cta-btn bg-slate-950 text-white font-bold text-lg px-8 py-3 rounded-2xl hover:bg-slate-800 transition-all shadow-2xl shadow-slate-950/20">Start Building</button>
-        <button class="cta-btn bg-white border-2 border-slate-200 text-slate-950 font-bold text-lg px-8 py-3 rounded-2xl hover:bg-slate-50 transition-all">View Systems</button>
-      </div>
-    </div>
-  </header>
-
-  <!-- WHO IT'S FOR -->
-  <section id="who" class="py-24 bg-white">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="mb-12 text-center">
-        <p class="eyebrow mb-6">Audience</p>
-        <h2 class="max-w-4xl mx-auto">Designed for those who<br />manage the physical world.</h2>
-      </div>
-
-      <div class="grid md:grid-cols-3 gap-12">
-        <div class="group">
-          <div class="h-1.5 w-12 bg-slate-950 mb-6 group-hover:w-full transition-all duration-500"></div>
-          <h3 class="mb-3 text-slate-950">Global Retailers</h3>
-          <p class="body-reading text-slate-500">For organizations managing thousands of SKUs across multiple timezones. We replace slow ERP wrappers with instant, readable dashboards.</p>
-        </div>
-
-        <div class="group">
-          <div class="h-1.5 w-12 bg-slate-950 mb-6 group-hover:w-full transition-all duration-500"></div>
-          <h3 class="mb-3 text-slate-950">Logistics Hubs</h3>
-          <p class="body-reading text-slate-500">Built for high-pressure floor environments where typography determines how fast an operator can confirm a shipment without errors.</p>
-        </div>
-
-        <div class="group">
-          <div class="h-1.5 w-12 bg-slate-950 mb-6 group-hover:w-full transition-all duration-500"></div>
-          <h3 class="mb-3 text-slate-950">Data Ops Teams</h3>
-          <p class="body-reading text-slate-500">Perfect for internal developers building custom tools for supply chain monitoring, security audits, and real-time inventory tracking.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- THE LOGIC -->
-  <section id="logic" class="py-20 border-t border-slate-100 bg-slate-50/50">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="flex flex-col lg:flex-row items-start gap-10">
-        <div class="lg:w-3/5">
-          <p class="eyebrow mb-6">The Logic</p>
-          <h2 class="mb-6">No noise. <br />Just performance.</h2>
-          <p class="text-2xl body-reading text-slate-600 mb-8 max-w-2xl">Most internal tools fail because they prioritize features over readability. We use a high-contrast type system to ensure your data is the protagonist of the interface.</p>
-
-          <div class="grid sm:grid-cols-2 gap-6">
-            <div class="p-6 bg-white rounded-2xl border border-slate-100 shadow-sm">
-              <h4 class="text-slate-950 mb-2">Sub-second Latency</h4>
-              <p class="text-sm text-slate-500 font-medium leading-relaxed">Interfaces that react as fast as you think, removing the friction between insight and action.</p>
-            </div>
-            <div class="p-6 bg-white rounded-2xl border border-slate-100 shadow-sm">
-              <h4 class="text-slate-950 mb-2">High Density</h4>
-              <p class="text-sm text-slate-500 font-medium leading-relaxed">Engineered to show more information without increasing cognitive load or visual clutter.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="lg:w-2/5 bg-slate-950 p-10 rounded-2xl text-white shadow-xl lg:mt-6">
-          <p class="eyebrow text-blue-300 mb-6">System Status</p>
-          <div class="space-y-8">
-            <div>
-              <div class="flex justify-between items-end mb-3">
-                <span class="text-4xl font-extrabold tracking-tighter">99.98%</span>
-                <span class="text-blue-400 font-bold uppercase text-[12px] tracking-widest mb-1">Operational</span>
-              </div>
-              <div class="h-3 w-full bg-slate-800 rounded-full overflow-hidden">
-                <div class="h-full bg-blue-500 w-[99%]"></div>
-              </div>
+    <!-- NAVIGATION -->
+    <nav class="w-full border-b border-slate-100 bg-white/95 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-[1440px] mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="text-2xl font-bold text-slate-950 tracking-tighter">
+                ironbyte
             </div>
 
-            <div class="pt-6 border-t border-slate-800">
-              <h3 class="text-white mb-4 text-2xl">Active Sessions</h3>
-              <p class="text-slate-400 body-reading text-base leading-relaxed">Over 4,2k concurrent operators across 12 global regions currently utilizing the Ironbyte engine for mission-critical tasks.</p>
+            <div class="hidden md:flex items-center gap-10 text-[14px] font-semibold text-slate-500">
+                <a href="#logic" class="hover:text-slate-950 transition-colors">The Logic</a>
+                <a href="#who" class="hover:text-slate-950 transition-colors">Who it's for</a>
+                <a href="#pricing" class="hover:text-slate-950 transition-colors">Pricing</a>
             </div>
-          </div>
+
+            <div class="flex items-center gap-4">
+                <button class="text-[14px] font-bold text-slate-950 px-4">Log in</button>
+                <button class="bg-blue-600 text-white text-[14px] font-bold px-6 py-3 rounded-xl hover:bg-blue-700 transition-all shadow-md">
+                    Get started
+                </button>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </nav>
 
-  <!-- FOOTER -->
-  <footer class="py-12 bg-white border-t border-slate-100">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="flex flex-col md:flex-row justify-between items-start gap-8">
-        <div>
-          <div class="text-3xl font-extrabold text-slate-950 tracking-tighter mb-4">ironbyte</div>
-          <p class="text-slate-500 max-w-sm text-base font-medium leading-relaxed">The typography-first design system for industrial-grade web applications.</p>
+    <!-- HERO -->
+    <header class="relative pt-40 pb-52 bg-grid overflow-hidden border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-6">
+            <p class="eyebrow mb-10 text-center">Performance Architecture</p>
+            <h1 class="mb-12 text-center max-w-5xl mx-auto">
+                The UI engine for <br />
+                high-stakes operations.
+            </h1>
+            <p class="text-2xl text-slate-500 leading-snug max-w-3xl mx-auto text-center font-normal tracking-tight">
+                Ironbyte delivers precision interface blocks for complex data. 
+                Built for teams that can't afford a single missed click.
+            </p>
+            <div class="mt-16 flex flex-wrap justify-center gap-5">
+                <button class="bg-slate-950 text-white font-bold text-lg px-12 py-6 rounded-2xl hover:bg-slate-800 transition-all shadow-2xl shadow-slate-950/20">
+                    Start Building
+                </button>
+                <button class="bg-white border-2 border-slate-200 text-slate-950 font-bold text-lg px-12 py-6 rounded-2xl hover:bg-slate-50 transition-all">
+                    View Systems
+                </button>
+            </div>
         </div>
+    </header>
 
-        <div class="grid grid-cols-2 gap-12">
-          <div>
-            <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-4">Product</p>
-            <ul class="space-y-3 text-[15px] font-bold text-slate-950">
-              <li><a href="#" class="hover:text-blue-600 transition-colors">Components</a></li>
-              <li><a href="#" class="hover:text-blue-600 transition-colors">Templates</a></li>
-              <li><a href="#" class="hover:text-blue-600 transition-colors">Security</a></li>
-            </ul>
-          </div>
+    <!-- WHO IT'S FOR SECTION -->
+    <section id="who" class="py-40 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-32">
+                <p class="eyebrow mb-8">Audience</p>
+                <h2 class="max-w-5xl tracking-tighter">Designed for those who <br>manage the physical world.</h2>
+            </div>
 
-          <div>
-            <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-4">Company</p>
-            <ul class="space-y-3 text-[15px] font-bold text-slate-950">
-              <li><a href="#" class="hover:text-blue-600 transition-colors">About</a></li>
-              <li><a href="#" class="hover:text-blue-600 transition-colors">Careers</a></li>
-              <li><a href="#" class="hover:text-blue-600 transition-colors">Blog</a></li>
-            </ul>
-          </div>
+            <div class="grid md:grid-cols-3 gap-16">
+                <!-- Group 1 -->
+                <div class="group">
+                    <div class="h-1.5 w-12 bg-slate-950 mb-10 group-hover:w-full transition-all duration-500"></div>
+                    <h3 class="mb-8">Global Retailers</h3>
+                    <p class="body-reading text-slate-500">
+                        For organizations managing thousands of SKUs across multiple timezones. We replace slow ERP wrappers with instant, readable dashboards.
+                    </p>
+                </div>
+                <!-- Group 2 -->
+                <div class="group">
+                    <div class="h-1.5 w-12 bg-slate-950 mb-10 group-hover:w-full transition-all duration-500"></div>
+                    <h3 class="mb-8">Logistics Hubs</h3>
+                    <p class="body-reading text-slate-500">
+                        Built for high-pressure floor environments where typography determines how fast an operator can confirm a shipment without errors.
+                    </p>
+                </div>
+                <!-- Group 3 -->
+                <div class="group">
+                    <div class="h-1.5 w-12 bg-slate-950 mb-10 group-hover:w-full transition-all duration-500"></div>
+                    <h3 class="mb-8">Data Ops Teams</h3>
+                    <p class="body-reading text-slate-500">
+                        Perfect for internal developers building custom tools for supply chain monitoring, security audits, and real-time inventory tracking.
+                    </p>
+                </div>
+            </div>
         </div>
-      </div>
+    </section>
 
-      <div class="mt-10 pt-6 border-t border-slate-100 flex flex-col sm:flex-row justify-between items-center gap-4 text-[14px] text-slate-400 font-medium">
-        <span>© 2024 Ironbyte Systems Inc. All rights reserved.</span>
-        <div class="flex gap-6">
-          <a href="#" class="hover:text-slate-950 transition-colors">Twitter</a>
-          <a href="#" class="hover:text-slate-950 transition-colors">GitHub</a>
+    <!-- TYPOGRAPHY HIERARCHY / THE LOGIC -->
+    <section id="logic" class="py-40 border-t border-slate-100 bg-slate-50/50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-start gap-24">
+                <div class="lg:w-3/5">
+                    <p class="eyebrow mb-8">The Logic</p>
+                    <h2 class="mb-12">No noise. <br>Just performance.</h2>
+                    <p class="text-2xl body-reading text-slate-600 mb-12 max-w-2xl">
+                        Most internal tools fail because they prioritize features over readability. We use a high-contrast type system to ensure your data is the protagonist of the interface.
+                    </p>
+                    
+                    <div class="grid sm:grid-cols-2 gap-8">
+                        <div class="p-8 bg-white rounded-[2rem] border border-slate-100 shadow-sm">
+                            <h4 class="text-slate-950 mb-2">Sub-second Latency</h4>
+                            <p class="text-sm text-slate-500 font-medium leading-relaxed">Interfaces that react as fast as you think, removing the friction between insight and action.</p>
+                        </div>
+                        <div class="p-8 bg-white rounded-[2rem] border border-slate-100 shadow-sm">
+                            <h4 class="text-slate-950 mb-2">High Density</h4>
+                            <p class="text-sm text-slate-500 font-medium leading-relaxed">Engineered to show more information without increasing cognitive load or visual clutter.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:w-2/5 bg-slate-950 p-16 rounded-[3rem] text-white shadow-3xl lg:mt-12">
+                    <p class="eyebrow text-blue-400 mb-12">System Status</p>
+                    <div class="space-y-12">
+                        <div>
+                            <div class="flex justify-between items-end mb-4">
+                                <span class="text-5xl font-bold tracking-tighter">99.98%</span>
+                                <span class="text-blue-400 font-bold uppercase text-[12px] tracking-widest mb-1">Operational</span>
+                            </div>
+                            <div class="h-3 w-full bg-slate-800 rounded-full overflow-hidden">
+                                <div class="h-full bg-blue-500 w-[99%]"></div>
+                            </div>
+                        </div>
+                        <div class="pt-12 border-t border-slate-800">
+                            <h3 class="text-white mb-6 text-3xl">Active Sessions</h3>
+                            <p class="text-slate-400 body-reading text-lg leading-relaxed">
+                                Over 4,2k concurrent operators across 12 global regions currently utilizing the Ironbyte engine for mission-critical tasks.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </footer>
+    </section>
 
-  <!-- Small JS for mobile menu toggle (accessible) -->
-  <script>
-    (function(){
-      const toggle = document.getElementById('mobileToggle');
-      const closeBtn = document.getElementById('mobileClose');
-      const menu = document.getElementById('mobileMenu');
+    <!-- FOOTER -->
+    <footer class="py-24 bg-white border-t border-slate-100">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-start gap-16">
+                <div>
+                    <div class="text-4xl font-bold text-slate-950 tracking-tighter mb-6">ironbyte</div>
+                    <p class="text-slate-500 max-w-sm text-lg font-medium leading-relaxed">The typography-first design system for industrial-grade web applications.</p>
+                </div>
+                <div class="grid grid-cols-2 gap-24">
+                    <div>
+                        <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-8">Product</p>
+                        <ul class="space-y-5 text-[15px] font-bold text-slate-950">
+                            <li><a href="#" class="hover:text-blue-600 transition-colors">Components</a></li>
+                            <li><a href="#" class="hover:text-blue-600 transition-colors">Templates</a></li>
+                            <li><a href="#" class="hover:text-blue-600 transition-colors">Security</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-8">Company</p>
+                        <ul class="space-y-5 text-[15px] font-bold text-slate-950">
+                            <li><a href="#" class="hover:text-blue-600 transition-colors">About</a></li>
+                            <li><a href="#" class="hover:text-blue-600 transition-colors">Careers</a></li>
+                            <li><a href="#" class="hover:text-blue-600 transition-colors">Blog</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-24 pt-10 border-t border-slate-100 flex flex-col sm:flex-row justify-between items-center gap-6 text-[14px] text-slate-400 font-medium">
+                <span>© 2024 Ironbyte Systems Inc. All rights reserved.</span>
+                <div class="flex gap-10">
+                    <a href="#" class="hover:text-slate-950 transition-colors">Twitter</a>
+                    <a href="#" class="hover:text-slate-950 transition-colors">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
-      function openMenu(){
-        menu.classList.add('open');
-        menu.setAttribute('aria-hidden','false');
-        toggle.setAttribute('aria-expanded','true');
-        document.body.style.overflow = 'hidden';
-        // focus the first link inside the drawer for keyboard users
-        const firstLink = menu.querySelector('nav a, button, a');
-        if(firstLink) firstLink.focus();
-      }
-
-      function closeMenu(){
-        menu.classList.remove('open');
-        menu.setAttribute('aria-hidden','true');
-        toggle.setAttribute('aria-expanded','false');
-        document.body.style.overflow = '';
-        toggle.focus();
-      }
-
-      toggle.addEventListener('click', () => {
-        const isOpen = menu.classList.contains('open');
-        isOpen ? closeMenu() : openMenu();
-      });
-
-      closeBtn.addEventListener('click', closeMenu);
-
-      // close when clicking the backdrop
-      menu.addEventListener('click', (e) => {
-        if(e.target === menu) closeMenu();
-      });
-
-      // close on escape
-      document.addEventListener('keydown', (e) => {
-        if(e.key === 'Escape' && menu.classList.contains('open')) closeMenu();
-      });
-    })();
-  </script>
 </body>
 </html>
