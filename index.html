@@ -1,954 +1,262 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>ironbyte — Custom Software & Systems</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Font preconnect + imports (Zalando Sans Expanded + Inter) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Zalando+Sans+Expanded:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
-
-  <!-- Material icons for contact card -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-  <style>
-    :root{
-      --bg-page: #ffffff;
-      --accent-blue: #2563eb;
-      --text-main: #0f172a;
-      --nav-height: 72px; /* adjustable nav height */
-
-      /* COPIED FROM ADHAM - exact card shadow & divider (kept as requested) */
-      --bg-section-alt: #f3f5f7;
-
-      /* THE SEALED CARD SHADOW (copied exactly) */
-      --card-shadow:
-        0 1px 3px 0 rgba(0, 0, 0, 0.08),
-        0 10px 25px -8px rgba(0, 0, 0, 0.06),
-        0 1px 0 0 rgba(0, 0, 0, 0.02);
-
-      /* ADHAM'S REFINED SECTION DIVIDER (copied exactly) */
-      --divider-shadow: 0 8px 16px -10px rgba(0, 0, 0, 0.12);
-    }
-
-    html, body { height: 100%; }
-    body {
-      margin: 0;
-      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      color: var(--text-main);
-      background: var(--bg-page);
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      /* reserve space so fixed nav doesn't overlap content */
-      padding-top: var(--nav-height);
-    }
-
-    /* NAV */
-    nav.site-nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: var(--nav-height);
-      display: flex;
-      align-items: center;
-      z-index: 60;
-      background: white;
-      border-bottom: 1px solid rgba(15,23,42,0.06);
-      box-shadow: 0 6px 18px rgba(15,23,42,0.04);
-      padding: 0 1.25rem;
-    }
-
-    .nav-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      width: 100%;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 1rem;
-    }
-
-    /* Wordmark using Zalando Sans Expanded, slightly larger */
-    .wordmark {
-      font-family: "Zalando Sans Expanded", "Inter", system-ui, sans-serif;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      font-size: 1.5rem; /* ~24px - not too small */
-      color: var(--text-main);
-      line-height: 1;
-      text-decoration: none;
-      display: inline-block;
-    }
-    .wordmark .accent-y { color: var(--accent-blue); } /* accent on 'y' */
-
-    .nav-links {
-      display:flex;
-      gap:1.25rem;
-      align-items:center;
-      color: #475569;
-      font-weight: 500;
-    }
-
-    .nav-links a { color: inherit; text-decoration: none; }
-    .nav-cta { display:flex; gap:.75rem; align-items:center; }
-
-    /* subtle background grid & glow from earlier layout */
-    .bg-grid {
-      background-size: 40px 40px;
-      background-image: radial-gradient(circle, rgba(0,0,0,0.05) 1px, transparent 1px);
-      position: absolute;
-      top: 0; left: 0; right: 0; height: 100vh;
-      z-index: -1;
-      mask-image: radial-gradient(ellipse at top, black 20%, transparent 80%);
-    }
-
-    .glow {
-      position: absolute;
-      top: 0; left: 50%;
-      transform: translateX(-50%);
-      width: 600px; height: 300px;
-      background: radial-gradient(circle, rgba(37, 99, 235, 0.08) 0%, transparent 70%);
-      z-index: -1;
-      filter: blur(60px);
-    }
-
-    .hero-title { letter-spacing: -0.02em; line-height: 1.02; }
-
-    /* HERO: add subtle 'ledge' as a divider using the copied divider shadow */
-    .hero-section {
-      position: relative;
-      z-index: 20;
-      background: white;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.04);
-      box-shadow: var(--divider-shadow);
-    }
-
-    /* WHO SECTION (grounded layout — minimal depth, reuse soft bg) */
-    .who-section {
-      background-color: var(--bg-section-alt);
-      position: relative;
-      z-index: 10;
-      padding-top: 72px;
-      padding-bottom: 92px;
-    }
-
-    .who-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
-
-    .who-header {
-      text-align: center;
-      margin-bottom: 2.25rem;
-    }
-
-    /* grid of audience blocks */
-    .who-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1rem 1.25rem;
-    }
-
-    /* Each item is a grounded block — NO heavy shadow */
-    .who-item {
-      display: flex;
-      gap: 1rem;
-      align-items: flex-start;
-      padding: 1.25rem;
-      border-radius: 12px;
-      background: transparent; /* keep grounded on section bg */
-      transition: transform .18s ease, border-color .18s ease;
-      border-left: 3px solid transparent; /* accent on hover */
-    }
-
-    .who-item:hover {
-      transform: translateY(-4px);
-      border-left-color: var(--accent-blue);
-      background: rgba(255,255,255,0.02);
-    }
-
-    .who-icon {
-      min-width: 56px;
-      min-height: 56px;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 22px;
-      background: white; /* small pop for the icon */
-      border: 1px solid rgba(15,23,42,0.04);
-    }
-
-    .who-content h3 {
-      margin: 0;
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--text-main);
-      line-height: 1.1;
-    }
-
-    .who-content p {
-      margin: .4rem 0 0;
-      color: #475569;
-      font-size: 15px;
-      max-width: 44rem;
-    }
-
-    /* subtle divider between items on small screens for rhythm */
-    @media (max-width: 767px) {
-      .who-item {
-        border-radius: 8px;
-        padding: 1rem;
-        border-left: 3px solid transparent;
-        border-bottom: 1px solid rgba(15,23,42,0.03);
-      }
-    }
-
-    /* larger layout: grid to columns */
-    @media (min-width: 768px) {
-      .who-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.25rem;
-      }
-    }
-
-    @media (min-width: 1024px) {
-      .who-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-
-    /* Card implementation (kept intact as requested) */
-    .modern-card {
-      background: #ffffff;
-      border-radius: 24px;
-      box-shadow: var(--card-shadow);
-      border: 1px solid rgba(0, 0, 0, 0.04);
-      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
-      cursor: pointer;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .modern-card:hover {
-      transform: translateY(-4px);
-      box-shadow:
-        0 4px 6px -1px rgba(0, 0, 0, 0.1),
-        0 25px 45px -15px rgba(0, 0, 0, 0.1);
-    }
-
-    .preview-area {
-      background-color: #f3f5f7;
-      border-radius: 18px;
-      padding: 1.5rem;
-      margin: 1.25rem;
-      height: 220px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 1rem;
-    }
-
-    .status-tag {
-      display: inline-flex;
-      align-items: center;
-      padding: 5px 14px;
-      border-radius: 100px;
-      font-weight: 600;
-      font-size: 0.8rem;
-      background: #ffffff;
-      border: 1px solid currentColor;
-    }
-
-    .tag-approved { color: #44a57b; border-color: rgba(68, 165, 123, 0.15); }
-
-    .tag-pill {
-      padding: 4px 12px;
-      background: #e2e8f0;
-      border-radius: 8px;
-      color: #64748b;
-      font-weight: 700;
-      font-size: 11px;
-      text-transform: uppercase;
-    }
-
-    /* WHAT WE BUILD section styles */
-    .what-section {
-      background: white;
-      padding-top: 72px;
-      padding-bottom: 96px;
-      position: relative;
-      z-index: 12;
-    }
-
-    .what-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 1.25rem;
-    }
-
-    .what-header {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-
-    .what-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.25rem;
-    }
-
-    /* card content tweaks for "what" cards */
-    .what-card .preview-area {
-      height: 160px;
-      margin: 1rem;
-      border-radius: 14px;
-    }
-
-    .what-card .card-body {
-      padding: 1rem 1.25rem 1.75rem;
-    }
-
-    .what-card h3 {
-      margin: 0;
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--text-main);
-    }
-
-    .what-card p {
-      margin: .5rem 0 0;
-      color: #475569;
-      font-size: 14.5px;
-      line-height: 1.45;
-    }
-
-    .what-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: .5rem;
-      margin-top: .8rem;
-      color: var(--accent-blue);
-      font-weight: 700;
-      font-size: 13px;
-      text-decoration: none;
-    }
-
-    /* grid breakpoints */
-    @media (min-width: 720px) {
-      .what-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (min-width: 1100px) {
-      .what-grid { grid-template-columns: repeat(3, 1fr); }
-    }
-
-    /* HOW WE WORK section styles */
-    .how-section {
-      background: var(--bg-section-alt); /* subtle contrast */
-      padding-top: 72px;
-      padding-bottom: 88px;
-      position: relative;
-      z-index: 11;
-      border-top: 1px solid rgba(0,0,0,0.03);
-      box-shadow: 0 -10px 20px -18px rgba(0,0,0,0.03); /* soft top shadow to separate from previous white section */
-    }
-
-    .how-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 1.25rem;
-    }
-
-    .how-header {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-
-    /* Steps container */
-    .how-steps {
-      position: relative;
-      padding-top: 2.25rem;
-      padding-bottom: 0;
-      display: grid;
-      gap: 1.25rem;
-    }
-
-    /* horizontal connector line on larger screens */
-    .how-steps::before {
-      content: "";
-      position: absolute;
-      left: 6%;
-      right: 6%;
-      top: 44px; /* aligns with center of number circles */
-      height: 2px;
-      background: linear-gradient(90deg, rgba(15,23,42,0.06), rgba(15,23,42,0.02));
-      z-index: 0;
-      display: none;
-    }
-
-    .step {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      gap: 1rem;
-      align-items: flex-start;
-      background: transparent;
-      padding: 0;
-    }
-
-    .step-number {
-      min-width: 48px;
-      min-height: 48px;
-      border-radius: 999px;
-      background: white;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      color: var(--accent-blue);
-      font-size: 15px;
-      border: 1px solid rgba(15,23,42,0.06);
-      box-shadow: 0 6px 18px rgba(15,23,42,0.04);
-      flex-shrink: 0;
-    }
-
-    .step-body h4 {
-      margin: 0;
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--text-main);
-    }
-
-    .step-body p {
-      margin: .5rem 0 0;
-      color: #475569;
-      font-size: 15px;
-      line-height: 1.5;
-      max-width: 44rem;
-    }
-
-    /* layout for medium+ screens: show steps in a row */
-    @media (min-width: 900px) {
-      .how-steps {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 2rem;
-      }
-      .how-steps::before { display: block; }
-      .step { flex-direction: column; align-items: center; text-align: center; padding-top: 0; }
-      .step-number { margin-bottom: 0.75rem; }
-      .step-body p { margin: .5rem 0 0; }
-    }
-
-    /* mobile stacking */
-    @media (max-width: 899px) {
-      .how-steps { display: grid; grid-template-columns: 1fr; }
-      .step { flex-direction: row; align-items: flex-start; }
-    }
-
-    /* BANNER (simple announcement strip) */
-    .banner {
-      background: linear-gradient(90deg, rgba(37,99,235,0.06), rgba(14,165,233,0.03));
-      border: 1px solid rgba(37,99,235,0.06);
-      padding: 18px 1rem;
-      margin-top: 28px;
-    }
-    .banner-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 1.25rem;
-      display:flex;
-      gap:1rem;
-      align-items:center;
-      justify-content:space-between;
-      flex-wrap:wrap;
-    }
-    .banner-text { color: #0f172a; font-weight:600; }
-    .banner-cta { background: var(--accent-blue); color: white; padding:10px 14px; border-radius:10px; text-decoration:none; font-weight:700; }
-
-    /* CONTACT SECTION */
-    .contact-section {
-      background: white;
-      padding-top: 72px;
-      padding-bottom: 72px;
-      position: relative;
-      z-index: 12;
-    }
-    .contact-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 1.25rem;
-    }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-    }
-
-    /* left form */
-    .contact-form {
-      background: white;
-      padding: 1.25rem;
-      border-radius: 12px;
-      border: 1px solid rgba(15,23,42,0.04);
-      box-shadow: 0 6px 20px rgba(15,23,42,0.04);
-    }
-    .form-row { display:flex; gap:.75rem; }
-    .form-row .field { flex:1; display:flex; flex-direction:column; margin-bottom: .8rem; }
-    label { font-size: 13px; font-weight:600; color:#334155; margin-bottom:6px; }
-    input[type="text"], input[type="email"], input[type="tel"], textarea {
-      padding: 10px 12px;
-      border: 1px solid rgba(15,23,42,0.06);
-      border-radius: 8px;
-      font-size: 14px;
-      color: var(--text-main);
-      outline: none;
-      transition: box-shadow .12s ease, border-color .12s ease, transform .06s ease;
-      background: #fff;
-    }
-    input:focus, textarea:focus {
-      box-shadow: 0 6px 20px rgba(37,99,235,0.06);
-      border-color: var(--accent-blue);
-    }
-    textarea { min-height: 120px; resize: vertical; padding-top:10px; }
-
-    .form-submit {
-      display:inline-flex;
-      align-items:center;
-      gap:.6rem;
-      background: var(--accent-blue);
-      color: white;
-      padding: 10px 14px;
-      border-radius: 10px;
-      font-weight:700;
-      border: none;
-      cursor:pointer;
-    }
-
-    /* right contact card - reuses modern-card shadow but smaller radius */
-    .contact-card {
-      padding: 1.25rem;
-      border-radius: 16px;
-      background: white;
-      box-shadow: var(--card-shadow);
-      border: 1px solid rgba(0,0,0,0.04);
-      display:flex;
-      flex-direction:column;
-      gap: 0.85rem;
-      justify-content:center;
-    }
-
-    .contact-line {
-      display:flex;
-      gap: .75rem;
-      align-items:center;
-      color:#334155;
-      font-weight:600;
-    }
-    .material-icons { font-size:20px; color:var(--accent-blue); }
-
-    .contact-sub { color: #64748b; font-weight:500; font-size:14px; margin-top:0; }
-
-    /* responsive layout */
-    @media (min-width: 900px) {
-      .contact-grid {
-        grid-template-columns: 1fr 360px;
-        align-items:start;
-      }
-    }
-
-    @media (max-width: 899px) {
-      .banner-inner { justify-content:center; text-align:center; }
-      .banner-cta { margin-top:8px; }
-    }
-
-    /* tiny responsive tweaks */
-    @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .wordmark { font-size: 1.25rem; }
-      .preview-area { height: 140px; margin: 1rem; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ironbyte - High-Stakes UI Engine</title>
+    
+    <!-- The Font: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        :root {
+            --font-inter: 'Inter', sans-serif;
+            --slate-950: #020617;
+            --slate-900: #0f172a;
+            --slate-600: #475569;
+            --blue-600: #2563eb;
+        }
+
+        body {
+            font-family: var(--font-inter);
+            -webkit-font-smoothing: antialiased; 
+            -moz-osx-font-smoothing: grayscale;
+            background-color: #ffffff;
+            color: var(--slate-600);
+        }
+
+        /* CALIBRATION: PRIMARY HEADINGS
+           "The UI engine for high-stakes operations" is the H1.
+           "Designed for those who manage the physical world" is the H2.
+        */
+        h1, h2, h3, h4 {
+            color: var(--slate-950);
+            font-weight: 800; /* Aiming for that heavy 750-800 impact */
+            letter-spacing: -0.055em; /* Aggressive tightening for large display */
+            line-height: 0.88; /* Ultra-tight leading for massive text blocks */
+            text-shadow: 0 0 0.2px rgba(2, 6, 23, 0.6); 
+        }
+
+        /* MASSIVE HEADINGS - The core request */
+        h1 { 
+            font-size: clamp(4.5rem, 12vw, 9.5rem); 
+            margin-bottom: 2rem;
+        } 
+        
+        h2 { 
+            font-size: clamp(3.5rem, 9vw, 7.5rem); 
+            margin-bottom: 1.5rem;
+        } 
+        
+        h3 { 
+            font-size: clamp(2rem, 4vw, 3.5rem); 
+            line-height: 1;
+            letter-spacing: -0.04em;
+        }
+
+        h4 { 
+            font-size: 1.5rem; 
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+
+        .bg-grid {
+            background-size: 60px 60px;
+            background-image: radial-gradient(circle, #e2e8f0 1.2px, transparent 1.2px);
+        }
+
+        .eyebrow {
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            color: var(--blue-600);
+        }
+
+        .body-reading {
+            line-height: 1.6;
+            letter-spacing: -0.015em;
+            font-size: 1.25rem;
+        }
+
+        /* Mobile specific overrides */
+        @media (max-width: 768px) {
+            h1 { font-size: 3.75rem; line-height: 0.95; letter-spacing: -0.04em; }
+            h2 { font-size: 3rem; line-height: 0.95; letter-spacing: -0.04em; }
+        }
+    </style>
 </head>
+<body>
 
-<body class="overflow-x-hidden">
-  <div class="bg-grid"></div>
-  <div class="glow"></div>
+    <!-- NAVIGATION -->
+    <nav class="w-full border-b border-slate-100 bg-white/95 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-[1440px] mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="text-2xl font-black text-slate-950 tracking-tighter">
+                ironbyte
+            </div>
 
-  <!-- NAV -->
-  <nav class="site-nav" role="navigation" aria-label="Main navigation">
-    <div class="nav-inner">
-      <!-- Wordmark: highlight the 'y' -->
-      <a href="#" class="wordmark" aria-label="ironbyte home">ironb<span class="accent-y">y</span>te</a>
+            <div class="hidden md:flex items-center gap-10 text-[14px] font-semibold text-slate-500">
+                <a href="#logic" class="hover:text-slate-950 transition-colors">The Logic</a>
+                <a href="#who" class="hover:text-slate-950 transition-colors">Who it's for</a>
+                <a href="#pricing" class="hover:text-slate-950 transition-colors">Pricing</a>
+            </div>
 
-      <!-- center links (hidden on small screens) -->
-      <div class="nav-links">
-        <a href="#" class="text-sm hover:text-black transition">Services</a>
-        <a href="#" class="text-sm hover:text-black transition">Process</a>
-        <a href="#" class="text-sm hover:text-black transition">About</a>
-      </div>
-
-      <div class="nav-cta">
-        <a href="#" class="hidden sm:inline text-sm font-semibold text-gray-700 hover:text-black">Support</a>
-        <a href="#" class="inline-block bg-slate-900 text-white text-sm font-semibold px-4 py-2 rounded-md hover:bg-slate-800 transition">Get a quote</a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- HERO: min-height accounts for nav so content sits below navbar -->
-  <section class="hero-section px-6" style="min-height: calc(100vh - var(--nav-height)); display:flex; align-items:center;">
-    <div class="max-w-5xl mx-auto w-full text-center">
-
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-xs font-bold mb-6 uppercase tracking-wider">
-        <span class="relative flex h-2 w-2">
-          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-          <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-600"></span>
-        </span>
-        Custom software studio
-      </div>
-
-      <h1 class="hero-title text-4xl md:text-6xl font-extrabold mb-4 bg-clip-text text-transparent bg-gradient-to-b from-slate-900 to-slate-600">
-        Systems built for <span class="text-blue-600">scale.</span>
-      </h1>
-
-      <p class="text-base md:text-lg text-slate-500 mb-6 max-w-2xl mx-auto leading-relaxed">
-        Reliable engineering meets practical UX. We build the high-performance internal tools and systems that keep your workflows seamless.
-      </p>
-
-      <div class="flex flex-col sm:flex-row justify-center gap-3 mb-6">
-        <a href="#" class="bg-blue-600 text-white px-6 py-3 rounded-2xl font-semibold text-sm shadow-sm hover:bg-blue-700 hover:-translate-y-0.5 transition">Start a Project</a>
-        <a href="#" class="bg-white border border-slate-200 px-6 py-3 rounded-2xl font-semibold text-sm hover:bg-slate-50 transition">View our Process</a>
-      </div>
-
-      <div class="mt-2 w-full">
-        <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 mb-3">Trusted technology stack</p>
-        <div class="flex flex-wrap justify-center items-center gap-6 md:gap-10 opacity-70">
-          <img class="h-5 md:h-6" src="https://cdn.worldvectorlogo.com/logos/react-2.svg" alt="React">
-          <img class="h-5 md:h-6" src="https://cdn.worldvectorlogo.com/logos/next-js.svg" alt="Next">
-          <img class="h-5 md:h-6" src="https://cdn.worldvectorlogo.com/logos/typescript.svg" alt="TypeScript">
-          <img class="h-5 md:h-6" src="https://cdn.worldvectorlogo.com/logos/postgresql.svg" alt="Postgres">
-          <img class="h-5 md:h-6" src="https://cdn.worldvectorlogo.com/logos/aws-2.svg" alt="AWS">
+            <div class="flex items-center gap-4">
+                <button class="text-[14px] font-bold text-slate-950 px-4">Log in</button>
+                <button class="bg-blue-600 text-white text-[14px] font-bold px-6 py-3 rounded-xl hover:bg-blue-700 transition-all shadow-md">
+                    Get started
+                </button>
+            </div>
         </div>
-      </div>
+    </nav>
 
-    </div>
-  </section>
-
-  <!-- WHO IT'S FOR (grounded, not heavy cards) -->
-  <section class="who-section" aria-label="Who it's for">
-    <div class="who-inner">
-      <div class="who-header">
-        <p class="text-[10px] font-bold uppercase tracking-[0.25em] text-slate-400 mb-3">Who it's for</p>
-        <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900">Built for teams that need reliable internal systems</h2>
-        <p class="text-slate-500 mt-3 max-w-2xl mx-auto">If your business needs faster inventory, cleaner reporting, or smarter automation — we build the tools that make it happen.</p>
-      </div>
-
-      <div class="who-grid">
-        <div class="who-item" role="article">
-          <div class="who-icon" aria-hidden="true">🏬</div>
-          <div class="who-content">
-            <h3>Retail & e-commerce</h3>
-            <p>Scale inventory across stores and online channels — automated stock reconciliation, low-stock alerts, and shipment tracking that actually works.</p>
-          </div>
+    <!-- HERO -->
+    <header class="relative pt-32 pb-44 bg-grid overflow-hidden border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-6">
+            <p class="eyebrow mb-12 text-center">Performance Architecture</p>
+            <h1 class="text-center max-w-[1100px] mx-auto">
+                The UI engine for <br />
+                high-stakes operations.
+            </h1>
+            <p class="text-2xl text-slate-500 leading-snug max-w-2xl mx-auto text-center font-normal tracking-tight mt-12">
+                Ironbyte delivers precision interface blocks for complex data. 
+                Built for teams that can't afford a single missed click.
+            </p>
+            <div class="mt-16 flex flex-wrap justify-center gap-5">
+                <button class="bg-slate-950 text-white font-extrabold text-lg px-12 py-6 rounded-2xl hover:bg-slate-800 transition-all shadow-2xl shadow-slate-950/20">
+                    Start Building
+                </button>
+                <button class="bg-white border-2 border-slate-200 text-slate-950 font-extrabold text-lg px-12 py-6 rounded-2xl hover:bg-slate-50 transition-all">
+                    View Systems
+                </button>
+            </div>
         </div>
+    </header>
 
-        <div class="who-item" role="article">
-          <div class="who-icon" aria-hidden="true">📦</div>
-          <div class="who-content">
-            <h3>Warehousing & Logistics</h3>
-            <p>Optimize your picking, receiving and cycle counts with internal tools tailored to your warehouse layout and processes.</p>
-          </div>
+    <!-- WHO IT'S FOR SECTION -->
+    <section id="who" class="py-44 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-32">
+                <p class="eyebrow mb-10">Audience</p>
+                <h2 class="max-w-[1000px] tracking-tighter">Designed for those who <br>manage the physical world.</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-16">
+                <!-- Group 1 -->
+                <div class="group">
+                    <div class="h-1.5 w-12 bg-slate-950 mb-10 group-hover:w-full transition-all duration-500"></div>
+                    <h3 class="mb-8">Global Retailers</h3>
+                    <p class="body-reading text-slate-500">
+                        For organizations managing thousands of SKUs across multiple timezones. We replace slow ERP wrappers with instant, readable dashboards.
+                    </p>
+                </div>
+                <!-- Group 2 -->
+                <div class="group">
+                    <div class="h-1.5 w-12 bg-slate-950 mb-10 group-hover:w-full transition-all duration-500"></div>
+                    <h3 class="mb-8">Logistics Hubs</h3>
+                    <p class="body-reading text-slate-500">
+                        Built for high-pressure floor environments where typography determines how fast an operator can confirm a shipment without errors.
+                    </p>
+                </div>
+                <!-- Group 3 -->
+                <div class="group">
+                    <div class="h-1.5 w-12 bg-slate-950 mb-10 group-hover:w-full transition-all duration-500"></div>
+                    <h3 class="mb-8">Data Ops Teams</h3>
+                    <p class="body-reading text-slate-500">
+                        Perfect for internal developers building custom tools for supply chain monitoring, security audits, and real-time inventory tracking.
+                    </p>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div class="who-item" role="article">
-          <div class="who-icon" aria-hidden="true">🏢</div>
-          <div class="who-content">
-            <h3>Operations teams</h3>
-            <p>Dashboards, custom reporting, and workflow automations that turn messy spreadsheets into reliable operational systems.</p>
-          </div>
+    <!-- TYPOGRAPHY HIERARCHY / THE LOGIC -->
+    <section id="logic" class="py-44 border-t border-slate-100 bg-slate-50/50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-start gap-24">
+                <div class="lg:w-3/5">
+                    <p class="eyebrow mb-10">The Logic</p>
+                    <h2 class="mb-12">No noise. <br>Just performance.</h2>
+                    <p class="text-2xl body-reading text-slate-600 mb-16 max-w-2xl font-medium">
+                        Most internal tools fail because they prioritize features over readability. We use a high-contrast type system to ensure your data is the protagonist.
+                    </p>
+                    
+                    <div class="grid sm:grid-cols-2 gap-8">
+                        <div class="p-10 bg-white rounded-[2.5rem] border border-slate-100 shadow-sm">
+                            <h4 class="text-slate-950 mb-4">Sub-second Latency</h4>
+                            <p class="text-base text-slate-500 font-medium leading-relaxed">Interfaces that react as fast as you think, removing the friction between insight and action.</p>
+                        </div>
+                        <div class="p-10 bg-white rounded-[2.5rem] border border-slate-100 shadow-sm">
+                            <h4 class="text-slate-950 mb-4">High Density</h4>
+                            <p class="text-base text-slate-500 font-medium leading-relaxed">Engineered to show more information without increasing cognitive load or visual clutter.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:w-2/5 bg-slate-950 p-16 rounded-[4rem] text-white shadow-3xl lg:mt-12">
+                    <p class="eyebrow text-blue-400 mb-12">System Status</p>
+                    <div class="space-y-16">
+                        <div>
+                            <div class="flex justify-between items-end mb-6">
+                                <span class="text-6xl font-black tracking-tighter">99.98%</span>
+                                <span class="text-blue-400 font-bold uppercase text-[12px] tracking-widest mb-2">Operational</span>
+                            </div>
+                            <div class="h-4 w-full bg-slate-800 rounded-full overflow-hidden">
+                                <div class="h-full bg-blue-500 w-[99%]"></div>
+                            </div>
+                        </div>
+                        <div class="pt-12 border-t border-slate-800">
+                            <h3 class="text-white mb-6 text-4xl">Active Sessions</h3>
+                            <p class="text-slate-400 body-reading text-lg leading-relaxed">
+                                Over 4.2k concurrent operators across 12 global regions currently utilizing the Ironbyte engine for mission-critical tasks.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div class="who-item" role="article">
-          <div class="who-icon" aria-hidden="true">🧾</div>
-          <div class="who-content">
-            <h3>Finance & Back-office</h3>
-            <p>Accurate transaction flows, reconciliations and audit-friendly records — internal tools to reduce manual errors and speed month-end.</p>
-          </div>
+    <!-- FOOTER -->
+    <footer class="py-24 bg-white border-t border-slate-100">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-start gap-16">
+                <div>
+                    <div class="text-4xl font-black text-slate-950 tracking-tighter mb-6">ironbyte</div>
+                    <p class="text-slate-500 max-w-xs text-lg font-medium leading-relaxed">The typography-first design system for industrial-grade web applications.</p>
+                </div>
+                <div class="grid grid-cols-2 gap-24">
+                    <div>
+                        <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-8">Product</p>
+                        <ul class="space-y-5 text-[15px] font-bold text-slate-950">
+                            <li><a href="#" class="hover:text-blue-600 transition-colors">Components</a></li>
+                            <li><a href="#" class="hover:text-blue-600 transition-colors">Templates</a></li>
+                            <li><a href="#" class="hover:text-blue-600 transition-colors">Security</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-8">Company</p>
+                        <ul class="space-y-5 text-[15px] font-bold text-slate-950">
+                            <li><a href="#" class="hover:text-blue-600 transition-colors">About</a></li>
+                            <li><a href="#" class="hover:text-blue-600 transition-colors">Careers</a></li>
+                            <li><a href="#" class="hover:text-blue-600 transition-colors">Blog</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-24 pt-10 border-t border-slate-100 flex flex-col sm:flex-row justify-between items-center gap-6 text-[14px] text-slate-400 font-medium">
+                <span>© 2024 Ironbyte Systems Inc. All rights reserved.</span>
+                <div class="flex gap-10">
+                    <a href="#" class="hover:text-slate-950 transition-colors">Twitter</a>
+                    <a href="#" class="hover:text-slate-950 transition-colors">GitHub</a>
+                </div>
+            </div>
         </div>
+    </footer>
 
-        <div class="who-item" role="article">
-          <div class="who-icon" aria-hidden="true">⚙️</div>
-          <div class="who-content">
-            <h3>Product & Engineering</h3>
-            <p>Internal admin panels, staging tools and feature flags so your engineers can move faster and ship safer.</p>
-          </div>
-        </div>
-
-        <div class="who-item" role="article">
-          <div class="who-icon" aria-hidden="true">🚀</div>
-          <div class="who-content">
-            <h3>SMBs & startups</h3>
-            <p>Practical systems that grow with you — no overbuilt complexity, just reliable tools that scale as your business does.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- WHAT WE BUILD (cards using modern-card shadow) -->
-  <section class="what-section" aria-label="What we build">
-    <div class="what-inner">
-      <div class="what-header">
-        <p class="text-[10px] font-bold uppercase tracking-[0.25em] text-slate-400 mb-3">What we build</p>
-        <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900">Practical internal systems your team will actually use</h2>
-        <p class="text-slate-500 mt-3 max-w-2xl mx-auto">We focus on internal workflows that reduce manual work, improve accuracy, and give teams back time — not vanity features.</p>
-      </div>
-
-      <div class="what-grid">
-        <!-- Card 1 -->
-        <article class="modern-card what-card" aria-labelledby="w1">
-          <div class="preview-area" aria-hidden="true">
-            <div class="flex items-center justify-center h-full">
-              <div style="width:92%;height:86%;border-radius:10px;background:linear-gradient(135deg,#eef2ff,#e0f2fe);display:flex;align-items:center;justify-content:center;font-size:36px;">📦</div>
-            </div>
-          </div>
-          <div class="card-body">
-            <h3 id="w1">Inventory Management Systems</h3>
-            <p>Real-time stock tracking, multi-location sync, barcode scanning flows, and automated reorder alerts so you never run out or overstock.</p>
-            <a class="what-cta" href="#" aria-label="Learn more about Inventory Systems">Learn more →</a>
-          </div>
-        </article>
-
-        <!-- Card 2 -->
-        <article class="modern-card what-card" aria-labelledby="w2">
-          <div class="preview-area" aria-hidden="true">
-            <div class="flex items-center justify-center h-full">
-              <div style="width:92%;height:86%;border-radius:10px;background:linear-gradient(135deg,#f0fdf4,#ecfeff);display:flex;align-items:center;justify-content:center;font-size:36px;">📊</div>
-            </div>
-          </div>
-          <div class="card-body">
-            <h3 id="w2">Reporting & Analytics</h3>
-            <p>Custom dashboards, scheduled reports, and anomaly alerts that give stakeholders clear, accurate insights without drowning in spreadsheets.</p>
-            <a class="what-cta" href="#" aria-label="Learn more about Reporting & Analytics">Learn more →</a>
-          </div>
-        </article>
-
-        <!-- Card 3 -->
-        <article class="modern-card what-card" aria-labelledby="w3">
-          <div class="preview-area" aria-hidden="true">
-            <div class="flex items-center justify-center h-full">
-              <div style="width:92%;height:86%;border-radius:10px;background:linear-gradient(135deg,#fff7ed,#fff1f2);display:flex;align-items:center;justify-content:center;font-size:36px;">⚙️</div>
-            </div>
-          </div>
-          <div class="card-body">
-            <h3 id="w3">Automation & Workflows</h3>
-            <p>Trigger-based automations and batch jobs that replace repetitive manual tasks — approvals, reconciliations, notifications and more.</p>
-            <a class="what-cta" href="#" aria-label="Learn more about Automation">Learn more →</a>
-          </div>
-        </article>
-
-        <!-- Card 4 -->
-        <article class="modern-card what-card" aria-labelledby="w4">
-          <div class="preview-area" aria-hidden="true">
-            <div class="flex items-center justify-center h-full">
-              <div style="width:92%;height:86%;border-radius:10px;background:linear-gradient(135deg,#eef2ff,#f0f9ff);display:flex;align-items:center;justify-content:center;font-size:36px;">🧭</div>
-            </div>
-          </div>
-          <div class="card-body">
-            <h3 id="w4">Internal Dashboards</h3>
-            <p>Role-based dashboards that surface the right metrics and actions for teams — faster decision-making, less back-and-forth.</p>
-            <a class="what-cta" href="#" aria-label="Learn more about Dashboards">Learn more →</a>
-          </div>
-        </article>
-
-        <!-- Card 5 -->
-        <article class="modern-card what-card" aria-labelledby="w5">
-          <div class="preview-area" aria-hidden="true">
-            <div class="flex items-center justify-center h-full">
-              <div style="width:92%;height:86%;border-radius:10px;background:linear-gradient(135deg,#f0f9ff,#ecfeff);display:flex;align-items:center;justify-content:center;font-size:36px;">🔌</div>
-            </div>
-          </div>
-          <div class="card-body">
-            <h3 id="w5">Integrations & APIs</h3>
-            <p>Connect your ERP, e-commerce, payment gateways and 3PL providers with robust APIs and sync strategies that keep systems consistent.</p>
-            <a class="what-cta" href="#" aria-label="Learn more about Integrations">Learn more →</a>
-          </div>
-        </article>
-
-        <!-- Card 6 -->
-        <article class="modern-card what-card" aria-labelledby="w6">
-          <div class="preview-area" aria-hidden="true">
-            <div class="flex items-center justify-center h-full">
-              <div style="width:92%;height:86%;border-radius:10px;background:linear-gradient(135deg,#fffaf0,#fff6ee);display:flex;align-items:center;justify-content:center;font-size:36px;">🧰</div>
-            </div>
-          </div>
-          <div class="card-body">
-            <h3 id="w6">Custom Internal Tools</h3>
-            <p>From admin panels to bespoke tooling — we shape systems around your exact operation, not the other way around.</p>
-            <a class="what-cta" href="#" aria-label="Learn more about Custom Tools">Learn more →</a>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- HOW WE WORK (process steps) -->
-  <section class="how-section" aria-label="How we work">
-    <div class="how-inner">
-      <div class="how-header">
-        <p class="text-[10px] font-bold uppercase tracking-[0.25em] text-slate-400 mb-3">How we work</p>
-        <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900">A simple, proven process</h2>
-        <p class="text-slate-500 mt-3 max-w-2xl mx-auto">We keep things practical: learn your problem, design the right solution, build it properly, and support you while it grows.</p>
-      </div>
-
-      <div class="how-steps" role="list">
-        <div class="step" role="listitem" aria-labelledby="step1">
-          <div class="step-number" aria-hidden="true">1</div>
-          <div class="step-body">
-            <h4 id="step1">Discovery</h4>
-            <p>We run focused discovery sessions to map your workflows, pain points and data sources — so we build what actually moves the needle.</p>
-          </div>
-        </div>
-
-        <div class="step" role="listitem" aria-labelledby="step2">
-          <div class="step-number" aria-hidden="true">2</div>
-          <div class="step-body">
-            <h4 id="step2">Design & Prototype</h4>
-            <p>Wireframes and quick prototypes validate concepts with stakeholders before we commit to engineering — fewer surprises, faster approvals.</p>
-          </div>
-        </div>
-
-        <div class="step" role="listitem" aria-labelledby="step3">
-          <div class="step-number" aria-hidden="true">3</div>
-          <div class="step-body">
-            <h4 id="step3">Build & Ship</h4>
-            <p>Iterative development, automated tests and staged deployments keep releases predictable and safe for your operations.</p>
-          </div>
-        </div>
-
-        <div class="step" role="listitem" aria-labelledby="step4">
-          <div class="step-number" aria-hidden="true">4</div>
-          <div class="step-body">
-            <h4 id="step4">Support & Improve</h4>
-            <p>We provide monitoring, fast support and short improvement cycles so the system stays reliable and continues to deliver value.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- BANNER (announcement) -->
-  <section class="banner" aria-label="Announcement banner">
-    <div class="banner-inner">
-      <div class="banner-text">
-        We're currently building an <strong>Inventory Intelligence System</strong> — early demo and pilot available soon.
-      </div>
-      <div>
-        <a class="banner-cta" href="#contact" role="button">Join demo waitlist</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT SECTION (form left, card right) -->
-  <section class="contact-section" aria-label="Contact">
-    <div id="contact" class="contact-inner">
-      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:1rem;">
-        <div>
-          <p class="text-[10px] font-bold uppercase tracking-[0.25em] text-slate-400 mb-2">Contact</p>
-          <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900">Talk to us about your project</h2>
-          <p class="text-slate-500 mt-2 max-w-2xl">Leave your details and we'll reach out to scope a short discovery call — no long forms, just practical next steps.</p>
-        </div>
-      </div>
-
-      <div class="contact-grid" role="form" aria-labelledby="contact">
-        <!-- Left: Form -->
-        <form class="contact-form" action="#" method="post" novalidate>
-          <div class="form-row">
-            <div class="field">
-              <label for="name">Name</label>
-              <input id="name" name="name" type="text" placeholder="Your full name" required>
-            </div>
-            <div class="field">
-              <label for="company">Company</label>
-              <input id="company" name="company" type="text" placeholder="Company name (optional)">
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="field">
-              <label for="email">Email</label>
-              <input id="email" name="email" type="email" placeholder="you@company.com" required>
-            </div>
-            <div class="field">
-              <label for="phone">Phone</label>
-              <input id="phone" name="phone" type="tel" inputmode="tel" pattern="^\+?[0-9\s\-()]{7,20}$" placeholder="+263 77 123 4567">
-            </div>
-          </div>
-
-          <div class="field">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" placeholder="Short description of your needs (help us prioritise)" required></textarea>
-          </div>
-
-          <div style="display:flex;gap:.75rem;align-items:center;flex-wrap:wrap;">
-            <button type="submit" class="form-submit">Send message</button>
-            <div class="contact-sub" aria-hidden="true">We’ll typically reply within 1 business day.</div>
-          </div>
-        </form>
-
-        <!-- Right: Contact Card -->
-        <aside class="contact-card" aria-label="Contact details">
-          <div style="display:flex;align-items:center;justify-content:space-between;">
-            <div>
-              <div style="font-weight:800;font-size:16px;color:var(--text-main)">Get in touch</div>
-              <div class="contact-sub">Prefer to call or email? Use the details below.</div>
-            </div>
-          </div>
-
-          <div style="height:1px;background:rgba(15,23,42,0.03);margin:6px 0 4px;border-radius:2px;"></div>
-
-          <div class="contact-line" aria-hidden="true">
-            <span class="material-icons" aria-hidden="true">phone</span>
-            <div>
-              <div>+263 77 123 4567</div>
-              <div class="contact-sub">Mon — Fri, 9am — 5pm (CAT)</div>
-            </div>
-          </div>
-
-          <div class="contact-line" style="margin-top:6px;">
-            <span class="material-icons" aria-hidden="true">email</span>
-            <div>
-              <div><a href="mailto:hello@ironbyte.io" style="color:inherit;text-decoration:none;font-weight:700;">hello@ironbyte.io</a></div>
-              <div class="contact-sub">Emails checked daily</div>
-            </div>
-          </div>
-
-          <div class="contact-line" style="margin-top:6px;">
-            <span class="material-icons" aria-hidden="true">location_on</span>
-            <div>
-              <div>Harare, Zimbabwe</div>
-              <div class="contact-sub">Remote friendly — on-site by request</div>
-            </div>
-          </div>
-
-          <div style="margin-top:10px;">
-            <a class="what-cta" href="tel:+263771234567" aria-label="Call us">Call us →</a>
-          </div>
-        </aside>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="py-20 bg-white text-center">
-    <p class="text-gray-400 font-bold tracking-[0.2em] text-[11px] uppercase">© 2026 ironbyte</p>
-  </footer>
 </body>
 </html>
