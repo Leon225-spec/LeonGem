@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Ironbyte - Practical UI Typography Calibration (750 Weight)</title>
+  <title>Ironbyte - Practical UI Typography Calibration</title>
 
   <!-- Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Google "Material Symbols" for hamburger/close icons -->
+  <!-- Google Material Symbols for hamburger and close icons -->
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 
   <!-- Tailwind CDN -->
@@ -35,7 +35,6 @@
       -webkit-font-feature-settings: "liga" 1;
     }
 
-    /* Material symbol sizing helper */
     .material-symbols-outlined{
       font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
       font-family: 'Material Symbols Outlined';
@@ -44,35 +43,48 @@
       user-select:none;
     }
 
-    /* HEADINGS: make them unambiguously the biggest elements */
+    /* HEADINGS: make them clearly the biggest elements on the page */
     h1,h2,h3,h4{
       color:var(--slate-950);
-      font-weight:800; /* heavier than body */
-      letter-spacing:-0.03em;
+      font-weight:800;
+      letter-spacing:-0.02em;
       line-height:0.95;
       margin:0;
-      text-wrap:balance; /* try to balance lines */
+      text-wrap:balance;
     }
 
-    /* Largest display sizing (careful with viewport units + clamp) */
+    /* Aggressive display sizing for primary headings */
     h1{
-      font-size: clamp(3rem, 9vw, 6.25rem); /* ~48px -> 100px */
-      line-height: 0.95;
+      /* grows with viewport but clamps to sensible min and max */
+      font-size: clamp(3.75rem, 11vw, 8rem); /* ~60px to 128px */
+      line-height: 0.92;
+      letter-spacing: -0.028em;
     }
+
+    /* Section large headings */
     h2{
-      font-size: clamp(2.25rem, 6.2vw, 3.75rem); /* ~36px -> 60px */
-      line-height: 0.98;
+      font-size: clamp(2.25rem, 6.5vw, 4.5rem); /* ~36px to 72px */
+      line-height: 0.96;
+      letter-spacing: -0.02em;
     }
-    h3{ font-size: 1.5rem; line-height:1.05; }
-    h4{ font-size: 1.125rem; line-height:1.2; }
 
-    /* Smaller screens adjustments ensure headings remain largest but not break layout */
+    h3{
+      font-size: clamp(1.125rem, 2.2vw, 1.75rem);
+      line-height:1.05;
+      letter-spacing:-0.01em;
+    }
+
+    h4{
+      font-size: 1.125rem;
+      line-height:1.2;
+    }
+
+    /* Ensure headings do not dominate layout on very small screens */
     @media (max-width: 640px){
-      h1{ font-size: clamp(2.25rem, 9vw, 3.2rem); line-height:1; }
-      h2{ font-size: clamp(1.5rem, 6.5vw, 2.1rem); line-height:1.02; }
+      h1{ font-size: clamp(2.1rem, 9.4vw, 3.8rem); line-height:1; }
+      h2{ font-size: clamp(1.25rem, 6.5vw, 2rem); line-height:1.02; }
     }
 
-    /* Utility visuals */
     .bg-grid{
       background-size: 40px 40px;
       background-image: radial-gradient(circle, #e2e8f0 1.2px, transparent 1.2px);
@@ -92,14 +104,12 @@
       font-size:1.125rem;
     }
 
-    /* NAV: ensure hamburger appears on small screens */
     .nav-desktop{ display: none; }
     @media (min-width: 768px){
       .nav-desktop{ display:flex; }
-      .nav-mobile-toggle{ display:none; } /* hide mobile toggle on desktop */
+      .nav-mobile-toggle{ display:none; }
     }
 
-    /* Mobile menu overlay */
     .mobile-menu {
       position: fixed;
       inset: 0;
@@ -122,38 +132,37 @@
       box-shadow: 0 20px 40px rgba(2,6,23,0.12);
     }
 
-    /* small niceties for focus outline */
     button:focus, a:focus { outline: 3px solid rgba(37,99,235,0.12); outline-offset: 2px; border-radius: 8px; }
 
-    /* make sure hero CTA buttons don't overflow at tiny widths */
     .cta-btn { min-width: 10rem; }
     @media (max-width:420px){ .cta-btn{ min-width: auto; padding-left:1rem; padding-right:1rem; } }
+
+    /* Slight tweak so hero heading can span more width before wrapping excessively */
+    .hero-inner { max-width: 900px; margin-left:auto; margin-right:auto; }
+    @media (min-width:1280px){ .hero-inner { max-width: 1100px; } }
+
   </style>
 </head>
 <body class="antialiased">
 
-  <!-- NAV -->
   <nav class="w-full border-b border-slate-100 bg-white/95 backdrop-blur-md sticky top-0 z-50">
     <div class="max-w-[1440px] mx-auto px-6 h-20 flex items-center justify-between">
       <div class="flex items-center gap-6">
         <div class="text-2xl font-extrabold text-slate-950 tracking-tighter">ironbyte</div>
       </div>
 
-      <!-- desktop links -->
       <div class="nav-desktop items-center gap-10 text-[14px] font-semibold text-slate-500">
         <a href="#logic" class="hover:text-slate-950 transition-colors">The Logic</a>
         <a href="#who" class="hover:text-slate-950 transition-colors">Who it's for</a>
         <a href="#pricing" class="hover:text-slate-950 transition-colors">Pricing</a>
       </div>
 
-      <!-- right actions + mobile toggle -->
       <div class="flex items-center gap-4">
         <div class="hidden md:flex items-center gap-4">
           <button class="text-[14px] font-bold text-slate-950 px-4">Log in</button>
           <button class="bg-blue-600 text-white text-[14px] font-bold px-6 py-3 rounded-xl hover:bg-blue-700 transition-all shadow-md">Get started</button>
         </div>
 
-        <!-- mobile hamburger -->
         <button id="mobileToggle" class="nav-mobile-toggle material-symbols-outlined text-3xl nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
           menu
         </button>
@@ -161,7 +170,6 @@
     </div>
   </nav>
 
-  <!-- MOBILE MENU OVERLAY -->
   <div id="mobileMenu" class="mobile-menu" role="dialog" aria-modal="true" aria-hidden="true">
     <div class="mobile-drawer">
       <div class="flex items-center justify-between mb-6">
@@ -182,13 +190,11 @@
     </div>
   </div>
 
-  <!-- HERO -->
   <header class="relative pt-28 pb-40 bg-grid overflow-hidden border-b border-slate-100">
-    <div class="max-w-7xl mx-auto px-6 text-center">
+    <div class="max-w-7xl mx-auto px-6 text-center hero-inner">
       <p class="eyebrow mb-8">Performance Architecture</p>
 
-      <!-- Primary heading (largest on the page) -->
-      <h1 class="mb-8 max-w-4xl mx-auto">
+      <h1 class="mb-8">
         The UI engine for<br />
         high-stakes operations.
       </h1>
@@ -204,7 +210,6 @@
     </div>
   </header>
 
-  <!-- WHO IT'S FOR -->
   <section id="who" class="py-24 bg-white">
     <div class="max-w-7xl mx-auto px-6">
       <div class="mb-12 text-center">
@@ -234,7 +239,6 @@
     </div>
   </section>
 
-  <!-- THE LOGIC -->
   <section id="logic" class="py-20 border-t border-slate-100 bg-slate-50/50">
     <div class="max-w-7xl mx-auto px-6">
       <div class="flex flex-col lg:flex-row items-start gap-10">
@@ -278,7 +282,6 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer class="py-12 bg-white border-t border-slate-100">
     <div class="max-w-7xl mx-auto px-6">
       <div class="flex flex-col md:flex-row justify-between items-start gap-8">
@@ -318,7 +321,6 @@
     </div>
   </footer>
 
-  <!-- Small JS for mobile menu toggle (accessible) -->
   <script>
     (function(){
       const toggle = document.getElementById('mobileToggle');
@@ -330,7 +332,6 @@
         menu.setAttribute('aria-hidden','false');
         toggle.setAttribute('aria-expanded','true');
         document.body.style.overflow = 'hidden';
-        // focus the first link inside the drawer for keyboard users
         const firstLink = menu.querySelector('nav a, button, a');
         if(firstLink) firstLink.focus();
       }
@@ -350,12 +351,10 @@
 
       closeBtn.addEventListener('click', closeMenu);
 
-      // close when clicking the backdrop
       menu.addEventListener('click', (e) => {
         if(e.target === menu) closeMenu();
       });
 
-      // close on escape
       document.addEventListener('keydown', (e) => {
         if(e.key === 'Escape' && menu.classList.contains('open')) closeMenu();
       });
