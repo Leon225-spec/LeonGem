@@ -1,364 +1,402 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Ironbyte - Practical UI Typography Calibration</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leon Nyaramb | Premium Operational Systems</title>
+    <!-- Geist: The high-end engineering font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --bg: #fcfcfd;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --accent: #2563eb;
+            --accent-soft: #eff6ff;
+            --border: #e2e8f0;
+            --card-bg: #ffffff;
+            --dark-card: #0f172a;
+        }
 
-  <!-- Inter -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-  <!-- Google Material Symbols for hamburger and close icons -->
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+        body {
+            font-family: 'Geist', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
 
-  <!-- Tailwind CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
+        .container {
+            padding: 60px 24px;
+            max-width: 600px; /* Mobile Default */
+            margin: 0 auto;
+            transition: max-width 0.3s ease;
+        }
 
-  <style>
-    :root{
-      --font-inter: 'Inter', sans-serif;
-      --slate-950: #020617;
-      --slate-900: #0f172a;
-      --slate-600: #475569;
-      --blue-600: #2563eb;
-    }
+        /* PREMIUM EYEBROW */
+        .eyebrow {
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            color: var(--accent);
+            display: block;
+            margin-bottom: 16px;
+        }
 
-    html,body{height:100%}
-    body{
-      font-family:var(--font-inter);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      background:#fff;
-      color:var(--slate-600);
-      -webkit-font-feature-settings: "liga" 1;
-    }
+        .headline {
+            font-size: 32px;
+            font-weight: 600;
+            letter-spacing: -0.04em;
+            line-height: 1.1;
+            margin-bottom: 40px;
+            color: var(--text-main);
+        }
 
-    .material-symbols-outlined{
-      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-      font-family: 'Material Symbols Outlined';
-      display:inline-block;
-      vertical-align:middle;
-      user-select:none;
-    }
+        .section-spacer { margin-bottom: 100px; }
+        
+        .grid-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
 
-    /* HEADINGS: make them clearly the biggest elements on the page */
-    h1,h2,h3,h4{
-      color:var(--slate-950);
-      font-weight:800;
-      letter-spacing:-0.02em;
-      line-height:0.95;
-      margin:0;
-      text-wrap:balance;
-    }
+        /* ICON BOXES */
+        .icon-box {
+            width: 48px;
+            height: 48px;
+            background-color: var(--accent-soft);
+            color: var(--accent);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
 
-    /* Aggressive display sizing for primary headings */
-    h1{
-      /* grows with viewport but clamps to sensible min and max */
-      font-size: clamp(3.75rem, 11vw, 8rem); /* ~60px to 128px */
-      line-height: 0.92;
-      letter-spacing: -0.028em;
-    }
+        /* NUMBER BADGES */
+        .number-badge {
+            font-size: 12px;
+            font-weight: 800;
+            width: 32px;
+            height: 32px;
+            border: 1.5px solid var(--border);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            color: var(--text-muted);
+            font-variant-numeric: tabular-nums;
+        }
 
-    /* Section large headings */
-    h2{
-      font-size: clamp(2.25rem, 6.5vw, 4.5rem); /* ~36px to 72px */
-      line-height: 0.96;
-      letter-spacing: -0.02em;
-    }
+        .item-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            letter-spacing: -0.01em;
+        }
 
-    h3{
-      font-size: clamp(1.125rem, 2.2vw, 1.75rem);
-      line-height:1.05;
-      letter-spacing:-0.01em;
-    }
+        .item-desc {
+            font-size: 16px;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
 
-    h4{
-      font-size: 1.125rem;
-      line-height:1.2;
-    }
+        /* ABOUT SECTION */
+        .about-grid { display: flex; flex-direction: column; gap: 32px; }
+        .founder-info { border-left: 2px solid var(--accent); padding-left: 24px; margin-top: 12px; }
+        .founder-name { font-size: 20px; font-weight: 600; color: var(--text-main); }
+        .location-tag { display: inline-flex; align-items: center; font-size: 12px; font-weight: 600; color: var(--text-muted); background: var(--accent-soft); padding: 4px 12px; border-radius: 6px; gap: 6px; margin-top: 8px; }
 
-    /* Ensure headings do not dominate layout on very small screens */
-    @media (max-width: 640px){
-      h1{ font-size: clamp(2.1rem, 9.4vw, 3.8rem); line-height:1; }
-      h2{ font-size: clamp(1.25rem, 6.5vw, 2rem); line-height:1.02; }
-    }
+        /* PRODUCT BANNER */
+        .product-banner {
+            background: var(--dark-card);
+            border-radius: 32px;
+            padding: 40px 24px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.3);
+        }
 
-    .bg-grid{
-      background-size: 40px 40px;
-      background-image: radial-gradient(circle, #e2e8f0 1.2px, transparent 1.2px);
-    }
+        .product-banner::after {
+            content: "";
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
 
-    .eyebrow{
-      font-size: 0.8125rem;
-      font-weight:700;
-      text-transform:uppercase;
-      letter-spacing:0.18em;
-      color:var(--blue-600);
-    }
+        .status-pill {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 6px 12px;
+            border-radius: 100px;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 24px;
+            color: #93c5fd;
+        }
 
-    .body-reading{
-      line-height:1.6;
-      letter-spacing:-0.01em;
-      font-size:1.125rem;
-    }
+        .status-dot { width: 6px; height: 6px; background: #60a5fa; border-radius: 50%; margin-right: 8px; box-shadow: 0 0 8px #60a5fa; }
 
-    .nav-desktop{ display: none; }
-    @media (min-width: 768px){
-      .nav-desktop{ display:flex; }
-      .nav-mobile-toggle{ display:none; }
-    }
+        .feature-chip-group { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+        .feature-chip { font-size: 12px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.05); padding: 8px 16px; border-radius: 10px; color: #cbd5e1; }
 
-    .mobile-menu {
-      position: fixed;
-      inset: 0;
-      z-index: 60;
-      display: none;
-      align-items: flex-start;
-      justify-content: center;
-      padding-top: 4.5rem;
-      background: rgba(2,6,23,0.35);
-      backdrop-filter: blur(4px);
-    }
-    .mobile-menu.open { display: flex; }
+        /* WHY US LISTING */
+        .reason-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+        .reason-item { padding: 32px 0; border-bottom: 1px solid var(--border); }
+        .reason-item:last-child { border-bottom: none; padding-bottom: 0; }
+        .reason-title { font-size: 18px; font-weight: 600; margin-bottom: 12px; display: flex; align-items: center; }
+        .reason-title::before { content: ""; width: 8px; height: 8px; background: var(--accent); border-radius: 2px; margin-right: 12px; }
 
-    .mobile-drawer {
-      width: 95%;
-      max-width: 420px;
-      background: #fff;
-      border-radius: 16px;
-      padding: 1.5rem;
-      box-shadow: 0 20px 40px rgba(2,6,23,0.12);
-    }
+        /* WHAT WE BUILD CARDS */
+        .card-stack { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 24px; 
+        }
+        .card { 
+            background: var(--card-bg); 
+            border: 1px solid var(--border); 
+            border-radius: 24px; 
+            padding: 32px; 
+            box-shadow: 0 1px 2px rgba(0,0,0,0.02); 
+            height: 100%; 
+            display: flex; 
+            flex-direction: column; 
+        }
+        .checklist { 
+            list-style: none; 
+            margin-top: auto; 
+            padding-top: 24px; 
+            display: flex; 
+            flex-direction: column; 
+            gap: 12px; 
+        }
+        .checklist-item { display: flex; align-items: center; font-size: 14px; font-weight: 500; color: var(--text-main); }
+        .check-icon { color: var(--accent); margin-right: 12px; width: 14px; height: 14px; }
 
-    button:focus, a:focus { outline: 3px solid rgba(37,99,235,0.12); outline-offset: 2px; border-radius: 8px; }
+        /* Tablet (MD) Optimizations */
+        @media (min-width: 768px) {
+            .container { max-width: 720px; padding: 80px 40px; }
+            .headline { font-size: 44px; margin-bottom: 56px; }
+            .grid-stack { display: grid; grid-template-columns: repeat(2, 1fr); gap: 48px; }
+            .section-spacer { margin-bottom: 120px; }
+            /* Transitioning build cards to 2 cols for tablet */
+            .card-stack { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+        }
 
-    .cta-btn { min-width: 10rem; }
-    @media (max-width:420px){ .cta-btn{ min-width: auto; padding-left:1rem; padding-right:1rem; } }
+        /* Desktop (LG) Optimizations */
+        @media (min-width: 1024px) {
+            .container { max-width: 1100px; padding: 120px 40px; }
+            .headline { font-size: 56px; max-width: 900px; }
+            
+            /* Multi-column layouts */
+            .grid-stack.cols-3 { 
+                display: grid; 
+                grid-template-columns: repeat(3, 1fr); 
+                gap: 40px; 
+            }
 
-    /* Slight tweak so hero heading can span more width before wrapping excessively */
-    .hero-inner { max-width: 900px; margin-left:auto; margin-right:auto; }
-    @media (min-width:1280px){ .hero-inner { max-width: 1100px; } }
+            /* Explicitly setting What We Build to 3 columns */
+            .card-stack { 
+                display: grid; 
+                grid-template-columns: repeat(3, 1fr); 
+                gap: 24px; 
+            }
+            
+            .about-grid { 
+                display: grid; 
+                grid-template-columns: 1.2fr 0.8fr; 
+                gap: 80px; 
+                align-items: start; 
+            }
+            
+            .product-banner { padding: 80px; }
+            .reason-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 80px; }
+        }
 
-  </style>
+        /* Large Desktop (XL) Optimizations */
+        @media (min-width: 1440px) {
+            .container { max-width: 1280px; }
+            .grid-stack { gap: 64px; }
+        }
+    </style>
 </head>
-<body class="antialiased">
+<body>
 
-  <nav class="w-full border-b border-slate-100 bg-white/95 backdrop-blur-md sticky top-0 z-50">
-    <div class="max-w-[1440px] mx-auto px-6 h-20 flex items-center justify-between">
-      <div class="flex items-center gap-6">
-        <div class="text-2xl font-extrabold text-slate-950 tracking-tighter">ironbyte</div>
-      </div>
-
-      <div class="nav-desktop items-center gap-10 text-[14px] font-semibold text-slate-500">
-        <a href="#logic" class="hover:text-slate-950 transition-colors">The Logic</a>
-        <a href="#who" class="hover:text-slate-950 transition-colors">Who it's for</a>
-        <a href="#pricing" class="hover:text-slate-950 transition-colors">Pricing</a>
-      </div>
-
-      <div class="flex items-center gap-4">
-        <div class="hidden md:flex items-center gap-4">
-          <button class="text-[14px] font-bold text-slate-950 px-4">Log in</button>
-          <button class="bg-blue-600 text-white text-[14px] font-bold px-6 py-3 rounded-xl hover:bg-blue-700 transition-all shadow-md">Get started</button>
-        </div>
-
-        <button id="mobileToggle" class="nav-mobile-toggle material-symbols-outlined text-3xl nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
-          menu
-        </button>
-      </div>
-    </div>
-  </nav>
-
-  <div id="mobileMenu" class="mobile-menu" role="dialog" aria-modal="true" aria-hidden="true">
-    <div class="mobile-drawer">
-      <div class="flex items-center justify-between mb-6">
-        <div class="text-xl font-extrabold text-slate-950">ironbyte</div>
-        <button id="mobileClose" class="material-symbols-outlined text-3xl" aria-label="Close menu">close</button>
-      </div>
-
-      <nav class="flex flex-col gap-4 mb-6" aria-label="Mobile primary">
-        <a href="#logic" class="block py-3 px-2 font-semibold text-slate-700 rounded hover:bg-slate-50">The Logic</a>
-        <a href="#who" class="block py-3 px-2 font-semibold text-slate-700 rounded hover:bg-slate-50">Who it's for</a>
-        <a href="#pricing" class="block py-3 px-2 font-semibold text-slate-700 rounded hover:bg-slate-50">Pricing</a>
-      </nav>
-
-      <div class="flex gap-3">
-        <a href="#" class="flex-1 text-center py-3 rounded-lg border font-bold">Log in</a>
-        <a href="#" class="flex-1 text-center py-3 rounded-lg bg-blue-600 text-white font-bold">Get started</a>
-      </div>
-    </div>
-  </div>
-
-  <header class="relative pt-28 pb-40 bg-grid overflow-hidden border-b border-slate-100">
-    <div class="max-w-7xl mx-auto px-6 text-center hero-inner">
-      <p class="eyebrow mb-8">Performance Architecture</p>
-
-      <h1 class="mb-8">
-        The UI engine for<br />
-        high-stakes operations.
-      </h1>
-
-      <p class="text-2xl text-slate-500 leading-snug max-w-3xl mx-auto font-normal tracking-tight body-reading">
-        Ironbyte delivers precision interface blocks for complex data. Built for teams that can't afford a single missed click.
-      </p>
-
-      <div class="mt-12 flex flex-wrap justify-center gap-4">
-        <button class="cta-btn bg-slate-950 text-white font-bold text-lg px-8 py-3 rounded-2xl hover:bg-slate-800 transition-all shadow-2xl shadow-slate-950/20">Start Building</button>
-        <button class="cta-btn bg-white border-2 border-slate-200 text-slate-950 font-bold text-lg px-8 py-3 rounded-2xl hover:bg-slate-50 transition-all">View Systems</button>
-      </div>
-    </div>
-  </header>
-
-  <section id="who" class="py-24 bg-white">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="mb-12 text-center">
-        <p class="eyebrow mb-6">Audience</p>
-        <h2 class="max-w-4xl mx-auto">Designed for those who<br />manage the physical world.</h2>
-      </div>
-
-      <div class="grid md:grid-cols-3 gap-12">
-        <div class="group">
-          <div class="h-1.5 w-12 bg-slate-950 mb-6 group-hover:w-full transition-all duration-500"></div>
-          <h3 class="mb-3 text-slate-950">Global Retailers</h3>
-          <p class="body-reading text-slate-500">For organizations managing thousands of SKUs across multiple timezones. We replace slow ERP wrappers with instant, readable dashboards.</p>
-        </div>
-
-        <div class="group">
-          <div class="h-1.5 w-12 bg-slate-950 mb-6 group-hover:w-full transition-all duration-500"></div>
-          <h3 class="mb-3 text-slate-950">Logistics Hubs</h3>
-          <p class="body-reading text-slate-500">Built for high-pressure floor environments where typography determines how fast an operator can confirm a shipment without errors.</p>
-        </div>
-
-        <div class="group">
-          <div class="h-1.5 w-12 bg-slate-950 mb-6 group-hover:w-full transition-all duration-500"></div>
-          <h3 class="mb-3 text-slate-950">Data Ops Teams</h3>
-          <p class="body-reading text-slate-500">Perfect for internal developers building custom tools for supply chain monitoring, security audits, and real-time inventory tracking.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="logic" class="py-20 border-t border-slate-100 bg-slate-50/50">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="flex flex-col lg:flex-row items-start gap-10">
-        <div class="lg:w-3/5">
-          <p class="eyebrow mb-6">The Logic</p>
-          <h2 class="mb-6">No noise. <br />Just performance.</h2>
-          <p class="text-2xl body-reading text-slate-600 mb-8 max-w-2xl">Most internal tools fail because they prioritize features over readability. We use a high-contrast type system to ensure your data is the protagonist of the interface.</p>
-
-          <div class="grid sm:grid-cols-2 gap-6">
-            <div class="p-6 bg-white rounded-2xl border border-slate-100 shadow-sm">
-              <h4 class="text-slate-950 mb-2">Sub-second Latency</h4>
-              <p class="text-sm text-slate-500 font-medium leading-relaxed">Interfaces that react as fast as you think, removing the friction between insight and action.</p>
+    <main class="container">
+        
+        <!-- ABOUT SECTION -->
+        <section class="section-spacer">
+            <span class="eyebrow">About</span>
+            <h2 class="headline">Precision engineering, built with purpose.</h2>
+            <div class="about-grid">
+                <div>
+                    <p class="about-text" style="font-size: 18px; color: var(--text-muted); margin-bottom: 32px;">
+                        We believe that great software shouldn't just exist—it should perform. In high-stakes operations, we replace workplace confusion with technical clarity, building systems as resilient as the businesses they power.
+                    </p>
+                    <div class="founder-info">
+                        <h4 class="founder-name">Leon Nyaramb</h4>
+                        <p style="font-size: 14px; color: var(--text-muted); font-weight: 500;">Founder & Lead Engineer</p>
+                        <div class="location-tag"><i data-lucide="map-pin" style="width:12px"></i> Kwekwe, Zimbabwe</div>
+                    </div>
+                </div>
+                <div style="background: var(--card-bg); border: 1px solid var(--border); padding: 32px; border-radius: 24px; align-self: start;">
+                    <h5 class="eyebrow" style="margin-bottom: 8px;">The Vision</h5>
+                    <p style="font-size: 15px; font-weight: 600; color: var(--text-main);">Local insights, world-class execution. Systems built for the people who manage the physical world.</p>
+                </div>
             </div>
-            <div class="p-6 bg-white rounded-2xl border border-slate-100 shadow-sm">
-              <h4 class="text-slate-950 mb-2">High Density</h4>
-              <p class="text-sm text-slate-500 font-medium leading-relaxed">Engineered to show more information without increasing cognitive load or visual clutter.</p>
+        </section>
+
+        <!-- AUDIENCE SECTION -->
+        <section class="section-spacer">
+            <span class="eyebrow">Audience</span>
+            <h2 class="headline">Built for those who manage the physical world.</h2>
+            <div class="grid-stack cols-3">
+                <div class="item">
+                    <div class="icon-box"><i data-lucide="shopping-cart"></i></div>
+                    <h3 class="item-title">Global Retailers</h3>
+                    <p class="item-desc">High-speed interfaces designed to manage thousands of SKUs across timezones with zero friction.</p>
+                </div>
+                <div class="item">
+                    <div class="icon-box"><i data-lucide="truck"></i></div>
+                    <h3 class="item-title">Logistics Hubs</h3>
+                    <p class="item-desc">Optimized for high-pressure floor environments where clear typography reduces mission-critical mistakes.</p>
+                </div>
+                <div class="item">
+                    <div class="icon-box"><i data-lucide="database"></i></div>
+                    <h3 class="item-title">Data Ops Teams</h3>
+                    <p class="item-desc">Audit-ready dashboards for real-time monitoring. Information when you need it, hidden when you don't.</p>
+                </div>
             </div>
-          </div>
-        </div>
+        </section>
 
-        <div class="lg:w-2/5 bg-slate-950 p-10 rounded-2xl text-white shadow-xl lg:mt-6">
-          <p class="eyebrow text-blue-300 mb-6">System Status</p>
-          <div class="space-y-8">
-            <div>
-              <div class="flex justify-between items-end mb-3">
-                <span class="text-4xl font-extrabold tracking-tighter">99.98%</span>
-                <span class="text-blue-400 font-bold uppercase text-[12px] tracking-widest mb-1">Operational</span>
-              </div>
-              <div class="h-3 w-full bg-slate-800 rounded-full overflow-hidden">
-                <div class="h-full bg-blue-500 w-[99%]"></div>
-              </div>
+        <!-- PROCESS SECTION -->
+        <section class="section-spacer">
+            <span class="eyebrow">Process</span>
+            <h2 class="headline">How we deliver reliable systems</h2>
+            <div class="grid-stack cols-3">
+                <div class="item">
+                    <div class="number-badge">01</div>
+                    <h3 class="item-title">Plan & Audit</h3>
+                    <p class="item-desc">We start by deeply understanding your workflows and data flows to drive a practical scope and a sensible roadmap.</p>
+                </div>
+                <div class="item">
+                    <div class="number-badge">02</div>
+                    <h3 class="item-title">Build & Integrate</h3>
+                    <p class="item-desc">Engineering focused on reliability: scalable APIs, resilient background processing, and integrations that map to real needs.</p>
+                </div>
+                <div class="item">
+                    <div class="number-badge">03</div>
+                    <h3 class="item-title">Ship & Support</h3>
+                    <p class="item-desc">Seamless deployments with constant monitoring. We don't just hand over code; we ensure the system thrives in production.</p>
+                </div>
             </div>
+        </section>
 
-            <div class="pt-6 border-t border-slate-800">
-              <h3 class="text-white mb-4 text-2xl">Active Sessions</h3>
-              <p class="text-slate-400 body-reading text-base leading-relaxed">Over 4,2k concurrent operators across 12 global regions currently utilizing the Ironbyte engine for mission-critical tasks.</p>
+        <!-- PRODUCT BANNER (DispatchMate) -->
+        <section class="section-spacer">
+            <div class="product-banner">
+                <div class="status-pill"><div class="status-dot"></div> Coming Soon: Product Spotlight</div>
+                <h2 class="headline" style="color: white; margin-bottom: 16px;">DispatchMate</h2>
+                <p style="color: #94a3b8; font-size: 18px; margin-bottom: 32px; max-width: 600px;">Turn workplace confusion into quick, clear action. A smart tool that helps shop workers find products instantly—without memorizing a single code.</p>
+                <div class="feature-chip-group">
+                    <span class="feature-chip">Smart Search</span>
+                    <span class="feature-chip">Instant Pricing</span>
+                    <span class="feature-chip">Shelf Mapping</span>
+                    <span class="feature-chip">Zero-Memorization UI</span>
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+        </section>
 
-  <footer class="py-12 bg-white border-t border-slate-100">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="flex flex-col md:flex-row justify-between items-start gap-8">
-        <div>
-          <div class="text-3xl font-extrabold text-slate-950 tracking-tighter mb-4">ironbyte</div>
-          <p class="text-slate-500 max-w-sm text-base font-medium leading-relaxed">The typography-first design system for industrial-grade web applications.</p>
-        </div>
+        <!-- WHY US SECTION -->
+        <section class="section-spacer">
+            <span class="eyebrow">Why Us</span>
+            <h2 class="headline">Bridging the gap between data and human action.</h2>
+            <div class="reason-grid">
+                <div class="reason-item">
+                    <h3 class="reason-title">Bespoke Engineering</h3>
+                    <p class="item-desc">We don't do "off-the-shelf." Every system is custom-engineered to solve the specific bottlenecks of your unique workflow.</p>
+                </div>
+                <div class="reason-item">
+                    <h3 class="reason-title">Performance First</h3>
+                    <p class="item-desc">Zero-latency interactions. In operations, every millisecond saved is money earned and errors avoided.</p>
+                </div>
+                <div class="reason-item">
+                    <h3 class="reason-title">Focus on Edge Cases</h3>
+                    <p class="item-desc">We build for the 1% — the errors, delays, and anomalies that actually disrupt your day-to-day operations.</p>
+                </div>
+                <div class="reason-item">
+                    <h3 class="reason-title">Future-Proof Core</h3>
+                    <p class="item-desc">Modern tech stacks that grow with you, ensuring your infrastructure scales seamlessly without becoming a legacy burden.</p>
+                </div>
+            </div>
+        </section>
 
-        <div class="grid grid-cols-2 gap-12">
-          <div>
-            <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-4">Product</p>
-            <ul class="space-y-3 text-[15px] font-bold text-slate-950">
-              <li><a href="#" class="hover:text-blue-600 transition-colors">Components</a></li>
-              <li><a href="#" class="hover:text-blue-600 transition-colors">Templates</a></li>
-              <li><a href="#" class="hover:text-blue-600 transition-colors">Security</a></li>
-            </ul>
-          </div>
+        <!-- WHAT WE BUILD SECTION -->
+        <section class="section-spacer">
+            <span class="eyebrow">What We Build</span>
+            <h2 class="headline">Systems that power operations and growth.</h2>
+            <div class="card-stack">
+                <div class="card">
+                    <div>
+                        <div class="icon-box"><i data-lucide="server"></i></div>
+                        <h3 class="item-title">Infrastructure</h3>
+                        <p class="item-desc" style="font-size: 14px;">Robust server-side systems and cloud automation that scale with your business.</p>
+                    </div>
+                    <ul class="checklist">
+                        <li class="checklist-item"><i data-lucide="check" class="check-icon"></i> APIs & Service Meshes</li>
+                        <li class="checklist-item"><i data-lucide="check" class="check-icon"></i> Auth & Access Control</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div>
+                        <div class="icon-box"><i data-lucide="package"></i></div>
+                        <h3 class="item-title">Operational</h3>
+                        <p class="item-desc" style="font-size: 14px;">Internal systems that run day-to-day operations from inventory to dispatch.</p>
+                    </div>
+                    <ul class="checklist">
+                        <li class="checklist-item"><i data-lucide="check" class="check-icon"></i> Inventory Management</li>
+                        <li class="checklist-item"><i data-lucide="check" class="check-icon"></i> Logistics & Dispatch</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div>
+                        <div class="icon-box"><i data-lucide="globe"></i></div>
+                        <h3 class="item-title">Web Platforms</h3>
+                        <p class="item-desc" style="font-size: 14px;">High-performance client-facing platforms focused on conversion and reliability.</p>
+                    </div>
+                    <ul class="checklist">
+                        <li class="checklist-item"><i data-lucide="check" class="check-icon"></i> Marketing Sites</li>
+                        <li class="checklist-item"><i data-lucide="check" class="check-icon"></i> Client Portals</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
-          <div>
-            <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-4">Company</p>
-            <ul class="space-y-3 text-[15px] font-bold text-slate-950">
-              <li><a href="#" class="hover:text-blue-600 transition-colors">About</a></li>
-              <li><a href="#" class="hover:text-blue-600 transition-colors">Careers</a></li>
-              <li><a href="#" class="hover:text-blue-600 transition-colors">Blog</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
+    </main>
 
-      <div class="mt-10 pt-6 border-t border-slate-100 flex flex-col sm:flex-row justify-between items-center gap-4 text-[14px] text-slate-400 font-medium">
-        <span>© 2024 Ironbyte Systems Inc. All rights reserved.</span>
-        <div class="flex gap-6">
-          <a href="#" class="hover:text-slate-950 transition-colors">Twitter</a>
-          <a href="#" class="hover:text-slate-950 transition-colors">GitHub</a>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    (function(){
-      const toggle = document.getElementById('mobileToggle');
-      const closeBtn = document.getElementById('mobileClose');
-      const menu = document.getElementById('mobileMenu');
-
-      function openMenu(){
-        menu.classList.add('open');
-        menu.setAttribute('aria-hidden','false');
-        toggle.setAttribute('aria-expanded','true');
-        document.body.style.overflow = 'hidden';
-        const firstLink = menu.querySelector('nav a, button, a');
-        if(firstLink) firstLink.focus();
-      }
-
-      function closeMenu(){
-        menu.classList.remove('open');
-        menu.setAttribute('aria-hidden','true');
-        toggle.setAttribute('aria-expanded','false');
-        document.body.style.overflow = '';
-        toggle.focus();
-      }
-
-      toggle.addEventListener('click', () => {
-        const isOpen = menu.classList.contains('open');
-        isOpen ? closeMenu() : openMenu();
-      });
-
-      closeBtn.addEventListener('click', closeMenu);
-
-      menu.addEventListener('click', (e) => {
-        if(e.target === menu) closeMenu();
-      });
-
-      document.addEventListener('keydown', (e) => {
-        if(e.key === 'Escape' && menu.classList.contains('open')) closeMenu();
-      });
-    })();
-  </script>
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
 </html>
