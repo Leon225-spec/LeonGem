@@ -2,14 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>Leon Nyaramb | Premium Operational Systems</title>
-    <!-- Geist: The high-end engineering font -->
+    <!-- Geist and Google Material Symbols -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
+        /* THE "CUTE" RESET: Normalizing behavior across all browsers */
         :root {
             --bg: #fcfcfd;
             --text-main: #0f172a;
@@ -19,321 +21,413 @@
             --border: #e2e8f0;
             --card-bg: #ffffff;
             --dark-card: #0f172a;
+            
+            /* FORCE COMPACT SCALE */
+            font-size: 14px; /* This makes 1rem = 14px instead of the bulky 16px default */
+            -webkit-text-size-adjust: 100%; /* Prevents iOS from blowing up text in landscape */
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
             font-family: 'Geist', sans-serif;
             background-color: var(--bg);
             color: var(--text-main);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
+            line-height: 1.5;
+            font-size: 1rem; /* 14px */
         }
 
-        .container {
-            padding: 80px 24px;
-            max-width: 600px;
+        /* NAVIGATION */
+        .nav-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(252, 252, 253, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .navbar {
+            max-width: 1200px;
             margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
 
-        /* PREMIUM EYEBROW */
-        .eyebrow {
-            font-size: 11px;
+        .logo {
             font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.25em;
-            color: var(--accent);
-            display: block;
-            margin-bottom: 16px;
+            font-size: 1.4rem;
+            letter-spacing: -0.05em;
+            text-transform: lowercase;
+            color: var(--text-main);
+            text-decoration: none;
         }
 
-        .headline {
-            font-size: 36px;
+        .logo span { color: var(--accent); }
+
+        .nav-links {
+            display: none; /* Mobile */
+            gap: 2rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover { color: var(--text-main); }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+        }
+
+        .cta-button {
+            background: var(--text-main);
+            color: white;
+            padding: 0.7rem 1.2rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
             font-weight: 600;
-            letter-spacing: -0.04em;
-            line-height: 1.1;
-            margin-bottom: 56px;
+            text-decoration: none;
+            transition: transform 0.2s, opacity 0.2s;
+        }
+
+        .cta-button:hover { 
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        .menu-toggle {
+            display: flex;
+            align-items: center;
+            border: none;
+            background: transparent;
+            cursor: pointer;
             color: var(--text-main);
         }
 
-        .section-spacer { margin-bottom: 140px; }
-        
-        .grid-stack {
-            display: flex;
-            flex-direction: column;
-            gap: 48px;
+        /* HERO SECTION - COMPACT REFINEMENT */
+        .hero {
+            padding-top: 10rem;
+            padding-bottom: 5rem;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+            max-width: 1100px;
+            margin: 0 auto;
+            text-align: center;
         }
 
-        /* ICON BOXES */
+        .hero-eyebrow {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 8vw, 5rem); /* Responsive but controlled */
+            font-weight: 600;
+            line-height: 1.05;
+            letter-spacing: -0.04em;
+            margin-bottom: 1.5rem;
+            color: var(--text-main);
+        }
+
+        .hero-title span { color: var(--text-muted); }
+
+        .hero-sub {
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            color: var(--text-muted);
+            line-height: 1.6;
+            max-width: 550px;
+            margin: 0 auto 2.5rem auto;
+        }
+
+        /* GLOBAL TYPOGRAPHY CLASSES */
+        .eyebrow {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .headline {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 600;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 3rem;
+            color: var(--text-main);
+        }
+
+        /* GRID LOGIC */
+        .container {
+            padding: 4rem 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-spacer { margin-bottom: 7rem; }
+        
+        .grid-stack {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+        }
+
         .icon-box {
-            width: 48px;
-            height: 48px;
+            width: 3.5rem;
+            height: 3.5rem;
             background-color: var(--accent-soft);
             color: var(--accent);
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 24px;
-        }
-
-        /* NUMBER BADGES */
-        .number-badge {
-            font-size: 12px;
-            font-weight: 800;
-            width: 32px;
-            height: 32px;
-            border: 1.5px solid var(--border);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 24px;
-            color: var(--text-muted);
-            font-variant-numeric: tabular-nums;
+            margin-bottom: 1.5rem;
         }
 
         .item-title {
-            font-size: 20px;
+            font-size: 1.3rem;
             font-weight: 600;
-            margin-bottom: 12px;
+            margin-bottom: 0.75rem;
             letter-spacing: -0.01em;
         }
 
         .item-desc {
-            font-size: 16px;
+            font-size: 1rem;
             color: var(--text-muted);
-            line-height: 1.7;
+            line-height: 1.6;
         }
-
-        /* ABOUT SECTION */
-        .about-grid { display: flex; flex-direction: column; gap: 32px; }
-        .founder-info { border-left: 2px solid var(--accent); padding-left: 24px; margin-top: 12px; }
-        .founder-name { font-size: 20px; font-weight: 600; color: var(--text-main); }
-        .location-tag { display: inline-flex; align-items: center; font-size: 12px; font-weight: 600; color: var(--text-muted); background: var(--accent-soft); padding: 4px 12px; border-radius: 6px; gap: 6px; margin-top: 8px; }
-
-        /* PRODUCT BANNER */
-        .product-banner {
-            background: var(--dark-card);
-            border-radius: 32px;
-            padding: 48px 32px;
-            color: white;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.3);
-        }
-
-        .product-banner::after {
-            content: "";
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(37, 99, 235, 0.15) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .status-pill {
-            display: inline-flex;
-            align-items: center;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 6px 12px;
-            border-radius: 100px;
-            font-size: 10px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 24px;
-            color: #93c5fd;
-        }
-
-        .status-dot { width: 6px; height: 6px; background: #60a5fa; border-radius: 50%; margin-right: 8px; box-shadow: 0 0 8px #60a5fa; }
-
-        .feature-chip-group { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
-        .feature-chip { font-size: 12px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.05); padding: 8px 16px; border-radius: 10px; color: #cbd5e1; }
-
-        /* WHY US LISTING - IMPROVED PADDING */
-        .reason-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
-        .reason-item { padding: 32px 0 48px 0; border-bottom: 1px solid var(--border); }
-        .reason-item:last-child { border-bottom: none; padding-bottom: 0; }
-        .reason-title { font-size: 18px; font-weight: 600; margin-bottom: 12px; display: flex; align-items: center; }
-        .reason-title::before { content: ""; width: 8px; height: 8px; background: var(--accent); border-radius: 2px; margin-right: 12px; }
 
         /* WHAT WE BUILD CARDS */
-        .card-stack { display: flex; flex-direction: column; gap: 24px; }
-        .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 24px; padding: 32px; box-shadow: 0 1px 2px rgba(0,0,0,0.02); }
-        .checklist { list-style: none; margin-top: 24px; display: flex; flex-direction: column; gap: 12px; }
-        .checklist-item { display: flex; align-items: center; font-size: 14px; font-weight: 500; color: var(--text-main); }
-        .check-icon { color: var(--accent); margin-right: 12px; width: 14px; height: 14px; }
+        .card-stack { 
+            display: grid; 
+            grid-template-columns: 1fr; 
+            gap: 1.5rem; 
+        }
 
-        /* Desktop Optimizations */
+        .card { 
+            background: var(--card-bg); 
+            border: 1px solid var(--border); 
+            border-radius: 20px; 
+            padding: 2rem; 
+            display: flex; 
+            flex-direction: column;
+            transition: border-color 0.3s ease;
+        }
+        
+        .card:hover { border-color: var(--accent); }
+
+        .checklist { list-style: none; margin-top: 1.5rem; }
+        .checklist-item { font-size: 0.9rem; margin-top: 0.5rem; display: flex; align-items: center; color: var(--text-main); font-weight: 500; }
+        .check-icon { color: var(--accent); margin-right: 0.75rem; width: 1rem; }
+
+        /* MOBILE MENU OVERLAY */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: var(--bg);
+            z-index: 2000;
+            padding: 2.5rem 1.5rem;
+            display: none;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        .mobile-menu.active { display: flex; }
+
+        /* RESPONSIVE BREAKPOINTS */
+        @media (min-width: 768px) {
+            .grid-stack { grid-template-columns: repeat(2, 1fr); }
+            .card-stack { grid-template-columns: repeat(2, 1fr); }
+        }
+
         @media (min-width: 1024px) {
-            .container { max-width: 1100px; padding: 120px 40px; }
-            .grid-stack, .card-stack { display: grid; grid-template-columns: repeat(3, 1fr); gap: 60px; }
-            .about-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; align-items: center; }
-            .headline { font-size: 56px; max-width: 850px; }
-            .product-banner { padding: 80px; }
-            .reason-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 80px; }
+            .nav-links { display: flex; }
+            .menu-toggle { display: none; }
+            .hero { text-align: left; padding-top: 14rem; }
+            .hero-sub { margin-left: 0; }
+            .hero-actions { flex-direction: row; justify-content: flex-start; }
+            .btn-primary { width: auto; }
+            
+            .grid-stack.cols-3, .card-stack { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+            padding: 1.1rem 2rem;
+            border-radius: 10px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            transition: opacity 0.2s;
+        }
+        .btn-primary:hover { opacity: 0.9; }
+        
+        .btn-secondary {
+            color: var(--text-main);
+            font-weight: 600;
+            text-decoration: none;
+            padding: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
         }
     </style>
 </head>
 <body>
 
-    <main class="container">
-        
-        <!-- ABOUT SECTION -->
-        <section class="section-spacer">
-            <span class="eyebrow">About</span>
-            <h2 class="headline">Precision engineering, built with purpose.</h2>
-            <div class="about-grid">
-                <div>
-                    <p class="about-text" style="font-size: 18px; color: var(--text-muted); margin-bottom: 32px;">
-                        We believe that great software shouldn't just exist—it should perform. In high-stakes operations, we replace workplace confusion with technical clarity, building systems as resilient as the businesses they power.
-                    </p>
-                    <div class="founder-info">
-                        <h4 class="founder-name">Leon Nyaramb</h4>
-                        <p style="font-size: 14px; color: var(--text-muted); font-weight: 500;">Founder & Lead Engineer</p>
-                        <div class="location-tag"><i data-lucide="map-pin" style="width:12px"></i> Kwekwe, Zimbabwe</div>
-                    </div>
-                </div>
-                <div style="background: var(--card-bg); border: 1px solid var(--border); padding: 32px; border-radius: 24px;">
-                    <h5 class="eyebrow" style="margin-bottom: 8px;">The Vision</h5>
-                    <p style="font-size: 15px; font-weight: 600; color: var(--text-main);">Local insights, world-class execution. Systems built for the people who manage the physical world.</p>
-                </div>
+    <nav class="nav-wrapper">
+        <div class="navbar">
+            <a href="#" class="logo">iron<span>byte</span></a>
+            <div class="nav-links">
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#process" class="nav-link">Process</a>
+                <a href="#dispatchmate" class="nav-link">DispatchMate</a>
+                <a href="#about" class="nav-link">About</a>
             </div>
-        </section>
+            <div class="nav-right">
+                <a href="mailto:contact@ironbyte.co" class="cta-button">Work with us</a>
+                <button class="menu-toggle" id="menuToggle"><span class="material-symbols-outlined">menu</span></button>
+            </div>
+        </div>
+    </nav>
 
-        <!-- AUDIENCE SECTION -->
-        <section class="section-spacer">
-            <span class="eyebrow">Audience</span>
+    <div class="mobile-menu" id="mobileMenu">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+            <a href="#" class="logo">iron<span>byte</span></a>
+            <button class="menu-toggle" id="closeMenu"><span class="material-symbols-outlined">close</span></button>
+        </div>
+        <a href="#services" class="nav-link" style="font-size: 1.5rem;">Services</a>
+        <a href="#process" class="nav-link" style="font-size: 1.5rem;">Process</a>
+        <a href="#dispatchmate" class="nav-link" style="font-size: 1.5rem;">DispatchMate</a>
+        <a href="#about" class="nav-link" style="font-size: 1.5rem;">About</a>
+    </div>
+
+    <header class="hero">
+        <span class="hero-eyebrow">Now available in Zimbabwe</span>
+        <h1 class="hero-title">Engineering the next <span>generation of operation systems.</span></h1>
+        <p class="hero-sub">We build high-performance software that turns workplace complexity into absolute operational clarity.</p>
+        <div class="hero-actions">
+            <a href="#services" class="btn-primary">Explore Solutions <i data-lucide="arrow-right" style="width: 1.2rem"></i></a>
+            <a href="#work" class="btn-secondary">View our work</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- SERVICES -->
+        <section id="services" class="section-spacer">
+            <span class="eyebrow">Who we help</span>
             <h2 class="headline">Built for those who manage the physical world.</h2>
-            <div class="grid-stack">
+            <div class="grid-stack cols-3">
                 <div class="item">
                     <div class="icon-box"><i data-lucide="shopping-cart"></i></div>
                     <h3 class="item-title">Global Retailers</h3>
-                    <p class="item-desc">High-speed interfaces designed to manage thousands of SKUs across timezones with zero friction.</p>
+                    <p class="item-desc">High-speed interfaces designed to manage thousands of SKUs with zero friction.</p>
                 </div>
                 <div class="item">
                     <div class="icon-box"><i data-lucide="truck"></i></div>
                     <h3 class="item-title">Logistics Hubs</h3>
-                    <p class="item-desc">Optimized for high-pressure floor environments where clear typography reduces mission-critical mistakes.</p>
+                    <p class="item-desc">Optimized for high-pressure floor environments where clarity reduces critical mistakes.</p>
                 </div>
                 <div class="item">
                     <div class="icon-box"><i data-lucide="database"></i></div>
                     <h3 class="item-title">Data Ops Teams</h3>
-                    <p class="item-desc">Audit-ready dashboards for real-time monitoring. Information when you need it, hidden when you don't.</p>
+                    <p class="item-desc">Audit-ready dashboards for real-time monitoring and reporting.</p>
                 </div>
             </div>
         </section>
 
-        <!-- PROCESS SECTION -->
-        <section class="section-spacer">
-            <span class="eyebrow">Process</span>
-            <h2 class="headline">How we deliver reliable systems</h2>
-            <div class="grid-stack">
-                <div class="item">
-                    <div class="number-badge">01</div>
-                    <h3 class="item-title">Plan & Audit</h3>
-                    <p class="item-desc">We start by deeply understanding your workflows and data flows to drive a practical scope and a sensible roadmap.</p>
-                </div>
-                <div class="item">
-                    <div class="number-badge">02</div>
-                    <h3 class="item-title">Build & Integrate</h3>
-                    <p class="item-desc">Engineering focused on reliability: scalable APIs, resilient background processing, and integrations that map to real needs.</p>
-                </div>
-                <div class="item">
-                    <div class="number-badge">03</div>
-                    <h3 class="item-title">Ship & Support</h3>
-                    <p class="item-desc">Seamless deployments with constant monitoring. We don't just hand over code; we ensure the system thrives in production.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- PRODUCT BANNER (DispatchMate) -->
-        <section class="section-spacer">
-            <div class="product-banner">
-                <div class="status-pill"><div class="status-dot"></div> Coming Soon: Product Spotlight</div>
-                <h2 class="headline" style="color: white; margin-bottom: 16px; font-size: 32px;">DispatchMate</h2>
-                <p style="color: #94a3b8; font-size: 18px; margin-bottom: 32px; max-width: 600px;">Turn workplace confusion into quick, clear action. A smart tool that helps shop workers find products instantly—without memorizing a single code.</p>
-                <div class="feature-chip-group">
-                    <span class="feature-chip">Smart Search</span>
-                    <span class="feature-chip">Instant Pricing</span>
-                    <span class="feature-chip">Shelf Mapping</span>
-                    <span class="feature-chip">Zero-Memorization UI</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- WHY US SECTION -->
-        <section class="section-spacer">
-            <span class="eyebrow">Why Us</span>
-            <h2 class="headline">Bridging the gap between data and human action.</h2>
-            <div class="reason-grid">
-                <div class="reason-item">
-                    <h3 class="reason-title">Bespoke Engineering</h3>
-                    <p class="item-desc">We don't do "off-the-shelf." Every system is custom-engineered to solve the specific bottlenecks of your unique workflow.</p>
-                </div>
-                <div class="reason-item">
-                    <h3 class="reason-title">Performance First</h3>
-                    <p class="item-desc">Zero-latency interactions. In operations, every millisecond saved is money earned and errors avoided.</p>
-                </div>
-                <div class="reason-item">
-                    <h3 class="reason-title">Focus on Edge Cases</h3>
-                    <p class="item-desc">We build for the 1% — the errors, delays, and anomalies that actually disrupt your day-to-day operations.</p>
-                </div>
-                <div class="reason-item">
-                    <h3 class="reason-title">Future-Proof Core</h3>
-                    <p class="item-desc">Modern tech stacks that grow with you, ensuring your infrastructure scales seamlessly without becoming a legacy burden.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- WHAT WE BUILD SECTION -->
-        <section class="section-spacer">
-            <span class="eyebrow">What We Build</span>
-            <h2 class="headline">Systems that power operations and growth.</h2>
+        <!-- EXPERTISE / WHAT WE BUILD -->
+        <section id="work" class="section-spacer">
+            <span class="eyebrow">Expertise</span>
+            <h2 class="headline">Systems that power growth.</h2>
             <div class="card-stack">
                 <div class="card">
                     <div class="icon-box"><i data-lucide="server"></i></div>
                     <h3 class="item-title">Infrastructure</h3>
-                    <p class="item-desc" style="font-size: 14px;">Robust server-side systems and cloud automation that scale with your business.</p>
+                    <p class="item-desc">Resilient server-side systems and cloud automation.</p>
                     <ul class="checklist">
-                        <li class="checklist-item"><i data-lucide="check" class="check-icon"></i> APIs & Service Meshes</li>
-                        <li class="checklist-item"><i data-lucide="check" class="check-icon"></i> Auth & Access Control</li>
+                        <li class="checklist-item"><i data-lucide="check" class="check-icon"></i> Scalable APIs</li>
+                        <li class="checklist-item"><i data-lucide="check" class="check-icon"></i> Secure Auth</li>
                     </ul>
                 </div>
                 <div class="card">
                     <div class="icon-box"><i data-lucide="package"></i></div>
                     <h3 class="item-title">Operational</h3>
-                    <p class="item-desc" style="font-size: 14px;">Internal systems that run day-to-day operations from inventory to dispatch.</p>
+                    <p class="item-desc">Internal systems for inventory and logistics.</p>
                     <ul class="checklist">
-                        <li class="checklist-item"><i data-lucide="check" class="check-icon"></i> Inventory Management</li>
-                        <li class="checklist-item"><i data-lucide="check" class="check-icon"></i> Logistics & Dispatch</li>
+                        <li class="checklist-item"><i data-lucide="check" class="check-icon"></i> Shelf Mapping</li>
+                        <li class="checklist-item"><i data-lucide="check" class="check-icon"></i> Dispatch Flow</li>
                     </ul>
                 </div>
                 <div class="card">
                     <div class="icon-box"><i data-lucide="globe"></i></div>
-                    <h3 class="item-title">Web Platforms</h3>
-                    <p class="item-desc" style="font-size: 14px;">High-performance client-facing platforms focused on conversion and reliability.</p>
+                    <h3 class="item-title">Platforms</h3>
+                    <p class="item-desc">High-performance client portals and web apps.</p>
                     <ul class="checklist">
-                        <li class="checklist-item"><i data-lucide="check" class="check-icon"></i> Marketing Sites</li>
-                        <li class="checklist-item"><i data-lucide="check" class="check-icon"></i> Client Portals</li>
+                        <li class="checklist-item"><i data-lucide="check" class="check-icon"></i> Custom Dashboards</li>
+                        <li class="checklist-item"><i data-lucide="check" class="check-icon"></i> Growth Tools</li>
                     </ul>
                 </div>
             </div>
         </section>
 
+        <!-- ABOUT (Added back for completeness) -->
+        <section id="about" class="section-spacer">
+            <span class="eyebrow">About Us</span>
+            <h2 class="headline">Precision engineering, built with purpose.</h2>
+            <p class="item-desc" style="max-width: 600px; margin-bottom: 2rem;">
+                We believe that great software shouldn't just exist—it should perform. In high-stakes operations, we replace workplace confusion with technical clarity.
+            </p>
+            <div style="border-left: 2px solid var(--accent); padding-left: 1.5rem;">
+                <p style="font-weight: 600; font-size: 1.1rem;">Leon Nyaramb</p>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">Founder & Lead Engineer — Kwekwe, Zimbabwe</p>
+            </div>
+        </section>
     </main>
 
     <script>
         lucide.createIcons();
+        const menuToggle = document.getElementById('menuToggle');
+        const closeMenu = document.getElementById('closeMenu');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        menuToggle.onclick = () => mobileMenu.classList.add('active');
+        closeMenu.onclick = () => mobileMenu.classList.remove('active');
+        document.querySelectorAll('.mobile-menu .nav-link').forEach(l => l.onclick = () => mobileMenu.classList.remove('active'));
     </script>
 </body>
 </html>
