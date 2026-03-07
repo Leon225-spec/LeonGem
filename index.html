@@ -1,170 +1,600 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Ironbyte | Standardized Systems</title>
-    
-    <!-- High-Priority Font Loading -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#ffffff" />
+  <title>Ironbyte — The Architecture of Efficiency</title>
 
-    <style>
-        :root {
-            --font-inter: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        }
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@1,400&display=swap" rel="stylesheet" />
 
-        html {
-            -webkit-text-size-adjust: 100%;
-            text-size-adjust: 100%;
-        }
+  <style>
+    /* ── Hard reset — override browser defaults before anything else ── */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        body {
-            font-family: var(--font-inter);
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            /* Prioritizes exact positioning of letters over speed */
-            text-rendering: geometricPrecision; 
-            overflow-x: hidden;
-            color: #0f172a;
-        }
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+    }
 
-        .font-lock {
-            font-family: var(--font-inter) !important;
-        }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+      color: #0f172a;
+      background: #ffffff;
+      -webkit-text-size-adjust: 100%;
+      -moz-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
 
-        /* Standardized Tracking: Avoids the "bloat" seen in Chrome screenshots */
-        .eyebrow-lock {
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-        }
+    ::selection {
+      background: #dbeafe;
+    }
 
-        /* Heading: Semi-bold (600) is safer for cross-browser consistency than 700+ */
-        .heading-lock {
-            letter-spacing: normal;
-            line-height: 1.2;
-        }
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
 
-        .service-card {
-            transition: all 0.2s ease-in-out;
-        }
-    </style>
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* ── Playfair italic ─────────────────────────────────── */
+    .serif-italic {
+      font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+      font-style: italic;
+      font-weight: 400;
+      color: #475569;
+    }
+
+    /* ── Background grid ─────────────────────────────────── */
+    .bg-grid {
+      background-size: 44px 44px;
+      background-image:
+        linear-gradient(to right,  rgba(0,0,0,0.035) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0,0,0,0.035) 1px, transparent 1px);
+    }
+
+    /* ── Mesh gradient ───────────────────────────────────── */
+    .mesh-gradient {
+      background:
+        radial-gradient(at 0%   0%,   rgba(37,99,235,0.09) 0px, transparent 50%),
+        radial-gradient(at 100% 0%,   rgba(37,99,235,0.06) 0px, transparent 50%),
+        radial-gradient(at 50%  100%, rgba(255,255,255,1)   0px, transparent 50%);
+    }
+
+    /* ── Grid mask ───────────────────────────────────────── */
+    .grid-mask {
+      -webkit-mask-image: radial-gradient(ellipse at center, transparent 20%, black);
+              mask-image: radial-gradient(ellipse at center, transparent 20%, black);
+    }
+
+    /* ── Hero headline — fluid clamp scale ───────────────── */
+    .hero-headline {
+      font-size: clamp(2.5rem, 5.5vw + 1rem, 4.75rem);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -0.04em;
+      color: #0f172a;
+      margin-bottom: 2rem;
+    }
+
+    /* ── Underline hover animation ───────────────────────── */
+    .underline-hover {
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+    }
+    .underline-hover::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 0;
+      height: 1.5px;
+      background: #0f172a;
+      transition: width 0.3s ease;
+    }
+    .underline-hover:hover::after {
+      width: 100%;
+    }
+
+    /* ── Primary CTA button ──────────────────────────────── */
+    .btn-primary {
+      background: #2563eb;
+      color: #ffffff;
+      padding: 14px 32px;
+      border-radius: 9999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      box-shadow: 0 16px 32px -8px rgba(37,99,235,0.28);
+      transition: box-shadow 0.3s ease, transform 0.2s ease;
+      width: 100%;
+    }
+    @media (min-width: 640px) {
+      .btn-primary { width: auto; }
+    }
+    .btn-primary:hover {
+      box-shadow: 0 20px 40px -10px rgba(37,99,235,0.38);
+    }
+    .btn-primary:hover .arrow-icon {
+      transform: translate(2px, -2px);
+    }
+    .arrow-icon {
+      transition: transform 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    /* ── System card ─────────────────────────────────────── */
+    .system-card {
+      background: rgba(255,255,255,0.8);
+      border: 1px solid #f1f5f9;
+      border-radius: 28px;
+      padding: 24px;
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    /* ── Module card ─────────────────────────────────────── */
+    .module-card {
+      background: rgba(255,255,255,0.8);
+      border: 1px solid #f1f5f9;
+      border-radius: 12px;
+      padding: 14px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      transition: box-shadow 0.2s ease;
+    }
+    .module-card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .module-icon {
+      width: 36px;
+      height: 36px;
+      background: #eff6ff;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #2563eb;
+      flex-shrink: 0;
+    }
+    .module-title {
+      font-size: 11px;
+      font-weight: 700;
+      color: #0f172a;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .module-desc {
+      font-size: 10px;
+      font-weight: 500;
+      color: #94a3b8;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .module-status-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: #3b82f6;
+      flex-shrink: 0;
+      animation: pulse 2s infinite;
+    }
+    .module-status-label {
+      font-size: 8px;
+      font-weight: 900;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #2563eb;
+    }
+
+    /* ── Pulse animation ─────────────────────────────────── */
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.4; }
+    }
+
+    /* ── Mobile menu ─────────────────────────────────────── */
+    #mobile-menu {
+      transform: translateY(-100%);
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    #mobile-menu.open {
+      transform: translateY(0);
+    }
+
+    /* ── Hamburger lines ─────────────────────────────────── */
+    .ham-line-1 { width: 22px; height: 1.5px; background: #000; }
+    .ham-line-2 { width: 15px; height: 1.5px; background: #000; align-self: flex-end; }
+
+    /* ── Nav hover ───────────────────────────────────────── */
+    .nav-link {
+      font-size: 12px;
+      font-weight: 700;
+      color: #64748b;
+      letter-spacing: -0.01em;
+      transition: color 0.15s ease;
+    }
+    .nav-link:hover { color: #020617; }
+
+    /* ── Contact Us (desktop) ────────────────────────────── */
+    .btn-outline {
+      padding: 8px 20px;
+      border: 1px solid #e2e8f0;
+      border-radius: 9999px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #0f172a;
+      background: transparent;
+      transition: background 0.15s ease;
+    }
+    .btn-outline:hover { background: #f8fafc; }
+
+    /* ── Mobile menu nav links ───────────────────────────── */
+    .menu-link {
+      font-size: 2.1rem;
+      font-weight: 700;
+      letter-spacing: -0.035em;
+      color: #0f172a;
+      padding: 4px 0;
+      line-height: 1.15;
+      display: block;
+    }
+
+    /* ── Mobile CTA ──────────────────────────────────────── */
+    .btn-dark {
+      width: 100%;
+      padding: 16px;
+      background: #0f172a;
+      color: #fff;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: -0.01em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    /* ── Responsive helpers ──────────────────────────────── */
+    @media (min-width: 1024px) {
+      .hide-desktop { display: none !important; }
+    }
+    @media (max-width: 1023px) {
+      .hide-mobile { display: none !important; }
+    }
+  </style>
 </head>
-<body class="bg-white selection:bg-blue-100">
 
-    <section class="py-12 md:py-24 border-t border-slate-100 font-lock">
-        <div class="max-w-7xl mx-auto px-6 md:px-16 lg:px-32">
-            
-            <!-- Header Section -->
-            <div class="max-w-3xl mb-12 md:mb-16">
-                <h2 class="text-[10px] font-bold text-blue-600 mb-4 eyebrow-lock">
-                    Capabilities
-                </h2>
-                <!-- Weight reduced to 600 (semibold) to prevent browser-smearing -->
-                <h1 class="text-3xl md:text-5xl font-semibold text-[#0f172a] heading-lock">
-                    Standardized systems for <br class="hidden md:block" />
-                    enterprise operations.
-                </h1>
-                <p class="mt-4 text-slate-500 font-medium text-base md:text-lg max-w-xl leading-relaxed">
-                    Scale your infrastructure without compromising performance.
-                </p>
-            </div>
+<body style="position:relative;min-height:100vh;background:#fff;overflow-x:hidden;">
 
-            <!-- Services Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-3 border border-slate-100 divide-y md:divide-y-0 md:divide-x divide-slate-100 overflow-hidden rounded-xl shadow-sm">
-                
-                <!-- Service 01 -->
-                <div class="group relative service-card bg-white p-8 md:p-10 flex flex-col items-start text-left hover:bg-slate-50/50">
-                    <div class="absolute top-0 left-0 p-2 text-slate-200 font-light select-none leading-none">+</div>
-                    <div class="mb-8 flex items-center justify-between w-full">
-                        <div class="w-11 h-11 bg-white border border-slate-200 rounded-lg flex items-center justify-center shadow-sm group-hover:border-blue-300 transition-colors">
-                            <i data-lucide="cpu" class="w-5 h-5 text-slate-700 group-hover:text-blue-600"></i>
-                        </div>
-                        <span class="text-[10px] font-bold tracking-widest text-slate-400 uppercase">01</span>
-                    </div>
-                    <h3 class="text-xl font-bold tracking-tight mb-3 text-[#0f172a]">Core Optimization</h3>
-                    <p class="text-[0.9rem] font-medium text-slate-500 leading-relaxed mb-6 max-w-[260px]">
-                        Low-level system engineering to unlock maximum hardware throughput without compromising stability.
-                    </p>
-                    <button class="mt-auto flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-slate-900 group-hover:text-blue-600 transition-all">
-                        Deploy System <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
-                    </button>
-                </div>
+  <!-- ── Background fixed layer ───────────────────────────── -->
+  <div class="mesh-gradient" style="position:fixed;inset:0;z-index:0;pointer-events:none;">
+    <div class="bg-grid grid-mask" style="position:absolute;inset:0;"></div>
+  </div>
 
-                <!-- Service 02 -->
-                <div class="group relative service-card bg-white p-8 md:p-10 flex flex-col items-start text-left hover:bg-slate-50/50">
-                    <div class="absolute top-0 left-0 p-2 text-slate-200 font-light select-none leading-none">+</div>
-                    <div class="mb-8 flex items-center justify-between w-full">
-                        <div class="w-11 h-11 bg-white border border-slate-200 rounded-lg flex items-center justify-center shadow-sm group-hover:border-blue-300 transition-colors">
-                            <i data-lucide="zap" class="w-5 h-5 text-slate-700 group-hover:text-blue-600"></i>
-                        </div>
-                        <span class="text-[10px] font-bold tracking-widest text-slate-400 uppercase">02</span>
-                    </div>
-                    <h3 class="text-xl font-bold tracking-tight mb-3 text-[#0f172a]">Logic Automation</h3>
-                    <p class="text-[0.9rem] font-medium text-slate-500 leading-relaxed mb-6 max-w-[260px]">
-                        Custom OS logic layers that eliminate repetitive cognitive overhead and manual data handling.
-                    </p>
-                    <button class="mt-auto flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-slate-900 group-hover:text-blue-600 transition-all">
-                        Deploy System <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
-                    </button>
-                </div>
+  <!-- ── Page wrapper ──────────────────────────────────────── -->
+  <div id="page-wrap" class="relative" style="z-index:10;max-width:80rem;margin:0 auto;padding:0 20px;">
 
-                <!-- Service 03 -->
-                <div class="group relative service-card bg-white p-8 md:p-10 flex flex-col items-start text-left hover:bg-slate-50/50">
-                    <div class="absolute top-0 left-0 p-2 text-slate-200 font-light select-none leading-none">+</div>
-                    <div class="mb-8 flex items-center justify-between w-full">
-                        <div class="w-11 h-11 bg-white border border-slate-200 rounded-lg flex items-center justify-center shadow-sm group-hover:border-blue-300 transition-colors">
-                            <i data-lucide="shield" class="w-5 h-5 text-slate-700 group-hover:text-blue-600"></i>
-                        </div>
-                        <span class="text-[10px] font-bold tracking-widest text-slate-400 uppercase">03</span>
-                    </div>
-                    <h3 class="text-xl font-bold tracking-tight mb-3 text-[#0f172a]">Secure Fabric</h3>
-                    <p class="text-[0.9rem] font-medium text-slate-500 leading-relaxed mb-6 max-w-[260px]">
-                        Zero-trust environments built directly into your operational fabric for enterprise-grade security.
-                    </p>
-                    <button class="mt-auto flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-slate-900 group-hover:text-blue-600 transition-all">
-                        Deploy System <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
-                    </button>
-                </div>
+    <!-- ── Header ────────────────────────────────────────────── -->
+    <header style="display:flex;justify-content:space-between;align-items:center;padding:24px 0;">
 
-            </div>
+      <!-- Logo -->
+      <div style="font-size:17px;font-weight:800;letter-spacing:-0.04em;text-transform:uppercase;user-select:none;flex-shrink:0;">
+        IRONBYTE<span style="color:#2563eb;">.</span>
+      </div>
 
-            <!-- Call to Action -->
-            <div class="mt-12 md:mt-16 flex flex-col lg:flex-row items-center justify-between gap-6 p-8 md:p-10 bg-slate-50 rounded-2xl border border-slate-100">
-                <div class="text-center lg:text-left">
-                    <h4 class="text-xl font-bold text-slate-900">Ready to deploy?</h4>
-                    <p class="text-slate-500 font-medium mt-1">
-                        Start building with a free account or speak to an expert.
-                    </p>
-                </div>
-                <div class="flex flex-col sm:flex-row gap-3 w-full lg:w-auto">
-                    <button class="bg-slate-900 text-white px-7 py-3 rounded-lg font-bold text-sm hover:bg-black transition-all shadow-lg shadow-slate-200 active:scale-95">
-                        Start Building
-                    </button>
-                    <button class="bg-white border border-slate-200 text-slate-900 px-7 py-3 rounded-lg font-bold text-sm hover:bg-slate-50 active:scale-95">
-                        Talk to an Expert
-                    </button>
-                </div>
-            </div>
+      <!-- Desktop nav -->
+      <nav class="hide-mobile" style="display:flex;align-items:center;gap:32px;">
+        <a href="#" class="nav-link">Services</a>
+        <a href="#" class="nav-link">DispatchMate</a>
+        <a href="#" class="nav-link">Our Work</a>
+        <a href="#" class="nav-link">About</a>
+        <button class="btn-outline" style="margin-left:8px;">Contact Us</button>
+      </nav>
 
+      <!-- Mobile hamburger -->
+      <button
+        id="menu-open-btn"
+        class="hide-desktop"
+        style="display:flex;align-items:center;gap:10px;background:none;border:none;padding:0;"
+        aria-label="Open menu"
+        onclick="openMenu()"
+      >
+        <span style="font-size:9px;font-weight:700;letter-spacing:0.22em;color:#9ca3af;text-transform:uppercase;">Menu</span>
+        <div style="display:flex;flex-direction:column;gap:5px;">
+          <div class="ham-line-1"></div>
+          <div class="ham-line-2"></div>
         </div>
-    </section>
+      </button>
+    </header>
 
-    <script>
-        lucide.createIcons();
-    </script>
+    <!-- ── Hero grid ─────────────────────────────────────────── -->
+    <div style="
+      display: grid;
+      grid-template-columns: 1fr;
+      align-items: center;
+      gap: 40px;
+      margin-top: 32px;
+      padding-bottom: 80px;
+    " id="hero-grid">
+
+      <!-- Left — copy -->
+      <main style="max-width:560px;text-align:left;">
+
+        <!-- Eyebrow -->
+        <div style="margin-bottom:24px;">
+          <p style="font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:0.35em;color:#64748b;">
+            The Architecture of Efficiency
+          </p>
+        </div>
+
+        <!-- Headline -->
+        <h1 class="hero-headline">
+          Building <br />
+          <span class="serif-italic">intelligent</span> <br />
+          OS logic.
+        </h1>
+
+        <!-- Body copy -->
+        <p style="font-size:14px;font-weight:500;color:#64748b;line-height:1.7;letter-spacing:-0.01em;margin-bottom:40px;max-width:400px;">
+          Ironbyte engineers high-performance software that transforms workplace
+          complexity into absolute operational clarity.
+        </p>
+
+        <!-- CTAs -->
+        <div style="display:flex;flex-direction:column;align-items:flex-start;gap:24px;" id="cta-wrap">
+          <button class="btn-primary">
+            Explore Solutions
+            <!-- ArrowUpRight SVG -->
+            <svg class="arrow-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="7" y1="17" x2="17" y2="7"></line>
+              <polyline points="7 7 17 7 17 17"></polyline>
+            </svg>
+          </button>
+
+          <button class="underline-hover" style="background:none;border:none;padding:6px 0 0 0;">
+            <span style="font-size:12px;font-weight:700;color:#0f172a;letter-spacing:-0.01em;">View our work —</span>
+          </button>
+        </div>
+      </main>
+
+      <!-- Right — system card (desktop only) -->
+      <div class="hide-mobile" id="card-col">
+        <div class="system-card">
+
+          <!-- Card header -->
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;padding:0 4px;">
+            <div style="display:flex;gap:5px;">
+              <div style="width:8px;height:8px;border-radius:50%;background:#e2e8f0;"></div>
+              <div style="width:8px;height:8px;border-radius:50%;background:#e2e8f0;"></div>
+              <div style="width:8px;height:8px;border-radius:50%;background:#e2e8f0;"></div>
+            </div>
+            <span style="font-size:8px;font-weight:900;letter-spacing:0.25em;color:#cbd5e1;text-transform:uppercase;">System_V4.0_Stable</span>
+          </div>
+
+          <!-- Modules -->
+          <div style="display:flex;flex-direction:column;gap:12px;">
+
+            <!-- Module 1: CPU -->
+            <div class="module-card">
+              <div class="module-icon">
+                <!-- Cpu SVG -->
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+                  <rect x="9" y="9" width="6" height="6"></rect>
+                  <line x1="9"  y1="1"  x2="9"  y2="4"></line>
+                  <line x1="15" y1="1"  x2="15" y2="4"></line>
+                  <line x1="9"  y1="20" x2="9"  y2="23"></line>
+                  <line x1="15" y1="20" x2="15" y2="23"></line>
+                  <line x1="20" y1="9"  x2="23" y2="9"></line>
+                  <line x1="20" y1="14" x2="23" y2="14"></line>
+                  <line x1="1"  y1="9"  x2="4"  y2="9"></line>
+                  <line x1="1"  y1="14" x2="4"  y2="14"></line>
+                </svg>
+              </div>
+              <div style="flex:1;min-width:0;">
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2px;">
+                  <span class="module-title">Process Optimization</span>
+                  <div style="display:flex;align-items:center;gap:4px;flex-shrink:0;margin-left:8px;">
+                    <div class="module-status-dot"></div>
+                    <span class="module-status-label">Active</span>
+                  </div>
+                </div>
+                <p class="module-desc">Kernel-level task scheduling</p>
+              </div>
+              <!-- Activity icon -->
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#e2e8f0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+              </svg>
+            </div>
+
+            <!-- Module 2: Code -->
+            <div class="module-card">
+              <div class="module-icon">
+                <!-- Code2 SVG -->
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m18 16 4-4-4-4"></path>
+                  <path d="m6 8-4 4 4 4"></path>
+                  <path d="m14.5 4-5 16"></path>
+                </svg>
+              </div>
+              <div style="flex:1;min-width:0;">
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2px;">
+                  <span class="module-title">System Architecture</span>
+                  <div style="display:flex;align-items:center;gap:4px;flex-shrink:0;margin-left:8px;">
+                    <div class="module-status-dot"></div>
+                    <span class="module-status-label">Verified</span>
+                  </div>
+                </div>
+                <p class="module-desc">Modular micro-service logic</p>
+              </div>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#e2e8f0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+              </svg>
+            </div>
+
+            <!-- Module 3: Globe -->
+            <div class="module-card">
+              <div class="module-icon">
+                <!-- Globe SVG -->
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="2" y1="12" x2="22" y2="12"></line>
+                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                </svg>
+              </div>
+              <div style="flex:1;min-width:0;">
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2px;">
+                  <span class="module-title">Global Scalability</span>
+                  <div style="display:flex;align-items:center;gap:4px;flex-shrink:0;margin-left:8px;">
+                    <div class="module-status-dot"></div>
+                    <span class="module-status-label">Ready</span>
+                  </div>
+                </div>
+                <p class="module-desc">Edge-node distribution sync</p>
+              </div>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#e2e8f0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+              </svg>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /hero-grid -->
+  </div><!-- /page wrapper -->
+
+  <!-- ── Mobile full-screen menu ───────────────────────────── -->
+  <div id="mobile-menu" style="position:fixed;inset:0;z-index:50;background:#fff;">
+    <div class="bg-grid" style="position:relative;height:100%;display:flex;flex-direction:column;padding:28px;">
+
+      <!-- Menu header -->
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:40px;">
+        <div style="font-size:17px;font-weight:800;letter-spacing:-0.04em;text-transform:uppercase;">
+          IRONBYTE<span style="color:#2563eb;">.</span>
+        </div>
+        <button
+          onclick="closeMenu()"
+          style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:#f8fafc;border:1px solid #f1f5f9;border-radius:50%;box-shadow:0 1px 3px rgba(0,0,0,0.06);"
+          aria-label="Close menu"
+        >
+          <!-- X SVG -->
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0f172a" stroke-width="2.5" stroke-linecap="round">
+            <line x1="18" y1="6"  x2="6"  y2="18"></line>
+            <line x1="6"  y1="6"  x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Menu links -->
+      <nav style="display:flex;flex-direction:column;gap:2px;margin-top:8px;">
+        <a href="#" class="menu-link" onclick="closeMenu()">Services</a>
+        <a href="#" class="menu-link" onclick="closeMenu()">DispatchMate</a>
+        <a href="#" class="menu-link" onclick="closeMenu()">Our Work</a>
+        <a href="#" class="menu-link" onclick="closeMenu()">About</a>
+      </nav>
+
+      <!-- Menu footer -->
+      <div style="margin-top:auto;padding-bottom:32px;">
+        <button class="btn-dark">
+          Contact Us
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="7" y1="17" x2="17" y2="7"></line>
+            <polyline points="7 7 17 7 17 17"></polyline>
+          </svg>
+        </button>
+
+        <div style="margin-top:40px;padding-top:24px;border-top:1px solid #f1f5f9;display:flex;justify-content:space-between;align-items:center;">
+          <span style="font-size:8px;font-weight:900;letter-spacing:0.18em;color:#94a3b8;text-transform:uppercase;">Ironbyte Logic Systems</span>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <div style="width:4px;height:4px;border-radius:50%;background:#2563eb;animation:pulse 2s infinite;"></div>
+            <span style="font-size:8px;font-weight:900;letter-spacing:0.18em;color:#94a3b8;text-transform:uppercase;">Stable_OS</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── Responsive layout JS ───────────────────────────────── -->
+  <script>
+    // ── Menu open/close ───────────────────────────────────────
+    function openMenu()  { document.getElementById('mobile-menu').classList.add('open'); }
+    function closeMenu() { document.getElementById('mobile-menu').classList.remove('open'); }
+
+    // ── Hero grid — apply desktop layout via JS (more reliable than Tailwind CDN arbitrary) ──
+    function applyLayout() {
+      const grid    = document.getElementById('hero-grid');
+      const ctaWrap = document.getElementById('cta-wrap');
+      const wrap    = document.getElementById('page-wrap');
+      const isLg    = window.innerWidth >= 1024;
+      const isSm    = window.innerWidth >= 640;
+
+      // Responsive horizontal padding (replaces px-5 md:px-14 lg:px-20)
+      if (isLg)       wrap.style.padding = '0 80px';
+      else if (isSm)  wrap.style.padding = '0 56px';
+      else            wrap.style.padding = '0 20px';
+
+      if (isLg) {
+        grid.style.gridTemplateColumns = '1fr 1fr';
+        grid.style.gap = '64px';
+        grid.style.marginTop = '112px';
+      } else if (window.innerWidth >= 768) {
+        grid.style.gridTemplateColumns = '1fr';
+        grid.style.gap = '40px';
+        grid.style.marginTop = '80px';
+      } else {
+        grid.style.gridTemplateColumns = '1fr';
+        grid.style.gap = '40px';
+        grid.style.marginTop = '32px';
+      }
+
+      // CTA row — row on sm+, column on mobile
+      if (isSm) {
+        ctaWrap.style.flexDirection = 'row';
+        ctaWrap.style.alignItems = 'center';
+      } else {
+        ctaWrap.style.flexDirection = 'column';
+        ctaWrap.style.alignItems = 'flex-start';
+      }
+    }
+
+    applyLayout();
+    window.addEventListener('resize', applyLayout);
+  </script>
+
 </body>
 </html>
-
-
-
 
 
