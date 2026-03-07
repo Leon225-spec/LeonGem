@@ -1,433 +1,247 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- CRITICAL: This meta tag prevents "blown up" mobile typography -->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <title>Leon Nyaramb | Premium Operational Systems</title>
-    <!-- Geist and Google Material Symbols -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Ironbyte | Building Intelligent OS Logic</title>
+    
+    <!-- Tailwind CSS for layout -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
+
     <style>
-        /* THE "CUTE" RESET: Normalizing behavior across all browsers */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@1,400&display=swap');
+        
         :root {
-            --bg: #fcfcfd;
-            --text-main: #0f172a;
-            --text-muted: #475569;
-            --accent: #2563eb;
-            --accent-soft: #eff6ff;
-            --border: #e2e8f0;
-            --card-bg: #ffffff;
-            --dark-card: #0f172a;
-            
-            /* FORCE COMPACT SCALE */
-            font-size: 14px; /* This makes 1rem = 14px instead of the bulky 16px default */
-            -webkit-text-size-adjust: 100%; /* Prevents iOS from blowing up text in landscape */
+            --blue-600: #2563eb;
+            --slate-900: #0f172a;
         }
 
+        /* Hard Reset for Cuteness Preservation */
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
-            font-family: 'Geist', sans-serif;
-            background-color: var(--bg);
-            color: var(--text-main);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #ffffff;
+            color: var(--slate-900);
             line-height: 1.5;
-            font-size: 1rem; /* 14px */
+            overflow-x: hidden;
         }
 
-        /* NAVIGATION */
-        .nav-wrapper {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            background: rgba(252, 252, 253, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border);
+        .serif-italic { 
+            font-family: 'Playfair Display', serif; 
+            font-style: italic; 
+            font-weight: 400;
+            color: #475569;
         }
 
-        .navbar {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1rem 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+        .bg-grid {
+            background-size: 50px 50px;
+            background-image: 
+              linear-gradient(to right, rgba(0,0,0,0.04) 1px, transparent 1px),
+              linear-gradient(to bottom, rgba(0,0,0,0.04) 1px, transparent 1px);
         }
 
-        .logo {
-            font-weight: 800;
-            font-size: 1.4rem;
+        .mesh-gradient {
+            background: 
+              radial-gradient(at 0% 0%, rgba(37, 99, 235, 0.1) 0px, transparent 50%),
+              radial-gradient(at 100% 0%, rgba(37, 99, 235, 0.07) 0px, transparent 50%),
+              radial-gradient(at 50% 100%, rgba(255, 255, 255, 1) 0px, transparent 50%);
+        }
+
+        /* Smooth transition for mobile drawer */
+        #mobile-drawer {
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateY(-100%);
+        }
+
+        #mobile-drawer.active {
+            transform: translateY(0);
+        }
+
+        /* Vercel-style tracking */
+        .tracking-tight-custom {
             letter-spacing: -0.05em;
-            text-transform: lowercase;
-            color: var(--text-main);
-            text-decoration: none;
-        }
-
-        .logo span { color: var(--accent); }
-
-        .nav-links {
-            display: none; /* Mobile */
-            gap: 2rem;
-        }
-
-        .nav-link {
-            text-decoration: none;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-
-        .nav-link:hover { color: var(--text-main); }
-
-        .nav-right {
-            display: flex;
-            align-items: center;
-            gap: 1.2rem;
-        }
-
-        .cta-button {
-            background: var(--text-main);
-            color: white;
-            padding: 0.7rem 1.2rem;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-decoration: none;
-            transition: transform 0.2s, opacity 0.2s;
-        }
-
-        .cta-button:hover { 
-            opacity: 0.9;
-            transform: translateY(-1px);
-        }
-
-        .menu-toggle {
-            display: flex;
-            align-items: center;
-            border: none;
-            background: transparent;
-            cursor: pointer;
-            color: var(--text-main);
-        }
-
-        /* HERO SECTION - COMPACT REFINEMENT */
-        .hero {
-            padding-top: 10rem;
-            padding-bottom: 5rem;
-            padding-left: 1.5rem;
-            padding-right: 1.5rem;
-            max-width: 1100px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .hero-eyebrow {
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: var(--accent);
-            margin-bottom: 1.5rem;
-            display: block;
-        }
-
-        .hero-title {
-            font-size: clamp(2.5rem, 8vw, 5rem); /* Responsive but controlled */
-            font-weight: 600;
-            line-height: 1.05;
-            letter-spacing: -0.04em;
-            margin-bottom: 1.5rem;
-            color: var(--text-main);
-        }
-
-        .hero-title span { color: var(--text-muted); }
-
-        .hero-sub {
-            font-size: clamp(1.1rem, 2vw, 1.3rem);
-            color: var(--text-muted);
-            line-height: 1.6;
-            max-width: 550px;
-            margin: 0 auto 2.5rem auto;
-        }
-
-        /* GLOBAL TYPOGRAPHY CLASSES */
-        .eyebrow {
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: var(--accent);
-            margin-bottom: 1.5rem;
-            display: block;
-        }
-
-        .headline {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            font-weight: 600;
-            letter-spacing: -0.03em;
-            line-height: 1.1;
-            margin-bottom: 3rem;
-            color: var(--text-main);
-        }
-
-        /* GRID LOGIC */
-        .container {
-            padding: 4rem 1.5rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-spacer { margin-bottom: 7rem; }
-        
-        .grid-stack {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2.5rem;
-        }
-
-        .icon-box {
-            width: 3.5rem;
-            height: 3.5rem;
-            background-color: var(--accent-soft);
-            color: var(--accent);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .item-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-            letter-spacing: -0.01em;
-        }
-
-        .item-desc {
-            font-size: 1rem;
-            color: var(--text-muted);
-            line-height: 1.6;
-        }
-
-        /* WHAT WE BUILD CARDS */
-        .card-stack { 
-            display: grid; 
-            grid-template-columns: 1fr; 
-            gap: 1.5rem; 
-        }
-
-        .card { 
-            background: var(--card-bg); 
-            border: 1px solid var(--border); 
-            border-radius: 20px; 
-            padding: 2rem; 
-            display: flex; 
-            flex-direction: column;
-            transition: border-color 0.3s ease;
-        }
-        
-        .card:hover { border-color: var(--accent); }
-
-        .checklist { list-style: none; margin-top: 1.5rem; }
-        .checklist-item { font-size: 0.9rem; margin-top: 0.5rem; display: flex; align-items: center; color: var(--text-main); font-weight: 500; }
-        .check-icon { color: var(--accent); margin-right: 0.75rem; width: 1rem; }
-
-        /* MOBILE MENU OVERLAY */
-        .mobile-menu {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: var(--bg);
-            z-index: 2000;
-            padding: 2.5rem 1.5rem;
-            display: none;
-            flex-direction: column;
-            gap: 2rem;
-        }
-        .mobile-menu.active { display: flex; }
-
-        /* RESPONSIVE BREAKPOINTS */
-        @media (min-width: 768px) {
-            .grid-stack { grid-template-columns: repeat(2, 1fr); }
-            .card-stack { grid-template-columns: repeat(2, 1fr); }
-        }
-
-        @media (min-width: 1024px) {
-            .nav-links { display: flex; }
-            .menu-toggle { display: none; }
-            .hero { text-align: left; padding-top: 14rem; }
-            .hero-sub { margin-left: 0; }
-            .hero-actions { flex-direction: row; justify-content: flex-start; }
-            .btn-primary { width: auto; }
-            
-            .grid-stack.cols-3, .card-stack { grid-template-columns: repeat(3, 1fr); }
-        }
-
-        .btn-primary {
-            background: var(--accent);
-            color: white;
-            padding: 1.1rem 2rem;
-            border-radius: 10px;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            transition: opacity 0.2s;
-        }
-        .btn-primary:hover { opacity: 0.9; }
-        
-        .btn-secondary {
-            color: var(--text-main);
-            font-weight: 600;
-            text-decoration: none;
-            padding: 1rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
         }
     </style>
 </head>
 <body>
 
-    <nav class="nav-wrapper">
-        <div class="navbar">
-            <a href="#" class="logo">iron<span>byte</span></a>
-            <div class="nav-links">
-                <a href="#services" class="nav-link">Services</a>
-                <a href="#process" class="nav-link">Process</a>
-                <a href="#dispatchmate" class="nav-link">DispatchMate</a>
-                <a href="#about" class="nav-link">About</a>
-            </div>
-            <div class="nav-right">
-                <a href="mailto:contact@ironbyte.co" class="cta-button">Work with us</a>
-                <button class="menu-toggle" id="menuToggle"><span class="material-symbols-outlined">menu</span></button>
-            </div>
-        </div>
-    </nav>
-
-    <div class="mobile-menu" id="mobileMenu">
-        <div style="display:flex; justify-content:space-between; align-items:center;">
-            <a href="#" class="logo">iron<span>byte</span></a>
-            <button class="menu-toggle" id="closeMenu"><span class="material-symbols-outlined">close</span></button>
-        </div>
-        <a href="#services" class="nav-link" style="font-size: 1.5rem;">Services</a>
-        <a href="#process" class="nav-link" style="font-size: 1.5rem;">Process</a>
-        <a href="#dispatchmate" class="nav-link" style="font-size: 1.5rem;">DispatchMate</a>
-        <a href="#about" class="nav-link" style="font-size: 1.5rem;">About</a>
+    <!-- Background Layer -->
+    <div class="fixed inset-0 z-0 pointer-events-none mesh-gradient">
+        <div class="absolute inset-0 bg-grid [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
     </div>
 
-    <header class="hero">
-        <span class="hero-eyebrow">Now available in Zimbabwe</span>
-        <h1 class="hero-title">Engineering the next <span>generation of operation systems.</span></h1>
-        <p class="hero-sub">We build high-performance software that turns workplace complexity into absolute operational clarity.</p>
-        <div class="hero-actions">
-            <a href="#services" class="btn-primary">Explore Solutions <i data-lucide="arrow-right" style="width: 1.2rem"></i></a>
-            <a href="#work" class="btn-secondary">View our work</a>
+    <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-16 lg:px-20">
+        <!-- Navigation -->
+        <header class="flex justify-between items-center py-8">
+            <div class="font-extrabold text-xl tracking-tighter uppercase shrink-0">
+                IRONBYTE<span class="text-blue-600">.</span>
+            </div>
+
+            <nav class="hidden lg:flex items-center gap-10">
+                <a href="#" class="text-[13px] font-bold text-slate-500 hover:text-slate-950 transition-colors">Services</a>
+                <a href="#" class="text-[13px] font-bold text-slate-500 hover:text-slate-950 transition-colors">DispatchMate</a>
+                <a href="#" class="text-[13px] font-bold text-slate-500 hover:text-slate-950 transition-colors">Our Work</a>
+                <a href="#" class="text-[13px] font-bold text-slate-500 hover:text-slate-950 transition-colors">About</a>
+                <button class="ml-4 py-2.5 px-6 border border-slate-200 rounded-full text-[13px] font-bold hover:bg-slate-50 transition-colors">
+                    Contact Us
+                </button>
+            </nav>
+
+            <!-- Mobile Menu Toggle -->
+            <button onclick="toggleMenu(true)" class="lg:hidden flex items-center gap-3 group active:opacity-60 transition-opacity">
+                <span class="text-[10px] font-bold tracking-[0.25em] text-gray-400 uppercase">Menu</span>
+                <div class="flex flex-col gap-1.5">
+                    <div class="w-6 h-[2px] bg-black"></div>
+                    <div class="w-4 h-[2px] bg-black self-end"></div>
+                </div>
+            </button>
+        </header>
+
+        <!-- Hero Section -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 items-center gap-12 lg:gap-20 mt-10 md:mt-24 lg:mt-32 pb-20">
+            <main class="max-w-xl text-left">
+                <div class="mb-8 md:mb-10">
+                    <h2 class="text-[10px] font-semibold uppercase tracking-[0.4em] text-slate-500">
+                        The Architecture of Efficiency
+                    </h2>
+                </div>
+
+                <h1 class="text-[2.8rem] sm:text-[3.2rem] md:text-7xl lg:text-8xl font-extrabold leading-[1.1] md:leading-[1.05] tracking-tight-custom mb-10 text-slate-900">
+                    Building <br />
+                    <span class="serif-italic">intelligent</span> <br />
+                    OS logic.
+                </h1>
+
+                <p class="text-[1rem] md:text-[1.05rem] font-medium text-slate-500 leading-relaxed tracking-tight mb-12 max-w-[420px]">
+                    Ironbyte engineers high-performance software that transforms workplace complexity into absolute operational clarity.
+                </p>
+
+                <div class="flex flex-col sm:flex-row items-start sm:items-center gap-8 lg:gap-12">
+                    <button class="group bg-[#2563eb] text-white py-4 px-10 rounded-full flex items-center justify-center gap-4 w-full sm:w-auto shadow-[0_20px_40px_-10px_rgba(37,99,235,0.3)] hover:shadow-[0_25px_50px_-12px_rgba(37,99,235,0.4)] transition-all duration-300">
+                        <span class="text-[13px] font-bold tracking-wide">Explore Solutions</span>
+                        <i data-lucide="arrow-up-right" class="w-5 h-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"></i>
+                    </button>
+
+                    <button class="flex flex-col items-start group cursor-pointer pt-2">
+                        <span class="text-[13px] font-bold text-slate-900 tracking-tight">View our work —</span>
+                        <div class="w-0 h-[1.5px] bg-slate-900 mt-1 group-hover:w-full transition-all duration-300"></div>
+                    </button>
+                </div>
+            </main>
+
+            <!-- Desktop Visual Module -->
+            <div class="hidden lg:block relative">
+                <div class="relative z-10 bg-white/80 border border-slate-100 p-8 rounded-[40px] shadow-2xl backdrop-blur-md">
+                    <div class="flex items-center justify-between mb-8 px-2">
+                        <div class="flex gap-1.5">
+                           <div class="w-2.5 h-2.5 rounded-full bg-slate-200"></div>
+                           <div class="w-2.5 h-2.5 rounded-full bg-slate-200"></div>
+                           <div class="w-2.5 h-2.5 rounded-full bg-slate-200"></div>
+                        </div>
+                        <span class="text-[9px] font-black tracking-[0.3em] text-slate-300 uppercase">System_V4.0_Stable</span>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <!-- Module 1 -->
+                        <div class="bg-white/80 border border-slate-100 p-5 rounded-2xl flex items-center gap-5 shadow-sm">
+                            <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 shrink-0">
+                                <i data-lucide="cpu" class="w-5 h-5"></i>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <div class="flex items-center justify-between mb-0.5">
+                                    <h4 class="text-[13px] font-bold text-slate-900 truncate">Process Optimization</h4>
+                                    <div class="flex items-center gap-1.5 shrink-0 ml-2">
+                                        <div class="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
+                                        <span class="text-[9px] font-black uppercase tracking-widest text-blue-600">Active</span>
+                                    </div>
+                                </div>
+                                <p class="text-[11px] font-medium text-slate-400 truncate">Kernel-level task scheduling</p>
+                            </div>
+                        </div>
+                        <!-- Module 2 -->
+                        <div class="bg-white/80 border border-slate-100 p-5 rounded-2xl flex items-center gap-5 shadow-sm">
+                            <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 shrink-0">
+                                <i data-lucide="code-2" class="w-5 h-5"></i>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <div class="flex items-center justify-between mb-0.5">
+                                    <h4 class="text-[13px] font-bold text-slate-900 truncate">System Architecture</h4>
+                                    <div class="flex items-center gap-1.5 shrink-0 ml-2">
+                                        <div class="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
+                                        <span class="text-[9px] font-black uppercase tracking-widest text-blue-600">Verified</span>
+                                    </div>
+                                </div>
+                                <p class="text-[11px] font-medium text-slate-400 truncate">Modular micro-service logic</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </header>
+    </div>
 
-    <main class="container">
-        <!-- SERVICES -->
-        <section id="services" class="section-spacer">
-            <span class="eyebrow">Who we help</span>
-            <h2 class="headline">Built for those who manage the physical world.</h2>
-            <div class="grid-stack cols-3">
-                <div class="item">
-                    <div class="icon-box"><i data-lucide="shopping-cart"></i></div>
-                    <h3 class="item-title">Global Retailers</h3>
-                    <p class="item-desc">High-speed interfaces designed to manage thousands of SKUs with zero friction.</p>
+    <!-- Mobile Drawer -->
+    <div id="mobile-drawer" class="fixed inset-0 z-[100] bg-white">
+        <div class="relative h-full flex flex-col p-8 bg-grid">
+            <div class="flex justify-between items-center mb-12">
+                <div class="font-extrabold text-xl tracking-tighter uppercase shrink-0">
+                    IRONBYTE<span class="text-blue-600">.</span>
                 </div>
-                <div class="item">
-                    <div class="icon-box"><i data-lucide="truck"></i></div>
-                    <h3 class="item-title">Logistics Hubs</h3>
-                    <p class="item-desc">Optimized for high-pressure floor environments where clarity reduces critical mistakes.</p>
-                </div>
-                <div class="item">
-                    <div class="icon-box"><i data-lucide="database"></i></div>
-                    <h3 class="item-title">Data Ops Teams</h3>
-                    <p class="item-desc">Audit-ready dashboards for real-time monitoring and reporting.</p>
+                <button onclick="toggleMenu(false)" class="w-12 h-12 flex items-center justify-center bg-slate-50 border border-slate-100 rounded-full shadow-sm">
+                    <i data-lucide="x" class="w-6 h-6 text-slate-900"></i>
+                </button>
+            </div>
+
+            <nav class="flex flex-col gap-1 mt-4">
+                <a href="#" class="text-[2.6rem] font-bold tracking-[-0.04em] text-slate-900 py-1">Services</a>
+                <a href="#" class="text-[2.6rem] font-bold tracking-[-0.04em] text-slate-900 py-1">DispatchMate</a>
+                <a href="#" class="text-[2.6rem] font-bold tracking-[-0.04em] text-slate-900 py-1">Our Work</a>
+                <a href="#" class="text-[2.6rem] font-bold tracking-[-0.04em] text-slate-900 py-1">About</a>
+            </nav>
+
+            <div class="mt-auto pb-10">
+                <button class="w-full py-5 bg-[#0f172a] text-white rounded-2xl font-bold text-sm tracking-tight flex items-center justify-center gap-3 shadow-xl">
+                    Contact Us
+                    <i data-lucide="arrow-up-right" class="w-[18px] h-[18px] text-blue-400"></i>
+                </button>
+                <div class="mt-12 pt-8 border-t border-slate-100 flex justify-between items-center">
+                    <span class="text-[9px] font-black tracking-[0.2em] text-slate-400 uppercase">Ironbyte Logic Systems</span>
+                    <div class="flex items-center gap-2">
+                        <div class="w-1.5 h-1.5 rounded-full bg-blue-600"></div>
+                        <span class="text-[9px] font-black tracking-[0.2em] text-slate-400 uppercase">Stable_OS</span>
+                    </div>
                 </div>
             </div>
-        </section>
-
-        <!-- EXPERTISE / WHAT WE BUILD -->
-        <section id="work" class="section-spacer">
-            <span class="eyebrow">Expertise</span>
-            <h2 class="headline">Systems that power growth.</h2>
-            <div class="card-stack">
-                <div class="card">
-                    <div class="icon-box"><i data-lucide="server"></i></div>
-                    <h3 class="item-title">Infrastructure</h3>
-                    <p class="item-desc">Resilient server-side systems and cloud automation.</p>
-                    <ul class="checklist">
-                        <li class="checklist-item"><i data-lucide="check" class="check-icon"></i> Scalable APIs</li>
-                        <li class="checklist-item"><i data-lucide="check" class="check-icon"></i> Secure Auth</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <div class="icon-box"><i data-lucide="package"></i></div>
-                    <h3 class="item-title">Operational</h3>
-                    <p class="item-desc">Internal systems for inventory and logistics.</p>
-                    <ul class="checklist">
-                        <li class="checklist-item"><i data-lucide="check" class="check-icon"></i> Shelf Mapping</li>
-                        <li class="checklist-item"><i data-lucide="check" class="check-icon"></i> Dispatch Flow</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <div class="icon-box"><i data-lucide="globe"></i></div>
-                    <h3 class="item-title">Platforms</h3>
-                    <p class="item-desc">High-performance client portals and web apps.</p>
-                    <ul class="checklist">
-                        <li class="checklist-item"><i data-lucide="check" class="check-icon"></i> Custom Dashboards</li>
-                        <li class="checklist-item"><i data-lucide="check" class="check-icon"></i> Growth Tools</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- ABOUT (Added back for completeness) -->
-        <section id="about" class="section-spacer">
-            <span class="eyebrow">About Us</span>
-            <h2 class="headline">Precision engineering, built with purpose.</h2>
-            <p class="item-desc" style="max-width: 600px; margin-bottom: 2rem;">
-                We believe that great software shouldn't just exist—it should perform. In high-stakes operations, we replace workplace confusion with technical clarity.
-            </p>
-            <div style="border-left: 2px solid var(--accent); padding-left: 1.5rem;">
-                <p style="font-weight: 600; font-size: 1.1rem;">Leon Nyaramb</p>
-                <p style="color: var(--text-muted); font-size: 0.9rem;">Founder & Lead Engineer — Kwekwe, Zimbabwe</p>
-            </div>
-        </section>
-    </main>
+        </div>
+    </div>
 
     <script>
+        // Initialize Lucide Icons
         lucide.createIcons();
-        const menuToggle = document.getElementById('menuToggle');
-        const closeMenu = document.getElementById('closeMenu');
-        const mobileMenu = document.getElementById('mobileMenu');
-        
-        menuToggle.onclick = () => mobileMenu.classList.add('active');
-        closeMenu.onclick = () => mobileMenu.classList.remove('active');
-        document.querySelectorAll('.mobile-menu .nav-link').forEach(l => l.onclick = () => mobileMenu.classList.remove('active'));
+
+        // Mobile Drawer Logic
+        function toggleMenu(isOpen) {
+            const drawer = document.getElementById('mobile-drawer');
+            if (isOpen) {
+                drawer.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            } else {
+                drawer.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
     </script>
 </body>
 </html>
+
