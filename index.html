@@ -1,39 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- CRITICAL: This meta tag prevents "blown up" mobile typography -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Ironbyte | Building Intelligent OS Logic</title>
     
-    <!-- Tailwind CSS for layout -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@1,400&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,400&display=swap');
         
         :root {
             --blue-600: #2563eb;
             --slate-900: #0f172a;
         }
 
-        /* Hard Reset for Cuteness Preservation */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
         }
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             background-color: #ffffff;
             color: var(--slate-900);
-            line-height: 1.5;
+            line-height: 1.4;
             overflow-x: hidden;
         }
 
@@ -42,23 +38,23 @@
             font-style: italic; 
             font-weight: 400;
             color: #475569;
+            letter-spacing: -0.02em;
         }
 
         .bg-grid {
-            background-size: 50px 50px;
+            background-size: 40px 40px;
             background-image: 
-              linear-gradient(to right, rgba(0,0,0,0.04) 1px, transparent 1px),
-              linear-gradient(to bottom, rgba(0,0,0,0.04) 1px, transparent 1px);
+              linear-gradient(to right, rgba(0,0,0,0.03) 1px, transparent 1px),
+              linear-gradient(to bottom, rgba(0,0,0,0.03) 1px, transparent 1px);
         }
 
         .mesh-gradient {
             background: 
-              radial-gradient(at 0% 0%, rgba(37, 99, 235, 0.1) 0px, transparent 50%),
-              radial-gradient(at 100% 0%, rgba(37, 99, 235, 0.07) 0px, transparent 50%),
+              radial-gradient(at 0% 0%, rgba(37, 99, 235, 0.08) 0px, transparent 50%),
+              radial-gradient(at 100% 0%, rgba(37, 99, 235, 0.05) 0px, transparent 50%),
               radial-gradient(at 50% 100%, rgba(255, 255, 255, 1) 0px, transparent 50%);
         }
 
-        /* Smooth transition for mobile drawer */
         #mobile-drawer {
             transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
             transform: translateY(-100%);
@@ -68,21 +64,28 @@
             transform: translateY(0);
         }
 
-        /* Vercel-style tracking */
-        .tracking-tight-custom {
-            letter-spacing: -0.05em;
+        /* Updated: Vercel style is actually a very tight Bold (700) or SemiBold (600) 
+           rather than a heavy Black (900). Adjusted for high-density mobile screens. */
+        .headline-weight {
+            font-weight: 700;
+            letter-spacing: -0.06em;
+            line-height: 1.0;
+        }
+
+        @media (min-width: 768px) {
+            .headline-weight {
+                letter-spacing: -0.07em;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Background Layer -->
     <div class="fixed inset-0 z-0 pointer-events-none mesh-gradient">
         <div class="absolute inset-0 bg-grid [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
     </div>
 
     <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-16 lg:px-20">
-        <!-- Navigation -->
         <header class="flex justify-between items-center py-8">
             <div class="font-extrabold text-xl tracking-tighter uppercase shrink-0">
                 IRONBYTE<span class="text-blue-600">.</span>
@@ -98,7 +101,6 @@
                 </button>
             </nav>
 
-            <!-- Mobile Menu Toggle -->
             <button onclick="toggleMenu(true)" class="lg:hidden flex items-center gap-3 group active:opacity-60 transition-opacity">
                 <span class="text-[10px] font-bold tracking-[0.25em] text-gray-400 uppercase">Menu</span>
                 <div class="flex flex-col gap-1.5">
@@ -108,39 +110,38 @@
             </button>
         </header>
 
-        <!-- Hero Section -->
         <div class="grid grid-cols-1 lg:grid-cols-2 items-center gap-12 lg:gap-20 mt-10 md:mt-24 lg:mt-32 pb-20">
             <main class="max-w-xl text-left">
-                <div class="mb-8 md:mb-10">
-                    <h2 class="text-[10px] font-semibold uppercase tracking-[0.4em] text-slate-500">
+                <div class="mb-6 md:mb-8">
+                    <h2 class="text-[10px] font-bold uppercase tracking-[0.4em] text-slate-400">
                         The Architecture of Efficiency
                     </h2>
                 </div>
 
-                <h1 class="text-[2.8rem] sm:text-[3.2rem] md:text-7xl lg:text-8xl font-extrabold leading-[1.1] md:leading-[1.05] tracking-tight-custom mb-10 text-slate-900">
+                <!-- Refined Headline: font-bold (700) + tight tracking -->
+                <h1 class="text-[3.2rem] sm:text-[3.5rem] md:text-7xl lg:text-[5.5rem] headline-weight mb-10 text-slate-900">
                     Building <br />
-                    <span class="serif-italic">intelligent</span> <br />
+                    <span class="serif-italic lowercase tracking-normal">intelligent</span> <br />
                     OS logic.
                 </h1>
 
-                <p class="text-[1rem] md:text-[1.05rem] font-medium text-slate-500 leading-relaxed tracking-tight mb-12 max-w-[420px]">
+                <p class="text-[1.05rem] font-medium text-slate-500 leading-relaxed tracking-tight mb-12 max-w-[400px]">
                     Ironbyte engineers high-performance software that transforms workplace complexity into absolute operational clarity.
                 </p>
 
                 <div class="flex flex-col sm:flex-row items-start sm:items-center gap-8 lg:gap-12">
-                    <button class="group bg-[#2563eb] text-white py-4 px-10 rounded-full flex items-center justify-center gap-4 w-full sm:w-auto shadow-[0_20px_40px_-10px_rgba(37,99,235,0.3)] hover:shadow-[0_25px_50px_-12px_rgba(37,99,235,0.4)] transition-all duration-300">
+                    <button class="group bg-[#2563eb] text-white py-4 px-10 rounded-full flex items-center justify-center gap-4 w-full sm:w-auto shadow-xl hover:bg-blue-700 transition-all duration-300">
                         <span class="text-[13px] font-bold tracking-wide">Explore Solutions</span>
                         <i data-lucide="arrow-up-right" class="w-5 h-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"></i>
                     </button>
 
-                    <button class="flex flex-col items-start group cursor-pointer pt-2">
+                    <button class="flex flex-col items-start group cursor-pointer">
                         <span class="text-[13px] font-bold text-slate-900 tracking-tight">View our work —</span>
-                        <div class="w-0 h-[1.5px] bg-slate-900 mt-1 group-hover:w-full transition-all duration-300"></div>
+                        <div class="w-full h-[1.5px] bg-slate-100 mt-1 group-hover:bg-slate-900 transition-all duration-300"></div>
                     </button>
                 </div>
             </main>
 
-            <!-- Desktop Visual Module -->
             <div class="hidden lg:block relative">
                 <div class="relative z-10 bg-white/80 border border-slate-100 p-8 rounded-[40px] shadow-2xl backdrop-blur-md">
                     <div class="flex items-center justify-between mb-8 px-2">
@@ -153,8 +154,7 @@
                     </div>
                     
                     <div class="space-y-4">
-                        <!-- Module 1 -->
-                        <div class="bg-white/80 border border-slate-100 p-5 rounded-2xl flex items-center gap-5 shadow-sm">
+                        <div class="bg-white/80 border border-slate-50 p-5 rounded-2xl flex items-center gap-5 shadow-sm">
                             <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 shrink-0">
                                 <i data-lucide="cpu" class="w-5 h-5"></i>
                             </div>
@@ -162,15 +162,14 @@
                                 <div class="flex items-center justify-between mb-0.5">
                                     <h4 class="text-[13px] font-bold text-slate-900 truncate">Process Optimization</h4>
                                     <div class="flex items-center gap-1.5 shrink-0 ml-2">
-                                        <div class="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
+                                        <div class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></div>
                                         <span class="text-[9px] font-black uppercase tracking-widest text-blue-600">Active</span>
                                     </div>
                                 </div>
                                 <p class="text-[11px] font-medium text-slate-400 truncate">Kernel-level task scheduling</p>
                             </div>
                         </div>
-                        <!-- Module 2 -->
-                        <div class="bg-white/80 border border-slate-100 p-5 rounded-2xl flex items-center gap-5 shadow-sm">
+                        <div class="bg-white/80 border border-slate-50 p-5 rounded-2xl flex items-center gap-5 shadow-sm">
                             <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 shrink-0">
                                 <i data-lucide="code-2" class="w-5 h-5"></i>
                             </div>
@@ -191,7 +190,6 @@
         </div>
     </div>
 
-    <!-- Mobile Drawer -->
     <div id="mobile-drawer" class="fixed inset-0 z-[100] bg-white">
         <div class="relative h-full flex flex-col p-8 bg-grid">
             <div class="flex justify-between items-center mb-12">
@@ -204,10 +202,10 @@
             </div>
 
             <nav class="flex flex-col gap-1 mt-4">
-                <a href="#" class="text-[2.6rem] font-bold tracking-[-0.04em] text-slate-900 py-1">Services</a>
-                <a href="#" class="text-[2.6rem] font-bold tracking-[-0.04em] text-slate-900 py-1">DispatchMate</a>
-                <a href="#" class="text-[2.6rem] font-bold tracking-[-0.04em] text-slate-900 py-1">Our Work</a>
-                <a href="#" class="text-[2.6rem] font-bold tracking-[-0.04em] text-slate-900 py-1">About</a>
+                <a href="#" class="text-[2.6rem] font-bold tracking-[-0.06em] text-slate-900 py-1">Services</a>
+                <a href="#" class="text-[2.6rem] font-bold tracking-[-0.06em] text-slate-900 py-1">DispatchMate</a>
+                <a href="#" class="text-[2.6rem] font-bold tracking-[-0.06em] text-slate-900 py-1">Our Work</a>
+                <a href="#" class="text-[2.6rem] font-bold tracking-[-0.06em] text-slate-900 py-1">About</a>
             </nav>
 
             <div class="mt-auto pb-10">
@@ -227,10 +225,7 @@
     </div>
 
     <script>
-        // Initialize Lucide Icons
         lucide.createIcons();
-
-        // Mobile Drawer Logic
         function toggleMenu(isOpen) {
             const drawer = document.getElementById('mobile-drawer');
             if (isOpen) {
@@ -244,4 +239,6 @@
     </script>
 </body>
 </html>
+
+
 
