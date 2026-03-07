@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +19,7 @@
 
     <style>
         :root {
-            --font-inter: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --font-inter: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
 
         html {
@@ -30,55 +31,49 @@
             font-family: var(--font-inter);
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            text-rendering: optimizeLegibility;
+            /* Prioritizes exact positioning of letters over speed */
+            text-rendering: geometricPrecision; 
             overflow-x: hidden;
             color: #0f172a;
         }
 
-        /* The "Lock": Ensures consistent spacing across all browsers/hosts */
         .font-lock {
             font-family: var(--font-inter) !important;
-            font-feature-settings: "cv02", "cv05", "cv08", "ss01";
         }
 
-        /* Eyebrow: Standardized tracking */
+        /* Standardized Tracking: Avoids the "bloat" seen in Chrome screenshots */
         .eyebrow-lock {
-            letter-spacing: 0.2em;
+            letter-spacing: 0.15em;
             text-transform: uppercase;
         }
 
-        /* Heading: Reduced to weight 700 (Bold) and relaxed tracking to -0.02em */
+        /* Heading: Semi-bold (600) is safer for cross-browser consistency than 700+ */
         .heading-lock {
-            letter-spacing: -0.02em;
+            letter-spacing: normal;
             line-height: 1.2;
         }
 
         .service-card {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.2s ease-in-out;
         }
-
-        /* Custom scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #f1f5f9; }
-        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
     </style>
 </head>
 <body class="bg-white selection:bg-blue-100">
 
-    <section class="py-16 md:py-32 border-t border-slate-100 font-lock">
+    <section class="py-12 md:py-24 border-t border-slate-100 font-lock">
         <div class="max-w-7xl mx-auto px-6 md:px-16 lg:px-32">
             
             <!-- Header Section -->
-            <div class="max-w-3xl mb-12 md:mb-20">
-                <h2 class="text-[10px] font-semibold text-blue-600 mb-5 eyebrow-lock">
+            <div class="max-w-3xl mb-12 md:mb-16">
+                <h2 class="text-[10px] font-bold text-blue-600 mb-4 eyebrow-lock">
                     Capabilities
                 </h2>
-                <!-- Fixed size and reduced weight for better rendering on GitHub -->
-                <h1 class="text-3xl md:text-5xl font-bold text-[#0f172a] heading-lock">
+                <!-- Weight reduced to 600 (semibold) to prevent browser-smearing -->
+                <h1 class="text-3xl md:text-5xl font-semibold text-[#0f172a] heading-lock">
                     Standardized systems for <br class="hidden md:block" />
                     enterprise operations.
                 </h1>
-                <p class="mt-5 text-slate-500 font-medium tracking-tight text-lg md:text-xl max-w-xl leading-relaxed">
+                <p class="mt-4 text-slate-500 font-medium text-base md:text-lg max-w-xl leading-relaxed">
                     Scale your infrastructure without compromising performance.
                 </p>
             </div>
@@ -90,17 +85,17 @@
                 <div class="group relative service-card bg-white p-8 md:p-10 flex flex-col items-start text-left hover:bg-slate-50/50">
                     <div class="absolute top-0 left-0 p-2 text-slate-200 font-light select-none leading-none">+</div>
                     <div class="mb-8 flex items-center justify-between w-full">
-                        <div class="w-12 h-12 bg-white border border-slate-200 rounded-xl flex items-center justify-center shadow-sm group-hover:border-blue-200 transition-colors">
-                            <i data-lucide="cpu" class="w-6 h-6 text-slate-900 group-hover:text-blue-600 transition-colors"></i>
+                        <div class="w-11 h-11 bg-white border border-slate-200 rounded-lg flex items-center justify-center shadow-sm group-hover:border-blue-300 transition-colors">
+                            <i data-lucide="cpu" class="w-5 h-5 text-slate-700 group-hover:text-blue-600"></i>
                         </div>
-                        <span class="text-[10px] font-bold tracking-[0.2em] text-slate-400 uppercase tabular-nums">01</span>
+                        <span class="text-[10px] font-bold tracking-widest text-slate-400 uppercase">01</span>
                     </div>
                     <h3 class="text-xl font-bold tracking-tight mb-3 text-[#0f172a]">Core Optimization</h3>
-                    <p class="text-[0.95rem] font-medium text-slate-500 leading-relaxed mb-8 tracking-tight max-w-[280px]">
+                    <p class="text-[0.9rem] font-medium text-slate-500 leading-relaxed mb-6 max-w-[260px]">
                         Low-level system engineering to unlock maximum hardware throughput without compromising stability.
                     </p>
-                    <button class="mt-auto flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-slate-900 group-hover:text-blue-600 transition-all">
-                        Deploy System <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    <button class="mt-auto flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-slate-900 group-hover:text-blue-600 transition-all">
+                        Deploy System <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
                     </button>
                 </div>
 
@@ -108,17 +103,17 @@
                 <div class="group relative service-card bg-white p-8 md:p-10 flex flex-col items-start text-left hover:bg-slate-50/50">
                     <div class="absolute top-0 left-0 p-2 text-slate-200 font-light select-none leading-none">+</div>
                     <div class="mb-8 flex items-center justify-between w-full">
-                        <div class="w-12 h-12 bg-white border border-slate-200 rounded-xl flex items-center justify-center shadow-sm group-hover:border-blue-200 transition-colors">
-                            <i data-lucide="zap" class="w-6 h-6 text-slate-900 group-hover:text-blue-600 transition-colors"></i>
+                        <div class="w-11 h-11 bg-white border border-slate-200 rounded-lg flex items-center justify-center shadow-sm group-hover:border-blue-300 transition-colors">
+                            <i data-lucide="zap" class="w-5 h-5 text-slate-700 group-hover:text-blue-600"></i>
                         </div>
-                        <span class="text-[10px] font-bold tracking-[0.2em] text-slate-400 uppercase tabular-nums">02</span>
+                        <span class="text-[10px] font-bold tracking-widest text-slate-400 uppercase">02</span>
                     </div>
                     <h3 class="text-xl font-bold tracking-tight mb-3 text-[#0f172a]">Logic Automation</h3>
-                    <p class="text-[0.95rem] font-medium text-slate-500 leading-relaxed mb-8 tracking-tight max-w-[280px]">
+                    <p class="text-[0.9rem] font-medium text-slate-500 leading-relaxed mb-6 max-w-[260px]">
                         Custom OS logic layers that eliminate repetitive cognitive overhead and manual data handling.
                     </p>
-                    <button class="mt-auto flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-slate-900 group-hover:text-blue-600 transition-all">
-                        Deploy System <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    <button class="mt-auto flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-slate-900 group-hover:text-blue-600 transition-all">
+                        Deploy System <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
                     </button>
                 </div>
 
@@ -126,35 +121,35 @@
                 <div class="group relative service-card bg-white p-8 md:p-10 flex flex-col items-start text-left hover:bg-slate-50/50">
                     <div class="absolute top-0 left-0 p-2 text-slate-200 font-light select-none leading-none">+</div>
                     <div class="mb-8 flex items-center justify-between w-full">
-                        <div class="w-12 h-12 bg-white border border-slate-200 rounded-xl flex items-center justify-center shadow-sm group-hover:border-blue-200 transition-colors">
-                            <i data-lucide="shield" class="w-6 h-6 text-slate-900 group-hover:text-blue-600 transition-colors"></i>
+                        <div class="w-11 h-11 bg-white border border-slate-200 rounded-lg flex items-center justify-center shadow-sm group-hover:border-blue-300 transition-colors">
+                            <i data-lucide="shield" class="w-5 h-5 text-slate-700 group-hover:text-blue-600"></i>
                         </div>
-                        <span class="text-[10px] font-bold tracking-[0.2em] text-slate-400 uppercase tabular-nums">03</span>
+                        <span class="text-[10px] font-bold tracking-widest text-slate-400 uppercase">03</span>
                     </div>
                     <h3 class="text-xl font-bold tracking-tight mb-3 text-[#0f172a]">Secure Fabric</h3>
-                    <p class="text-[0.95rem] font-medium text-slate-500 leading-relaxed mb-8 tracking-tight max-w-[280px]">
+                    <p class="text-[0.9rem] font-medium text-slate-500 leading-relaxed mb-6 max-w-[260px]">
                         Zero-trust environments built directly into your operational fabric for enterprise-grade security.
                     </p>
-                    <button class="mt-auto flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-slate-900 group-hover:text-blue-600 transition-all">
-                        Deploy System <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    <button class="mt-auto flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-slate-900 group-hover:text-blue-600 transition-all">
+                        Deploy System <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
                     </button>
                 </div>
 
             </div>
 
             <!-- Call to Action -->
-            <div class="mt-16 md:mt-24 flex flex-col lg:flex-row items-center justify-between gap-8 p-8 md:p-12 bg-slate-50 rounded-3xl border border-slate-100">
+            <div class="mt-12 md:mt-16 flex flex-col lg:flex-row items-center justify-between gap-6 p-8 md:p-10 bg-slate-50 rounded-2xl border border-slate-100">
                 <div class="text-center lg:text-left">
-                    <h4 class="text-2xl font-bold tracking-tight text-slate-900">Ready to deploy?</h4>
-                    <p class="text-slate-500 font-medium tracking-tight mt-1">
+                    <h4 class="text-xl font-bold text-slate-900">Ready to deploy?</h4>
+                    <p class="text-slate-500 font-medium mt-1">
                         Start building with a free account or speak to an expert.
                     </p>
                 </div>
-                <div class="flex flex-col sm:flex-row gap-4 w-full lg:w-auto">
-                    <button class="bg-slate-900 text-white px-8 py-4 rounded-xl font-bold text-sm hover:bg-black transition-all shadow-xl shadow-slate-200 active:scale-95">
+                <div class="flex flex-col sm:flex-row gap-3 w-full lg:w-auto">
+                    <button class="bg-slate-900 text-white px-7 py-3 rounded-lg font-bold text-sm hover:bg-black transition-all shadow-lg shadow-slate-200 active:scale-95">
                         Start Building
                     </button>
-                    <button class="bg-white border border-slate-200 text-slate-900 px-8 py-4 rounded-xl font-bold text-sm hover:bg-slate-50 transition-all active:scale-95">
+                    <button class="bg-white border border-slate-200 text-slate-900 px-7 py-3 rounded-lg font-bold text-sm hover:bg-slate-50 active:scale-95">
                         Talk to an Expert
                     </button>
                 </div>
@@ -168,6 +163,7 @@
     </script>
 </body>
 </html>
+
 
 
 
