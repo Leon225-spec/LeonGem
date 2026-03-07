@@ -9,11 +9,12 @@
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,400&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@1,400&display=swap');
         
         :root {
-            --blue-600: #2563eb;
-            --slate-900: #0f172a;
+            --brand-blue: #2563eb;
+            --slate-900: #020617;
+            --slate-500: #64748b;
         }
 
         * {
@@ -22,15 +23,20 @@
             box-sizing: border-box;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            text-rendering: optimizeLegibility;
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Inter', sans-serif;
             background-color: #ffffff;
             color: var(--slate-900);
-            line-height: 1.4;
             overflow-x: hidden;
+        }
+
+        .headline-main {
+            font-weight: 800;
+            letter-spacing: -0.05em;
+            line-height: 0.95;
+            color: #000000;
         }
 
         .serif-italic { 
@@ -41,184 +47,156 @@
             letter-spacing: -0.02em;
         }
 
+        /* Subtle Grid Overlay */
         .bg-grid {
-            background-size: 40px 40px;
+            background-size: 60px 60px;
             background-image: 
-              linear-gradient(to right, rgba(0,0,0,0.03) 1px, transparent 1px),
-              linear-gradient(to bottom, rgba(0,0,0,0.03) 1px, transparent 1px);
+              linear-gradient(to right, rgba(0,0,0,0.04) 1px, transparent 1px),
+              linear-gradient(to bottom, rgba(0,0,0,0.04) 1px, transparent 1px);
         }
 
-        .mesh-gradient {
-            background: 
-              radial-gradient(at 0% 0%, rgba(37, 99, 235, 0.08) 0px, transparent 50%),
-              radial-gradient(at 100% 0%, rgba(37, 99, 235, 0.05) 0px, transparent 50%),
-              radial-gradient(at 50% 100%, rgba(255, 255, 255, 1) 0px, transparent 50%);
+        .mesh-glow {
+            background: radial-gradient(circle at 50% -20%, rgba(37, 99, 235, 0.08) 0%, transparent 70%);
         }
 
         #mobile-drawer {
-            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-            transform: translateY(-100%);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            clip-path: circle(0% at 100% 0%);
         }
 
         #mobile-drawer.active {
-            transform: translateY(0);
+            clip-path: circle(150% at 100% 0%);
         }
 
-        /* Updated: Vercel style is actually a very tight Bold (700) or SemiBold (600) 
-           rather than a heavy Black (900). Adjusted for high-density mobile screens. */
-        .headline-weight {
-            font-weight: 700;
-            letter-spacing: -0.06em;
-            line-height: 1.0;
+        .btn-shadow {
+            box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.4);
         }
 
-        @media (min-width: 768px) {
-            .headline-weight {
-                letter-spacing: -0.07em;
+        @media (max-width: 640px) {
+            .headline-main {
+                font-size: 3.8rem;
+                letter-spacing: -0.06em;
             }
         }
     </style>
 </head>
-<body>
+<body class="bg-white">
 
-    <div class="fixed inset-0 z-0 pointer-events-none mesh-gradient">
-        <div class="absolute inset-0 bg-grid [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
+    <!-- Background Decoration -->
+    <div class="fixed inset-0 z-0 pointer-events-none mesh-glow">
+        <div class="absolute inset-0 bg-grid [mask-image:linear-gradient(to_bottom,white,transparent)]"></div>
     </div>
 
-    <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-16 lg:px-20">
+    <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
+        
+        <!-- Header -->
         <header class="flex justify-between items-center py-8">
-            <div class="font-extrabold text-xl tracking-tighter uppercase shrink-0">
-                IRONBYTE<span class="text-blue-600">.</span>
+            <div class="flex items-center gap-1">
+                <span class="font-black text-xl tracking-tighter uppercase">IRONBYTE</span>
+                <span class="w-1.5 h-1.5 rounded-full bg-blue-600 mt-1"></span>
             </div>
 
             <nav class="hidden lg:flex items-center gap-10">
-                <a href="#" class="text-[13px] font-bold text-slate-500 hover:text-slate-950 transition-colors">Services</a>
-                <a href="#" class="text-[13px] font-bold text-slate-500 hover:text-slate-950 transition-colors">DispatchMate</a>
-                <a href="#" class="text-[13px] font-bold text-slate-500 hover:text-slate-950 transition-colors">Our Work</a>
-                <a href="#" class="text-[13px] font-bold text-slate-500 hover:text-slate-950 transition-colors">About</a>
-                <button class="ml-4 py-2.5 px-6 border border-slate-200 rounded-full text-[13px] font-bold hover:bg-slate-50 transition-colors">
+                <a href="#" class="text-[13px] font-bold text-slate-500 hover:text-black transition-colors">Services</a>
+                <a href="#" class="text-[13px] font-bold text-slate-500 hover:text-black transition-colors">DispatchMate</a>
+                <a href="#" class="text-[13px] font-bold text-slate-500 hover:text-black transition-colors">Our Work</a>
+                <a href="#" class="text-[13px] font-bold text-slate-500 hover:text-black transition-colors">About</a>
+                <button class="ml-4 py-2 px-6 border border-slate-200 rounded-full text-[13px] font-bold hover:bg-slate-50 transition-all">
                     Contact Us
                 </button>
             </nav>
 
-            <button onclick="toggleMenu(true)" class="lg:hidden flex items-center gap-3 group active:opacity-60 transition-opacity">
-                <span class="text-[10px] font-bold tracking-[0.25em] text-gray-400 uppercase">Menu</span>
+            <button onclick="toggleMenu(true)" class="lg:hidden flex items-center gap-3 group">
+                <span class="text-[10px] font-bold tracking-[0.3em] text-slate-400 uppercase">Menu</span>
                 <div class="flex flex-col gap-1.5">
-                    <div class="w-6 h-[2px] bg-black"></div>
-                    <div class="w-4 h-[2px] bg-black self-end"></div>
+                    <div class="w-7 h-[2px] bg-black"></div>
+                    <div class="w-5 h-[2px] bg-black self-end"></div>
                 </div>
             </button>
         </header>
 
-        <div class="grid grid-cols-1 lg:grid-cols-2 items-center gap-12 lg:gap-20 mt-10 md:mt-24 lg:mt-32 pb-20">
-            <main class="max-w-xl text-left">
-                <div class="mb-6 md:mb-8">
-                    <h2 class="text-[10px] font-bold uppercase tracking-[0.4em] text-slate-400">
+        <!-- Hero Content -->
+        <main class="pt-16 md:pt-28 pb-24">
+            <div class="max-w-4xl">
+                <!-- Subtitle -->
+                <div class="mb-10 overflow-hidden">
+                    <h2 class="text-[10px] md:text-[11px] font-bold uppercase tracking-[0.45em] text-slate-400/80 inline-flex items-center gap-4">
+                        <span class="w-8 h-[1px] bg-slate-200"></span>
                         The Architecture of Efficiency
                     </h2>
                 </div>
 
-                <!-- Refined Headline: font-bold (700) + tight tracking -->
-                <h1 class="text-[3.2rem] sm:text-[3.5rem] md:text-7xl lg:text-[5.5rem] headline-weight mb-10 text-slate-900">
+                <!-- Main Headline -->
+                <h1 class="headline-main text-6xl md:text-8xl lg:text-[7rem] mb-12">
                     Building <br />
-                    <span class="serif-italic lowercase tracking-normal">intelligent</span> <br />
+                    <span class="serif-italic lowercase tracking-tight text-slate-500/90">intelligent</span> <br />
                     OS logic.
                 </h1>
 
-                <p class="text-[1.05rem] font-medium text-slate-500 leading-relaxed tracking-tight mb-12 max-w-[400px]">
+                <!-- Body Text -->
+                <p class="text-lg md:text-xl font-medium text-slate-500 leading-relaxed max-w-lg mb-14 tracking-tight">
                     Ironbyte engineers high-performance software that transforms workplace complexity into absolute operational clarity.
                 </p>
 
-                <div class="flex flex-col sm:flex-row items-start sm:items-center gap-8 lg:gap-12">
-                    <button class="group bg-[#2563eb] text-white py-4 px-10 rounded-full flex items-center justify-center gap-4 w-full sm:w-auto shadow-xl hover:bg-blue-700 transition-all duration-300">
-                        <span class="text-[13px] font-bold tracking-wide">Explore Solutions</span>
-                        <i data-lucide="arrow-up-right" class="w-5 h-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"></i>
+                <!-- Actions -->
+                <div class="flex flex-col sm:flex-row items-start sm:items-center gap-10">
+                    <button class="group bg-blue-600 text-white py-5 px-10 rounded-2xl flex items-center justify-center gap-4 w-full sm:w-auto btn-shadow hover:bg-blue-700 hover:scale-[1.02] active:scale-95 transition-all duration-300">
+                        <span class="text-[15px] font-bold tracking-tight">Explore Solutions</span>
+                        <i data-lucide="arrow-up-right" class="w-5 h-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"></i>
                     </button>
 
-                    <button class="flex flex-col items-start group cursor-pointer">
-                        <span class="text-[13px] font-bold text-slate-900 tracking-tight">View our work —</span>
-                        <div class="w-full h-[1.5px] bg-slate-100 mt-1 group-hover:bg-slate-900 transition-all duration-300"></div>
-                    </button>
-                </div>
-            </main>
-
-            <div class="hidden lg:block relative">
-                <div class="relative z-10 bg-white/80 border border-slate-100 p-8 rounded-[40px] shadow-2xl backdrop-blur-md">
-                    <div class="flex items-center justify-between mb-8 px-2">
-                        <div class="flex gap-1.5">
-                           <div class="w-2.5 h-2.5 rounded-full bg-slate-200"></div>
-                           <div class="w-2.5 h-2.5 rounded-full bg-slate-200"></div>
-                           <div class="w-2.5 h-2.5 rounded-full bg-slate-200"></div>
-                        </div>
-                        <span class="text-[9px] font-black tracking-[0.3em] text-slate-300 uppercase">System_V4.0_Stable</span>
-                    </div>
-                    
-                    <div class="space-y-4">
-                        <div class="bg-white/80 border border-slate-50 p-5 rounded-2xl flex items-center gap-5 shadow-sm">
-                            <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 shrink-0">
-                                <i data-lucide="cpu" class="w-5 h-5"></i>
-                            </div>
-                            <div class="flex-1 min-w-0">
-                                <div class="flex items-center justify-between mb-0.5">
-                                    <h4 class="text-[13px] font-bold text-slate-900 truncate">Process Optimization</h4>
-                                    <div class="flex items-center gap-1.5 shrink-0 ml-2">
-                                        <div class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></div>
-                                        <span class="text-[9px] font-black uppercase tracking-widest text-blue-600">Active</span>
-                                    </div>
-                                </div>
-                                <p class="text-[11px] font-medium text-slate-400 truncate">Kernel-level task scheduling</p>
-                            </div>
-                        </div>
-                        <div class="bg-white/80 border border-slate-50 p-5 rounded-2xl flex items-center gap-5 shadow-sm">
-                            <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 shrink-0">
-                                <i data-lucide="code-2" class="w-5 h-5"></i>
-                            </div>
-                            <div class="flex-1 min-w-0">
-                                <div class="flex items-center justify-between mb-0.5">
-                                    <h4 class="text-[13px] font-bold text-slate-900 truncate">System Architecture</h4>
-                                    <div class="flex items-center gap-1.5 shrink-0 ml-2">
-                                        <div class="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
-                                        <span class="text-[9px] font-black uppercase tracking-widest text-blue-600">Verified</span>
-                                    </div>
-                                </div>
-                                <p class="text-[11px] font-medium text-slate-400 truncate">Modular micro-service logic</p>
-                            </div>
-                        </div>
-                    </div>
+                    <a href="#" class="group flex items-center gap-3 py-2">
+                        <span class="text-[14px] font-bold text-slate-900 border-b-2 border-transparent group-hover:border-slate-900 transition-all">View our work</span>
+                        <span class="text-slate-300 group-hover:translate-x-1 transition-transform">——</span>
+                    </a>
                 </div>
             </div>
-        </div>
+        </main>
+
+        <!-- Stats/Social Proof (Subtle Footer for Hero) -->
+        <footer class="border-t border-slate-100 py-10 flex flex-wrap gap-12">
+             <div>
+                <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">Scale</p>
+                <p class="text-sm font-bold">1.2M+ Operations/sec</p>
+             </div>
+             <div>
+                <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">Reliability</p>
+                <p class="text-sm font-bold">99.99% Core Uptime</p>
+             </div>
+             <div class="ml-auto hidden md:block">
+                <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">Status</p>
+                <div class="flex items-center gap-2">
+                    <div class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></div>
+                    <p class="text-sm font-bold">Systems Operational</p>
+                </div>
+             </div>
+        </footer>
     </div>
 
+    <!-- Fullscreen Mobile Menu -->
     <div id="mobile-drawer" class="fixed inset-0 z-[100] bg-white">
-        <div class="relative h-full flex flex-col p-8 bg-grid">
-            <div class="flex justify-between items-center mb-12">
-                <div class="font-extrabold text-xl tracking-tighter uppercase shrink-0">
-                    IRONBYTE<span class="text-blue-600">.</span>
-                </div>
-                <button onclick="toggleMenu(false)" class="w-12 h-12 flex items-center justify-center bg-slate-50 border border-slate-100 rounded-full shadow-sm">
-                    <i data-lucide="x" class="w-6 h-6 text-slate-900"></i>
+        <div class="h-full flex flex-col p-8">
+            <div class="flex justify-between items-center mb-16">
+                <div class="font-black text-xl tracking-tighter uppercase">IRONBYTE.</div>
+                <button onclick="toggleMenu(false)" class="w-12 h-12 flex items-center justify-center rounded-full bg-slate-50 border border-slate-100">
+                    <i data-lucide="x" class="w-6 h-6"></i>
                 </button>
             </div>
 
-            <nav class="flex flex-col gap-1 mt-4">
-                <a href="#" class="text-[2.6rem] font-bold tracking-[-0.06em] text-slate-900 py-1">Services</a>
-                <a href="#" class="text-[2.6rem] font-bold tracking-[-0.06em] text-slate-900 py-1">DispatchMate</a>
-                <a href="#" class="text-[2.6rem] font-bold tracking-[-0.06em] text-slate-900 py-1">Our Work</a>
-                <a href="#" class="text-[2.6rem] font-bold tracking-[-0.06em] text-slate-900 py-1">About</a>
+            <nav class="flex flex-col gap-4">
+                <a href="#" class="text-5xl font-extrabold tracking-tighter text-slate-900 hover:text-blue-600 transition-colors">Services</a>
+                <a href="#" class="text-5xl font-extrabold tracking-tighter text-slate-900 hover:text-blue-600 transition-colors">DispatchMate</a>
+                <a href="#" class="text-5xl font-extrabold tracking-tighter text-slate-900 hover:text-blue-600 transition-colors">Our Work</a>
+                <a href="#" class="text-5xl font-extrabold tracking-tighter text-slate-900 hover:text-blue-600 transition-colors">About</a>
             </nav>
 
-            <div class="mt-auto pb-10">
-                <button class="w-full py-5 bg-[#0f172a] text-white rounded-2xl font-bold text-sm tracking-tight flex items-center justify-center gap-3 shadow-xl">
-                    Contact Us
-                    <i data-lucide="arrow-up-right" class="w-[18px] h-[18px] text-blue-400"></i>
+            <div class="mt-auto">
+                <button class="w-full py-5 bg-slate-950 text-white rounded-2xl font-bold text-lg mb-8 shadow-2xl">
+                    Get in Touch
                 </button>
-                <div class="mt-12 pt-8 border-t border-slate-100 flex justify-between items-center">
-                    <span class="text-[9px] font-black tracking-[0.2em] text-slate-400 uppercase">Ironbyte Logic Systems</span>
-                    <div class="flex items-center gap-2">
-                        <div class="w-1.5 h-1.5 rounded-full bg-blue-600"></div>
-                        <span class="text-[9px] font-black tracking-[0.2em] text-slate-400 uppercase">Stable_OS</span>
-                    </div>
+                <div class="flex justify-between text-[10px] font-bold tracking-widest text-slate-400 uppercase">
+                    <span>©2024 Ironbyte Logic</span>
+                    <span>v4.0.2 Stable</span>
                 </div>
             </div>
         </div>
@@ -226,6 +204,7 @@
 
     <script>
         lucide.createIcons();
+        
         function toggleMenu(isOpen) {
             const drawer = document.getElementById('mobile-drawer');
             if (isOpen) {
@@ -239,6 +218,8 @@
     </script>
 </body>
 </html>
+
+
 
 
 
