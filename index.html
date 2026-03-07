@@ -1,260 +1,403 @@
-import React, { useState, useEffect } from 'react';
 
-/**
- * Ironbyte Hero Component - Fluid Typography Edition
- * * Features:
- * - Clamp-based fluid headline scaling (2.5rem to 4.75rem)
- * - Hard-reset CSS to preserve "cuteness" in external environments
- * - SVG-based iconography for crisp rendering
- * - Vercel-style tracking and line-heights
- */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ironbyte — The Architecture of Efficiency</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@1,400&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet" />
 
-const App = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  // Sync scroll lock with menu state
-  useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
+  <style>
+    /* ── Hard resets & Custom Styles ── */
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      scroll-behavior: smooth;
     }
-  }, [isMenuOpen]);
 
-  const navLinks = [
-    { name: 'Services', href: '#' },
-    { name: 'DispatchMate', href: '#' },
-    { name: 'Our Work', href: '#' },
-    { name: 'About', href: '#' }
-  ];
+    .serif-italic { 
+      font-family: 'Playfair Display', serif; 
+      font-style: italic; 
+      font-weight: 400;
+    }
 
-  return (
-    <div className="ironbyte-root relative min-h-screen w-full bg-white text-[#0f172a] selection:bg-blue-100 overflow-x-hidden antialiased">
-      <style>
-        {`
-          @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@1,400&display=swap');
-          
-          .ironbyte-root {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            line-height: 1.5;
-            -webkit-text-size-adjust: 100%;
-          }
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
 
-          .serif-italic { 
-            font-family: 'Playfair Display', serif; 
-            font-style: italic; 
-            font-weight: 400;
-            color: #475569;
-          }
+    .bg-grid {
+      background-size: 44px 44px;
+      background-image: 
+        linear-gradient(to right, rgba(0,0,0,0.035) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0,0,0,0.035) 1px, transparent 1px);
+    }
 
-          .bg-grid {
-            background-size: 44px 44px;
-            background-image: 
-              linear-gradient(to right, rgba(0,0,0,0.035) 1px, transparent 1px),
-              linear-gradient(to bottom, rgba(0,0,0,0.035) 1px, transparent 1px);
-          }
+    .mesh-gradient {
+      background: 
+        radial-gradient(at 0% 0%, rgba(37, 99, 235, 0.08) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(37, 99, 235, 0.05) 0px, transparent 50%),
+        radial-gradient(at 50% 100%, rgba(255, 255, 255, 1) 0px, transparent 50%);
+    }
 
-          .mesh-gradient {
-            background: 
-              radial-gradient(at 0% 0%, rgba(37, 99, 235, 0.09) 0px, transparent 50%),
-              radial-gradient(at 100% 0%, rgba(37, 99, 235, 0.06) 0px, transparent 50%),
-              radial-gradient(at 50% 100%, rgba(255, 255, 255, 1) 0px, transparent 50%);
-          }
+    /* Fluid Scaling for Headline */
+    .hero-headline {
+      font-size: clamp(2.5rem, 5.5vw + 1rem, 4.75rem);
+      line-height: 1.08;
+      letter-spacing: -0.04em;
+    }
 
-          /* Fluid Scaling Logic */
-          .hero-headline {
-            font-size: clamp(2.5rem, 5.5vw + 1rem, 4.75rem);
-            font-weight: 800;
-            line-height: 1.08;
-            letter-spacing: -0.04em;
-          }
+    .btn-primary-shadow {
+      box-shadow: 0 16px 32px -8px rgba(37,99,235,0.28);
+    }
 
-          .btn-primary-shadow {
-            box-shadow: 0 16px 32px -8px rgba(37,99,235,0.28);
-          }
+    .system-card-blur {
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
 
-          .system-card-blur {
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-          }
+    @keyframes pulse-custom {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+    .animate-pulse-slow {
+      animation: pulse-custom 2s infinite;
+    }
 
-          @keyframes pulse-custom {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.4; }
-          }
-          .animate-pulse-slow {
-            animation: pulse-custom 2s infinite;
-          }
-        `}
-      </style>
+    #mobile-menu {
+      transform: translateY(-100%);
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    #mobile-menu.open {
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body class="bg-white text-[#0f172a] overflow-x-hidden">
 
-      {/* Background Layer */}
-      <div className="fixed inset-0 z-0 pointer-events-none mesh-gradient">
-        <div className="absolute inset-0 bg-grid [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
+  <!-- ── Background Fixed Layer ── -->
+  <div class="fixed inset-0 z-0 pointer-events-none mesh-gradient">
+    <div class="absolute inset-0 bg-grid [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
+  </div>
+
+  <!-- ── Navigation ── -->
+  <div class="relative z-50 max-w-7xl mx-auto px-5 md:px-14 lg:px-20">
+    <header class="flex justify-between items-center py-6 md:py-8">
+      <div class="font-extrabold text-[17px] tracking-tighter uppercase shrink-0 select-none">
+        IRONBYTE<span class="text-blue-600">.</span>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-5 md:px-14 lg:px-20">
-        {/* Navigation */}
-        <header className="flex justify-between items-center py-6 md:py-8">
-          <div className="font-extrabold text-[17px] tracking-tighter uppercase shrink-0">
-            IRONBYTE<span className="text-blue-600">.</span>
-          </div>
+      <nav class="hidden lg:flex items-center gap-8">
+        <a href="#services" class="text-[12px] font-bold text-slate-500 hover:text-slate-950 transition-colors">Services</a>
+        <a href="#" class="text-[12px] font-bold text-slate-500 hover:text-slate-950 transition-colors">DispatchMate</a>
+        <a href="#work" class="text-[12px] font-bold text-slate-500 hover:text-slate-950 transition-colors">Our Work</a>
+        <a href="#roadmap" class="text-[12px] font-bold text-slate-500 hover:text-slate-950 transition-colors">About</a>
+        <button class="ml-4 py-2 px-5 border border-slate-200 rounded-full text-[12px] font-bold hover:bg-slate-50 transition-colors">
+          Contact Us
+        </button>
+      </nav>
 
-          <nav className="hidden lg:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <a key={link.name} href={link.href} className="text-[12px] font-bold text-slate-500 hover:text-slate-950 transition-colors">
-                {link.name}
-              </a>
-            ))}
-            <button className="ml-4 py-2 px-5 border border-slate-200 rounded-full text-[12px] font-bold hover:bg-slate-50 transition-colors">
-              Contact Us
-            </button>
-          </nav>
-
-          <button 
-            onClick={() => setIsMenuOpen(true)}
-            className="lg:hidden flex items-center gap-3 group active:opacity-60 transition-opacity"
-          >
-            <span className="text-[9px] font-bold tracking-[0.22em] text-gray-400 uppercase">Menu</span>
-            <div className="flex flex-col gap-1.5">
-              <div className="w-[22px] h-[1.5px] bg-black" />
-              <div className="w-[15px] h-[1.5px] bg-black self-end" />
-            </div>
-          </button>
-        </header>
-
-        {/* Hero Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-10 lg:gap-16 mt-8 md:mt-20 lg:mt-28 pb-20">
-          <main className="max-w-[560px] text-left">
-            <div className="mb-6 md:mb-8">
-              <h2 className="text-[9px] font-semibold uppercase tracking-[0.35em] text-slate-500">
-                The Architecture of Efficiency
-              </h2>
-            </div>
-
-            <h1 className="hero-headline text-slate-900 mb-8">
-              Building <br />
-              <span className="serif-italic">intelligent</span> <br />
-              OS logic.
-            </h1>
-
-            <p className="text-[14px] font-medium text-slate-500 leading-[1.7] tracking-tight mb-10 max-w-[400px]">
-              Ironbyte engineers high-performance software that transforms workplace complexity into absolute operational clarity.
-            </p>
-
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 lg:gap-10">
-              <button className="group bg-[#2563eb] text-white py-[14px] px-8 rounded-full flex items-center justify-center gap-3 w-full sm:w-auto btn-primary-shadow hover:brightness-110 transition-all duration-300">
-                <span className="text-[12px] font-bold tracking-wide">Explore Solutions</span>
-                <svg className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <line x1="7" y1="17" x2="17" y2="7"></line>
-                  <polyline points="7 7 17 7 17 17"></polyline>
-                </svg>
-              </button>
-
-              <button className="relative group py-2">
-                <span className="text-[12px] font-bold text-slate-900 tracking-tight">View our work —</span>
-                <div className="absolute bottom-1 left-0 w-0 h-[1.5px] bg-slate-900 transition-all duration-300 group-hover:w-full" />
-              </button>
-            </div>
-          </main>
-
-          {/* System Visual Module */}
-          <div className="hidden lg:block relative">
-            <div className="system-card-blur bg-white/80 border border-slate-100 p-7 rounded-[28px] shadow-2xl">
-              <div className="flex items-center justify-between mb-6 px-1">
-                <div className="flex gap-1.5">
-                   <div className="w-2 h-2 rounded-full bg-slate-200" />
-                   <div className="w-2 h-2 rounded-full bg-slate-200" />
-                   <div className="w-2 h-2 rounded-full bg-slate-200" />
-                </div>
-                <span className="text-[8px] font-black tracking-[0.25em] text-slate-300 uppercase">System_V4.0_Stable</span>
-              </div>
-              
-              <div className="space-y-3">
-                {[
-                  { icon: 'cpu', title: 'Process Optimization', desc: 'Kernel-level task scheduling', status: 'Active' },
-                  { icon: 'code', title: 'System Architecture', desc: 'Modular micro-service logic', status: 'Verified' },
-                  { icon: 'globe', title: 'Global Scalability', desc: 'Edge-node distribution sync', status: 'Ready' }
-                ].map((item, idx) => (
-                  <div key={idx} className="bg-white/80 border border-slate-100 p-4 rounded-xl flex items-center gap-4 shadow-sm hover:shadow-md transition-shadow">
-                    <div className="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center text-blue-600 shrink-0">
-                      {item.icon === 'cpu' && <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>}
-                      {item.icon === 'code' && <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>}
-                      {item.icon === 'globe' && <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>}
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center justify-between mb-0.5">
-                        <h4 className="text-[11px] font-bold text-slate-900 truncate">{item.title}</h4>
-                        <div className="flex items-center gap-1.5 shrink-0 ml-2">
-                          <div className="w-1 h-1 rounded-full bg-blue-500 animate-pulse-slow" />
-                          <span className="text-[8px] font-black uppercase tracking-widest text-blue-600">{item.status}</span>
-                        </div>
-                      </div>
-                      <p className="text-[10px] font-medium text-slate-400 truncate">{item.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+      <button onclick="toggleMenu(true)" class="lg:hidden flex items-center gap-3 group active:opacity-60 transition-opacity">
+        <span class="text-[9px] font-bold tracking-[0.22em] text-gray-400 uppercase">Menu</span>
+        <div class="flex flex-col gap-1.5">
+          <div class="w-[22px] h-[1.5px] bg-black"></div>
+          <div class="w-[15px] h-[1.5px] bg-black self-end"></div>
         </div>
-      </div>
+      </button>
+    </header>
+  </div>
 
-      {/* Mobile Drawer */}
-      <div 
-        className={`fixed inset-0 z-[100] bg-white transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${isMenuOpen ? 'translate-y-0' : '-translate-y-full'}`}
-      >
-        <div className="relative h-full flex flex-col p-7 bg-grid">
-          <div className="flex justify-between items-center mb-10">
-            <div className="font-extrabold text-[17px] tracking-tighter uppercase shrink-0">
-              IRONBYTE<span className="text-blue-600">.</span>
+  <!-- ── Hero Section ── -->
+  <section class="relative z-10 max-w-7xl mx-auto px-5 md:px-14 lg:px-20">
+    <div class="grid grid-cols-1 lg:grid-cols-2 items-center gap-10 lg:gap-16 mt-8 md:mt-20 lg:mt-28 pb-20">
+      <main class="max-w-[560px]">
+        <div class="mb-6 md:mb-8">
+          <h2 class="text-[9px] font-semibold uppercase tracking-[0.35em] text-slate-500">
+            The Architecture of Efficiency
+          </h2>
+        </div>
+
+        <h1 class="hero-headline font-extrabold text-slate-900 mb-8">
+          Building <br />
+          <span class="serif-italic text-slate-500">intelligent</span> <br />
+          OS logic.
+        </h1>
+
+        <p class="text-[14px] font-medium text-slate-500 leading-[1.7] tracking-tight mb-10 max-w-[400px]">
+          Ironbyte engineers high-performance software that transforms workplace complexity into absolute operational clarity.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-6 lg:gap-10">
+          <button class="group bg-[#2563eb] text-white py-[14px] px-8 rounded-full flex items-center justify-center gap-3 w-full sm:w-auto btn-primary-shadow hover:brightness-110 transition-all">
+            <span class="text-[12px] font-bold tracking-wide">Explore Solutions</span>
+            <svg class="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="7" y1="17" x2="17" y2="7"></line>
+              <polyline points="7 7 17 7 17 17"></polyline>
+            </svg>
+          </button>
+
+          <button class="relative group py-2">
+            <span class="text-[12px] font-bold text-slate-900 tracking-tight">View our work —</span>
+            <div class="absolute bottom-1 left-0 w-0 h-[1.5px] bg-slate-900 transition-all duration-300 group-hover:w-full"></div>
+          </button>
+        </div>
+      </main>
+
+      <!-- System Visual -->
+      <div class="hidden lg:block relative">
+        <div class="system-card-blur bg-white/80 border border-slate-100 p-7 rounded-[28px] shadow-2xl">
+          <div class="flex items-center justify-between mb-6 px-1">
+            <div class="flex gap-1.5">
+              <div class="w-2 h-2 rounded-full bg-slate-200"></div>
+              <div class="w-2 h-2 rounded-full bg-slate-200"></div>
+              <div class="w-2 h-2 rounded-full bg-slate-200"></div>
             </div>
-            <button 
-              onClick={() => setIsMenuOpen(false)}
-              className="w-10 h-10 flex items-center justify-center bg-slate-50 border border-slate-100 rounded-full shadow-sm"
-            >
-              <svg className="w-5 h-5 text-slate-900" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-                <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
-              </svg>
-            </button>
+            <span class="text-[8px] font-black tracking-[0.25em] text-slate-300 uppercase">System_V4.0_Stable</span>
           </div>
-
-          <nav className="flex flex-col gap-0 mt-2">
-            {navLinks.map((link) => (
-              <a 
-                key={link.name} 
-                href={link.href} 
-                className="text-[2.1rem] font-bold tracking-[-0.035em] text-slate-900 py-1"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {link.name}
-              </a>
-            ))}
-          </nav>
-
-          <div className="mt-auto pb-8">
-            <button className="w-full py-4 bg-[#0f172a] text-white rounded-xl font-bold text-[13px] tracking-tight flex items-center justify-center gap-3 shadow-lg">
-              Contact Us
-              <svg className="w-4 h-4 text-blue-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="7" y1="17" x2="17" y2="7"></line>
-                <polyline points="7 7 17 7 17 17"></polyline>
-              </svg>
-            </button>
-            <div className="mt-10 pt-6 border-t border-slate-100 flex justify-between items-center">
-              <span className="text-[8px] font-black tracking-[0.18em] text-slate-400 uppercase">Ironbyte Logic Systems</span>
-              <div className="flex items-center gap-2">
-                <div className="w-1 h-1 rounded-full bg-blue-600 animate-pulse-slow" />
-                <span className="text-[8px] font-black tracking-[0.18em] text-slate-400 uppercase">Stable_OS</span>
+          
+          <div class="space-y-3">
+            <!-- Module 1 -->
+            <div class="bg-white/80 border border-slate-100 p-4 rounded-xl flex items-center gap-4 shadow-sm hover:shadow-md transition-shadow">
+              <div class="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center text-blue-600 shrink-0">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center justify-between mb-0.5">
+                  <h4 class="text-[11px] font-bold text-slate-900 truncate">Process Optimization</h4>
+                  <div class="flex items-center gap-1.5 shrink-0 ml-2">
+                    <div class="w-1 h-1 rounded-full bg-blue-500 animate-pulse-slow"></div>
+                    <span class="text-[8px] font-black uppercase tracking-widest text-blue-600">Active</span>
+                  </div>
+                </div>
+                <p class="text-[10px] font-medium text-slate-400 truncate">Kernel-level task scheduling</p>
+              </div>
+            </div>
+            <!-- Module 2 -->
+            <div class="bg-white/80 border border-slate-100 p-4 rounded-xl flex items-center gap-4 shadow-sm hover:shadow-md transition-shadow">
+              <div class="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center text-blue-600 shrink-0">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center justify-between mb-0.5">
+                  <h4 class="text-[11px] font-bold text-slate-900 truncate">System Architecture</h4>
+                  <div class="flex items-center gap-1.5 shrink-0 ml-2">
+                    <div class="w-1 h-1 rounded-full bg-blue-500 animate-pulse-slow"></div>
+                    <span class="text-[8px] font-black uppercase tracking-widest text-blue-600">Verified</span>
+                  </div>
+                </div>
+                <p class="text-[10px] font-medium text-slate-400 truncate">Modular micro-service logic</p>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  );
-};
+  </section>
 
-export default App;
+  <!-- ── Services Section ── -->
+  <section id="services" class="relative z-10 bg-white py-24 md:py-32 border-t border-slate-100">
+    <div class="max-w-7xl mx-auto px-7 md:px-16 lg:px-32">
+      <div class="max-w-2xl mb-20">
+        <h2 class="text-[10px] font-bold uppercase tracking-[0.4em] text-blue-600 mb-6">Capabilities</h2>
+        <h2 class="text-4xl md:text-5xl font-extrabold tracking-tighter text-[#0f172a] leading-[1.1]">
+          Standardized systems for <br class="hidden md:block" />
+          enterprise operations.
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 border border-slate-100 divide-y md:divide-y-0 md:divide-x divide-slate-100">
+        <!-- Service 01 -->
+        <div class="group relative bg-white p-8 md:p-10 border-slate-100 hover:bg-slate-50 transition-colors">
+          <div class="absolute -top-px -left-px text-slate-300 font-light">+</div>
+          <div class="mb-10 flex items-center justify-between w-full">
+            <div class="w-10 h-10 bg-slate-50 border border-slate-200 rounded-lg flex items-center justify-center group-hover:bg-white transition-colors">
+              <svg class="w-5 h-5 text-slate-900" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
+            </div>
+            <span class="text-[10px] font-bold tracking-[0.2em] text-slate-400 uppercase">01</span>
+          </div>
+          <h3 class="text-2xl font-bold tracking-tighter mb-4 text-[#0f172a]">Core Optimization</h3>
+          <p class="text-[0.95rem] font-medium text-slate-500 leading-relaxed mb-8 tracking-tight">Low-level system engineering to unlock maximum hardware throughput.</p>
+          <button class="mt-auto flex items-center gap-1 text-[11px] font-bold uppercase tracking-widest text-slate-900 group-hover:text-blue-600 transition-all">Deploy System</button>
+        </div>
+        <!-- Service 02 -->
+        <div class="group relative bg-white p-8 md:p-10 border-slate-100 hover:bg-slate-50 transition-colors">
+          <div class="mb-10 flex items-center justify-between w-full">
+            <div class="w-10 h-10 bg-slate-50 border border-slate-200 rounded-lg flex items-center justify-center group-hover:bg-white transition-colors">
+              <svg class="w-5 h-5 text-slate-900" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            </div>
+            <span class="text-[10px] font-bold tracking-[0.2em] text-slate-400 uppercase">02</span>
+          </div>
+          <h3 class="text-2xl font-bold tracking-tighter mb-4 text-[#0f172a]">Logic Automation</h3>
+          <p class="text-[0.95rem] font-medium text-slate-500 leading-relaxed mb-8 tracking-tight">Custom OS logic layers that eliminate repetitive cognitive overhead.</p>
+          <button class="mt-auto flex items-center gap-1 text-[11px] font-bold uppercase tracking-widest text-slate-900 group-hover:text-blue-600 transition-all">Deploy System</button>
+        </div>
+        <!-- Service 03 -->
+        <div class="group relative bg-white p-8 md:p-10 border-slate-100 hover:bg-slate-50 transition-colors">
+          <div class="mb-10 flex items-center justify-between w-full">
+            <div class="w-10 h-10 bg-slate-50 border border-slate-200 rounded-lg flex items-center justify-center group-hover:bg-white transition-colors">
+              <svg class="w-5 h-5 text-slate-900" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <span class="text-[10px] font-bold tracking-[0.2em] text-slate-400 uppercase">03</span>
+          </div>
+          <h3 class="text-2xl font-bold tracking-tighter mb-4 text-[#0f172a]">Secure Fabric</h3>
+          <p class="text-[0.95rem] font-medium text-slate-500 leading-relaxed mb-8 tracking-tight">Zero-trust environments built directly into your operational fabric.</p>
+          <button class="mt-auto flex items-center gap-1 text-[11px] font-bold uppercase tracking-widest text-slate-900 group-hover:text-blue-600 transition-all">Deploy System</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Advantage / Why Us Section ── -->
+  <section id="work" class="relative z-10 bg-white py-24 md:py-32 border-t border-slate-100 antialiased">
+    <div class="max-w-7xl mx-auto px-7 md:px-16 lg:px-32">
+      <div class="relative mb-16 md:mb-24">
+        <h2 class="text-[10px] font-bold uppercase tracking-[0.4em] text-blue-600 mb-6">The Advantage</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-end">
+          <h2 class="text-4xl md:text-6xl font-extrabold tracking-tighter text-slate-900 leading-[0.95]">Built for <br /> unrivaled scale.</h2>
+          <p class="text-lg font-medium text-slate-500 tracking-tight leading-relaxed max-w-sm">We replace legacy bottlenecks with lean, high-throughput systems.</p>
+        </div>
+      </div>
+
+      <div class="relative border-t border-l border-slate-100 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+        <div class="absolute -top-1.5 -left-1.5 text-slate-300 font-light select-none">+</div>
+        <!-- Item 1 -->
+        <div class="group p-8 md:p-10 border-slate-100 hover:bg-slate-50 transition-all">
+          <div class="mb-6 w-10 h-10 rounded-lg bg-white border border-slate-200 flex items-center justify-center shadow-sm">
+            <svg class="w-5 h-5 text-slate-900" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg>
+          </div>
+          <h3 class="text-xl font-bold tracking-tighter text-slate-900 mb-3">Native Logic</h3>
+          <p class="text-[0.95rem] font-medium text-slate-500 tracking-tight">Systems written for the metal, reducing overhead by up to 40%.</p>
+        </div>
+        <!-- Item 2 -->
+        <div class="group p-8 md:p-10 border-slate-100 hover:bg-slate-50 transition-all">
+          <div class="mb-6 w-10 h-10 rounded-lg bg-white border border-slate-200 flex items-center justify-center shadow-sm">
+            <svg class="w-5 h-5 text-slate-900" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <h3 class="text-xl font-bold tracking-tighter text-slate-900 mb-3">Zero-Leak</h3>
+          <p class="text-[0.95rem] font-medium text-slate-500 tracking-tight">Cryptographic-grade security protocols active at every terminal.</p>
+        </div>
+        <!-- Item 3 -->
+        <div class="group p-8 md:p-10 border-slate-100 hover:bg-slate-50 transition-all">
+          <div class="mb-6 w-10 h-10 rounded-lg bg-white border border-slate-200 flex items-center justify-center shadow-sm">
+            <svg class="w-5 h-5 text-slate-900" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          </div>
+          <h3 class="text-xl font-bold tracking-tighter text-slate-900 mb-3">Real-time Ops</h3>
+          <p class="text-[0.95rem] font-medium text-slate-500 tracking-tight">Sub-millisecond data synchronization across global nodes.</p>
+        </div>
+        <!-- Item 4 -->
+        <div class="group p-8 md:p-10 border-slate-100 hover:bg-slate-50 transition-all">
+          <div class="mb-6 w-10 h-10 rounded-lg bg-white border border-slate-200 flex items-center justify-center shadow-sm">
+            <svg class="w-5 h-5 text-slate-900" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold tracking-tighter text-slate-900 mb-3">Global Edge</h3>
+          <p class="text-[0.95rem] font-medium text-slate-500 tracking-tight">Deploy logic updates instantly to any region in the world.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Roadmap / Protocol ── -->
+  <section id="roadmap" class="relative z-10 bg-white py-24 md:py-32 border-t border-slate-100">
+    <div class="max-w-7xl mx-auto px-7 md:px-16 lg:px-32">
+      <div class="mb-20 md:mb-32">
+        <h2 class="text-[10px] font-bold uppercase tracking-[0.4em] text-blue-600 mb-6">Our Protocol</h2>
+        <h2 class="text-4xl md:text-6xl font-extrabold tracking-tighter text-slate-900 leading-[0.95] max-w-2xl">A precise engineering <br /> workflow.</h2>
+      </div>
+
+      <div class="max-w-4xl mx-auto">
+        <!-- Step 1 -->
+        <div class="relative flex gap-8 md:gap-16 pb-16 md:pb-24">
+          <div class="absolute left-[20px] top-[40px] bottom-0 w-px bg-slate-100 hidden md:block"></div>
+          <div class="relative z-10 shrink-0">
+            <div class="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center shadow-sm">
+              <svg class="w-5 h-5 text-slate-900" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </div>
+            <div class="mt-4 text-center hidden md:block">
+              <span class="text-[10px] font-mono font-bold text-slate-300 tracking-widest">STEP_01</span>
+            </div>
+          </div>
+          <div class="flex-1 pt-1">
+            <h3 class="text-2xl md:text-3xl font-extrabold tracking-tighter text-slate-900 mb-4">Logic Analysis</h3>
+            <p class="text-[1.05rem] font-medium text-slate-500 leading-relaxed tracking-tight">We perform a deep-dive audit of your current system architecture to identify latency bottlenecks.</p>
+          </div>
+        </div>
+        <!-- Step 2 -->
+        <div class="relative flex gap-8 md:gap-16 pb-16 md:pb-24">
+          <div class="relative z-10 shrink-0">
+            <div class="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center shadow-sm">
+              <svg class="w-5 h-5 text-slate-900" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L4 2l3.5 12.5L13 18l5-5z"/><path d="M2 22l5-5"/><path d="M9.5 14.5L14 10"/></svg>
+            </div>
+            <div class="mt-4 text-center hidden md:block">
+              <span class="text-[10px] font-mono font-bold text-slate-300 tracking-widest">STEP_02</span>
+            </div>
+          </div>
+          <div class="flex-1 pt-1">
+            <h3 class="text-2xl md:text-3xl font-extrabold tracking-tighter text-slate-900 mb-4">Core Engineering</h3>
+            <p class="text-[1.05rem] font-medium text-slate-500 leading-relaxed tracking-tight">Our engineers build custom OS layers designed specifically for your hardware's instruction sets.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer class="relative z-10 bg-slate-50 py-16 border-t border-slate-100">
+    <div class="max-w-7xl mx-auto px-7 md:px-16 lg:px-32 flex flex-col md:flex-row justify-between items-center gap-8">
+      <div class="font-black text-slate-900 tracking-tighter">IRONBYTE © 2024</div>
+      <div class="flex gap-8">
+        <a href="#" class="text-[11px] font-bold uppercase tracking-widest text-slate-400 hover:text-slate-950">Twitter</a>
+        <a href="#" class="text-[11px] font-bold uppercase tracking-widest text-slate-400 hover:text-slate-950">LinkedIn</a>
+        <a href="#" class="text-[11px] font-bold uppercase tracking-widest text-slate-400 hover:text-slate-950">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ── Mobile Drawer ── -->
+  <div id="mobile-menu" class="fixed inset-0 z-[100] bg-white">
+    <div class="relative h-full flex flex-col p-7 bg-grid">
+      <div class="flex justify-between items-center mb-10">
+        <div class="font-extrabold text-[17px] tracking-tighter uppercase">IRONBYTE<span class="text-blue-600">.</span></div>
+        <button onclick="toggleMenu(false)" class="w-10 h-10 flex items-center justify-center bg-slate-50 border border-slate-100 rounded-full shadow-sm">
+          <svg class="w-5 h-5 text-slate-900" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
+      <nav class="flex flex-col gap-4 mt-2">
+        <a href="#services" onclick="toggleMenu(false)" class="text-[2.1rem] font-bold tracking-[-0.035em] text-slate-900">Services</a>
+        <a href="#work" onclick="toggleMenu(false)" class="text-[2.1rem] font-bold tracking-[-0.035em] text-slate-900">Our Work</a>
+        <a href="#roadmap" onclick="toggleMenu(false)" class="text-[2.1rem] font-bold tracking-[-0.035em] text-slate-900">About</a>
+      </nav>
+
+      <div class="mt-auto pb-8">
+        <button class="w-full py-4 bg-[#0f172a] text-white rounded-xl font-bold text-[13px] tracking-tight flex items-center justify-center gap-3">
+          Contact Us
+          <svg class="w-4 h-4 text-blue-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleMenu(isOpen) {
+      const menu = document.getElementById('mobile-menu');
+      if (isOpen) {
+        menu.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      } else {
+        menu.classList.remove('open');
+        document.body.style.overflow = 'auto';
+      }
+    }
+  </script>
+</body>
+</html>
+
 
 
 
