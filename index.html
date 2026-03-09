@@ -1,608 +1,436 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#ffffff" />
-  <title>IronBYTE Systems | Smart Software for Smarter Businesses</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IRONBYTE | Smart Software</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background-color: #fcfcfc; 
+            color: #111111;
+            letter-spacing: -0.011em; 
+        }
+        
+        .hero-title {
+            font-weight: 600; 
+            line-height: 1.05;
+            letter-spacing: -0.05em;
+            max-width: 800px;
+            margin: 0 auto;
+        }
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <!-- Inter font up to 800 weight is usually enough for a clean Vercel feel -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+        .hero-title span.accent {
+            color: #0ea5e9;
+        }
 
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { font-size: 16px; scroll-behavior: smooth; }
+        .subheadline {
+            letter-spacing: -0.015em;
+            line-height: 1.6;
+            color: #666666;
+            font-weight: 400;
+        }
 
-    :root {
-      --black:    #000000; /* Pure black for sharper contrast */
-      --white:    #ffffff;
-      --gray-50:  #fafafa;
-      --gray-100: #f5f5f5;
-      --gray-200: #eaeaea;
-      --gray-400: #888888;
-      --gray-500: #666666; /* Softer, highly legible gray */
-      --border:   #eaeaea;
-      --purple:   #7928ca;
-      --cyan:     #00dfd8;
-      --wa-green: #25d366;
-      --wa-dark:  #128c7e;
-      --nav-h:    64px; /* Slightly taller nav for breathing room */
-      --radius:   8px;  /* Vercel-style soft corners instead of pills */
-    }
+        .section-heading {
+            letter-spacing: -0.045em;
+            font-weight: 600;
+        }
 
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
-      font-size: 16px;
-      line-height: 1.65;
-      color: var(--black);
-      background: var(--white);
-      -webkit-text-size-adjust: 100%;
-      text-size-adjust: 100%;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      text-rendering: optimizeLegibility;
-      /* cv02, cv03, cv04, cv11 give Inter a closer look to Geist/San Francisco */
-      font-feature-settings: "cv02", "cv03", "cv04", "cv11";
-      letter-spacing: -0.01em; /* Subtle body tracking */
-      overflow-x: hidden;
-    }
-    
-    a { text-decoration: none; color: inherit; }
-    button { font-family: inherit; cursor: pointer; background: none; border: none; }
+        .btn-primary {
+            background-color: #0369a1; 
+            color: #ffffff; 
+            padding: 10px 24px; 
+            font-size: 14px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(3, 105, 161, 0.15);
+            letter-spacing: -0.01em;
+        }
 
-    /* ── WORDMARK ── */
-    .wordmark {
-      font-weight: 700; /* Lowered from 900 for elegance */
-      font-size: 20px;
-      letter-spacing: -0.04em;
-      color: var(--black);
-      line-height: 1;
-      display: inline-block;
-      transition: opacity 0.2s ease;
-    }
-    .wordmark:hover { opacity: 0.7; }
-    .wordmark-white { color: var(--white); }
+        .btn-secondary {
+            background-color: #ffffff;
+            border: 1px solid #e5e7eb;
+            padding: 10px 24px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #111;
+            letter-spacing: -0.01em;
+        }
 
-    /* ── HEADLINES ── */
-    .hero-h {
-      font-size: clamp(2.5rem, 9vw, 5.5rem);
-      font-weight: 800; /* Dropped from 900. Lighter weight on huge text looks more premium */
-      letter-spacing: -0.05em; /* Tighter tracking like Vercel */
-      line-height: 1.05;
-      color: var(--black);
-    }
+        .arrow-circle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            border: 1.5px solid #ffffff;
+            margin-left: 8px;
+        }
 
-    .section-h {
-      font-size: clamp(1.75rem, 4vw + 0.25rem, 2.75rem);
-      font-weight: 700;
-      letter-spacing: -0.04em;
-      line-height: 1.1;
-      color: var(--black);
-    }
+        .service-grid {
+            border-top: 1px solid #f0f0f0;
+        }
 
-    .dispatch-h {
-      font-size: clamp(2.25rem, 6vw, 4.5rem);
-      font-weight: 800;
-      letter-spacing: -0.05em;
-      line-height: 1.05;
-      color: var(--white);
-    }
+        .grid-item {
+            border-right: 1px solid #f0f0f0;
+            border-bottom: 1px solid #f0f0f0;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            cursor: pointer;
+            background-color: #ffffff;
+            transition: all 0.2s ease;
+        }
 
-    /* Vercel-style gradient accents */
-    .text-purple { 
-      background: linear-gradient(to right, #7928ca, #ff0080);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .text-cyan { 
-      background: linear-gradient(to right, #00dfd8, #007cf0);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
+        .grid-item:nth-child(2n) {
+            border-right: none;
+        }
 
-    /* ── BUTTONS ── */
-    .btn {
-      height: 48px;
-      padding: 0 24px;
-      border-radius: var(--radius); /* Using 8px radius instead of 9999px pill */
-      font-size: 14px;
-      font-weight: 500; /* 500 is the standard sleek SaaS button weight */
-      letter-spacing: 0;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      transition: all 0.2s ease;
-      white-space: nowrap;
-      cursor: pointer;
-      font-family: inherit;
-    }
-    .btn:active { transform: scale(0.98); }
-    .btn-black   { background: var(--black); color: var(--white); border: 1px solid var(--black); }
-    .btn-black:hover { background: #1a1a1a; color: var(--white); border-color: #1a1a1a; }
-    
-    .btn-outline { background: var(--white); color: var(--gray-500); border: 1px solid var(--border); }
-    .btn-outline:hover { border-color: var(--black); color: var(--black); }
-    
-    .btn-white   { background: var(--white); color: var(--black); border: 1px solid var(--white); }
-    .btn-white:hover { background: #f0f0f0; border-color: #f0f0f0; }
-    
-    .btn-sm      { height: 36px; padding: 0 16px; font-size: 13px; }
+        .grid-item span {
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            font-size: 14px;
+        }
 
-    /* ── LAYOUT ── */
-    .wrap { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        .active-tab {
+            position: relative;
+            color: #000;
+            background-color: #fafafa;
+        }
 
-    /* ── NAV ── */
-    nav {
-      position: sticky; top: 0; z-index: 60;
-      height: var(--nav-h);
-      background: rgba(255, 255, 255, 0.8);
-      backdrop-filter: saturate(180%) blur(12px);
-      -webkit-backdrop-filter: saturate(180%) blur(12px);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav-inner { height: 100%; display: flex; align-items: center; justify-content: space-between; }
-    .nav-links { display: none; gap: 32px; }
-    .nav-links a { font-size: 14px; font-weight: 500; color: var(--gray-500); transition: color .15s ease; }
-    .nav-links a:hover { color: var(--black); }
-    .hamburger { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; color: var(--black); }
+        .active-tab::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #000;
+        }
 
-    /* ── MOBILE MENU ── */
-    #mobile-menu {
-      position: fixed; inset: 0; z-index: 55;
-      background: var(--white);
-      padding: 80px 24px 40px;
-      display: flex; flex-direction: column;
-      transform: translateY(-100%);
-      transition: transform .4s cubic-bezier(.16,1,.3,1);
-    }
-    #mobile-menu.open { transform: translateY(0); }
-    .menu-link {
-      font-size: 1.75rem; font-weight: 700;
-      letter-spacing: -0.04em; line-height: 1.2;
-      color: var(--black); padding: 16px 0;
-      border-bottom: 1px solid var(--gray-100); display: block;
-    }
+        .inactive-tab {
+            color: #a1a1a1;
+        }
 
-    /* ── HERO ── */
-    .hero { padding: 96px 0 112px; text-align: center; }
-    .hero-sub {
-      font-size: 1.125rem; /* Slightly larger text for Vercel feel */
-      font-weight: 400; color: var(--gray-500);
-      line-height: 1.6;
-      max-width: 540px; margin: 24px auto 0;
-    }
-    .hero-btns { display: flex; flex-direction: column; gap: 12px; margin-top: 40px; }
-    .hero-btns .btn { width: 100%; }
+        .inactive-tab svg {
+            opacity: 0.4;
+        }
 
-    /* ── SOLUTIONS ── */
-    .solutions { margin-bottom: 96px; }
-    .sol-grid { 
-      display: grid; 
-      grid-template-columns: 1fr; 
-      border-top: 1px solid var(--border); 
-      border-left: 1px solid var(--border); 
-    }
-    .sol-card { 
-      padding: 40px 32px; 
-      border-bottom: 1px solid var(--border); 
-      border-right: 1px solid var(--border);
-      transition: background 0.2s ease;
-    }
-    .sol-card:hover { background: var(--gray-50); } /* Subtle hover state */
-    .sol-card-wide { background: var(--gray-50); }
-    .sol-card-wide:hover { background: var(--gray-50); } /* Override hover for wide card */
-    
-    .sol-card-wide h2 { 
-      font-size: clamp(1.5rem, 3vw, 2rem); 
-      font-weight: 700; 
-      letter-spacing: -0.04em; 
-      margin-bottom: 12px; 
-    }
-    .sol-card-wide p { 
-      font-size: 16px; 
-      color: var(--gray-500); 
-      line-height: 1.6; 
-      max-width: 680px; 
-    }
-    
-    .sol-card h3 { 
-      font-size: 16px; 
-      font-weight: 600; 
-      letter-spacing: -0.02em; 
-      color: var(--black); 
-      margin: 20px 0 8px; 
-    }
-    .sol-card p { 
-      font-size: 14px; 
-      color: var(--gray-500); 
-      line-height: 1.6; 
-    }
-    .sol-icon { color: var(--black); width: 22px; height: 22px; } /* Sharper icons */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease forwards;
+        }
 
-    /* ── DISPATCHMATE ── */
-    .dm-section { margin-bottom: 96px; }
-    .dm-card { 
-      background: var(--black); 
-      border-radius: 16px; /* Reduced from 24px for a slightly sharper, tech feel */
-      padding: 48px 24px; 
-      color: var(--white); 
-      overflow: hidden; 
-      position: relative; 
-      border: 1px solid #222; /* Subtle Vercel dark mode border */
-    }
-    .dm-card::before {
-      content: ''; position: absolute; inset: 0;
-      background-image: 
-        linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px), 
-        linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
-      background-size: 32px 32px; pointer-events: none;
-    }
-    .dm-badge { 
-      display: inline-flex; 
-      padding: 6px 12px; 
-      border-radius: 999px; 
-      background: #111; 
-      border: 1px solid #333; 
-      font-size: 11px; 
-      font-weight: 600; 
-      letter-spacing: 0.05em; 
-      color: #eaeaea; 
-      margin-bottom: 24px; 
-    }
-    .dm-body { font-size: 15px; color: #a1a1aa; line-height: 1.7; margin-bottom: 32px; max-width: 480px; }
-    
-    /* Mockup refinement */
-    .mockup { background: #000; border: 1px solid #333; border-radius: 12px; padding: 16px; margin-top: 40px; position: relative; z-index: 1; box-shadow: 0 12px 32px rgba(0,0,0,0.5); }
-    .mock-bar { display: flex; align-items: center; gap: 6px; padding-bottom: 12px; border-bottom: 1px solid #222; margin-bottom: 16px; }
-    .md { width: 10px; height: 10px; border-radius: 50%; }
-    .md-r { background: #ff5f56; } .md-y { background: #ffbd2e; } .md-g { background: #27c93f; }
-    .mock-lbl { font-size: 11px; color: #888; font-family: 'Inter', monospace; margin-left: 8px; font-weight: 500; }
-    .mock-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 12px; }
-    .mock-panel { background: #111; border: 1px solid #222; border-radius: 8px; padding: 16px; }
-    .bl { height: 6px; border-radius: 4px; background: #333; margin-bottom: 8px; }
-    .bl:last-child { margin-bottom: 0; width: 70%; }
-    .bl-h { height: 8px; width: 45%; background: #555; margin-bottom: 12px; border-radius: 4px; }
-    .mock-btn { width: 100%; height: 32px; background: #007cf0; border-radius: 6px; margin-top: auto; }
-    .mock-stats { grid-column: 1/-1; background: #111; border: 1px solid #222; border-radius: 8px; padding: 16px; display: flex; justify-content: space-around; align-items: center; }
-    .stat-v { font-size: 16px; font-weight: 600; line-height: 1; margin-bottom: 4px; letter-spacing: -0.02em; }
-    .stat-l { font-size: 10px; color: #888; font-weight: 500; }
+        .tab-content.active {
+            display: block;
+        }
 
-    /* ── ABOUT ── */
-    .about { padding: 96px 0; border-top: 1px solid var(--border); }
-    .about-text p { font-size: 16px; color: var(--gray-500); line-height: 1.7; margin-bottom: 20px; }
-    .sig { display: flex; align-items: center; gap: 16px; margin-top: 32px; }
-    .sig-line { width: 40px; height: 1px; background: var(--gray-400); }
-    .sig-txt { font-size: 12px; font-weight: 600; letter-spacing: 0.05em; color: var(--gray-500); }
-    
-    .cta-box { 
-      background: var(--gray-50); 
-      border: 1px solid var(--border); 
-      border-radius: 16px; 
-      padding: 48px 32px; 
-      display: flex; flex-direction: column; align-items: center; text-align: center; margin-top: 48px; 
-    }
-    .cta-icon { 
-      width: 48px; height: 48px; 
-      background: var(--white); 
-      border: 1px solid var(--border); 
-      border-radius: 12px; 
-      display: flex; align-items: center; justify-content: center; 
-      margin-bottom: 24px; box-shadow: 0 2px 8px rgba(0,0,0,.04); 
-    }
-    .cta-box h3 { font-size: 20px; font-weight: 600; letter-spacing: -0.03em; margin-bottom: 12px; }
-    .cta-box p { font-size: 15px; color: var(--gray-500); line-height: 1.6; max-width: 280px; margin-bottom: 28px; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-    /* ── CONTACT ── */
-    .contact { 
-      padding: 96px 0; 
-      border-top: 1px solid var(--border); 
-      border-bottom: none; 
-    }
-    .contact-lbl { font-size: 16px; color: var(--gray-500); line-height: 1.6; margin-bottom: 32px; }
-    
-    .c-link { 
-      display: flex; align-items: center; gap: 12px; 
-      padding: 14px 16px; 
-      border: 1px solid var(--border); 
-      border-radius: var(--radius); 
-      font-weight: 500; font-size: 14px; 
-      transition: all .2s ease; margin-bottom: 12px; 
-      background: var(--white);
-    }
-    .c-link:hover { border-color: var(--black); box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
-    
-    .c-link-wa { border-color: #dcf8c6; background: #f2fbf4; color: var(--wa-dark); }
-    .c-link-wa:hover { border-color: var(--wa-green); }
-    
-    .c-form { background: var(--gray-50); border: 1px solid var(--border); border-radius: 16px; padding: 32px; margin-top: 40px; }
-    
-    .fi { 
-      width: 100%; padding: 14px 16px; 
-      border: 1px solid var(--border); 
-      border-radius: var(--radius); 
-      font-size: 14px; font-family: inherit; color: var(--black); 
-      background: var(--white); outline: none; transition: border-color .2s ease; 
-      display: block; margin-bottom: 12px; -webkit-appearance: none; 
-    }
-    .fi:focus { border-color: var(--gray-400); }
-    .fi::placeholder { color: #a1a1aa; }
-    textarea.fi { resize: vertical; min-height: 120px; line-height: 1.5; }
+        .logo-text {
+            font-weight: 800;
+            letter-spacing: -0.07em;
+            font-size: 20px;
+            text-transform: uppercase;
+        }
 
-    /* ── FOOTER ── */
-    footer { background: #000; color: var(--white); padding: 80px 0 40px; border-top: 1px solid #222; }
-    .ft-tagline { font-size: 14px; color: #888; max-width: 280px; line-height: 1.6; margin: 20px 0 32px; }
-    .ft-social { display: flex; gap: 20px; }
-    .ft-social a { color: #888; font-size: 18px; transition: color .2s ease; }
-    .ft-social a:hover { color: var(--white); }
-    .ft-col h4 { font-size: 13px; font-weight: 500; color: #fff; margin-bottom: 20px; }
-    .ft-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-    .ft-col ul a { font-size: 14px; font-weight: 400; color: #888; transition: color .2s ease; }
-    .ft-col ul a:hover { color: var(--white); }
-    .ft-bottom { 
-      display: flex; justify-content: space-between; align-items: center; 
-      padding-top: 32px; border-top: 1px solid #222; margin-top: 64px; 
-      font-size: 13px; color: #888; 
-    }
+        .dot-grid {
+            background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        
+        .cta-link {
+            color: #0ea5e9;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            margin-top: 24px;
+            transition: opacity 0.2s;
+            letter-spacing: -0.02em;
+        }
+        
+        .cta-link:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
 
-    /* ── RESPONSIVE ── */
-    @media (min-width: 640px) {
-      .hero-btns { flex-direction: row; justify-content: center; }
-      .hero-btns .btn { width: auto; min-width: 160px; }
-    }
-    @media (min-width: 768px) {
-      .hero { padding: 120px 0 136px; }
-      .dm-card { padding: 64px 56px; }
-      .sol-grid { grid-template-columns: 1fr 1fr; }
-      .sol-card-wide { grid-column: 1/-1; }
-    }
-    @media (min-width: 1024px) {
-      .nav-links { display: flex; }
-      .hamburger  { display: none; }
-      #nav-cta    { display: inline-flex !important; }
-      .sol-grid { grid-template-columns: 1fr 1fr 1fr; }
-      .dm-inner { display: flex; align-items: center; gap: 64px; }
-      .dm-copy  { flex: 1; }
-      .mockup   { flex: 1; margin-top: 0; }
-      .about-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-      .cta-box { margin-top: 0; }
-      .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
-      .c-form { margin-top: 0; }
-      .ft-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 64px; }
-      .ft-col  { margin-top: 0 !important; }
-    }
-  </style>
+        .text-reveal-large {
+            font-size: clamp(4rem, 15vw, 12rem);
+            font-weight: 900;
+            letter-spacing: -0.06em;
+            line-height: 0.8;
+            color: #f1f1f1;
+            text-transform: uppercase;
+        }
+
+        .avatar-placeholder {
+            width: 48px;
+            height: 48px;
+            background: #f1f1f1;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 12px;
+            color: #a1a1a1;
+            border: 1px solid #e5e7eb;
+        }
+
+        .social-icon {
+            color: #94a3b8;
+            transition: color 0.2s ease;
+        }
+        
+        .social-icon:hover {
+            color: #111111;
+        }
+    </style>
 </head>
 <body>
 
-<nav>
-  <div class="wrap nav-inner">
-    <a href="#" class="wordmark">IronBYTE</a>
-    <div class="nav-links" style="display:none;" id="nav-links-wrap">
-      <a href="#solutions">Solutions</a>
-      <a href="#product">DispatchMate</a>
-      <a href="#about">About</a>
+    <!-- Notification Bar -->
+    <div class="bg-[#111] text-white py-2 text-center text-[11px] font-bold tracking-tight uppercase">
+        Want to learn about efficiency? 
+        <a href="#" class="inline-flex items-center ml-1 text-sky-400 underline decoration-sky-400/30 underline-offset-2">
+            Join now 
+            <svg class="ml-1" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+        </a>
     </div>
-    <div style="display:flex;align-items:center;gap:12px;">
-      <a href="#contact" class="btn btn-black btn-sm" id="nav-cta" style="display:none;">Contact Us</a>
-      <button class="hamburger" id="menu-toggle" aria-label="Open menu">
-        <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/>
-        </svg>
-      </button>
-    </div>
-  </div>
-</nav>
 
-<div id="mobile-menu" role="dialog" aria-modal="true">
-  <a href="#solutions" class="menu-link" onclick="closeMenu()">Solutions</a>
-  <a href="#product"   class="menu-link" onclick="closeMenu()">DispatchMate</a>
-  <a href="#about"     class="menu-link" onclick="closeMenu()">About</a>
-  <div style="margin-top:32px;">
-    <a href="#contact" class="btn btn-black" style="width:100%;display:flex;" onclick="closeMenu()">Contact Us</a>
-  </div>
-</div>
-
-<header class="hero">
-  <div class="wrap">
-    <h1 class="hero-h">Smart Software for <br/><span class="text-purple">Smarter</span> Businesses.</h1>
-    <p class="hero-sub">We build tools that help businesses operate faster, reduce errors, and track inventory efficiently.</p>
-    <div class="hero-btns">
-      <a href="#product" class="btn btn-black">Learn about DispatchMate</a>
-      <a href="#contact" class="btn btn-outline">Contact Us</a>
-    </div>
-  </div>
-</header>
-
-<section id="solutions" class="solutions">
-  <div class="wrap">
-    <div class="sol-grid">
-      <div class="sol-card sol-card-wide">
-        <h2>Our Approach.</h2>
-        <p>We develop practical business systems that turn manual processes into structured digital workflows. We also build <strong class="text-cyan" style="font-weight:600;">online presence</strong> with high-performance <strong class="text-purple" style="font-weight:600;">SEO and UI</strong> to ensure your business is seen and felt.</p>
-      </div>
-      <div class="sol-card">
-        <svg class="sol-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="16.5" y1="9.4" x2="7.5" y2="4.21"/><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
-        <h3>Inventory Management</h3>
-        <p>Automated tracking systems that eliminate stock discrepancies and manual counts.</p>
-      </div>
-      <div class="sol-card">
-        <svg class="sol-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-        <h3>Order Fulfillment</h3>
-        <p>Streamlined workflows from the moment an order is placed to final dispatch.</p>
-      </div>
-      <div class="sol-card">
-        <svg class="sol-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <h3>SEO &amp; UI Design</h3>
-        <p>Modern web presence optimized for search rankings and conversion-focused user experiences.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="product" class="dm-section">
-  <div class="wrap">
-    <div class="dm-card">
-      <div class="dm-inner">
-        <div class="dm-copy" style="position:relative;z-index:1;">
-          <div class="dm-badge">Flagship Product</div>
-          <h2 class="dispatch-h" style="margin-bottom:20px;">DispatchMate.</h2>
-          <p class="dm-body">A smart operational assistant that helps warehouses and retail staff locate products, understand specs, track stock, and fulfill orders without mistakes.</p>
-          <a href="#contact" class="btn btn-white">See DispatchMate in Action</a>
+    <!-- Navigation -->
+    <nav class="flex justify-between items-center px-6 py-6 md:px-12 max-w-7xl mx-auto">
+        <div class="flex items-center gap-2">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="black"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+            <span class="logo-text">IRONBYTE</span>
         </div>
-        <div class="mockup">
-          <div class="mock-bar">
-            <div class="md md-r"></div><div class="md md-y"></div><div class="md md-g"></div>
-            <span class="mock-lbl">dispatch_mate_v2.sys</span>
-          </div>
-          <div class="mock-grid">
-            <div class="mock-panel"><div class="bl-h"></div><div class="bl"></div><div class="bl"></div><div class="bl"></div></div>
-            <div class="mock-panel" style="display:flex;flex-direction:column;justify-content:flex-end;"><div class="mock-btn"></div></div>
-            <div class="mock-stats">
-              <div style="text-align:center;"><div class="stat-v" style="color:#007cf0;">1.2k</div><div class="stat-l">Orders</div></div>
-              <div style="text-align:center;"><div class="stat-v" style="color:#27c93f;">98%</div><div class="stat-l">Accuracy</div></div>
-              <div style="text-align:center;"><div class="stat-v" style="color:#7928ca;">4.2m</div><div class="stat-l">Assets</div></div>
+        <div class="flex flex-col gap-1 cursor-pointer">
+            <div class="w-6 h-[2.5px] bg-black"></div>
+            <div class="w-6 h-[2.5px] bg-black"></div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="px-6 pt-12 pb-16 text-center max-w-3xl mx-auto">
+        <h1 class="hero-title text-[34px] md:text-[48px] lg:text-[56px] mb-6">
+            Smart Software for Smarter Businesses — and the <br class="hidden md:block" />
+            <span class="accent">actions to drive growth</span>
+        </h1>
+        
+        <p class="subheadline text-[15px] md:text-[18px] max-w-xl mx-auto mb-10">
+            We develop practical business systems that turn manual processes into structured, easy-to-use digital workflows.
+        </p>
+
+        <div class="flex flex-row items-center justify-center gap-3">
+            <button class="btn-primary rounded-full transition-all hover:bg-[#025a8b]">
+                Start for free
+                <span class="arrow-circle">
+                    <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </span>
+            </button>
+            <button class="btn-secondary rounded-full transition-all hover:bg-gray-50">
+                Book a Demo
+            </button>
+        </div>
+    </section>
+
+    <!-- Solutions Section -->
+    <section class="max-w-xl mx-auto px-4 mb-32">
+        <div class="grid grid-cols-2 service-grid border-l border-r border-gray-100">
+            <!-- Tab 1: Dispatch -->
+            <div class="grid-item active-tab" onclick="showTab('dispatch', this)">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+                <span>Dispatch</span>
             </div>
-          </div>
+            <!-- Tab 2: Inventory -->
+            <div class="grid-item inactive-tab" onclick="showTab('inventory', this)">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"></path><path d="m3.3 7 8.7 5 8.7-5"></path><path d="M12 22V12"></path></svg>
+                <span>Inventory</span>
+            </div>
+            <!-- Tab 3: Analytics -->
+            <div class="grid-item inactive-tab" onclick="showTab('analytics', this)">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"></path><path d="m19 9-5 5-4-4-3 3"></path></svg>
+                <span>Analytics</span>
+            </div>
+            <!-- Tab 4: Automate -->
+            <div class="grid-item inactive-tab" onclick="showTab('automate', this)">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 14 4-4"></path><path d="M3.34 19a10 10 0 1 1 17.32 0"></path></svg>
+                <span>Automate</span>
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<section id="about" class="about">
-  <div class="wrap">
-    <div class="about-inner">
-      <div class="about-text">
-        <h2 class="section-h" style="margin-bottom:24px;">Engineering Efficiency.</h2>
-        <p>IronBYTE Systems was founded by <strong style="color:var(--black);font-weight:500;">Leon Nyaramb</strong>, Lead Engineer, with a mission to bridge the gap between complex business logic and practical digital execution.</p>
-        <p>We focus on building tools that aren't just powerful, but usable. We strip away the bloat and architect operational engines that businesses actually rely on every single day.</p>
-        <div class="sig"><div class="sig-line"></div><span class="sig-txt">LEON NYARAMB, FOUNDER</span></div>
-      </div>
-      <div class="cta-box">
-        <div class="cta-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        <div class="mt-12 text-center max-w-lg mx-auto">
+            <div id="dispatch" class="tab-content active">
+                <h3 class="text-xl section-heading mb-3">Order Fulfillment & Logistics</h3>
+                <p class="subheadline text-[16px]">
+                    Turn manual dispatching into a streamlined digital workflow. Improve accuracy, speed, and real-time operational visibility.
+                </p>
+            </div>
+            <div id="inventory" class="tab-content">
+                <h3 class="text-xl section-heading mb-3">Inventory Management</h3>
+                <p class="subheadline text-[16px]">
+                    Maintain precise stock control with tools designed for easy use. Capture every move to eliminate errors and shrinkage.
+                </p>
+            </div>
+            <div id="analytics" class="tab-content">
+                <h3 class="text-xl section-heading mb-3">Reporting & Analytics</h3>
+                <p class="subheadline text-[16px]">
+                    Gain high-resolution visibility into your lifecycle. Use data to identify bottlenecks and drive smarter business growth.
+                </p>
+            </div>
+            <div id="automate" class="tab-content">
+                <h3 class="text-xl section-heading mb-3">Intelligent Automation</h3>
+                <p class="subheadline text-[16px]">
+                    Remove manual bottlenecks by automating repetitive data tasks. Let your team focus on high-value business actions.
+                </p>
+            </div>
         </div>
-        <h3>Ready to optimize?</h3>
-        <p>Let's transform your manual workflows into a high-performance system.</p>
-        <a href="#contact" class="btn btn-black" style="width:100%;max-width:240px;">Start a Project</a>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<section id="contact" class="contact">
-  <div class="wrap">
-    <div class="contact-inner">
-      <div>
-        <h2 class="section-h" style="margin-bottom:16px;">Get in touch.</h2>
-        <p class="contact-lbl">Have a manual process that needs digital structure? Reach out and let's discuss your requirements.</p>
-        <a href="mailto:hello@ironbytesystems.com" class="c-link">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; color:#666;"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-          hello@ironbytesystems.com
-        </a>
-        <a href="https://wa.me/YOURNUMBER" class="c-link c-link-wa">
-          <i class="fab fa-whatsapp" style="font-size:20px;flex-shrink:0;color:var(--wa-green);"></i>
-          Chat on WhatsApp
-        </a>
-      </div>
-      <div class="c-form">
-        <form id="contact-form" onsubmit="handleForm(event)">
-          <input type="text"  class="fi" placeholder="Name"    required />
-          <input type="email" class="fi" placeholder="Email"   required />
-          <textarea           class="fi" placeholder="Message" required></textarea>
-          <button type="submit" class="btn btn-black" style="width:100%;">Send Message</button>
-        </form>
-        <div id="form-ok" style="display:none;text-align:center;padding:32px 0;">
-          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block;margin:0 auto 16px;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-          <p style="font-weight:500;font-size:15px;color:var(--black);">Message sent!<br/><span style="color:#666;font-weight:400;font-size:14px;">We'll be in touch soon.</span></p>
+    <!-- SECTION: DispatchMate -->
+    <section class="border-t border-gray-100 bg-white">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2">
+            <div class="px-6 py-16 md:px-12 md:py-28 border-b md:border-b-0 md:border-r border-gray-100 flex flex-col justify-center">
+                <span class="text-[11px] font-bold uppercase tracking-[0.2em] text-gray-400 mb-8 block">Featured Product</span>
+                <h2 class="text-4xl md:text-5xl section-heading mb-6">DispatchMate</h2>
+                <p class="subheadline text-lg md:text-[21px] max-w-md leading-relaxed">
+                    DispatchMate is our flagship product: a smart operational assistant that helps warehouses and retail staff locate products, understand specs, track stock, and fulfill orders without mistakes.
+                </p>
+                <div>
+                    <a href="#" class="cta-link text-[16px]">
+                        See DispatchMate in Action
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="dot-grid relative flex items-center justify-center p-8 min-h-[500px] overflow-hidden bg-gray-50/30">
+                <div class="flex flex-col items-center select-none">
+                    <span class="text-reveal-large text-gray-200/50">SMART</span>
+                    <span class="text-reveal-large text-gray-900 leading-[0.7]">ASSIST</span>
+                    <span class="text-reveal-large text-gray-200/50">OPERATE</span>
+                </div>
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border border-black bg-white px-6 py-3 shadow-xl transform -rotate-2">
+                    <span class="text-sm font-bold tracking-tighter uppercase">Operational Intelligence v2.0</span>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<footer>
-  <div class="wrap">
-    <div class="ft-grid">
-      <div>
-        <div class="wordmark wordmark-white">IronBYTE</div>
-        <p class="ft-tagline">Building the next generation of business operational engines.</p>
-        <div class="ft-social">
-          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-          <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
-          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <!-- SECTION: About / Credibility -->
+    <section class="bg-white border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 py-24 md:px-12 md:py-32 flex flex-col md:flex-row gap-16 md:gap-24 items-start">
+            <div class="md:w-1/3">
+                <span class="text-[11px] font-bold uppercase tracking-[0.2em] text-gray-400 mb-6 block">Our Mission</span>
+                <h2 class="text-3xl md:text-4xl section-heading mb-4">Building tools businesses actually use.</h2>
+            </div>
+            
+            <div class="md:w-2/3">
+                <p class="subheadline text-lg md:text-[21px] mb-12 leading-relaxed">
+                    Ironbyte Systems was founded by Leon Nyaramb, Founder and Lead Engineer. Our mission is to build software that solves real business problems efficiently. We focus on usability, reliability, and creating tools businesses actually use.
+                </p>
+                
+                <div class="flex items-center gap-4">
+                    <div class="avatar-placeholder">LN</div>
+                    <div>
+                        <p class="text-[14px] font-bold tracking-tight text-gray-900">Leon Nyaramb</p>
+                        <p class="text-[12px] text-gray-500 font-medium">Founder & Lead Engineer</p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="ft-col" style="margin-top:40px;">
-        <h4>Resources</h4>
-        <ul>
-          <li><a href="#product">DispatchMate</a></li>
-          <li><a href="#solutions">Inventory Systems</a></li>
-          <li><a href="#about">Case Studies</a></li>
-        </ul>
-      </div>
-      <div class="ft-col" style="margin-top:40px;">
-        <h4>Legal</h4>
-        <ul>
-          <li><a href="#">Privacy Policy</a></li>
-          <li><a href="#">Terms of Service</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="ft-bottom">
-      <span>© 2026 IronBYTE Systems Inc.</span>
-      <span>Built in Harare</span>
-    </div>
-  </div>
-</footer>
+    </section>
 
-<script>
-  const MENU_PATHS  = '<line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/>';
-  const CLOSE_PATHS = '<line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>';
+    <!-- SECTION: Contact -->
+    <section class="bg-[#fafafa] border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-6 py-20 md:px-12 md:py-32 flex flex-col md:flex-row gap-16 md:gap-24 items-start">
+            <div class="md:w-1/3">
+                <span class="text-[11px] font-bold uppercase tracking-[0.2em] text-gray-400 mb-6 block">Get in touch</span>
+                <h2 class="text-3xl md:text-4xl section-heading mb-4">Let's build something efficient.</h2>
+            </div>
+            
+            <div class="md:w-2/3">
+                <p class="subheadline text-lg md:text-[21px] mb-12 leading-relaxed">
+                    Ready to digitize your operations? Skip the forms—chat with us directly through the platforms below to discuss your system requirements.
+                </p>
+                
+                <div class="flex flex-wrap gap-4">
+                    <!-- WhatsApp CTA -->
+                    <a href="https://wa.me/yourphonenumber" class="btn-primary rounded-full transition-transform active:scale-95 bg-[#25D366] hover:bg-[#20ba5a] shadow-none">
+                        <svg class="mr-2" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.438 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                        WhatsApp
+                    </a>
+                    <!-- Email CTA -->
+                    <a href="mailto:hello@ironbyte.systems" class="btn-secondary rounded-full border-gray-900 transition-transform active:scale-95">
+                        <svg class="mr-2" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        hello@ironbyte.systems
+                    </a>
+                </div>
+            </div>
+        </div>
 
-  function setMenuIcon(paths) {
-    document.getElementById('menu-icon').innerHTML = paths;
-  }
+        <!-- Footer Bar -->
+        <div class="max-w-7xl mx-auto px-6 pb-12 md:px-12">
+            <div class="pt-12 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center gap-8">
+                <div class="flex items-center gap-2">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="black"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+                    <span class="logo-text text-base">IRONBYTE</span>
+                </div>
+                
+                <div class="text-[13px] text-gray-400 font-medium md:order-last">
+                    © 2024 Ironbyte Systems.
+                </div>
 
-  function updateNav() {
-    const d = window.innerWidth >= 1024;
-    document.getElementById('nav-links-wrap').style.display = d ? 'flex' : 'none';
-    document.getElementById('nav-cta').style.display        = d ? 'inline-flex' : 'none';
-    document.querySelector('.hamburger').style.display      = d ? 'none' : 'flex';
-  }
-  updateNav();
-  window.addEventListener('resize', updateNav);
+                <!-- Social Icons in Footer -->
+                <div class="flex gap-6 items-center">
+                    <a href="#" class="social-icon" aria-label="LinkedIn">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    </a>
+                    <a href="#" class="social-icon" aria-label="GitHub">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.042-1.416-4.042-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    </a>
+                    <a href="#" class="social-icon" aria-label="X">
+                        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932 6.064-6.932zm-1.294 19.497h2.039L6.482 3.239H4.293l13.314 17.411z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  let menuOpen = false;
-  function openMenu()  { menuOpen=true;  document.getElementById('mobile-menu').classList.add('open');    document.body.style.overflow='hidden'; setMenuIcon(CLOSE_PATHS); }
-  function closeMenu() { menuOpen=false; document.getElementById('mobile-menu').classList.remove('open'); document.body.style.overflow='';       setMenuIcon(MENU_PATHS);  }
-  document.getElementById('menu-toggle').addEventListener('click', () => menuOpen ? closeMenu() : openMenu());
-  document.addEventListener('keydown', e => { if (e.key==='Escape' && menuOpen) closeMenu(); });
+    <script>
+        function showTab(tabId, element) {
+            document.querySelectorAll('.grid-item').forEach(item => {
+                item.classList.remove('active-tab');
+                item.classList.add('inactive-tab');
+            });
+            
+            element.classList.add('active-tab');
+            element.classList.remove('inactive-tab');
 
-  function handleForm(e) {
-    e.preventDefault();
-    document.getElementById('contact-form').style.display = 'none';
-    document.getElementById('form-ok').style.display      = 'block';
-  }
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
 
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-      const id = a.getAttribute('href');
-      if (id === '#') return;
-      const t = document.querySelector(id);
-      if (t) { e.preventDefault(); window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - 64, behavior: 'smooth' }); }
-    });
-  });
-</script>
+            document.getElementById(tabId).classList.add('active');
+        }
+    </script>
+
 </body>
 </html>
 
-
-
+       
