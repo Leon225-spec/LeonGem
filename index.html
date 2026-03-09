@@ -1,112 +1,97 @@
-<!DOCTYPE html>
+         <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IRONBYTE | Smart Software</title>
+    <title>IRONBYTE | Precision Software</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
             -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            background-color: #fcfcfc; 
-            color: #111111;
-            letter-spacing: -0.011em; 
+            background-color: #ffffff; 
+            color: #0f172a;
         }
         
+        /* High-end tracking and leading */
         .hero-title {
-            font-weight: 600; 
-            line-height: 1.05;
+            font-weight: 800; 
+            line-height: 1;
             letter-spacing: -0.05em;
-            max-width: 800px;
             margin: 0 auto;
         }
 
-        .hero-title span.accent {
-            color: #0ea5e9;
+        /* Subtle gradient for the accent to feel more polished */
+        .accent-gradient {
+            background: linear-gradient(to right, #0ea5e9, #0284c7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .subheadline {
-            letter-spacing: -0.015em;
+            letter-spacing: -0.01em;
             line-height: 1.6;
-            color: #666666;
-            font-weight: 400;
+            color: #475569;
+            font-weight: 450;
         }
 
-        .section-heading {
-            letter-spacing: -0.045em;
-            font-weight: 600;
-        }
-
+        /* Button refinement: Moving from pill to a sophisticated large radius */
         .btn-primary {
-            background-color: #0369a1; 
+            background-color: #0284c7; 
             color: #ffffff; 
-            padding: 10px 24px; 
+            padding: 12px 28px; 
             font-size: 14px;
             font-weight: 600;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 12px rgba(3, 105, 161, 0.15);
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
             letter-spacing: -0.01em;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            background-color: #0369a1;
         }
 
         .btn-secondary {
             background-color: #ffffff;
-            border: 1px solid #e5e7eb;
-            padding: 10px 24px;
+            border: 1px solid #e2e8f0;
+            padding: 12px 28px;
             font-size: 14px;
             font-weight: 600;
-            color: #111;
-            letter-spacing: -0.01em;
+            color: #0f172a;
+            border-radius: 12px;
+            transition: all 0.2s;
         }
 
-        .arrow-circle {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            border: 1.5px solid #ffffff;
-            margin-left: 8px;
+        .btn-secondary:hover {
+            background-color: #f8fafc;
+            border-color: #cbd5e1;
         }
 
-        .service-grid {
-            border-top: 1px solid #f0f0f0;
-        }
-
+        /* Standardized grid items */
         .grid-item {
-            border-right: 1px solid #f0f0f0;
-            border-bottom: 1px solid #f0f0f0;
-            height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            cursor: pointer;
-            background-color: #ffffff;
+            border-right: 1px solid #f1f5f9;
+            border-bottom: 1px solid #f1f5f9;
+            height: 90px;
             transition: all 0.2s ease;
+            background-color: #ffffff;
         }
 
         .grid-item:nth-child(2n) {
             border-right: none;
         }
 
-        .grid-item span {
-            font-weight: 600;
-            letter-spacing: -0.02em;
-            font-size: 14px;
-        }
-
         .active-tab {
-            position: relative;
-            color: #000;
-            background-color: #fafafa;
+            background-color: #f8fafc;
+            color: #0284c7;
         }
 
         .active-tab::after {
@@ -115,186 +100,122 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 2px;
-            background: #000;
-        }
-
-        .inactive-tab {
-            color: #a1a1a1;
-        }
-
-        .inactive-tab svg {
-            opacity: 0.4;
-        }
-
-        .tab-content {
-            display: none;
-            animation: fadeIn 0.4s ease forwards;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            height: 2.5px;
+            background: #0284c7;
         }
 
         .logo-text {
-            font-weight: 800;
-            letter-spacing: -0.07em;
-            font-size: 20px;
+            font-weight: 900;
+            letter-spacing: -0.06em;
+            font-size: 22px;
             text-transform: uppercase;
         }
 
         .dot-grid {
-            background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
-            background-size: 20px 20px;
+            background-image: radial-gradient(#e2e8f0 1.5px, transparent 1.5px);
+            background-size: 24px 24px;
         }
-        
-        .cta-link {
-            color: #0ea5e9;
+
+        /* Announcement bar polish */
+        .announcement-bar {
+            background: #0f172a;
+            font-size: 11px;
             font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            margin-top: 24px;
-            transition: opacity 0.2s;
-            letter-spacing: -0.02em;
-        }
-        
-        .cta-link:hover {
-            opacity: 0.8;
-            text-decoration: underline;
-        }
-
-        .text-reveal-large {
-            font-size: clamp(4rem, 15vw, 12rem);
-            font-weight: 900;
-            letter-spacing: -0.06em;
-            line-height: 0.8;
-            color: #f1f1f1;
-            text-transform: uppercase;
-        }
-
-        .avatar-placeholder {
-            width: 48px;
-            height: 48px;
-            background: #f1f1f1;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 12px;
-            color: #a1a1a1;
-            border: 1px solid #e5e7eb;
-        }
-
-        .social-icon {
-            color: #94a3b8;
-            transition: color 0.2s ease;
-        }
-        
-        .social-icon:hover {
-            color: #111111;
+            letter-spacing: 0.05em;
         }
     </style>
 </head>
-<body>
+<body class="selection:bg-sky-100 selection:text-sky-900">
 
     <!-- Notification Bar -->
-    <div class="bg-[#111] text-white py-2 text-center text-[11px] font-bold tracking-tight uppercase">
+    <div class="announcement-bar text-white py-2.5 text-center uppercase">
         Want to learn about efficiency? 
-        <a href="#" class="inline-flex items-center ml-1 text-sky-400 underline decoration-sky-400/30 underline-offset-2">
+        <a href="#" class="inline-flex items-center ml-2 text-sky-400 hover:text-sky-300 transition-colors">
             Join now 
-            <svg class="ml-1" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            <svg class="ml-1" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
         </a>
     </div>
 
     <!-- Navigation -->
-    <nav class="flex justify-between items-center px-6 py-6 md:px-12 max-w-7xl mx-auto">
-        <div class="flex items-center gap-2">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="black"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+    <nav class="flex justify-between items-center px-6 py-8 md:px-12 max-w-7xl mx-auto">
+        <div class="flex items-center gap-2.5 group cursor-pointer">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="text-slate-900"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
             <span class="logo-text">IRONBYTE</span>
         </div>
-        <div class="flex flex-col gap-1 cursor-pointer">
-            <div class="w-6 h-[2.5px] bg-black"></div>
-            <div class="w-6 h-[2.5px] bg-black"></div>
+        <div class="flex flex-col gap-1.5 cursor-pointer group p-2">
+            <div class="w-6 h-[2px] bg-slate-900 group-hover:w-4 transition-all duration-300 ml-auto"></div>
+            <div class="w-6 h-[2px] bg-slate-900"></div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="px-6 pt-12 pb-16 text-center max-w-3xl mx-auto">
-        <h1 class="hero-title text-[34px] md:text-[48px] lg:text-[56px] mb-6">
-            Smart Software for Smarter Businesses — and the <br class="hidden md:block" />
-            <span class="accent">actions to drive growth</span>
+    <section class="px-6 pt-16 pb-20 text-center max-w-4xl mx-auto">
+        <h1 class="hero-title text-[42px] md:text-[64px] lg:text-[72px] mb-8">
+            Precision Software.<br />
+            <span class="accent-gradient">Smarter Results.</span>
         </h1>
         
-        <p class="subheadline text-[15px] md:text-[18px] max-w-xl mx-auto mb-10">
-            We develop practical business systems that turn manual processes into structured, easy-to-use digital workflows.
+        <p class="subheadline text-[16px] md:text-[20px] max-w-2xl mx-auto mb-12">
+            We architect practical business systems that transform manual friction into fluid, automated workflows designed for scale.
         </p>
 
-        <div class="flex flex-row items-center justify-center gap-3">
-            <button class="btn-primary rounded-full transition-all hover:bg-[#025a8b]">
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <button class="btn-primary w-full sm:w-auto">
                 Start for free
-                <span class="arrow-circle">
-                    <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </span>
+                <svg class="ml-2" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </button>
-            <button class="btn-secondary rounded-full transition-all hover:bg-gray-50">
+            <button class="btn-secondary w-full sm:w-auto">
                 Book a Demo
             </button>
         </div>
     </section>
 
     <!-- Solutions Section -->
-    <section class="max-w-xl mx-auto px-4 mb-32">
-        <div class="grid grid-cols-2 service-grid border-l border-r border-gray-100">
+    <section class="max-w-2xl mx-auto px-4 mb-32">
+        <div class="grid grid-cols-2 border border-slate-100 rounded-2xl overflow-hidden shadow-sm">
             <!-- Tab 1: Dispatch -->
-            <div class="grid-item active-tab" onclick="showTab('dispatch', this)">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
-                <span>Dispatch</span>
+            <div class="grid-item flex items-center justify-center gap-3 cursor-pointer active-tab relative" onclick="showTab('dispatch', this)">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+                <span class="font-semibold text-sm tracking-tight">Dispatch</span>
             </div>
             <!-- Tab 2: Inventory -->
-            <div class="grid-item inactive-tab" onclick="showTab('inventory', this)">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"></path><path d="m3.3 7 8.7 5 8.7-5"></path><path d="M12 22V12"></path></svg>
-                <span>Inventory</span>
+            <div class="grid-item flex items-center justify-center gap-3 cursor-pointer text-slate-400 hover:text-slate-600 relative" onclick="showTab('inventory', this)">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"></path><path d="m3.3 7 8.7 5 8.7-5"></path><path d="M12 22V12"></path></svg>
+                <span class="font-semibold text-sm tracking-tight">Inventory</span>
             </div>
             <!-- Tab 3: Analytics -->
-            <div class="grid-item inactive-tab" onclick="showTab('analytics', this)">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"></path><path d="m19 9-5 5-4-4-3 3"></path></svg>
-                <span>Analytics</span>
+            <div class="grid-item flex items-center justify-center gap-3 cursor-pointer text-slate-400 hover:text-slate-600 relative" onclick="showTab('analytics', this)">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"></path><path d="m19 9-5 5-4-4-3 3"></path></svg>
+                <span class="font-semibold text-sm tracking-tight">Analytics</span>
             </div>
             <!-- Tab 4: Automate -->
-            <div class="grid-item inactive-tab" onclick="showTab('automate', this)">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 14 4-4"></path><path d="M3.34 19a10 10 0 1 1 17.32 0"></path></svg>
-                <span>Automate</span>
+            <div class="grid-item flex items-center justify-center gap-3 cursor-pointer text-slate-400 hover:text-slate-600 relative" onclick="showTab('automate', this)">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 14 4-4"></path><path d="M3.34 19a10 10 0 1 1 17.32 0"></path></svg>
+                <span class="font-semibold text-sm tracking-tight">Automate</span>
             </div>
         </div>
 
-        <div class="mt-12 text-center max-w-lg mx-auto">
+        <div class="mt-16 text-center max-w-lg mx-auto min-h-[140px]">
             <div id="dispatch" class="tab-content active">
-                <h3 class="text-xl section-heading mb-3">Order Fulfillment & Logistics</h3>
+                <h3 class="text-2xl font-bold tracking-tight mb-4">Order Fulfillment & Logistics</h3>
                 <p class="subheadline text-[16px]">
                     Turn manual dispatching into a streamlined digital workflow. Improve accuracy, speed, and real-time operational visibility.
                 </p>
             </div>
-            <div id="inventory" class="tab-content">
-                <h3 class="text-xl section-heading mb-3">Inventory Management</h3>
+            <div id="inventory" class="tab-content hidden">
+                <h3 class="text-2xl font-bold tracking-tight mb-4">Inventory Management</h3>
                 <p class="subheadline text-[16px]">
                     Maintain precise stock control with tools designed for easy use. Capture every move to eliminate errors and shrinkage.
                 </p>
             </div>
-            <div id="analytics" class="tab-content">
-                <h3 class="text-xl section-heading mb-3">Reporting & Analytics</h3>
+            <div id="analytics" class="tab-content hidden">
+                <h3 class="text-2xl font-bold tracking-tight mb-4">Reporting & Analytics</h3>
                 <p class="subheadline text-[16px]">
                     Gain high-resolution visibility into your lifecycle. Use data to identify bottlenecks and drive smarter business growth.
                 </p>
             </div>
-            <div id="automate" class="tab-content">
-                <h3 class="text-xl section-heading mb-3">Intelligent Automation</h3>
+            <div id="automate" class="tab-content hidden">
+                <h3 class="text-2xl font-bold tracking-tight mb-4">Intelligent Automation</h3>
                 <p class="subheadline text-[16px]">
                     Remove manual bottlenecks by automating repetitive data tasks. Let your team focus on high-value business actions.
                 </p>
@@ -303,134 +224,111 @@
     </section>
 
     <!-- SECTION: DispatchMate -->
-    <section class="border-t border-gray-100 bg-white">
+    <section class="border-t border-slate-100 bg-white">
         <div class="max-w-7xl mx-auto grid md:grid-cols-2">
-            <div class="px-6 py-16 md:px-12 md:py-28 border-b md:border-b-0 md:border-r border-gray-100 flex flex-col justify-center">
-                <span class="text-[11px] font-bold uppercase tracking-[0.2em] text-gray-400 mb-8 block">Featured Product</span>
-                <h2 class="text-4xl md:text-5xl section-heading mb-6">DispatchMate</h2>
-                <p class="subheadline text-lg md:text-[21px] max-w-md leading-relaxed">
-                    DispatchMate is our flagship product: a smart operational assistant that helps warehouses and retail staff locate products, understand specs, track stock, and fulfill orders without mistakes.
+            <div class="px-6 py-20 md:px-16 md:py-32 border-b md:border-b-0 md:border-r border-slate-100 flex flex-col justify-center">
+                <div class="flex items-center gap-3 mb-8">
+                    <span class="h-[1px] w-8 bg-sky-500"></span>
+                    <span class="text-[11px] font-bold uppercase tracking-[0.2em] text-slate-400">Featured Product</span>
+                </div>
+                <h2 class="text-5xl md:text-6xl font-extrabold tracking-tighter mb-8">DispatchMate</h2>
+                <p class="subheadline text-lg md:text-xl max-w-md mb-10">
+                    Our flagship operational assistant helps staff locate products, track stock, and fulfill orders with zero-error precision.
                 </p>
                 <div>
-                    <a href="#" class="cta-link text-[16px]">
+                    <a href="#" class="inline-flex items-center text-sky-600 font-bold tracking-tight hover:gap-3 transition-all">
                         See DispatchMate in Action
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        <svg class="ml-2" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                     </a>
                 </div>
             </div>
 
-            <div class="dot-grid relative flex items-center justify-center p-8 min-h-[500px] overflow-hidden bg-gray-50/30">
-                <div class="flex flex-col items-center select-none">
-                    <span class="text-reveal-large text-gray-200/50">SMART</span>
-                    <span class="text-reveal-large text-gray-900 leading-[0.7]">ASSIST</span>
-                    <span class="text-reveal-large text-gray-200/50">OPERATE</span>
+            <div class="dot-grid relative flex items-center justify-center p-8 min-h-[500px] overflow-hidden bg-slate-50/50">
+                <div class="flex flex-col items-center select-none opacity-20">
+                    <span class="text-[120px] font-black tracking-tighter leading-none text-slate-900 uppercase">SMART</span>
+                    <span class="text-[120px] font-black tracking-tighter leading-none text-slate-400 uppercase">ASSIST</span>
                 </div>
-                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border border-black bg-white px-6 py-3 shadow-xl transform -rotate-2">
-                    <span class="text-sm font-bold tracking-tighter uppercase">Operational Intelligence v2.0</span>
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white px-8 py-5 shadow-2xl rounded-xl border border-slate-100 transform -rotate-1">
+                    <div class="flex items-center gap-3 mb-1">
+                        <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                        <span class="text-[10px] font-bold tracking-widest text-slate-400 uppercase">System Active</span>
+                    </div>
+                    <span class="text-lg font-extrabold tracking-tighter text-slate-900">Intelligence v2.0</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECTION: About / Credibility -->
-    <section class="bg-white border-t border-gray-100">
-        <div class="max-w-7xl mx-auto px-6 py-24 md:px-12 md:py-32 flex flex-col md:flex-row gap-16 md:gap-24 items-start">
-            <div class="md:w-1/3">
-                <span class="text-[11px] font-bold uppercase tracking-[0.2em] text-gray-400 mb-6 block">Our Mission</span>
-                <h2 class="text-3xl md:text-4xl section-heading mb-4">Building tools businesses actually use.</h2>
-            </div>
-            
-            <div class="md:w-2/3">
-                <p class="subheadline text-lg md:text-[21px] mb-12 leading-relaxed">
-                    Ironbyte Systems was founded by Leon Nyaramb, Founder and Lead Engineer. Our mission is to build software that solves real business problems efficiently. We focus on usability, reliability, and creating tools businesses actually use.
-                </p>
-                
-                <div class="flex items-center gap-4">
-                    <div class="avatar-placeholder">LN</div>
-                    <div>
-                        <p class="text-[14px] font-bold tracking-tight text-gray-900">Leon Nyaramb</p>
-                        <p class="text-[12px] text-gray-500 font-medium">Founder & Lead Engineer</p>
+    <!-- FOOTER/CONTACT SECTION -->
+    <footer class="bg-slate-50 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-6 py-24 md:px-12">
+            <div class="grid md:grid-cols-2 gap-16 items-start mb-24">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-6">Let's build something efficient.</h2>
+                    <p class="subheadline text-lg mb-8 max-w-sm">
+                        Ready to digitize? Chat with us directly to discuss your requirements.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#" class="btn-primary !bg-[#25D366] !rounded-full shadow-md">
+                            WhatsApp
+                        </a>
+                        <a href="mailto:hello@ironbyte.systems" class="btn-secondary !rounded-full">
+                            Email Us
+                        </a>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION: Contact -->
-    <section class="bg-[#fafafa] border-t border-gray-200">
-        <div class="max-w-7xl mx-auto px-6 py-20 md:px-12 md:py-32 flex flex-col md:flex-row gap-16 md:gap-24 items-start">
-            <div class="md:w-1/3">
-                <span class="text-[11px] font-bold uppercase tracking-[0.2em] text-gray-400 mb-6 block">Get in touch</span>
-                <h2 class="text-3xl md:text-4xl section-heading mb-4">Let's build something efficient.</h2>
-            </div>
-            
-            <div class="md:w-2/3">
-                <p class="subheadline text-lg md:text-[21px] mb-12 leading-relaxed">
-                    Ready to digitize your operations? Skip the forms—chat with us directly through the platforms below to discuss your system requirements.
-                </p>
-                
-                <div class="flex flex-wrap gap-4">
-                    <!-- WhatsApp CTA -->
-                    <a href="https://wa.me/yourphonenumber" class="btn-primary rounded-full transition-transform active:scale-95 bg-[#25D366] hover:bg-[#20ba5a] shadow-none">
-                        <svg class="mr-2" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.438 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-                        WhatsApp
-                    </a>
-                    <!-- Email CTA -->
-                    <a href="mailto:hello@ironbyte.systems" class="btn-secondary rounded-full border-gray-900 transition-transform active:scale-95">
-                        <svg class="mr-2" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                        hello@ironbyte.systems
-                    </a>
+                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-12 bg-slate-900 rounded-full flex items-center justify-center text-white font-bold">LN</div>
+                        <div>
+                            <p class="font-bold tracking-tight">Leon Nyaramb</p>
+                            <p class="text-xs text-slate-500 font-medium uppercase tracking-wider">Founder & Lead Engineer</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-600 text-sm leading-relaxed italic">
+                        "We focus on usability and reliability—creating tools that solve real business problems, not just software for software's sake."
+                    </p>
                 </div>
             </div>
-        </div>
 
-        <!-- Footer Bar -->
-        <div class="max-w-7xl mx-auto px-6 pb-12 md:px-12">
-            <div class="pt-12 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center gap-8">
-                <div class="flex items-center gap-2">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="black"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+            <div class="pt-12 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-8">
+                <div class="flex items-center gap-2.5">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
                     <span class="logo-text text-base">IRONBYTE</span>
                 </div>
-                
-                <div class="text-[13px] text-gray-400 font-medium md:order-last">
+                <div class="text-[12px] text-slate-400 font-bold uppercase tracking-widest">
                     © 2024 Ironbyte Systems.
-                </div>
-
-                <!-- Social Icons in Footer -->
-                <div class="flex gap-6 items-center">
-                    <a href="#" class="social-icon" aria-label="LinkedIn">
-                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                    </a>
-                    <a href="#" class="social-icon" aria-label="GitHub">
-                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.042-1.416-4.042-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                    </a>
-                    <a href="#" class="social-icon" aria-label="X">
-                        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932 6.064-6.932zm-1.294 19.497h2.039L6.482 3.239H4.293l13.314 17.411z"/></svg>
-                    </a>
                 </div>
             </div>
         </div>
-    </section>
+    </footer>
 
     <script>
         function showTab(tabId, element) {
+            // Update Tab UI
             document.querySelectorAll('.grid-item').forEach(item => {
                 item.classList.remove('active-tab');
-                item.classList.add('inactive-tab');
+                item.classList.add('text-slate-400', 'hover:text-slate-600');
             });
-            
             element.classList.add('active-tab');
-            element.classList.remove('inactive-tab');
+            element.classList.remove('text-slate-400', 'hover:text-slate-600');
 
+            // Update Content
             document.querySelectorAll('.tab-content').forEach(content => {
-                content.classList.remove('active');
+                content.classList.add('hidden');
             });
-
-            document.getElementById(tabId).classList.add('active');
+            const activeContent = document.getElementById(tabId);
+            activeContent.classList.remove('hidden');
+            
+            // Re-trigger animation
+            activeContent.style.animation = 'none';
+            activeContent.offsetHeight; /* trigger reflow */
+            activeContent.style.animation = null;
         }
     </script>
 
 </body>
 </html>
 
-       
+
+             
