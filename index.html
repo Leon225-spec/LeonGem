@@ -1,97 +1,116 @@
-         <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IRONBYTE | Precision Software</title>
+    <title>IRONBYTE | Smart Software</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             -webkit-font-smoothing: antialiased;
-            background-color: #ffffff; 
-            color: #0f172a;
+            -moz-osx-font-smoothing: grayscale;
+            background-color: #fcfcfc; 
+            color: #111111;
+            letter-spacing: -0.011em; 
         }
         
-        /* High-end tracking and leading */
         .hero-title {
-            font-weight: 800; 
-            line-height: 1;
+            font-weight: 600; 
+            line-height: 1.05;
             letter-spacing: -0.05em;
+            max-width: 800px;
             margin: 0 auto;
         }
 
-        /* Subtle gradient for the accent to feel more polished */
-        .accent-gradient {
-            background: linear-gradient(to right, #0ea5e9, #0284c7);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .hero-title span.accent {
+            color: #0ea5e9;
         }
 
         .subheadline {
-            letter-spacing: -0.01em;
+            letter-spacing: -0.015em;
             line-height: 1.6;
-            color: #475569;
-            font-weight: 450;
+            color: #666666;
+            font-weight: 400;
         }
 
-        /* Button refinement: Moving from pill to a sophisticated large radius */
+        .section-heading {
+            letter-spacing: -0.045em;
+            font-weight: 600;
+        }
+
         .btn-primary {
-            background-color: #0284c7; 
+            background-color: #0369a1; 
             color: #ffffff; 
-            padding: 12px 28px; 
+            padding: 10px 24px; 
             font-size: 14px;
             font-weight: 600;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 12px rgba(3, 105, 161, 0.15);
             letter-spacing: -0.01em;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-            background-color: #0369a1;
         }
 
         .btn-secondary {
             background-color: #ffffff;
-            border: 1px solid #e2e8f0;
-            padding: 12px 28px;
+            border: 1px solid #e5e7eb;
+            padding: 10px 24px;
             font-size: 14px;
             font-weight: 600;
-            color: #0f172a;
-            border-radius: 12px;
-            transition: all 0.2s;
+            color: #111;
+            letter-spacing: -0.01em;
         }
 
-        .btn-secondary:hover {
-            background-color: #f8fafc;
-            border-color: #cbd5e1;
+        .arrow-circle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            border: 1.5px solid #ffffff;
+            margin-left: 8px;
         }
 
-        /* Standardized grid items */
+        .service-grid {
+            border-top: 1px solid #f0f0f0;
+        }
+
         .grid-item {
-            border-right: 1px solid #f1f5f9;
-            border-bottom: 1px solid #f1f5f9;
-            height: 90px;
-            transition: all 0.2s ease;
+            border-right: 1px solid #f0f0f0;
+            border-bottom: 1px solid #f0f0f0;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            cursor: pointer;
             background-color: #ffffff;
+            transition: all 0.2s ease;
         }
 
         .grid-item:nth-child(2n) {
             border-right: none;
         }
 
+        .grid-item span {
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            font-size: 14px;
+        }
+
         .active-tab {
-            background-color: #f8fafc;
-            color: #0284c7;
+            position: relative;
+            color: #000;
+            background-color: #fafafa;
         }
 
         .active-tab::after {
@@ -100,122 +119,259 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 2.5px;
-            background: #0284c7;
+            height: 2px;
+            background: #000;
+        }
+
+        .inactive-tab {
+            color: #a1a1a1;
+        }
+
+        .inactive-tab svg {
+            opacity: 0.4;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease forwards;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .logo-text {
-            font-weight: 900;
-            letter-spacing: -0.06em;
-            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: -0.07em;
+            font-size: 20px;
             text-transform: uppercase;
         }
 
         .dot-grid {
-            background-image: radial-gradient(#e2e8f0 1.5px, transparent 1.5px);
-            background-size: 24px 24px;
+            background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        
+        .cta-link {
+            color: #0ea5e9;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            margin-top: 24px;
+            transition: opacity 0.2s;
+            letter-spacing: -0.02em;
+        }
+        
+        .cta-link:hover {
+            opacity: 0.8;
+            text-decoration: underline;
         }
 
-        /* Announcement bar polish */
-        .announcement-bar {
-            background: #0f172a;
-            font-size: 11px;
+        .mockup-container {
+            perspective: 1200px;
+        }
+
+        .mockup-card {
+            transform: rotateX(10deg) rotateY(-15deg) rotateZ(2deg);
+            box-shadow: -20px 40px 80px rgba(0,0,0,0.1);
+            transition: transform 0.5s ease;
+        }
+
+        .avatar-placeholder {
+            width: 48px;
+            height: 48px;
+            background: #f1f1f1;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 12px;
+            color: #a1a1a1;
+            border: 1px solid #e5e7eb;
+        }
+
+        .social-icon {
+            color: #94a3b8;
+            transition: color 0.2s ease;
+        }
+        
+        .social-icon:hover {
+            color: #111111;
+        }
+
+        .contact-card {
+            flex: 1;
+            min-width: 260px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 32px;
+            border-radius: 20px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid transparent;
+            text-align: center;
+        }
+
+        .footer-link {
+            color: #666666;
+            transition: color 0.2s ease;
+            font-size: 14px;
+        }
+
+        .footer-link:hover {
+            color: #111111;
+        }
+
+        /* Nav Drawer specific styles */
+        #mobile-menu {
+            transition: transform 0.3s ease-in-out;
+            transform: translateX(100%);
+        }
+        #mobile-menu.open {
+            transform: translateX(0);
+        }
+        .nav-link {
+            font-size: 14px;
             font-weight: 600;
-            letter-spacing: 0.05em;
+            color: #666;
+            transition: color 0.2s;
+            letter-spacing: -0.01em;
+        }
+        .nav-link:hover {
+            color: #000;
         }
     </style>
 </head>
-<body class="selection:bg-sky-100 selection:text-sky-900">
+<body class="overflow-x-hidden">
 
     <!-- Notification Bar -->
-    <div class="announcement-bar text-white py-2.5 text-center uppercase">
+    <div class="bg-[#111] text-white py-2 text-center text-[11px] font-bold tracking-tight uppercase relative z-50">
         Want to learn about efficiency? 
-        <a href="#" class="inline-flex items-center ml-2 text-sky-400 hover:text-sky-300 transition-colors">
+        <a href="#" class="inline-flex items-center ml-1 text-sky-400 underline decoration-sky-400/30 underline-offset-2">
             Join now 
-            <svg class="ml-1" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            <svg class="ml-1" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
         </a>
     </div>
 
     <!-- Navigation -->
-    <nav class="flex justify-between items-center px-6 py-8 md:px-12 max-w-7xl mx-auto">
-        <div class="flex items-center gap-2.5 group cursor-pointer">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="text-slate-900"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
-            <span class="logo-text">IRONBYTE</span>
+    <header class="sticky top-0 bg-white/80 backdrop-blur-md z-40 border-b border-gray-100">
+        <nav class="flex justify-between items-center px-6 py-5 md:px-12 max-w-7xl mx-auto">
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-2 group">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="black" class="transition-transform group-hover:scale-110"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+                <span class="logo-text">IRONBYTE</span>
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-10">
+                <a href="#solutions" class="nav-link">Solutions</a>
+                <a href="#products" class="nav-link">Products</a>
+                <a href="#mission" class="nav-link">Our Mission</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <button class="btn-primary rounded-full !py-2 !px-5 active:scale-95 transition-transform text-[13px]">
+                    Get Started
+                </button>
+            </div>
+
+            <!-- Mobile Hamburger -->
+            <div class="md:hidden flex flex-col gap-1 cursor-pointer group" onclick="toggleMenu()">
+                <div id="bar1" class="w-6 h-[2px] bg-black transition-all origin-center"></div>
+                <div id="bar2" class="w-6 h-[2px] bg-black transition-all"></div>
+                <div id="bar3" class="w-6 h-[2px] bg-black transition-all origin-center"></div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile Menu Drawer -->
+    <div id="mobile-menu" class="fixed inset-0 bg-white z-[60] flex flex-col px-8 py-20 md:hidden">
+        <div class="absolute top-6 right-6 p-2" onclick="toggleMenu()">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
         </div>
-        <div class="flex flex-col gap-1.5 cursor-pointer group p-2">
-            <div class="w-6 h-[2px] bg-slate-900 group-hover:w-4 transition-all duration-300 ml-auto"></div>
-            <div class="w-6 h-[2px] bg-slate-900"></div>
+        <div class="flex flex-col gap-8">
+            <a href="#solutions" class="text-3xl font-bold tracking-tighter" onclick="toggleMenu()">Solutions</a>
+            <a href="#products" class="text-3xl font-bold tracking-tighter" onclick="toggleMenu()">Products</a>
+            <a href="#mission" class="text-3xl font-bold tracking-tighter" onclick="toggleMenu()">Our Mission</a>
+            <a href="#contact" class="text-3xl font-bold tracking-tighter" onclick="toggleMenu()">Contact</a>
         </div>
-    </nav>
+        <div class="mt-auto pb-10">
+            <button class="w-full btn-primary rounded-2xl py-4 text-lg">Start for free</button>
+        </div>
+    </div>
 
     <!-- Hero Section -->
-    <section class="px-6 pt-16 pb-20 text-center max-w-4xl mx-auto">
-        <h1 class="hero-title text-[42px] md:text-[64px] lg:text-[72px] mb-8">
-            Precision Software.<br />
-            <span class="accent-gradient">Smarter Results.</span>
+    <section class="px-6 pt-20 pb-16 text-center max-w-4xl mx-auto">
+        <h1 class="hero-title text-[38px] md:text-[56px] lg:text-[72px] mb-8">
+            Precision Software. <br class="hidden md:block" />
+            <span class="accent">Smarter Results.</span>
         </h1>
         
-        <p class="subheadline text-[16px] md:text-[20px] max-w-2xl mx-auto mb-12">
-            We architect practical business systems that transform manual friction into fluid, automated workflows designed for scale.
+        <p class="subheadline text-[16px] md:text-[20px] max-w-2xl mx-auto mb-10">
+            We develop practical business systems that turn manual processes into structured, easy-to-use digital workflows.
         </p>
 
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button class="btn-primary w-full sm:w-auto">
+        <div class="flex flex-row items-center justify-center gap-3">
+            <button class="btn-primary rounded-full transition-all hover:bg-[#025a8b] active:scale-95">
                 Start for free
-                <svg class="ml-2" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                <span class="arrow-circle">
+                    <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </span>
             </button>
-            <button class="btn-secondary w-full sm:w-auto">
+            <button class="btn-secondary rounded-full transition-all hover:bg-gray-50 active:scale-95">
                 Book a Demo
             </button>
         </div>
     </section>
 
     <!-- Solutions Section -->
-    <section class="max-w-2xl mx-auto px-4 mb-32">
-        <div class="grid grid-cols-2 border border-slate-100 rounded-2xl overflow-hidden shadow-sm">
-            <!-- Tab 1: Dispatch -->
-            <div class="grid-item flex items-center justify-center gap-3 cursor-pointer active-tab relative" onclick="showTab('dispatch', this)">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
-                <span class="font-semibold text-sm tracking-tight">Dispatch</span>
+    <section id="solutions" class="max-w-xl mx-auto px-4 mb-32 scroll-mt-24">
+        <div class="grid grid-cols-2 service-grid border-l border-r border-gray-100">
+            <div class="grid-item active-tab" onclick="showTab('dispatch', this)">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+                <span>Dispatch</span>
             </div>
-            <!-- Tab 2: Inventory -->
-            <div class="grid-item flex items-center justify-center gap-3 cursor-pointer text-slate-400 hover:text-slate-600 relative" onclick="showTab('inventory', this)">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"></path><path d="m3.3 7 8.7 5 8.7-5"></path><path d="M12 22V12"></path></svg>
-                <span class="font-semibold text-sm tracking-tight">Inventory</span>
+            <div class="grid-item inactive-tab" onclick="showTab('inventory', this)">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"></path><path d="m3.3 7 8.7 5 8.7-5"></path><path d="M12 22V12"></path></svg>
+                <span>Inventory</span>
             </div>
-            <!-- Tab 3: Analytics -->
-            <div class="grid-item flex items-center justify-center gap-3 cursor-pointer text-slate-400 hover:text-slate-600 relative" onclick="showTab('analytics', this)">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"></path><path d="m19 9-5 5-4-4-3 3"></path></svg>
-                <span class="font-semibold text-sm tracking-tight">Analytics</span>
+            <div class="grid-item inactive-tab" onclick="showTab('analytics', this)">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"></path><path d="m19 9-5 5-4-4-3 3"></path></svg>
+                <span>Analytics</span>
             </div>
-            <!-- Tab 4: Automate -->
-            <div class="grid-item flex items-center justify-center gap-3 cursor-pointer text-slate-400 hover:text-slate-600 relative" onclick="showTab('automate', this)">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 14 4-4"></path><path d="M3.34 19a10 10 0 1 1 17.32 0"></path></svg>
-                <span class="font-semibold text-sm tracking-tight">Automate</span>
+            <div class="grid-item inactive-tab" onclick="showTab('automate', this)">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 14 4-4"></path><path d="M3.34 19a10 10 0 1 1 17.32 0"></path></svg>
+                <span>Automate</span>
             </div>
         </div>
 
-        <div class="mt-16 text-center max-w-lg mx-auto min-h-[140px]">
+        <div class="mt-12 text-center max-w-lg mx-auto">
             <div id="dispatch" class="tab-content active">
-                <h3 class="text-2xl font-bold tracking-tight mb-4">Order Fulfillment & Logistics</h3>
+                <h3 class="text-xl section-heading mb-3">Order Fulfillment & Logistics</h3>
                 <p class="subheadline text-[16px]">
                     Turn manual dispatching into a streamlined digital workflow. Improve accuracy, speed, and real-time operational visibility.
                 </p>
             </div>
-            <div id="inventory" class="tab-content hidden">
-                <h3 class="text-2xl font-bold tracking-tight mb-4">Inventory Management</h3>
+            <div id="inventory" class="tab-content">
+                <h3 class="text-xl section-heading mb-3">Inventory Management</h3>
                 <p class="subheadline text-[16px]">
                     Maintain precise stock control with tools designed for easy use. Capture every move to eliminate errors and shrinkage.
                 </p>
             </div>
-            <div id="analytics" class="tab-content hidden">
-                <h3 class="text-2xl font-bold tracking-tight mb-4">Reporting & Analytics</h3>
+            <div id="analytics" class="tab-content">
+                <h3 class="text-xl section-heading mb-3">Reporting & Analytics</h3>
                 <p class="subheadline text-[16px]">
                     Gain high-resolution visibility into your lifecycle. Use data to identify bottlenecks and drive smarter business growth.
                 </p>
             </div>
-            <div id="automate" class="tab-content hidden">
-                <h3 class="text-2xl font-bold tracking-tight mb-4">Intelligent Automation</h3>
+            <div id="automate" class="tab-content">
+                <h3 class="text-xl section-heading mb-3">Intelligent Automation</h3>
                 <p class="subheadline text-[16px]">
                     Remove manual bottlenecks by automating repetitive data tasks. Let your team focus on high-value business actions.
                 </p>
@@ -223,112 +379,229 @@
         </div>
     </section>
 
-    <!-- SECTION: DispatchMate -->
-    <section class="border-t border-slate-100 bg-white">
-        <div class="max-w-7xl mx-auto grid md:grid-cols-2">
-            <div class="px-6 py-20 md:px-16 md:py-32 border-b md:border-b-0 md:border-r border-slate-100 flex flex-col justify-center">
-                <div class="flex items-center gap-3 mb-8">
-                    <span class="h-[1px] w-8 bg-sky-500"></span>
-                    <span class="text-[11px] font-bold uppercase tracking-[0.2em] text-slate-400">Featured Product</span>
-                </div>
-                <h2 class="text-5xl md:text-6xl font-extrabold tracking-tighter mb-8">DispatchMate</h2>
-                <p class="subheadline text-lg md:text-xl max-w-md mb-10">
-                    Our flagship operational assistant helps staff locate products, track stock, and fulfill orders with zero-error precision.
+    <!-- SECTION: DispatchMate Showcase -->
+    <section id="products" class="border-t border-gray-100 bg-white scroll-mt-24">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 overflow-hidden">
+            <div class="px-6 py-16 md:px-12 md:py-28 border-b md:border-b-0 md:border-r border-gray-100 flex flex-col justify-center bg-white z-10">
+                <span class="text-[11px] font-bold uppercase tracking-[0.2em] text-gray-400 mb-8 block">Featured Product</span>
+                <h2 class="text-4xl md:text-5xl section-heading mb-6">DispatchMate</h2>
+                <p class="subheadline text-lg md:text-[21px] max-w-md leading-relaxed">
+                    DispatchMate is our flagship product: a smart operational assistant that helps warehouses and retail staff locate products, track stock, and fulfill orders without mistakes.
                 </p>
                 <div>
-                    <a href="#" class="inline-flex items-center text-sky-600 font-bold tracking-tight hover:gap-3 transition-all">
+                    <a href="#" class="cta-link text-[16px]">
                         See DispatchMate in Action
-                        <svg class="ml-2" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                     </a>
                 </div>
             </div>
 
-            <div class="dot-grid relative flex items-center justify-center p-8 min-h-[500px] overflow-hidden bg-slate-50/50">
-                <div class="flex flex-col items-center select-none opacity-20">
-                    <span class="text-[120px] font-black tracking-tighter leading-none text-slate-900 uppercase">SMART</span>
-                    <span class="text-[120px] font-black tracking-tighter leading-none text-slate-400 uppercase">ASSIST</span>
-                </div>
-                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white px-8 py-5 shadow-2xl rounded-xl border border-slate-100 transform -rotate-1">
-                    <div class="flex items-center gap-3 mb-1">
-                        <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                        <span class="text-[10px] font-bold tracking-widest text-slate-400 uppercase">System Active</span>
+            <div class="dot-grid relative flex items-center justify-center p-8 min-h-[500px] md:min-h-[600px] bg-gray-50/30 mockup-container">
+                <div class="mockup-card w-full max-w-[380px] bg-white rounded-2xl border border-gray-200 overflow-hidden">
+                    <div class="p-4 border-b border-gray-100 flex justify-between items-center bg-gray-50/50">
+                        <div class="flex items-center gap-2">
+                            <div class="w-2 h-2 rounded-full bg-red-400"></div>
+                            <div class="w-2 h-2 rounded-full bg-yellow-400"></div>
+                            <div class="w-2 h-2 rounded-full bg-green-400"></div>
+                        </div>
+                        <span class="text-[10px] font-bold text-gray-400 tracking-widest uppercase">Live Dispatch</span>
                     </div>
-                    <span class="text-lg font-extrabold tracking-tighter text-slate-900">Intelligence v2.0</span>
+                    <div class="p-5 space-y-4">
+                        <div class="flex justify-between items-end">
+                            <div>
+                                <h4 class="text-xs font-bold text-gray-400 uppercase tracking-tight mb-1">Current Task</h4>
+                                <p class="text-lg font-bold text-gray-900 tracking-tight">Order #8842-X</p>
+                            </div>
+                            <span class="px-2 py-1 bg-sky-50 text-sky-600 text-[10px] font-bold rounded-md">IN PROGRESS</span>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="p-3 bg-gray-50 rounded-xl border border-gray-100">
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-[11px] font-medium text-gray-500">Item Location</span>
+                                    <span class="text-[11px] font-bold text-gray-900">AISLE 4, BIN B-12</span>
+                                </div>
+                                <div class="w-full bg-gray-200 h-1.5 rounded-full overflow-hidden">
+                                    <div class="bg-sky-500 h-full w-[75%] rounded-full"></div>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-3">
+                                <div class="p-3 border border-gray-100 rounded-xl text-center">
+                                    <p class="text-[10px] text-gray-400 font-bold uppercase mb-1">Picked</p>
+                                    <p class="text-xl font-bold tracking-tight">12/15</p>
+                                </div>
+                                <div class="p-3 border border-gray-100 rounded-xl text-center">
+                                    <p class="text-[10px] text-gray-400 font-bold uppercase mb-1">Efficiency</p>
+                                    <p class="text-xl font-bold tracking-tight text-green-500">98%</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="w-full py-3 bg-gray-900 text-white text-xs font-bold rounded-xl active:scale-95 transition-transform">
+                            CONFIRM PICKUP
+                        </button>
+                    </div>
+                </div>
+                <div class="absolute bottom-12 right-12 border border-black bg-white px-5 py-2.5 shadow-2xl transform rotate-3 z-20">
+                    <span class="text-[11px] font-black tracking-tighter uppercase italic">V2.0 STABLE</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER/CONTACT SECTION -->
-    <footer class="bg-slate-50 border-t border-slate-200">
-        <div class="max-w-7xl mx-auto px-6 py-24 md:px-12">
-            <div class="grid md:grid-cols-2 gap-16 items-start mb-24">
-                <div>
-                    <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-6">Let's build something efficient.</h2>
-                    <p class="subheadline text-lg mb-8 max-w-sm">
-                        Ready to digitize? Chat with us directly to discuss your requirements.
-                    </p>
-                    <div class="flex flex-wrap gap-4">
-                        <a href="#" class="btn-primary !bg-[#25D366] !rounded-full shadow-md">
-                            WhatsApp
-                        </a>
-                        <a href="mailto:hello@ironbyte.systems" class="btn-secondary !rounded-full">
-                            Email Us
-                        </a>
+    <!-- SECTION: Mission -->
+    <section id="mission" class="bg-white border-t border-gray-100 scroll-mt-24">
+        <div class="max-w-7xl mx-auto px-6 py-24 md:px-12 md:py-32 flex flex-col md:flex-row gap-16 md:gap-24 items-start">
+            <div class="md:w-1/3">
+                <span class="text-[11px] font-bold uppercase tracking-[0.2em] text-gray-400 mb-6 block">Our Mission</span>
+                <h2 class="text-3xl md:text-4xl section-heading mb-4">Building tools businesses actually use.</h2>
+            </div>
+            <div class="md:w-2/3">
+                <p class="subheadline text-lg md:text-[21px] mb-12 leading-relaxed">
+                    Ironbyte Systems was founded by Leon Nyaramb, Founder and Lead Engineer. Our mission is to build software that solves real business problems efficiently. We focus on usability, reliability, and creating tools businesses actually use.
+                </p>
+                <div class="flex items-center gap-4">
+                    <div class="avatar-placeholder">LN</div>
+                    <div>
+                        <p class="text-[14px] font-bold tracking-tight text-gray-900">Leon Nyaramb</p>
+                        <p class="text-[12px] text-gray-500 font-medium">Founder & Lead Engineer</p>
                     </div>
                 </div>
-                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
-                    <div class="flex items-center gap-4 mb-6">
-                        <div class="w-12 h-12 bg-slate-900 rounded-full flex items-center justify-center text-white font-bold">LN</div>
-                        <div>
-                            <p class="font-bold tracking-tight">Leon Nyaramb</p>
-                            <p class="text-xs text-slate-500 font-medium uppercase tracking-wider">Founder & Lead Engineer</p>
-                        </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: Get in touch -->
+    <section id="contact" class="bg-[#fafafa] border-t border-gray-200 scroll-mt-24">
+        <div class="max-w-7xl mx-auto px-6 py-20 md:px-12 md:py-32">
+            <div class="text-center mb-16">
+                <span class="text-[11px] font-bold uppercase tracking-[0.2em] text-gray-400 mb-4 block">Get in touch</span>
+                <h2 class="text-4xl md:text-5xl section-heading mb-6">Ready to build?</h2>
+                <p class="subheadline text-[18px] max-w-xl mx-auto">
+                    Skip the complex forms. Chat with us directly to discuss your system requirements.
+                </p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row gap-6 max-w-4xl mx-auto">
+                <!-- WhatsApp Card -->
+                <a href="https://wa.me/yourphonenumber" class="contact-card bg-[#111] text-white hover:bg-black group">
+                    <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mb-6 transition-transform group-hover:scale-110">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.438 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
                     </div>
-                    <p class="text-slate-600 text-sm leading-relaxed italic">
-                        "We focus on usability and reliability—creating tools that solve real business problems, not just software for software's sake."
+                    <span class="text-lg font-bold mb-1">Chat on WhatsApp</span>
+                    <span class="text-[13px] text-gray-400">Response time: &lt; 30 mins</span>
+                </a>
+
+                <!-- Email Card -->
+                <a href="mailto:hello@ironbyte.systems" class="contact-card bg-white border-gray-200 text-gray-900 hover:border-gray-900 group">
+                    <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mb-6 transition-transform group-hover:scale-110">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    </div>
+                    <span class="text-lg font-bold mb-1">Email Support</span>
+                    <span class="text-[13px] text-gray-500">hello@ironbyte.systems</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-white border-t border-gray-100 pt-20 pb-12">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-12 mb-20">
+                <div class="col-span-2">
+                    <div class="flex items-center gap-2 mb-6">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="black"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+                        <span class="logo-text">IRONBYTE</span>
+                    </div>
+                    <p class="text-gray-500 text-sm max-w-xs leading-relaxed">
+                        Engineering digital infrastructure for the modern enterprise. Precision software built for speed and reliability.
                     </p>
+                </div>
+                
+                <div>
+                    <h5 class="text-[11px] font-black uppercase tracking-[0.1em] text-gray-900 mb-6">Products</h5>
+                    <ul class="space-y-4">
+                        <li><a href="#" class="footer-link">DispatchMate</a></li>
+                        <li><a href="#" class="footer-link">Inventory Hub</a></li>
+                        <li><a href="#" class="footer-link">Insight Analytics</a></li>
+                        <li><a href="#" class="footer-link">Automate Flow</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="text-[11px] font-black uppercase tracking-[0.1em] text-gray-900 mb-6">Company</h5>
+                    <ul class="space-y-4">
+                        <li><a href="#" class="footer-link">Our Mission</a></li>
+                        <li><a href="#" class="footer-link">Lead Engineer</a></li>
+                        <li><a href="#" class="footer-link">Case Studies</a></li>
+                        <li><a href="#" class="footer-link">Privacy Policy</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="text-[11px] font-black uppercase tracking-[0.1em] text-gray-900 mb-6">Connect</h5>
+                    <ul class="space-y-4">
+                        <li><a href="#" class="footer-link">WhatsApp</a></li>
+                        <li><a href="#" class="footer-link">LinkedIn</a></li>
+                        <li><a href="#" class="footer-link">GitHub</a></li>
+                        <li><a href="#" class="footer-link">X / Twitter</a></li>
+                    </ul>
                 </div>
             </div>
 
-            <div class="pt-12 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-8">
-                <div class="flex items-center gap-2.5">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
-                    <span class="logo-text text-base">IRONBYTE</span>
+            <div class="pt-12 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-8">
+                <div class="text-[12px] text-gray-400 font-medium">
+                    © 2024 Ironbyte Systems. All rights reserved.
                 </div>
-                <div class="text-[12px] text-slate-400 font-bold uppercase tracking-widest">
-                    © 2024 Ironbyte Systems.
+                <div class="flex gap-8 items-center">
+                    <a href="#" class="social-icon">
+                        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.042-1.416-4.042-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    </a>
                 </div>
             </div>
         </div>
     </footer>
 
     <script>
+        // Mobile Menu Logic
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const bar1 = document.getElementById('bar1');
+            const bar2 = document.getElementById('bar2');
+            const bar3 = document.getElementById('bar3');
+
+            menu.classList.toggle('open');
+            document.body.classList.toggle('overflow-hidden');
+
+            // Hamburger to X animation
+            if(menu.classList.contains('open')) {
+                bar1.style.transform = 'translateY(6px) rotate(45deg)';
+                bar2.style.opacity = '0';
+                bar3.style.transform = 'translateY(-6px) rotate(-45deg)';
+            } else {
+                bar1.style.transform = 'none';
+                bar2.style.opacity = '1';
+                bar3.style.transform = 'none';
+            }
+        }
+
+        // Tab Switching Logic
         function showTab(tabId, element) {
-            // Update Tab UI
             document.querySelectorAll('.grid-item').forEach(item => {
                 item.classList.remove('active-tab');
-                item.classList.add('text-slate-400', 'hover:text-slate-600');
+                item.classList.add('inactive-tab');
             });
-            element.classList.add('active-tab');
-            element.classList.remove('text-slate-400', 'hover:text-slate-600');
-
-            // Update Content
-            document.querySelectorAll('.tab-content').forEach(content => {
-                content.classList.add('hidden');
-            });
-            const activeContent = document.getElementById(tabId);
-            activeContent.classList.remove('hidden');
             
-            // Re-trigger animation
-            activeContent.style.animation = 'none';
-            activeContent.offsetHeight; /* trigger reflow */
-            activeContent.style.animation = null;
+            element.classList.add('active-tab');
+            element.classList.remove('inactive-tab');
+
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+
+            document.getElementById(tabId).classList.add('active');
         }
     </script>
-
 </body>
 </html>
-
-
-             
