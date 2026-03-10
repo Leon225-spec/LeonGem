@@ -1,9 +1,9 @@
-    <!DOCTYPE html>
+   <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ironbyte UI - Design Made Easy</title>
+    <title>Ironbyte Systems | Smart Software for Smarter Businesses</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -21,16 +21,12 @@
             padding: 0 24px 100px 24px;
         }
 
-        /* --- HERO SECTION STYLES --- */
-        .hero-section {
-            padding-top: 40px;
-            margin-bottom: 80px;
-        }
-
+        /* --- LOGO & NAV (MATCHING REFERENCE) --- */
         .logo-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding-top: 40px;
             margin-bottom: 60px;
         }
 
@@ -44,8 +40,9 @@
             gap: 4px;
         }
 
+        /* Using Black Accent as requested */
         .logo-box {
-            border: 2px solid #6366f1;
+            border: 2px solid #1e293b;
             padding: 0 4px;
             border-radius: 4px;
             position: relative;
@@ -57,17 +54,18 @@
             width: 6px;
             height: 6px;
             background: white;
-            border: 1px solid #6366f1;
+            border: 1px solid #1e293b;
         }
         .logo-box::before { top: -4px; left: -4px; }
         .logo-box::after { bottom: -4px; right: -4px; }
 
+        /* --- HERO SECTION (EXACT REFERENCE STYLE) --- */
         .hero-eyebrow {
             text-transform: uppercase;
             font-size: 0.75rem;
             font-weight: 700;
             letter-spacing: 0.1em;
-            color: #64748b;
+            color: #64748b; /* Slate eyebrow */
             margin-bottom: 1.5rem;
         }
 
@@ -80,12 +78,6 @@
             margin-bottom: 1.5rem;
         }
 
-        .strikethrough {
-            text-decoration: line-through;
-            text-decoration-thickness: 3px;
-            color: #94a3b8;
-        }
-
         .hero-description {
             font-size: 1.125rem;
             font-weight: 400;
@@ -96,7 +88,7 @@
         }
 
         .btn-primary {
-            background-color: #4f46e5;
+            background-color: #1e293b; /* Pure Black/Dark Slate */
             color: white;
             padding: 14px 28px;
             border-radius: 8px;
@@ -110,7 +102,7 @@
 
         .btn-secondary {
             background-color: white;
-            color: #4f46e5;
+            color: #1e293b;
             padding: 14px 28px;
             border-radius: 8px;
             font-weight: 600;
@@ -126,25 +118,8 @@
             .btn-primary, .btn-secondary { width: auto; margin-right: 12px; }
         }
 
-        /* --- TESTIMONIAL CARDS --- */
-        .testimonial-card {
-            border: 1px solid #eef2f6;
-            border-radius: 16px;
-            padding: 24px;
-            margin-bottom: 16px;
-            background: #fff;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-        }
-
-        .avatar-img {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-
-        /* --- FEATURE SECTIONS --- */
-        .feature-heading {
+        /* --- SOLUTIONS SECTION --- */
+        .section-heading {
             font-size: 1.5rem;
             font-weight: 700;
             color: #1e293b;
@@ -153,215 +128,53 @@
             letter-spacing: -0.02em;
         }
 
-        .feature-subtext {
+        .intro-text {
             font-size: 1.125rem;
-            color: #64748b;
-            margin-bottom: 3.5rem;
-        }
-
-        .icon-circle {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #ffffff;
-            border: 1px solid #f1f5f9;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
-            margin-bottom: 1.5rem;
-        }
-
-        .list-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 12px;
             color: #475569;
-            font-size: 1.125rem;
+            line-height: 1.625;
         }
 
-        .check-icon {
-            color: #94a3b8;
-            flex-shrink: 0;
-        }
-
-        .footer-avatar-circle {
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
-            overflow: hidden;
-            background: #f1f5f9;
-        }
     </style>
 </head>
 <body>
 
     <main class="content-container">
         
-        <!-- HERO SECTION -->
-        <section class="hero-section">
-            <header class="logo-container">
-                <div class="logo-text">
-                    Practical <span class="logo-box">UI</span>
-                </div>
-                <button class="p-2">
-                    <svg class="w-8 h-8 text-slate-800" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-                </button>
-            </header>
+        <!-- LOGO & NAV -->
+        <header class="logo-container">
+            <div class="logo-text">
+                Ironbyte <span class="logo-box">Systems</span>
+            </div>
+            <button class="p-2">
+                <svg class="w-8 h-8 text-slate-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </header>
 
-            <div class="hero-eyebrow">UI Design Book</div>
+        <!-- HERO SECTION -->
+        <section class="mb-24">
+            <div class="hero-eyebrow">Smart Business Software</div>
             <h1 class="hero-title">
-                UI design <span class="strikethrough">is hard</span> just got easier
+                Smart software for smarter businesses.
             </h1>
             <p class="hero-description">
-                Learn a logic-driven approach to design intuitive, accessible, and beautiful interfaces using quick and practical guidelines.
+                We build tools that help businesses operate faster, reduce errors, and track inventory efficiently. Practical systems built for the modern enterprise.
             </p>
             
             <div class="flex flex-col sm:flex-row gap-2">
-                <a href="#" class="btn-primary">View pricing</a>
-                <a href="#" class="btn-secondary">Free preview</a>
-            </div>
-
-            <!-- Social Proof -->
-            <div class="mt-12 flex items-center gap-4">
-                <div class="flex -space-x-2">
-                    <img src="https://i.pravatar.cc/100?u=molly" class="w-10 h-10 rounded-full border-2 border-white" alt="user">
-                    <img src="https://i.pravatar.cc/100?u=adrian" class="w-10 h-10 rounded-full border-2 border-white" alt="user">
-                    <img src="https://i.pravatar.cc/100?u=jordan" class="w-10 h-10 rounded-full border-2 border-white" alt="user">
-                </div>
-                <div>
-                    <div class="flex text-yellow-400">
-                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                    </div>
-                    <p class="text-sm text-slate-500 font-medium">Loved by thousands</p>
-                </div>
+                <a href="#" class="btn-primary">Learn about DispatchMate</a>
+                <a href="#" class="btn-secondary">Contact Us</a>
             </div>
         </section>
 
-        <!-- INTRO PARAGRAPH -->
-        <section class="intro-text mb-20">
-            <p>
-                The foundation of what makes up an intuitive, accessible, and beautiful interface design can be learned. Having a system of logical guidelines helps you efficiently make informed design decisions. Without a logical system, you're just using gut feeling to move stuff around until it looks pretty.
-            </p>
-            <p>
-                I wish I knew these guidelines when I first started out. They're a culmination of over 2 decades working as a product designer on websites and apps used by millions of people. My hope is that they'll help you gain years of experience in a matter of hours.
-            </p>
-        </section>
-
-        <!-- FEATURE SECTIONS -->
+        <!-- SOLUTIONS / INTRO SECTION -->
         <section class="mb-20">
-            <h2 class="feature-heading">Gain years of design experience in a matter of hours.</h2>
-            <p class="feature-subtext">
-                A whole UI design course squeezed into a quick and easy read, packed with actionable guidelines and examples.
+            <h2 class="section-heading">Practical business systems.</h2>
+            <p class="intro-text">
+                We develop practical business systems that turn manual processes into structured, easy-to-use digital workflows. Our tools improve accuracy, speed, and operational visibility.
             </p>
         </section>
-
-        <section class="mb-20">
-            <div class="icon-circle">
-                <svg class="w-6 h-6 text-indigo-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M9 11l3 3L22 4" />
-                    <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
-                </svg>
-            </div>
-            <h2 class="feature-heading">Use a system of logical guidelines, rather than just gut feeling.</h2>
-            <p class="feature-subtext">
-                Interface design might appear to be a magical art form, but a lot of it is made up from logical guidelines.
-            </p>
-        </section>
-
-        <!-- TESTIMONIALS SECTION -->
-        <section class="mb-20">
-            <div class="testimonial-card">
-                <div class="flex items-center gap-3 mb-4">
-                    <img src="https://i.pravatar.cc/100?u=molly" class="avatar-img" alt="Molly">
-                    <div>
-                        <h4 class="font-bold text-slate-900">Molly Hellmuth</h4>
-                        <p class="text-xs text-slate-500">Product designer at...</p>
-                    </div>
-                </div>
-                <div class="flex text-yellow-400 mb-4">
-                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                </div>
-                <p class="text-slate-600 text-base leading-relaxed">
-                    Adham does an amazing job breaking down complex topics into easy-to-understand lessons. It's a great resource for anyone looking to improve their designs.
-                </p>
-            </div>
-
-            <div class="testimonial-card">
-                <div class="flex items-center justify-between mb-4">
-                    <div class="flex items-center gap-3">
-                        <img src="https://i.pravatar.cc/100?u=adrian" class="avatar-img" alt="Adrian">
-                        <div>
-                            <h4 class="font-bold text-slate-900">UI Adrian</h4>
-                            <p class="text-xs text-indigo-600">@uiuxadrian</p>
-                        </div>
-                    </div>
-                    <svg class="w-5 h-5 text-slate-900" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                </div>
-                <p class="text-slate-600 text-base leading-relaxed">
-                    Got Practical UI when it launched :) I've been Adham's followers for a few years now, good lad.
-                </p>
-            </div>
-        </section>
-
-        <!-- STARTER KIT SECTION -->
-        <section class="starter-kit-section mb-20">
-            <h2 class="feature-heading">Figma design system starter kit</h2>
-            <p class="feature-subtext">
-                The hardest part of creating a design system is establishing the foundations for colour, typography, and spacing. This has been done for you to kick-start your projects.
-            </p>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-4 mb-8">
-                <div class="list-item">
-                    <svg class="check-icon w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
-                    <span>Colour variables/tokens</span>
-                </div>
-                <div class="list-item">
-                    <svg class="check-icon w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
-                    <span>Typography styles</span>
-                </div>
-                <div class="list-item">
-                    <svg class="check-icon w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
-                    <span>Light & dark mode</span>
-                </div>
-                <div class="list-item">
-                    <svg class="check-icon w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
-                    <span>Layout grids</span>
-                </div>
-                <div class="list-item">
-                    <svg class="check-icon w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
-                    <span>4px grid spacing variables</span>
-                </div>
-                <div class="list-item">
-                    <svg class="check-icon w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
-                    <span>7 components</span>
-                </div>
-            </div>
-
-            <p class="text-slate-500 text-sm italic">
-                <strong>Want more?</strong> The starter kit is just a small part of the larger <a href="#" class="text-indigo-600 underline">Figma design system</a> which contains example templates and 40+ more components with hundreds of variants.
-            </p>
-        </section>
-
-        <!-- FOOTER / AUTHOR SECTION -->
-        <footer class="author-section flex items-center gap-4 pt-12 border-t border-slate-100">
-            <div class="footer-avatar-circle">
-                <img src="https://i.pravatar.cc/150?u=adham" alt="Adham Dannaway" class="w-full h-full object-cover">
-            </div>
-            <div>
-                <h3 class="font-bold text-slate-900 text-lg">Adham Dannaway</h3>
-                <p class="text-sm text-slate-500">Pushing pixels since 2005</p>
-            </div>
-        </footer>
 
     </main>
 
@@ -369,4 +182,5 @@
 </html>
 
  
-        
+                                        Adham does an amazing job breaking down complex topics into easy-to-understand lessons. It's a great resource for anyone looking to improve their designs.
+                
