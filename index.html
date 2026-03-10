@@ -1,13 +1,14 @@
-<!DOCTYPE html>
+      <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ironbyte | UI Design Logic</title>
-    <!-- Inter with multiple weights for better typographic hierarchy -->
+    <!-- Inter font and Material Symbols for the hamburger menu -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         :root {
@@ -61,7 +62,6 @@
             align-items: center;
         }
 
-        /* Mobile Nav */
         @media (max-width: 768px) {
             .nav-links {
                 position: fixed;
@@ -78,12 +78,6 @@
             .nav-links.active {
                 right: 0;
             }
-            .nav-link {
-                font-size: 1.25rem;
-                width: 100%;
-                text-align: center;
-                padding: 1rem;
-            }
         }
 
         .nav-link {
@@ -97,7 +91,6 @@
             color: var(--sky-blue);
         }
 
-        /* Hamburger */
         .hamburger {
             display: none;
             cursor: pointer;
@@ -105,18 +98,19 @@
             background: none;
             border: none;
             padding: 0.5rem;
+            color: #0f172a;
         }
 
         @media (max-width: 768px) {
-            .hamburger { display: block; }
+            .hamburger { display: flex; align-items: center; }
         }
 
-        /* Hero Section */
+        /* Hero Section - Left Aligned */
         .hero-section {
             max-width: 1100px;
             margin: 0 auto;
             padding: 10rem 1.25rem 5rem;
-            text-align: center;
+            text-align: left;
         }
 
         .hero-badge {
@@ -139,16 +133,14 @@
             color: #0f172a;
             letter-spacing: -0.04em;
             margin-bottom: 1.5rem;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
+            max-width: 700px;
         }
 
         .hero-description {
             font-size: 1.25rem;
             color: #64748b;
-            max-width: 620px;
-            margin: 0 auto 3rem;
+            max-width: 600px;
+            margin-bottom: 3rem;
             line-height: 1.6;
         }
 
@@ -181,12 +173,6 @@
         .btn-primary:hover {
             background-color: var(--sky-blue-hover);
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(14, 165, 233, 0.25);
-        }
-
-        .btn-secondary:hover {
-            background-color: #e2e8f0;
-            color: #0f172a;
         }
 
         /* Content Container */
@@ -196,24 +182,25 @@
             padding: 2rem 1.25rem 6rem;
         }
 
-        /* Typography Sections */
+        /* Typography Tighter Styles */
         .section-item {
             margin-bottom: 4rem;
         }
 
         .heading {
-            font-weight: 500;
+            font-weight: 600;
             font-size: 1.75rem;
-            line-height: 1.25;
+            line-height: 1.2;
             color: #1e293b;
-            margin-bottom: 1.25rem;
-            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+            letter-spacing: -0.03em;
         }
 
         .paragraph {
             font-size: 1.125rem;
             color: #64748b;
-            font-weight: 400;
+            line-height: 1.5;
+            letter-spacing: -0.01em;
         }
 
         .icon-container {
@@ -221,11 +208,11 @@
             color: #94a3b8;
         }
 
-        /* Cards */
+        /* Testimonial Cards - TIGHTER typography */
         .card-list {
             display: flex;
             flex-direction: column;
-            gap: 1.25rem;
+            gap: 1.5rem;
         }
 
         .testimonial-card {
@@ -233,126 +220,73 @@
             border: 1.5px solid #f1f5f9;
             border-radius: 1.5rem;
             padding: 2rem;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.02);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
         }
 
         .user-info {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.25rem;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
         }
 
         .avatar {
-            width: 48px;
-            height: 48px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             background-color: #f1f5f9;
-            object-fit: cover;
         }
 
         .user-details h4 {
-            font-weight: 600;
-            font-size: 1.0625rem;
+            font-weight: 700;
+            font-size: 1rem;
             color: #0f172a;
             margin: 0;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
         }
 
         .user-details p {
             font-size: 0.875rem;
             color: #64748b;
             margin: 0;
+            letter-spacing: -0.01em;
         }
 
         .stars {
             display: flex;
-            gap: 3px;
-            margin-bottom: 1.25rem;
+            gap: 2px;
+            margin-bottom: 1rem;
             color: #ffb400;
         }
 
         .card-text {
-            font-size: 1.125rem;
-            color: #475569;
-            line-height: 1.5;
+            font-size: 1.0625rem;
+            color: #334155;
+            line-height: 1.35; /* Much tighter line height */
+            letter-spacing: -0.02em; /* Tighter letter spacing */
+            font-weight: 450;
         }
 
         /* FAQ Section */
-        .faq-section {
-            margin-top: 6rem;
-        }
-
-        .faq-header {
-            margin-bottom: 2.5rem;
-        }
-
-        .faq-title {
-            font-weight: 700;
-            font-size: 2.25rem;
-            color: #0f172a;
-            margin-bottom: 1rem;
-            letter-spacing: -0.03em;
-        }
-
-        .faq-subtitle {
-            font-size: 1.125rem;
-            color: #64748b;
-        }
-
-        .faq-subtitle a {
-            color: var(--sky-blue);
-            text-decoration: underline;
-            text-underline-offset: 4px;
-        }
-
-        .faq-item {
-            border-bottom: 1px solid #f1f5f9;
-        }
-
-        .faq-trigger {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.5rem 0;
-            text-align: left;
-            background: none;
-            border: none;
-            cursor: pointer;
-        }
-
-        .faq-question {
-            font-weight: 600;
-            font-size: 1.25rem;
-            color: #1e293b;
-            padding-right: 2rem;
-            letter-spacing: -0.01em;
-        }
-
-        .faq-icon {
-            color: #64748b;
-            transition: transform 0.3s ease;
-            flex-shrink: 0;
-        }
-
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            color: #64748b;
-            font-size: 1.0625rem;
-            line-height: 1.6;
-        }
-
+        .faq-section { margin-top: 6rem; }
+        .faq-header { margin-bottom: 2.5rem; }
+        .faq-title { font-weight: 800; font-size: 2.25rem; color: #0f172a; letter-spacing: -0.04em; margin-bottom: 0.75rem; }
+        .faq-subtitle { font-size: 1.125rem; color: #64748b; letter-spacing: -0.01em; }
+        .faq-subtitle a { color: var(--sky-blue); text-decoration: underline; text-underline-offset: 4px; }
+        .faq-item { border-bottom: 1px solid #f1f5f9; }
+        .faq-trigger { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 0; text-align: left; }
+        .faq-question { font-weight: 600; font-size: 1.25rem; color: #1e293b; letter-spacing: -0.02em; padding-right: 2rem; }
+        .faq-icon { color: #94a3b8; transition: transform 0.3s ease; }
+        .faq-answer { max-height: 0; overflow: hidden; transition: all 0.3s ease; color: #64748b; font-size: 1.0625rem; line-height: 1.5; }
         .faq-item.active .faq-icon { transform: rotate(180deg); }
         .faq-item.active .faq-answer { max-height: 300px; padding-bottom: 1.5rem; }
 
         .divider { height: 1px; background-color: #f1f5f9; margin: 4rem 0; }
 
         @media (max-width: 640px) {
-            .hero-title { font-size: 2.5rem; }
-            .content-container { padding: 3rem 1.25rem; }
-            .faq-title { font-size: 1.875rem; }
+            .hero-title { font-size: 2.75rem; }
+            .hero-section { padding-top: 8rem; }
         }
     </style>
 </head>
@@ -373,7 +307,7 @@
             </div>
 
             <button class="hamburger" onclick="toggleMenu()">
-                <svg id="menuIcon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0f172a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+                <span id="menuIcon" class="material-symbols-outlined" style="font-size: 32px;">menu</span>
             </button>
         </nav>
     </header>
@@ -384,7 +318,7 @@
         <p class="hero-description">
             A logic-based approach to UI design. Learn how to design beautiful, accessible, and functional interfaces using objective rules.
         </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <div class="flex flex-col sm:flex-row gap-4">
             <a href="#" class="btn-primary">
                 Get the book
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
@@ -397,15 +331,12 @@
 
     <main class="content-container">
         
-        <!-- Typography Sections -->
         <div class="section-item">
             <div class="icon-container">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M3 15h18"/></svg>
             </div>
             <h2 class="heading">Break up large pieces of information into multiple smaller ones.</h2>
-            <p class="paragraph">
-                This makes it easier and faster for people to understand.
-            </p>
+            <p class="paragraph">This makes it easier and faster for people to understand.</p>
         </div>
 
         <div class="section-item">
@@ -413,29 +344,26 @@
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M3 12h18"/></svg>
             </div>
             <h2 class="heading">Highlight key information using descriptive headings.</h2>
-            <p class="paragraph">
-                This allows people to quickly scan information and get a better idea of the structure and organisation of content.
-            </p>
+            <p class="paragraph">This allows people to quickly scan information and get a better idea of the structure and organisation of content.</p>
         </div>
 
         <div class="divider"></div>
 
-        <!-- Cards Section -->
         <div class="card-list">
             <div class="testimonial-card">
                 <div class="user-info">
                     <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Molly&backgroundColor=f1f5f9" alt="Molly" class="avatar">
                     <div class="user-details">
                         <h4>Molly Hellmuth</h4>
-                        <p>Product designer at ...</p>
+                        <p>Product designer at UI Prep</p>
                     </div>
                 </div>
                 <div class="stars">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1; font-size: 18px;">star</span>
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1; font-size: 18px;">star</span>
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1; font-size: 18px;">star</span>
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1; font-size: 18px;">star</span>
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1; font-size: 18px;">star</span>
                 </div>
                 <p class="card-text">
                     Adham does an amazing job breaking down complex topics into easy-to-understand lessons. It's a great resource for anyone looking to improve their designs.
@@ -449,7 +377,7 @@
                         <h4>UI Adrian</h4>
                         <p>@uiuxadrian</p>
                     </div>
-                    <div class="x-brand">
+                    <div class="ml-auto opacity-80">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.134l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
                     </div>
                 </div>
@@ -459,7 +387,6 @@
             </div>
         </div>
 
-        <!-- FAQ Section -->
         <section class="faq-section">
             <div class="faq-header">
                 <h2 class="faq-title">Frequently asked questions</h2>
@@ -472,7 +399,7 @@
                 <div class="faq-item">
                     <button class="faq-trigger" onclick="toggleFaq(this)">
                         <span class="faq-question">Who is this UI design book for?</span>
-                        <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                        <span class="material-symbols-outlined faq-icon">expand_more</span>
                     </button>
                     <div class="faq-answer">
                         This book is perfect for developers, product managers, and junior designers who want to master the fundamentals of interface design through a logical, rule-based approach.
@@ -482,7 +409,7 @@
                 <div class="faq-item">
                     <button class="faq-trigger" onclick="toggleFaq(this)">
                         <span class="faq-question">Does this book cover UI design for apps or websites?</span>
-                        <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                        <span class="material-symbols-outlined faq-icon">expand_more</span>
                     </button>
                     <div class="faq-answer">
                         It covers both! The principles of layout, typography, and hierarchy apply across all digital platforms, whether you're building a mobile app or a desktop web dashboard.
@@ -492,7 +419,7 @@
                 <div class="faq-item">
                     <button class="faq-trigger" onclick="toggleFaq(this)">
                         <span class="faq-question">Is UX design covered too?</span>
-                        <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                        <span class="material-symbols-outlined faq-icon">expand_more</span>
                     </button>
                     <div class="faq-answer">
                         While the focus is primarily on visual interface design, we cover essential UX principles like cognitive load, accessibility, and user flow that are inseparable from great UI.
@@ -502,7 +429,7 @@
                 <div class="faq-item">
                     <button class="faq-trigger" onclick="toggleFaq(this)">
                         <span class="faq-question">Will I learn how to use Figma or write code?</span>
-                        <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                        <span class="material-symbols-outlined faq-icon">expand_more</span>
                     </button>
                     <div class="faq-answer">
                         This book is tool-agnostic. It focuses on the theory and rules of design rather than technical tutorials for specific software like Figma or coding languages.
@@ -512,7 +439,7 @@
                 <div class="faq-item">
                     <button class="faq-trigger" onclick="toggleFaq(this)">
                         <span class="faq-question">Is there a printed version of the book?</span>
-                        <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                        <span class="material-symbols-outlined faq-icon">expand_more</span>
                     </button>
                     <div class="faq-answer">
                         Currently, the book is available as a high-quality digital PDF and interactive web version to ensure all links and examples stay up-to-date.
@@ -529,10 +456,10 @@
             navLinks.classList.toggle('active');
             
             if (navLinks.classList.contains('active')) {
-                icon.innerHTML = '<line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>';
-                document.body.style.overflow = 'hidden'; // Prevent scroll when menu is open
+                icon.innerText = 'close';
+                document.body.style.overflow = 'hidden';
             } else {
-                icon.innerHTML = '<line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/>';
+                icon.innerText = 'menu';
                 document.body.style.overflow = '';
             }
         }
@@ -549,6 +476,5 @@
 </body>
 </html>
 
-
-                        
-            
+  
+        
