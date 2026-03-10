@@ -1,11 +1,11 @@
-     <!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ironbyte UI - Design Made Easy</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -51,7 +51,6 @@
             position: relative;
         }
 
-        /* Decoration marks for the logo box */
         .logo-box::before, .logo-box::after {
             content: '';
             position: absolute;
@@ -73,7 +72,7 @@
         }
 
         .hero-title {
-            font-size: 2.25rem; /* Reduced size as requested */
+            font-size: 2.25rem;
             line-height: 1.2;
             font-weight: 800;
             color: #1e293b;
@@ -88,14 +87,12 @@
         }
 
         .hero-description {
-            /* Exact typography from the paragraph section */
             font-size: 1.125rem;
             font-weight: 400;
             color: #475569;
             letter-spacing: -0.011em;
             line-height: 1.625;
             margin-bottom: 2.5rem;
-            max-width: 580px;
         }
 
         .btn-primary {
@@ -129,15 +126,24 @@
             .btn-primary, .btn-secondary { width: auto; margin-right: 12px; }
         }
 
-        /* --- EXISTING STYLES --- */
-        .intro-text p {
-            margin-bottom: 2rem;
-            font-size: 1.125rem;
-            font-weight: 400;
-            color: #475569;
-            letter-spacing: -0.011em;
+        /* --- TESTIMONIAL CARDS --- */
+        .testimonial-card {
+            border: 1px solid #eef2f6;
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 16px;
+            background: #fff;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
         }
 
+        .avatar-img {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        /* --- FEATURE SECTIONS --- */
         .feature-heading {
             font-size: 1.5rem;
             font-weight: 700;
@@ -154,8 +160,8 @@
         }
 
         .icon-circle {
-            width: 80px;
-            height: 80px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -163,13 +169,7 @@
             background: #ffffff;
             border: 1px solid #f1f5f9;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
-            margin-bottom: 2rem;
-            position: relative;
-        }
-
-        .starter-kit-section {
-            margin-top: 60px;
-            margin-bottom: 80px;
+            margin-bottom: 1.5rem;
         }
 
         .list-item {
@@ -177,7 +177,7 @@
             align-items: center;
             gap: 12px;
             margin-bottom: 12px;
-            color: #64748b;
+            color: #475569;
             font-size: 1.125rem;
         }
 
@@ -186,13 +186,12 @@
             flex-shrink: 0;
         }
 
-        .author-section {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            margin-top: 80px;
-            padding-top: 40px;
-            border-top: 1px solid #f1f5f9;
+        .footer-avatar-circle {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            overflow: hidden;
+            background: #f1f5f9;
         }
     </style>
 </head>
@@ -204,7 +203,7 @@
         <section class="hero-section">
             <header class="logo-container">
                 <div class="logo-text">
-                    Ironbyte <span class="logo-box">UI</span>
+                    Practical <span class="logo-box">UI</span>
                 </div>
                 <button class="p-2">
                     <svg class="w-8 h-8 text-slate-800" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
@@ -216,7 +215,7 @@
                 UI design <span class="strikethrough">is hard</span> just got easier
             </h1>
             <p class="hero-description">
-                The foundation of what makes up an intuitive, accessible, and beautiful interface design can be learned. Having a system of logical guidelines helps you efficiently make informed design decisions. Without a logical system, you're just using gut feeling to move stuff around until it looks pretty.
+                Learn a logic-driven approach to design intuitive, accessible, and beautiful interfaces using quick and practical guidelines.
             </p>
             
             <div class="flex flex-col sm:flex-row gap-2">
@@ -227,9 +226,9 @@
             <!-- Social Proof -->
             <div class="mt-12 flex items-center gap-4">
                 <div class="flex -space-x-2">
-                    <div class="w-10 h-10 rounded-full border-2 border-white bg-slate-200 overflow-hidden"><img src="https://i.pravatar.cc/100?u=1" alt="user"></div>
-                    <div class="w-10 h-10 rounded-full border-2 border-white bg-slate-200 overflow-hidden"><img src="https://i.pravatar.cc/100?u=2" alt="user"></div>
-                    <div class="w-10 h-10 rounded-full border-2 border-white bg-slate-200 overflow-hidden"><img src="https://i.pravatar.cc/100?u=3" alt="user"></div>
+                    <img src="https://i.pravatar.cc/100?u=molly" class="w-10 h-10 rounded-full border-2 border-white" alt="user">
+                    <img src="https://i.pravatar.cc/100?u=adrian" class="w-10 h-10 rounded-full border-2 border-white" alt="user">
+                    <img src="https://i.pravatar.cc/100?u=jordan" class="w-10 h-10 rounded-full border-2 border-white" alt="user">
                 </div>
                 <div>
                     <div class="flex text-yellow-400">
@@ -244,24 +243,27 @@
             </div>
         </section>
 
-        <!-- INTRO SECTION (Repeat for content flow) -->
+        <!-- INTRO PARAGRAPH -->
         <section class="intro-text mb-20">
+            <p>
+                The foundation of what makes up an intuitive, accessible, and beautiful interface design can be learned. Having a system of logical guidelines helps you efficiently make informed design decisions. Without a logical system, you're just using gut feeling to move stuff around until it looks pretty.
+            </p>
             <p>
                 I wish I knew these guidelines when I first started out. They're a culmination of over 2 decades working as a product designer on websites and apps used by millions of people. My hope is that they'll help you gain years of experience in a matter of hours.
             </p>
         </section>
 
         <!-- FEATURE SECTIONS -->
-        <section>
+        <section class="mb-20">
             <h2 class="feature-heading">Gain years of design experience in a matter of hours.</h2>
             <p class="feature-subtext">
                 A whole UI design course squeezed into a quick and easy read, packed with actionable guidelines and examples.
             </p>
         </section>
 
-        <section>
+        <section class="mb-20">
             <div class="icon-circle">
-                <svg class="w-8 h-8 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg class="w-6 h-6 text-indigo-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M9 11l3 3L22 4" />
                     <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
                 </svg>
@@ -272,17 +274,60 @@
             </p>
         </section>
 
+        <!-- TESTIMONIALS SECTION -->
+        <section class="mb-20">
+            <div class="testimonial-card">
+                <div class="flex items-center gap-3 mb-4">
+                    <img src="https://i.pravatar.cc/100?u=molly" class="avatar-img" alt="Molly">
+                    <div>
+                        <h4 class="font-bold text-slate-900">Molly Hellmuth</h4>
+                        <p class="text-xs text-slate-500">Product designer at...</p>
+                    </div>
+                </div>
+                <div class="flex text-yellow-400 mb-4">
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                </div>
+                <p class="text-slate-600 text-base leading-relaxed">
+                    Adham does an amazing job breaking down complex topics into easy-to-understand lessons. It's a great resource for anyone looking to improve their designs.
+                </p>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center gap-3">
+                        <img src="https://i.pravatar.cc/100?u=adrian" class="avatar-img" alt="Adrian">
+                        <div>
+                            <h4 class="font-bold text-slate-900">UI Adrian</h4>
+                            <p class="text-xs text-indigo-600">@uiuxadrian</p>
+                        </div>
+                    </div>
+                    <svg class="w-5 h-5 text-slate-900" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                </div>
+                <p class="text-slate-600 text-base leading-relaxed">
+                    Got Practical UI when it launched :) I've been Adham's followers for a few years now, good lad.
+                </p>
+            </div>
+        </section>
+
         <!-- STARTER KIT SECTION -->
-        <section class="starter-kit-section">
+        <section class="starter-kit-section mb-20">
             <h2 class="feature-heading">Figma design system starter kit</h2>
             <p class="feature-subtext">
-                The hardest part of creating a design system is establishing the foundations for colour, typography, and spacing.
+                The hardest part of creating a design system is establishing the foundations for colour, typography, and spacing. This has been done for you to kick-start your projects.
             </p>
 
-            <div class="space-y-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-4 mb-8">
                 <div class="list-item">
                     <svg class="check-icon w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
                     <span>Colour variables/tokens</span>
+                </div>
+                <div class="list-item">
+                    <svg class="check-icon w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                    <span>Typography styles</span>
                 </div>
                 <div class="list-item">
                     <svg class="check-icon w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
@@ -290,24 +335,31 @@
                 </div>
                 <div class="list-item">
                     <svg class="check-icon w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                    <span>Layout grids</span>
+                </div>
+                <div class="list-item">
+                    <svg class="check-icon w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
                     <span>4px grid spacing variables</span>
                 </div>
+                <div class="list-item">
+                    <svg class="check-icon w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                    <span>7 components</span>
+                </div>
             </div>
+
+            <p class="text-slate-500 text-sm italic">
+                <strong>Want more?</strong> The starter kit is just a small part of the larger <a href="#" class="text-indigo-600 underline">Figma design system</a> which contains example templates and 40+ more components with hundreds of variants.
+            </p>
         </section>
 
-        <!-- FOOTER -->
-        <footer class="author-section">
-            <div class="avatar">
-                <svg viewBox="0 0 100 100" class="w-full h-full">
-                    <rect width="50" height="100" fill="#fecaca" />
-                    <rect x="50" width="50" height="100" fill="#93c5fd" />
-                    <circle cx="50" cy="45" r="22" fill="#1e293b" />
-                    <path d="M30 85 Q50 65 70 85" stroke="#1e293b" stroke-width="8" fill="none" />
-                </svg>
+        <!-- FOOTER / AUTHOR SECTION -->
+        <footer class="author-section flex items-center gap-4 pt-12 border-t border-slate-100">
+            <div class="footer-avatar-circle">
+                <img src="https://i.pravatar.cc/150?u=adham" alt="Adham Dannaway" class="w-full h-full object-cover">
             </div>
-            <div class="author-info">
-                <h3 class="font-bold text-slate-900 m-0">Adham Dannaway</h3>
-                <p class="text-sm text-slate-500 m-0">Pushing pixels since 2005</p>
+            <div>
+                <h3 class="font-bold text-slate-900 text-lg">Adham Dannaway</h3>
+                <p class="text-sm text-slate-500">Pushing pixels since 2005</p>
             </div>
         </footer>
 
@@ -316,4 +368,5 @@
 </body>
 </html>
 
-               
+ 
+        
