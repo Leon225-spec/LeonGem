@@ -1,4 +1,4 @@
-   <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -22,6 +22,7 @@
             color: #1e293b;
             line-height: 1.5;
             -webkit-font-smoothing: antialiased;
+            scroll-behavior: smooth;
         }
 
         /* Navigation */
@@ -143,6 +144,8 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
+            border: none;
+            cursor: pointer;
         }
 
         .btn-secondary {
@@ -158,14 +161,6 @@
             gap: 0.5rem;
         }
 
-        .btn-tertiary {
-            color: var(--sky-blue);
-            font-weight: 600;
-            text-decoration: underline;
-            text-underline-offset: 4px;
-            transition: color 0.2s;
-        }
-
         .btn-primary:hover {
             background-color: var(--sky-blue-hover);
             transform: translateY(-2px);
@@ -179,12 +174,12 @@
         }
 
         .narrow-content {
-            max-width: 600px;
+            max-width: 650px;
             margin: 0 auto;
         }
 
         .section-item {
-            margin-bottom: 4rem;
+            margin-bottom: 6rem;
         }
 
         .heading {
@@ -205,7 +200,7 @@
 
         /* Circled Icon Container */
         .icon-container {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
             width: 44px;
             height: 44px;
             background-color: #f0f9ff;
@@ -222,7 +217,6 @@
             border: 1.5px solid #f1f5f9;
             border-radius: 1.5rem;
             padding: 2.5rem;
-            margin-bottom: 2rem;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
         }
 
@@ -235,18 +229,42 @@
         }
 
         /* FAQ Styling */
-        .faq-section { margin-top: 6rem; }
+        .faq-section { margin-top: 4rem; }
         .faq-header { margin-bottom: 2.5rem; }
-        .faq-title { font-weight: 800; font-size: 2.25rem; color: #0f172a; letter-spacing: -0.04em; margin-bottom: 0.75rem; }
+        .faq-title { font-weight: 800; font-size: 2rem; color: #0f172a; letter-spacing: -0.04em; margin-bottom: 0.75rem; }
         .faq-item { border-bottom: 1px solid #f1f5f9; }
         .faq-trigger { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 0; text-align: left; }
-        .faq-question { font-weight: 600; font-size: 1.25rem; color: #1e293b; letter-spacing: -0.02em; }
+        .faq-question { font-weight: 600; font-size: 1.125rem; color: #1e293b; letter-spacing: -0.02em; padding-right: 1.5rem; }
         .faq-answer { max-height: 0; overflow: hidden; transition: all 0.3s ease; color: #64748b; font-size: 1.0625rem; line-height: 1.5; }
         .faq-item.active .faq-answer { max-height: 300px; padding-bottom: 1.5rem; }
         .faq-icon { color: #94a3b8; transition: transform 0.3s ease; }
         .faq-item.active .faq-icon { transform: rotate(180deg); }
 
-        .divider { height: 1px; background-color: #f1f5f9; margin: 4rem 0; }
+        /* Form Styling */
+        .input-group {
+            margin-bottom: 1.25rem;
+        }
+        .input-label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.875rem;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+        .form-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            border: 1.5px solid #e2e8f0;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .form-input:focus {
+            border-color: var(--sky-blue);
+        }
+
+        .divider { height: 1px; background-color: #f1f5f9; margin: 5rem 0; }
 
         @media (max-width: 640px) {
             .hero-title { font-size: 2.5rem; }
@@ -299,32 +317,32 @@
             <h2 class="heading">We develop practical business systems that turn manual processes into digital workflows.</h2>
             <p class="paragraph">Our tools improve accuracy, speed, and operational visibility across your entire organization.</p>
             
-            <div class="mt-12 grid grid-cols-1 gap-8">
-                <div class="flex gap-4">
+            <div class="mt-12 space-y-8">
+                <div class="flex gap-5">
                     <div class="icon-container shrink-0">
                         <span class="material-symbols-outlined" style="font-size: 20px;">inventory_2</span>
                     </div>
                     <div>
-                        <h3 class="font-bold text-slate-900">Inventory Management</h3>
-                        <p class="text-slate-500 text-sm">Real-time tracking of stock levels and movement.</p>
+                        <h3 class="font-bold text-slate-900 text-lg">Inventory Management</h3>
+                        <p class="text-slate-500 card-text">Real-time tracking of stock levels, movement history, and automated reorder triggers to prevent stockouts.</p>
                     </div>
                 </div>
-                <div class="flex gap-4">
+                <div class="flex gap-5">
                     <div class="icon-container shrink-0">
                         <span class="material-symbols-outlined" style="font-size: 20px;">local_shipping</span>
                     </div>
                     <div>
-                        <h3 class="font-bold text-slate-900">Order Fulfillment</h3>
-                        <p class="text-slate-500 text-sm">Streamlined workflows for error-free shipping.</p>
+                        <h3 class="font-bold text-slate-900 text-lg">Order Fulfillment</h3>
+                        <p class="text-slate-500 card-text">Error-free pick and pack workflows that guide staff through the warehouse using the most efficient routes.</p>
                     </div>
                 </div>
-                <div class="flex gap-4">
+                <div class="flex gap-5">
                     <div class="icon-container shrink-0">
-                        <span class="material-symbols-outlined" style="font-size: 20px;">bar_chart</span>
+                        <span class="material-symbols-outlined" style="font-size: 20px;">query_stats</span>
                     </div>
                     <div>
-                        <h3 class="font-bold text-slate-900">Reporting & Analytics</h3>
-                        <p class="text-slate-500 text-sm">Data-driven insights to power business decisions.</p>
+                        <h3 class="font-bold text-slate-900 text-lg">Reporting & Analytics</h3>
+                        <p class="text-slate-500 card-text">Custom dashboards that turn raw operational data into actionable insights for better decision-making.</p>
                     </div>
                 </div>
             </div>
@@ -337,7 +355,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <div>
                     <span class="text-sky-500 font-bold uppercase tracking-widest text-xs mb-4 block">Flagship Product</span>
-                    <h2 class="hero-title" style="font-size: 2.5rem; margin-bottom: 1rem;">DispatchMate</h2>
+                    <h2 class="heading" style="font-size: 2.5rem; margin-bottom: 1rem;">DispatchMate</h2>
                     <p class="paragraph mb-6">
                         DispatchMate is our smart operational assistant that helps warehouses and retail staff locate products, understand specs, track stock, and fulfill orders without mistakes.
                     </p>
@@ -345,11 +363,10 @@
                         See DispatchMate in Action
                     </a>
                 </div>
-                <div class="bg-slate-50 rounded-2xl border border-slate-100 p-4 aspect-video flex items-center justify-center overflow-hidden">
-                    <!-- Placeholder for screenshot/illustration -->
+                <div class="bg-slate-50 rounded-3xl border border-slate-100 p-8 aspect-video flex items-center justify-center overflow-hidden">
                     <div class="text-slate-300 flex flex-col items-center">
-                        <span class="material-symbols-outlined" style="font-size: 48px;">screenshot_region</span>
-                        <span class="text-xs font-mono mt-2">Product Interface Preview</span>
+                        <span class="material-symbols-outlined" style="font-size: 64px; opacity: 0.5;">tablet_android</span>
+                        <span class="text-sm font-semibold mt-4 text-slate-400">DispatchMate Interface Preview</span>
                     </div>
                 </div>
             </div>
@@ -358,63 +375,164 @@
         <div class="divider"></div>
 
         <!-- About Section -->
-        <section id="about" class="narrow-content">
-            <div class="feature-card">
-                <div class="flex items-center gap-4 mb-4">
-                    <div class="w-12 h-12 rounded-full bg-slate-100 overflow-hidden">
-                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Leon&backgroundColor=f1f5f9" alt="Leon Nyaramb">
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-slate-900">Leon Nyaramb</h4>
-                        <p class="text-xs text-slate-500">Founder & Lead Engineer</p>
-                    </div>
-                </div>
-                <p class="card-text">
-                    IronBYTE Systems was founded with a clear mission: to build software that solves real business problems efficiently. We focus on usability, reliability, and creating tools businesses actually use every day.
-                </p>
-            </div>
-
-            <div class="faq-section">
-                <div class="faq-header">
-                    <h2 class="faq-title">FAQ</h2>
-                </div>
-                <div class="faq-list">
-                    <div class="faq-item">
-                        <button class="faq-trigger" onclick="toggleFaq(this)">
-                            <span class="faq-question">How long does integration take?</span>
-                            <span class="material-symbols-outlined faq-icon">expand_more</span>
-                        </button>
-                        <div class="faq-answer">
-                            Integration varies by business size, but most systems are up and running within 2-4 weeks, including staff training and data migration.
+        <section id="about" class="section-item">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div>
+                    <h2 class="heading">Our mission is to build software that solves real business problems.</h2>
+                    <p class="paragraph mb-8">We focus on usability, reliability, and creating tools that businesses actually use every single day to stay competitive.</p>
+                    
+                    <div class="feature-card">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-14 h-14 rounded-full bg-slate-100 overflow-hidden border-2 border-white shadow-sm">
+                                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Leon&backgroundColor=f1f5f9" alt="Leon Nyaramb">
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-lg">Leon Nyaramb</h4>
+                                <p class="text-sm text-slate-500">Founder & Lead Engineer</p>
+                            </div>
                         </div>
+                        <p class="card-text italic">
+                            "I founded IronBYTE because I saw too many businesses struggling with manual systems that didn't scale. We build the bridge between manual effort and digital efficiency."
+                        </p>
                     </div>
-                    <div class="faq-item">
-                        <button class="faq-trigger" onclick="toggleFaq(this)">
-                            <span class="faq-question">Is DispatchMate a mobile app?</span>
-                            <span class="material-symbols-outlined faq-icon">expand_more</span>
-                        </button>
-                        <div class="faq-answer">
-                            Yes, DispatchMate is designed to work seamlessly on mobile devices, tablets, and handheld scanners used in warehouse environments.
+                </div>
+
+                <div>
+                    <div class="faq-section">
+                        <div class="faq-header">
+                            <h2 class="faq-title">Frequently Asked Questions</h2>
+                        </div>
+                        <div class="faq-list">
+                            <div class="faq-item">
+                                <button class="faq-trigger" onclick="toggleFaq(this)">
+                                    <span class="faq-question">How long does integration take?</span>
+                                    <span class="material-symbols-outlined faq-icon">expand_more</span>
+                                </button>
+                                <div class="faq-answer">
+                                    Integration varies by business size, but most systems are up and running within 2-4 weeks, including staff training and data migration.
+                                </div>
+                            </div>
+                            <div class="faq-item">
+                                <button class="faq-trigger" onclick="toggleFaq(this)">
+                                    <span class="faq-question">Is DispatchMate a mobile app?</span>
+                                    <span class="material-symbols-outlined faq-icon">expand_more</span>
+                                </button>
+                                <div class="faq-answer">
+                                    Yes, DispatchMate is a web-based mobile-first application designed to work on tablets, handheld scanners, and smartphones.
+                                </div>
+                            </div>
+                            <div class="faq-item">
+                                <button class="faq-trigger" onclick="toggleFaq(this)">
+                                    <span class="faq-question">Can we customize the tools?</span>
+                                    <span class="material-symbols-outlined faq-icon">expand_more</span>
+                                </button>
+                                <div class="faq-answer">
+                                    Absolutely. We build modular software that can be tailored to your specific warehouse layout and business rules.
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Footer / Contact -->
-        <section id="contact" class="divider"></section>
-        <footer class="py-12 text-center">
-            <h2 class="heading mb-4">Ready to modernize your operations?</h2>
-            <p class="paragraph mb-8">Let's talk about how IronBYTE can help your business grow.</p>
-            <a href="mailto:contact@ironbytesystems.com" class="btn-primary mb-12">
-                contact@ironbytesystems.com
-            </a>
-            
-            <div class="mt-12 flex justify-center gap-6">
-                <a href="#" class="text-slate-400 hover:text-sky-500 transition-colors">LinkedIn</a>
-                <a href="#" class="text-slate-400 hover:text-sky-500 transition-colors">GitHub</a>
+        <div class="divider"></div>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section-item">
+            <div class="max-w-4xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+                    <div>
+                        <h2 class="heading" style="font-size: 2.5rem;">Ready to modernize?</h2>
+                        <p class="paragraph mb-8">Tell us about your operational challenges and we'll show you how our systems can help.</p>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-center gap-4">
+                                <div class="icon-container mb-0 shrink-0">
+                                    <span class="material-symbols-outlined" style="font-size: 20px;">mail</span>
+                                </div>
+                                <span class="font-medium text-slate-700">contact@ironbytesystems.com</span>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="icon-container mb-0 shrink-0">
+                                    <span class="material-symbols-outlined" style="font-size: 20px;">distance</span>
+                                </div>
+                                <span class="font-medium text-slate-700">Operating Worldwide</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <form onsubmit="event.preventDefault();">
+                            <div class="input-group">
+                                <label class="input-label">Full Name</label>
+                                <input type="text" class="form-input" placeholder="John Doe">
+                            </div>
+                            <div class="input-group">
+                                <label class="input-label">Email Address</label>
+                                <input type="email" class="form-input" placeholder="john@company.com">
+                            </div>
+                            <div class="input-group">
+                                <label class="input-label">Message</label>
+                                <textarea class="form-input" rows="4" placeholder="How can we help?"></textarea>
+                            </div>
+                            <button type="submit" class="btn-primary w-full justify-center">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <p class="mt-8 text-xs text-slate-400">© 2024 IronBYTE Systems. All rights reserved.</p>
+        </section>
+
+        <!-- Extensive Footer -->
+        <footer class="pt-20 pb-10 border-t border-slate-100">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <div class="col-span-1 md:col-span-1">
+                    <a href="#" class="nav-logo mb-6">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--sky-blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                        IRONBYTE
+                    </a>
+                    <p class="text-sm text-slate-500 card-text leading-relaxed">
+                        Building smart, reliable software systems that transform manual business operations into high-performance digital workflows.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-slate-900 mb-6 text-sm uppercase tracking-wider">Solutions</h4>
+                    <ul class="space-y-4">
+                        <li><a href="#" class="text-sm text-slate-500 hover:text-sky-500 transition-colors">DispatchMate</a></li>
+                        <li><a href="#" class="text-sm text-slate-500 hover:text-sky-500 transition-colors">Inventory Control</a></li>
+                        <li><a href="#" class="text-sm text-slate-500 hover:text-sky-500 transition-colors">Custom ERP</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-slate-900 mb-6 text-sm uppercase tracking-wider">Company</h4>
+                    <ul class="space-y-4">
+                        <li><a href="#about" class="text-sm text-slate-500 hover:text-sky-500 transition-colors">About Us</a></li>
+                        <li><a href="#" class="text-sm text-slate-500 hover:text-sky-500 transition-colors">Our Methodology</a></li>
+                        <li><a href="#contact" class="text-sm text-slate-500 hover:text-sky-500 transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-slate-900 mb-6 text-sm uppercase tracking-wider">Connect</h4>
+                    <ul class="space-y-4">
+                        <li><a href="#" class="text-sm text-slate-500 hover:text-sky-500 transition-colors">LinkedIn</a></li>
+                        <li><a href="#" class="text-sm text-slate-500 hover:text-sky-500 transition-colors">GitHub</a></li>
+                        <li><a href="#" class="text-sm text-slate-500 hover:text-sky-500 transition-colors">X (Twitter)</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-slate-50 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-xs text-slate-400">© 2024 IronBYTE Systems. All rights reserved.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="text-xs text-slate-400 hover:text-slate-600">Privacy Policy</a>
+                    <a href="#" class="text-xs text-slate-400 hover:text-slate-600">Terms of Service</a>
+                </div>
+            </div>
         </footer>
     </main>
 
@@ -456,6 +574,3 @@
 </body>
 </html>
 
-               
-
-                        
