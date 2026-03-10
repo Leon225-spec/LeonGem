@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,40 +12,103 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #ffffff;
-            color: #334155; /* Slate-700 for a softer, premium feel than pure black */
+            background-color: #f8fafc; /* Very light slate background to make white cards pop */
+            color: #334155;
             line-height: 1.6;
         }
 
         .content-container {
-            max-width: 680px; /* Optimal line length for readability */
+            max-width: 680px;
             margin: 0 auto;
-            padding: 8rem 2rem;
+            padding: 6rem 1.5rem;
         }
 
+        /* Typography Styles */
         .heading {
             font-weight: 600;
-            font-size: 1.875rem; /* 30px */
+            font-size: 1.875rem;
             line-height: 1.3;
-            color: #1e293b; /* Slate-800 */
+            color: #1e293b;
             margin-bottom: 1.5rem;
         }
 
         .paragraph {
-            font-size: 1.125rem; /* 18px */
-            margin-bottom: 3rem;
-            color: #475569; /* Slate-600 */
+            font-size: 1.125rem;
+            margin-bottom: 3.5rem;
+            color: #475569;
         }
 
         .icon-container {
-            margin-bottom: 2rem;
-            color: #64748b; /* Muted icon color */
+            margin-bottom: 1.5rem;
+            color: #64748b;
         }
 
-        /* Responsive adjustments */
+        /* Card Styles */
+        .testimonial-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 1.25rem;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.01);
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .avatar {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background-color: #f1f5f9;
+            object-fit: cover;
+        }
+
+        .user-details h4 {
+            font-weight: 600;
+            font-size: 1.125rem;
+            color: #1e293b;
+            margin: 0;
+        }
+
+        .user-details p {
+            font-size: 0.875rem;
+            color: #64748b;
+            margin: 0;
+        }
+
+        .stars {
+            display: flex;
+            gap: 2px;
+            margin-bottom: 1.25rem;
+            color: #fbbf24; /* Amber-400 for stars */
+        }
+
+        .card-text {
+            font-size: 1.0625rem;
+            color: #475569;
+            line-height: 1.5;
+        }
+
+        .x-icon {
+            margin-left: auto;
+            color: #000;
+        }
+
+        /* Section Spacing */
+        .section-divider {
+            height: 1px;
+            background-color: #e2e8f0;
+            margin: 4rem 0;
+        }
+
         @media (max-width: 640px) {
             .content-container {
-                padding: 4rem 1.5rem;
+                padding: 3rem 1.25rem;
             }
             .heading {
                 font-size: 1.5rem;
@@ -57,37 +120,89 @@
 
     <main class="content-container">
         
-        <!-- Section 1 -->
+        <!-- Typography Section -->
         <section>
             <div class="icon-container">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M3 15h18"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M3 15h18"/></svg>
             </div>
             <h2 class="heading">Break up large pieces of information into multiple smaller ones.</h2>
             <p class="paragraph">
-                This makes it easier and faster for people to understand. By reducing cognitive load, users can process your message without feeling overwhelmed by a wall of text.
+                This makes it easier and faster for people to understand. By reducing cognitive load, users can process your message without feeling overwhelmed.
             </p>
         </section>
 
-        <!-- Section 2 -->
         <section>
             <div class="icon-container">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M3 12h18"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M3 12h18"/></svg>
             </div>
             <h2 class="heading">Highlight key information using descriptive headings.</h2>
             <p class="paragraph">
-                This allows people to quickly scan information and get a better idea of the structure and organisation of content. Good hierarchy acts as a map for the reader's eyes.
+                This allows people to quickly scan information and get a better idea of the structure and organisation of content.
             </p>
         </section>
 
-        <!-- Section 3 -->
+        <div class="section-divider"></div>
+
+        <!-- Cards Section -->
         <section>
-            <div class="icon-container">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <!-- Card 1 -->
+            <div class="testimonial-card">
+                <div class="user-info">
+                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Molly" alt="Molly Hellmuth" class="avatar">
+                    <div class="user-details">
+                        <h4>Molly Hellmuth</h4>
+                        <p>Product designer at ...</p>
+                    </div>
+                </div>
+                <div class="stars">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                </div>
+                <p class="card-text">
+                    Adham does an amazing job breaking down complex topics into easy-to-understand lessons. It's a great resource for anyone looking to improve their designs.
+                </p>
             </div>
-            <h2 class="heading">Some won't read supporting text, so make sure headings make sense out of context.</h2>
-            <p class="paragraph">
-                This also helps screen reader users, as they often listen to a list of all headings on a page before skipping to the information they're after. Clarity is the ultimate form of accessibility.
-            </p>
+
+            <!-- Card 2 (X/Twitter Style) -->
+            <div class="testimonial-card">
+                <div class="user-info">
+                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Adrian" alt="UI Adrian" class="avatar">
+                    <div class="user-details">
+                        <h4>UI Adrian</h4>
+                        <p>@uiuxadrian</p>
+                    </div>
+                    <div class="x-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.134l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    </div>
+                </div>
+                <p class="card-text">
+                    Got Practical UI when it launched :) I've been Adham's followers for a few years now, good lad.
+                </p>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="testimonial-card">
+                <div class="user-info">
+                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Jordan" alt="Jordan Hughes" class="avatar">
+                    <div class="user-details">
+                        <h4>Jordan Hughes</h4>
+                        <p>Product designer at ...</p>
+                    </div>
+                </div>
+                <div class="stars">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                </div>
+                <p class="card-text">
+                    One of the best design resources out there. The attention to detail is remarkable.
+                </p>
+            </div>
         </section>
 
     </main>
@@ -95,5 +210,3 @@
 </body>
 </html>
 
-
-                    
