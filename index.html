@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,14 +12,14 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #ffffff; /* Pure white background as requested */
+            background-color: #ffffff;
             color: #1e293b;
             line-height: 1.5;
             -webkit-font-smoothing: antialiased;
         }
 
         .content-container {
-            max-width: 600px; /* Narrower container matches the screenshots better */
+            max-width: 600px;
             margin: 0 auto;
             padding: 5rem 1.25rem;
         }
@@ -30,10 +30,10 @@
         }
 
         .heading {
-            font-weight: 500; /* Medium weight for that clean look */
+            font-weight: 500;
             font-size: 1.75rem;
             line-height: 1.25;
-            color: #334155;
+            color: #1e293b;
             margin-bottom: 1.25rem;
             letter-spacing: -0.02em;
         }
@@ -58,7 +58,7 @@
 
         .testimonial-card {
             background: #ffffff;
-            border: 1.5px solid #f1f5f9; /* Very subtle border */
+            border: 1.5px solid #f1f5f9;
             border-radius: 1.5rem;
             padding: 2rem;
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.02);
@@ -97,7 +97,7 @@
             display: flex;
             gap: 3px;
             margin-bottom: 1.25rem;
-            color: #ffb400; /* Brighter gold for stars */
+            color: #ffb400;
         }
 
         .card-text {
@@ -113,6 +113,83 @@
             opacity: 0.9;
         }
 
+        /* FAQ Section Styles */
+        .faq-section {
+            margin-top: 6rem;
+        }
+
+        .faq-header {
+            margin-bottom: 2.5rem;
+        }
+
+        .faq-title {
+            font-weight: 700;
+            font-size: 2.25rem;
+            color: #0f172a;
+            margin-bottom: 1rem;
+            letter-spacing: -0.03em;
+        }
+
+        .faq-subtitle {
+            font-size: 1.125rem;
+            color: #64748b;
+        }
+
+        .faq-subtitle a {
+            color: #4f46e5;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .faq-trigger {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0;
+            text-align: left;
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            font-size: 1.25rem;
+            color: #1e293b;
+            padding-right: 2rem;
+            letter-spacing: -0.01em;
+        }
+
+        .faq-icon {
+            color: #64748b;
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            color: #64748b;
+            font-size: 1.0625rem;
+            line-height: 1.6;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+            padding-bottom: 1.5rem;
+        }
+
         /* Divider */
         .divider {
             height: 1px;
@@ -124,8 +201,8 @@
             .content-container {
                 padding: 3rem 1.25rem;
             }
-            .heading {
-                font-size: 1.5rem;
+            .faq-title {
+                font-size: 1.875rem;
             }
         }
     </style>
@@ -159,8 +236,6 @@
 
         <!-- Cards Section -->
         <div class="card-list">
-            
-            <!-- Molly -->
             <div class="testimonial-card">
                 <div class="user-info">
                     <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Molly&backgroundColor=f1f5f9" alt="Molly" class="avatar">
@@ -181,7 +256,6 @@
                 </p>
             </div>
 
-            <!-- Adrian -->
             <div class="testimonial-card">
                 <div class="user-info">
                     <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Adrian&backgroundColor=f1f5f9" alt="Adrian" class="avatar">
@@ -197,13 +271,89 @@
                     Got Practical UI when it launched :) I've been Adham's followers for a few years now, good lad.
                 </p>
             </div>
-
         </div>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <div class="faq-header">
+                <h2 class="faq-title">Frequently asked questions</h2>
+                <p class="faq-subtitle">
+                    If you have any other questions or feedback, <a href="#">contact me</a> and I'll get back to you shortly.
+                </p>
+            </div>
+
+            <div class="faq-list">
+                <!-- FAQ Item 1 -->
+                <div class="faq-item">
+                    <button class="faq-trigger" onclick="toggleFaq(this)">
+                        <span class="faq-question">Who is this UI design book for?</span>
+                        <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        This book is perfect for developers, product managers, and junior designers who want to master the fundamentals of interface design through a logical, rule-based approach.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="faq-item">
+                    <button class="faq-trigger" onclick="toggleFaq(this)">
+                        <span class="faq-question">Does this book cover UI design for apps or websites?</span>
+                        <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        It covers both! The principles of layout, typography, and hierarchy apply across all digital platforms, whether you're building a mobile app or a desktop web dashboard.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="faq-item">
+                    <button class="faq-trigger" onclick="toggleFaq(this)">
+                        <span class="faq-question">Is UX design covered too?</span>
+                        <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        While the focus is primarily on visual interface design, we cover essential UX principles like cognitive load, accessibility, and user flow that are inseparable from great UI.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="faq-item">
+                    <button class="faq-trigger" onclick="toggleFaq(this)">
+                        <span class="faq-question">Will I learn how to use Figma or write code?</span>
+                        <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        This book is tool-agnostic. It focuses on the theory and rules of design rather than technical tutorials for specific software like Figma or coding languages.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 5 -->
+                <div class="faq-item">
+                    <button class="faq-trigger" onclick="toggleFaq(this)">
+                        <span class="faq-question">Is there a printed version of the book?</span>
+                        <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        Currently, the book is available as a high-quality digital PDF and interactive web version to ensure all links and examples stay up-to-date.
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
+    <script>
+        function toggleFaq(button) {
+            const item = button.parentElement;
+            const isActive = item.classList.contains('active');
+            
+            // Optional: Close other items
+            document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('active'));
+            
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        }
+    </script>
 </body>
 </html>
 
-
-        
-                
