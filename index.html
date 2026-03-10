@@ -3,641 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IRONBYTE | Smart Software</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Typography & Whitespace Design</title>
+    <!-- Inter is a high-quality sans-serif perfect for modern, readable typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- 
-        TYPOGRAPHY CHANGE:
-        - Display/Hero: Bricolage Grotesque — editorial, variable-weight, characterful
-        - Body: DM Sans — cleaner and more refined than Inter
-    -->
-    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        :root {
-            --accent: #0ea5e9;
-            --accent-dark: #0369a1;
-            --fg: #0d0d0d;
-            --muted: #6b7280;
-            --border: #e5e7eb;
-        }
-
-        html { scroll-behavior: smooth; }
-
         body {
-            /* CHANGED: DM Sans replaces Inter for body copy */
-            font-family: 'DM Sans', sans-serif;
-            -webkit-font-smoothing: antialiased;
-            background-color: #fcfcfc;
-            color: var(--fg);
-            letter-spacing: -0.012em;
-        }
-
-        /* ============================================
-           HERO TYPOGRAPHY — BEFORE vs AFTER
-           ============================================
-           BEFORE: font-weight 600, ~72px, Inter, letter-spacing -0.05em
-           AFTER:  font-weight 800, 96px, Bricolage Grotesque, letter-spacing -0.065em
-           The difference: Bricolage has optical ink traps and
-           a true display cut that sharpens dramatically at large sizes.
-        */
-        .hero-title {
-            font-family: 'Bricolage Grotesque', sans-serif;
-            font-weight: 800;
-            font-size: clamp(48px, 8vw, 96px);   /* Responsive: 48px mobile → 96px desktop */
-            line-height: 0.97;                     /* Tighter than before (was 1.05) */
-            letter-spacing: -0.065em;             /* More compressed (was -0.05em) */
-            max-width: 880px;
-            margin: 0 auto;
-        }
-
-        /* 
-           ACCENT TREATMENT CHANGE:
-           Before: plain color swap to sky-500
-           After:  Italic + sky gradient to create editorial "pull quote" feel
-           This mirrors how Searchable bolds the accent phrase with personality
-        */
-        .hero-title .accent {
-            font-style: italic;
-            background: linear-gradient(135deg, #0ea5e9 0%, #38bdf8 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        /*
-           SUBHEADLINE CHANGE:
-           Before: color #666, font-size 16-20px, font-weight 400
-           After:  color #4b5563, font-size 18-22px, font-weight 400, max-width wider
-           Slightly larger and darker — less like a caption, more like a statement
-        */
-        .hero-sub {
-            font-family: 'DM Sans', sans-serif;
-            font-size: clamp(17px, 2vw, 21px);
-            font-weight: 400;
-            line-height: 1.65;
-            color: #4b5563;
-            letter-spacing: -0.015em;
-            max-width: 520px;
-            margin: 0 auto;
-        }
-
-        /* Hero eyebrow — new addition, establishes hierarchy above the title */
-        .hero-eyebrow {
-            font-family: 'DM Sans', sans-serif;
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            color: var(--accent-dark);
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 28px;
-        }
-
-        .hero-eyebrow::before {
-            content: '';
-            display: block;
-            width: 20px;
-            height: 2px;
-            background: var(--accent-dark);
-            border-radius: 2px;
-        }
-
-        /* Buttons */
-        .btn-primary {
-            background-color: var(--fg);
-            color: #fff;
-            padding: 13px 28px;
-            font-family: 'DM Sans', sans-serif;
-            font-size: 14px;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            letter-spacing: -0.01em;
-            transition: background 0.2s, transform 0.15s;
-        }
-        .btn-primary:hover { background: #222; }
-        .btn-primary:active { transform: scale(0.97); }
-
-        .btn-secondary {
-            background-color: transparent;
-            border: 1.5px solid #d1d5db;
-            padding: 13px 28px;
-            font-family: 'DM Sans', sans-serif;
-            font-size: 14px;
-            font-weight: 600;
-            color: #374151;
-            letter-spacing: -0.01em;
-            transition: border-color 0.2s, transform 0.15s;
-        }
-        .btn-secondary:hover { border-color: #6b7280; }
-        .btn-secondary:active { transform: scale(0.97); }
-
-        .arrow-circle {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            border: 1.5px solid rgba(255,255,255,0.6);
-            margin-left: 8px;
-        }
-
-        /* Trust strip */
-        .trust-strip {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 24px;
-            font-family: 'DM Sans', sans-serif;
-            font-size: 12px;
-            font-weight: 500;
-            color: #9ca3af;
-            letter-spacing: -0.01em;
-        }
-        .trust-dot {
-            width: 3px;
-            height: 3px;
-            border-radius: 50%;
-            background: #d1d5db;
-        }
-
-        /* ---- REST OF SITE (unchanged styles carried forward) ---- */
-        .section-heading {
-            font-family: 'Bricolage Grotesque', sans-serif;
-            letter-spacing: -0.045em;
-            font-weight: 700;
-        }
-
-        .subheadline {
-            letter-spacing: -0.015em;
-            line-height: 1.6;
-            color: #6b7280;
-            font-weight: 400;
-        }
-
-        .logo-text {
-            font-family: 'Bricolage Grotesque', sans-serif;
-            font-weight: 800;
-            letter-spacing: -0.07em;
-            font-size: 20px;
-            text-transform: uppercase;
-        }
-
-        .service-grid { border-top: 1px solid #f0f0f0; }
-        .grid-item {
-            border-right: 1px solid #f0f0f0;
-            border-bottom: 1px solid #f0f0f0;
-            height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            cursor: pointer;
+            font-family: 'Inter', sans-serif;
             background-color: #ffffff;
-            transition: all 0.2s ease;
+            color: #334155; /* Slate-700 for a softer, premium feel than pure black */
+            line-height: 1.6;
         }
-        .grid-item:nth-child(2n) { border-right: none; }
-        .grid-item span {
-            font-family: 'DM Sans', sans-serif;
+
+        .content-container {
+            max-width: 680px; /* Optimal line length for readability */
+            margin: 0 auto;
+            padding: 8rem 2rem;
+        }
+
+        .heading {
             font-weight: 600;
-            letter-spacing: -0.02em;
-            font-size: 14px;
-        }
-        .active-tab { position: relative; color: #000; background-color: #fafafa; }
-        .active-tab::after {
-            content: '';
-            position: absolute;
-            bottom: 0; left: 0;
-            width: 100%; height: 2px;
-            background: #000;
-        }
-        .inactive-tab { color: #a1a1a1; }
-        .inactive-tab svg { opacity: 0.4; }
-
-        .tab-content { display: none; animation: fadeIn 0.4s ease forwards; }
-        .tab-content.active { display: block; }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            font-size: 1.875rem; /* 30px */
+            line-height: 1.3;
+            color: #1e293b; /* Slate-800 */
+            margin-bottom: 1.5rem;
         }
 
-        .dot-grid {
-            background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
-            background-size: 20px 20px;
+        .paragraph {
+            font-size: 1.125rem; /* 18px */
+            margin-bottom: 3rem;
+            color: #475569; /* Slate-600 */
         }
 
-        .cta-link {
-            color: #0ea5e9;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            margin-top: 24px;
-            transition: opacity 0.2s;
-            letter-spacing: -0.02em;
-        }
-        .cta-link:hover { opacity: 0.8; text-decoration: underline; }
-
-        .mockup-container { perspective: 1200px; }
-        .mockup-card {
-            transform: rotateX(10deg) rotateY(-15deg) rotateZ(2deg);
-            box-shadow: -20px 40px 80px rgba(0,0,0,0.1);
-            transition: transform 0.5s ease;
+        .icon-container {
+            margin-bottom: 2rem;
+            color: #64748b; /* Muted icon color */
         }
 
-        .avatar-placeholder {
-            width: 48px; height: 48px;
-            background: #f1f1f1;
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-family: 'Bricolage Grotesque', sans-serif;
-            font-weight: 700; font-size: 12px;
-            color: #a1a1a1; border: 1px solid #e5e7eb;
-        }
-
-        .social-icon { color: #94a3b8; transition: color 0.2s ease; }
-        .social-icon:hover { color: #111; }
-
-        .contact-card {
-            flex: 1; min-width: 260px;
-            display: flex; flex-direction: column;
-            align-items: center; justify-content: center;
-            padding: 32px; border-radius: 20px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid transparent; text-align: center;
-        }
-        .footer-link { color: #666; transition: color 0.2s ease; font-size: 14px; }
-        .footer-link:hover { color: #111; }
-
-        #mobile-menu {
-            transition: transform 0.3s ease-in-out;
-            transform: translateX(100%);
-        }
-        #mobile-menu.open { transform: translateX(0); }
-        .nav-link {
-            font-family: 'DM Sans', sans-serif;
-            font-size: 14px; font-weight: 600; color: #666;
-            transition: color 0.2s; letter-spacing: -0.01em;
-        }
-        .nav-link:hover { color: #000; }
-
-        /* Hero fade-in animation */
-        @keyframes heroReveal {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .hero-eyebrow { animation: heroReveal 0.5s ease forwards; }
-        .hero-title    { animation: heroReveal 0.55s ease 0.08s both forwards; }
-        .hero-sub      { animation: heroReveal 0.55s ease 0.18s both forwards; }
-        .hero-cta      { animation: heroReveal 0.55s ease 0.28s both forwards; }
-        .hero-trust    { animation: heroReveal 0.55s ease 0.38s both forwards; }
-    </style>
-</head>
-<body class="overflow-x-hidden">
-
-    <!-- Notification Bar -->
-    <div class="bg-[#111] text-white py-2 text-center text-[11px] font-bold tracking-tight uppercase relative z-50">
-        Want to learn about efficiency?
-        <a href="#" class="inline-flex items-center ml-1 text-sky-400 underline decoration-sky-400/30 underline-offset-2">
-            Join now
-            <svg class="ml-1" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-        </a>
-    </div>
-
-    <!-- Navigation -->
-    <header class="sticky top-0 bg-white/80 backdrop-blur-md z-40 border-b border-gray-100">
-        <nav class="flex justify-between items-center px-6 py-5 md:px-12 max-w-7xl mx-auto">
-            <a href="#" class="flex items-center gap-2 group">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="black" class="transition-transform group-hover:scale-110"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
-                <span class="logo-text">IRONBYTE</span>
-            </a>
-            <div class="hidden md:flex items-center gap-10">
-                <a href="#solutions" class="nav-link">Solutions</a>
-                <a href="#products" class="nav-link">Products</a>
-                <a href="#mission" class="nav-link">Our Mission</a>
-                <a href="#contact" class="nav-link">Contact</a>
-                <button class="btn-primary rounded-full !py-2 !px-5 text-[13px]">Get Started</button>
-            </div>
-            <div class="md:hidden flex flex-col gap-1 cursor-pointer" onclick="toggleMenu()">
-                <div id="bar1" class="w-6 h-[2px] bg-black transition-all origin-center"></div>
-                <div id="bar2" class="w-6 h-[2px] bg-black transition-all"></div>
-                <div id="bar3" class="w-6 h-[2px] bg-black transition-all origin-center"></div>
-            </div>
-        </nav>
-    </header>
-
-    <!-- Mobile Menu Drawer -->
-    <div id="mobile-menu" class="fixed inset-0 bg-white z-[60] flex flex-col px-8 py-20 md:hidden">
-        <div class="absolute top-6 right-6 p-2" onclick="toggleMenu()">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-        </div>
-        <div class="flex flex-col gap-8">
-            <a href="#solutions" class="text-3xl font-bold tracking-tighter" onclick="toggleMenu()">Solutions</a>
-            <a href="#products" class="text-3xl font-bold tracking-tighter" onclick="toggleMenu()">Products</a>
-            <a href="#mission" class="text-3xl font-bold tracking-tighter" onclick="toggleMenu()">Our Mission</a>
-            <a href="#contact" class="text-3xl font-bold tracking-tighter" onclick="toggleMenu()">Contact</a>
-        </div>
-        <div class="mt-auto pb-10">
-            <button class="w-full btn-primary rounded-2xl py-4 text-lg">Start for free</button>
-        </div>
-    </div>
-
-    <!-- ================================================
-         HERO SECTION — REFINED
-         Key changes vs. original:
-         1. Bricolage Grotesque replaces Inter at headline level
-         2. Font size: 96px (was 72px max)
-         3. Letter-spacing: -0.065em (was -0.05em)
-         4. Line-height: 0.97 (was 1.05) — tighter, more editorial
-         5. Accent: italic + gradient (was plain color)
-         6. Eyebrow label added for hierarchy depth
-         7. Subheadline: larger, darker, DM Sans
-         8. Trust strip added beneath CTAs
-         9. Staggered fade-in animations
-    ================================================ -->
-    <section class="px-6 pt-24 pb-20 text-center max-w-5xl mx-auto">
-
-        <!-- Eyebrow: NEW — creates a 3rd level of hierarchy above the title -->
-        <div class="hero-eyebrow">Business Operations Software</div>
-
-        <!-- Title: font changed, size up, spacing tighter -->
-        <h1 class="hero-title mb-8">
-            Precision Software.<br class="hidden md:block" />
-            <span class="accent">Smarter Results.</span>
-        </h1>
-
-        <!-- Subheadline: larger, darker, more confident -->
-        <p class="hero-sub mb-10">
-            We develop practical business systems that turn manual processes into structured, easy-to-use digital workflows.
-        </p>
-
-        <!-- CTAs: buttons now use dark fill primary for stronger contrast -->
-        <div class="hero-cta flex flex-row items-center justify-center gap-3 mb-10">
-            <button class="btn-primary rounded-full hover:bg-[#111] active:scale-95 transition-all">
-                Start for free
-                <span class="arrow-circle">
-                    <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </span>
-            </button>
-            <button class="btn-secondary rounded-full transition-all hover:bg-gray-50 active:scale-95">
-                Book a Demo
-            </button>
-        </div>
-
-        <!-- Trust strip: NEW — social proof anchor under CTAs -->
-        <div class="hero-trust trust-strip">
-            <span>No credit card required</span>
-            <span class="trust-dot"></span>
-            <span>Free 14-day trial</span>
-            <span class="trust-dot"></span>
-            <span>Setup in minutes</span>
-        </div>
-    </section>
-
-    <!-- Solutions Section (unchanged) -->
-    <section id="solutions" class="max-w-xl mx-auto px-4 mb-32 scroll-mt-24">
-        <div class="grid grid-cols-2 service-grid border-l border-r border-gray-100">
-            <div class="grid-item active-tab" onclick="showTab('dispatch', this)">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
-                <span>Dispatch</span>
-            </div>
-            <div class="grid-item inactive-tab" onclick="showTab('inventory', this)">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"></path><path d="m3.3 7 8.7 5 8.7-5"></path><path d="M12 22V12"></path></svg>
-                <span>Inventory</span>
-            </div>
-            <div class="grid-item inactive-tab" onclick="showTab('analytics', this)">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"></path><path d="m19 9-5 5-4-4-3 3"></path></svg>
-                <span>Analytics</span>
-            </div>
-            <div class="grid-item inactive-tab" onclick="showTab('automate', this)">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 14 4-4"></path><path d="M3.34 19a10 10 0 1 1 17.32 0"></path></svg>
-                <span>Automate</span>
-            </div>
-        </div>
-
-        <div class="mt-12 text-center max-w-lg mx-auto">
-            <div id="dispatch" class="tab-content active">
-                <h3 class="text-xl section-heading mb-3">Order Fulfillment & Logistics</h3>
-                <p class="subheadline text-[16px]">Turn manual dispatching into a streamlined digital workflow. Improve accuracy, speed, and real-time operational visibility.</p>
-            </div>
-            <div id="inventory" class="tab-content">
-                <h3 class="text-xl section-heading mb-3">Inventory Management</h3>
-                <p class="subheadline text-[16px]">Maintain precise stock control with tools designed for easy use. Capture every move to eliminate errors and shrinkage.</p>
-            </div>
-            <div id="analytics" class="tab-content">
-                <h3 class="text-xl section-heading mb-3">Reporting & Analytics</h3>
-                <p class="subheadline text-[16px]">Gain high-resolution visibility into your lifecycle. Use data to identify bottlenecks and drive smarter business growth.</p>
-            </div>
-            <div id="automate" class="tab-content">
-                <h3 class="text-xl section-heading mb-3">Intelligent Automation</h3>
-                <p class="subheadline text-[16px]">Remove manual bottlenecks by automating repetitive data tasks. Let your team focus on high-value business actions.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- DispatchMate Showcase (unchanged) -->
-    <section id="products" class="border-t border-gray-100 bg-white scroll-mt-24">
-        <div class="max-w-7xl mx-auto grid md:grid-cols-2 overflow-hidden">
-            <div class="px-6 py-16 md:px-12 md:py-28 border-b md:border-b-0 md:border-r border-gray-100 flex flex-col justify-center bg-white z-10">
-                <span class="text-[11px] font-bold uppercase tracking-[0.2em] text-gray-400 mb-8 block">Featured Product</span>
-                <h2 class="text-4xl md:text-5xl section-heading mb-6">DispatchMate</h2>
-                <p class="subheadline text-lg md:text-[21px] max-w-md leading-relaxed">
-                    DispatchMate is our flagship product: a smart operational assistant that helps warehouses and retail staff locate products, track stock, and fulfill orders without mistakes.
-                </p>
-                <div>
-                    <a href="#" class="cta-link text-[16px]">
-                        See DispatchMate in Action
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                    </a>
-                </div>
-            </div>
-            <div class="dot-grid relative flex items-center justify-center p-8 min-h-[500px] md:min-h-[600px] bg-gray-50/30 mockup-container">
-                <div class="mockup-card w-full max-w-[380px] bg-white rounded-2xl border border-gray-200 overflow-hidden">
-                    <div class="p-4 border-b border-gray-100 flex justify-between items-center bg-gray-50/50">
-                        <div class="flex items-center gap-2">
-                            <div class="w-2 h-2 rounded-full bg-red-400"></div>
-                            <div class="w-2 h-2 rounded-full bg-yellow-400"></div>
-                            <div class="w-2 h-2 rounded-full bg-green-400"></div>
-                        </div>
-                        <span class="text-[10px] font-bold text-gray-400 tracking-widest uppercase">Live Dispatch</span>
-                    </div>
-                    <div class="p-5 space-y-4">
-                        <div class="flex justify-between items-end">
-                            <div>
-                                <h4 class="text-xs font-bold text-gray-400 uppercase tracking-tight mb-1">Current Task</h4>
-                                <p class="text-lg font-bold text-gray-900 tracking-tight">Order #8842-X</p>
-                            </div>
-                            <span class="px-2 py-1 bg-sky-50 text-sky-600 text-[10px] font-bold rounded-md">IN PROGRESS</span>
-                        </div>
-                        <div class="space-y-3">
-                            <div class="p-3 bg-gray-50 rounded-xl border border-gray-100">
-                                <div class="flex justify-between mb-2">
-                                    <span class="text-[11px] font-medium text-gray-500">Item Location</span>
-                                    <span class="text-[11px] font-bold text-gray-900">AISLE 4, BIN B-12</span>
-                                </div>
-                                <div class="w-full bg-gray-200 h-1.5 rounded-full overflow-hidden">
-                                    <div class="bg-sky-500 h-full w-[75%] rounded-full"></div>
-                                </div>
-                            </div>
-                            <div class="grid grid-cols-2 gap-3">
-                                <div class="p-3 border border-gray-100 rounded-xl text-center">
-                                    <p class="text-[10px] text-gray-400 font-bold uppercase mb-1">Picked</p>
-                                    <p class="text-xl font-bold tracking-tight">12/15</p>
-                                </div>
-                                <div class="p-3 border border-gray-100 rounded-xl text-center">
-                                    <p class="text-[10px] text-gray-400 font-bold uppercase mb-1">Efficiency</p>
-                                    <p class="text-xl font-bold tracking-tight text-green-500">98%</p>
-                                </div>
-                            </div>
-                        </div>
-                        <button class="w-full py-3 bg-gray-900 text-white text-xs font-bold rounded-xl active:scale-95 transition-transform">CONFIRM PICKUP</button>
-                    </div>
-                </div>
-                <div class="absolute bottom-12 right-12 border border-black bg-white px-5 py-2.5 shadow-2xl transform rotate-3 z-20">
-                    <span class="text-[11px] font-black tracking-tighter uppercase italic">V2.0 STABLE</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Mission -->
-    <section id="mission" class="bg-white border-t border-gray-100 scroll-mt-24">
-        <div class="max-w-7xl mx-auto px-6 py-24 md:px-12 md:py-32 flex flex-col md:flex-row gap-16 md:gap-24 items-start">
-            <div class="md:w-1/3">
-                <span class="text-[11px] font-bold uppercase tracking-[0.2em] text-gray-400 mb-6 block">Our Mission</span>
-                <h2 class="text-3xl md:text-4xl section-heading mb-4">Building tools businesses actually use.</h2>
-            </div>
-            <div class="md:w-2/3">
-                <p class="subheadline text-lg md:text-[21px] mb-12 leading-relaxed">
-                    Ironbyte Systems was founded by Leon Nyaramb, Founder and Lead Engineer. Our mission is to build software that solves real business problems efficiently. We focus on usability, reliability, and creating tools businesses actually use.
-                </p>
-                <div class="flex items-center gap-4">
-                    <div class="avatar-placeholder">LN</div>
-                    <div>
-                        <p class="text-[14px] font-bold tracking-tight text-gray-900">Leon Nyaramb</p>
-                        <p class="text-[12px] text-gray-500 font-medium">Founder & Lead Engineer</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="bg-[#fafafa] border-t border-gray-200 scroll-mt-24">
-        <div class="max-w-7xl mx-auto px-6 py-20 md:px-12 md:py-32">
-            <div class="text-center mb-16">
-                <span class="text-[11px] font-bold uppercase tracking-[0.2em] text-gray-400 mb-4 block">Get in touch</span>
-                <h2 class="text-4xl md:text-5xl section-heading mb-6">Ready to build?</h2>
-                <p class="subheadline text-[18px] max-w-xl mx-auto">Skip the complex forms. Chat with us directly to discuss your system requirements.</p>
-            </div>
-            <div class="flex flex-col md:flex-row gap-6 max-w-4xl mx-auto">
-                <a href="https://wa.me/yourphonenumber" class="contact-card bg-[#111] text-white hover:bg-black group">
-                    <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mb-6 transition-transform group-hover:scale-110">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.438 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-                    </div>
-                    <span class="text-lg font-bold mb-1">Chat on WhatsApp</span>
-                    <span class="text-[13px] text-gray-400">Response time: &lt; 30 mins</span>
-                </a>
-                <a href="mailto:hello@ironbyte.systems" class="contact-card bg-white border-gray-200 text-gray-900 hover:border-gray-900 group">
-                    <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mb-6 transition-transform group-hover:scale-110">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                    </div>
-                    <span class="text-lg font-bold mb-1">Email Support</span>
-                    <span class="text-[13px] text-gray-500">hello@ironbyte.systems</span>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-white border-t border-gray-100 pt-20 pb-12">
-        <div class="max-w-7xl mx-auto px-6 md:px-12">
-            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-12 mb-20">
-                <div class="col-span-2">
-                    <div class="flex items-center gap-2 mb-6">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="black"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
-                        <span class="logo-text">IRONBYTE</span>
-                    </div>
-                    <p class="text-gray-500 text-sm max-w-xs leading-relaxed">Engineering digital infrastructure for the modern enterprise. Precision software built for speed and reliability.</p>
-                </div>
-                <div>
-                    <h5 class="text-[11px] font-black uppercase tracking-[0.1em] text-gray-900 mb-6">Products</h5>
-                    <ul class="space-y-4">
-                        <li><a href="#" class="footer-link">DispatchMate</a></li>
-                        <li><a href="#" class="footer-link">Inventory Hub</a></li>
-                        <li><a href="#" class="footer-link">Insight Analytics</a></li>
-                        <li><a href="#" class="footer-link">Automate Flow</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h5 class="text-[11px] font-black uppercase tracking-[0.1em] text-gray-900 mb-6">Company</h5>
-                    <ul class="space-y-4">
-                        <li><a href="#" class="footer-link">Our Mission</a></li>
-                        <li><a href="#" class="footer-link">Lead Engineer</a></li>
-                        <li><a href="#" class="footer-link">Case Studies</a></li>
-                        <li><a href="#" class="footer-link">Privacy Policy</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h5 class="text-[11px] font-black uppercase tracking-[0.1em] text-gray-900 mb-6">Connect</h5>
-                    <ul class="space-y-4">
-                        <li><a href="#" class="footer-link">WhatsApp</a></li>
-                        <li><a href="#" class="footer-link">LinkedIn</a></li>
-                        <li><a href="#" class="footer-link">GitHub</a></li>
-                        <li><a href="#" class="footer-link">X / Twitter</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="pt-12 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-8">
-                <div class="text-[12px] text-gray-400 font-medium">© 2024 Ironbyte Systems. All rights reserved.</div>
-                <div class="flex gap-8 items-center">
-                    <a href="#" class="social-icon">
-                        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                    </a>
-                    <a href="#" class="social-icon">
-                        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.042-1.416-4.042-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        function toggleMenu() {
-            const menu = document.getElementById('mobile-menu');
-            const bar1 = document.getElementById('bar1');
-            const bar2 = document.getElementById('bar2');
-            const bar3 = document.getElementById('bar3');
-            menu.classList.toggle('open');
-            document.body.classList.toggle('overflow-hidden');
-            if (menu.classList.contains('open')) {
-                bar1.style.transform = 'translateY(6px) rotate(45deg)';
-                bar2.style.opacity = '0';
-                bar3.style.transform = 'translateY(-6px) rotate(-45deg)';
-            } else {
-                bar1.style.transform = 'none';
-                bar2.style.opacity = '1';
-                bar3.style.transform = 'none';
+        /* Responsive adjustments */
+        @media (max-width: 640px) {
+            .content-container {
+                padding: 4rem 1.5rem;
+            }
+            .heading {
+                font-size: 1.5rem;
             }
         }
+    </style>
+</head>
+<body>
 
-        function showTab(tabId, element) {
-            document.querySelectorAll('.grid-item').forEach(item => {
-                item.classList.remove('active-tab');
-                item.classList.add('inactive-tab');
-            });
-            element.classList.add('active-tab');
-            element.classList.remove('inactive-tab');
-            document.querySelectorAll('.tab-content').forEach(content => {
-                content.classList.remove('active');
-            });
-            document.getElementById(tabId).classList.add('active');
-        }
-    </script>
+    <main class="content-container">
+        
+        <!-- Section 1 -->
+        <section>
+            <div class="icon-container">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M3 15h18"/></svg>
+            </div>
+            <h2 class="heading">Break up large pieces of information into multiple smaller ones.</h2>
+            <p class="paragraph">
+                This makes it easier and faster for people to understand. By reducing cognitive load, users can process your message without feeling overwhelmed by a wall of text.
+            </p>
+        </section>
+
+        <!-- Section 2 -->
+        <section>
+            <div class="icon-container">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M3 12h18"/></svg>
+            </div>
+            <h2 class="heading">Highlight key information using descriptive headings.</h2>
+            <p class="paragraph">
+                This allows people to quickly scan information and get a better idea of the structure and organisation of content. Good hierarchy acts as a map for the reader's eyes.
+            </p>
+        </section>
+
+        <!-- Section 3 -->
+        <section>
+            <div class="icon-container">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            </div>
+            <h2 class="heading">Some won't read supporting text, so make sure headings make sense out of context.</h2>
+            <p class="paragraph">
+                This also helps screen reader users, as they often listen to a list of all headings on a page before skipping to the information they're after. Clarity is the ultimate form of accessibility.
+            </p>
+        </section>
+
+    </main>
+
 </body>
 </html>
+
+
+                    
