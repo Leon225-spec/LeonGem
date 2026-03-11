@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+   <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -29,43 +29,43 @@
             font-family: 'Inter', sans-serif;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            font-size: 14px; /* Slightly smaller base font for that 'cute' refined look */
         }
-        .tracking-tight { letter-spacing: -0.025em; }
-        .tracking-tighter { letter-spacing: -0.05em; }
+        .tracking-tight { letter-spacing: -0.02em; }
+        .tracking-tighter { letter-spacing: -0.04em; }
         
         /* Custom Overstack Logo */
         .logo-stack {
             position: relative;
-            width: 24px;
-            height: 24px;
+            width: 18px; /* Scaled down */
+            height: 18px;
         }
         .logo-layer-1 {
             position: absolute;
             inset: 0;
             background: black;
-            border-radius: 2px;
-            transform: translateY(-4px);
+            border-radius: 1.5px;
+            transform: translateY(-3px);
         }
         .logo-layer-2 {
             position: absolute;
             inset: 0;
-            background: #9ca3af; /* gray-400 */
-            border-radius: 2px;
-            transform: translateY(4px);
+            background: #9ca3af; 
+            border-radius: 1.5px;
+            transform: translateY(3px);
             opacity: 0.5;
         }
         .logo-layer-3 {
-            position: absolute;
-            inset: 0;
-            background: #e5e7eb; /* gray-200 */
-            border-radius: 2px;
-            transform: translateY(8px);
+            position: absolute; inset: 0;
+            background: #e5e7eb;
+            border-radius: 1.5px;
+            transform: translateY(6px);
             opacity: 0.3;
         }
 
         .dot-grid {
-            background-image: radial-gradient(circle, #000 1px, transparent 1px);
-            background-size: 32px 32px;
+            background-image: radial-gradient(circle, #000 0.8px, transparent 0.8px);
+            background-size: 24px 24px;
         }
     </style>
 </head>
@@ -73,58 +73,58 @@
 
     <!-- Navigation -->
     <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 border-b border-transparent">
-        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+        <div class="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
             <div class="flex items-center gap-2 group cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
                 <div class="logo-stack">
                     <div class="logo-layer-1"></div>
                     <div class="logo-layer-2"></div>
                     <div class="logo-layer-3"></div>
                 </div>
-                <span class="text-xl font-bold tracking-tighter ml-1">ironbyte <span class="text-gray-400 font-medium">Systems</span></span>
+                <span class="text-base font-bold tracking-tighter ml-1">ironbyte <span class="text-gray-400 font-medium">Systems</span></span>
             </div>
 
-            <div class="hidden md:flex items-center gap-8">
-                <a href="#problems" class="text-sm font-medium text-gray-500 hover:text-black transition-colors">Challenges</a>
-                <a href="#dispatchmate" class="text-sm font-medium text-gray-500 hover:text-black transition-colors">Product</a>
-                <a href="#about" class="text-sm font-medium text-gray-500 hover:text-black transition-colors">About</a>
-                <a href="#contact" class="bg-black text-white px-5 py-1.5 rounded-full text-sm font-medium hover:bg-gray-800 transition-all active:scale-95 shadow-sm">
+            <div class="hidden md:flex items-center gap-6">
+                <a href="#problems" class="text-[13px] font-medium text-gray-500 hover:text-black transition-colors">Challenges</a>
+                <a href="#dispatchmate" class="text-[13px] font-medium text-gray-500 hover:text-black transition-colors">Product</a>
+                <a href="#about" class="text-[13px] font-medium text-gray-500 hover:text-black transition-colors">About</a>
+                <a href="#contact" class="bg-black text-white px-4 py-1.5 rounded-full text-[12px] font-semibold hover:bg-gray-800 transition-all active:scale-95">
                     Contact Us
                 </a>
             </div>
 
             <button class="md:hidden" id="menu-toggle">
-                <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg>
+                <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg>
             </button>
         </div>
     </nav>
 
     <!-- Mobile Menu -->
     <div id="mobile-menu" class="fixed inset-0 z-40 bg-white pt-20 px-6 hidden flex-col gap-6 md:hidden">
-        <a href="#problems" class="text-2xl font-bold tracking-tighter">Challenges</a>
-        <a href="#dispatchmate" class="text-2xl font-bold tracking-tighter">Product</a>
-        <a href="#about" class="text-2xl font-bold tracking-tighter">About</a>
-        <a href="#contact" class="text-2xl font-bold tracking-tighter">Contact</a>
+        <a href="#problems" class="text-xl font-bold tracking-tighter">Challenges</a>
+        <a href="#dispatchmate" class="text-xl font-bold tracking-tighter">Product</a>
+        <a href="#about" class="text-xl font-bold tracking-tighter">About</a>
+        <a href="#contact" class="text-xl font-bold tracking-tighter">Contact</a>
     </div>
 
     <!-- Hero Section -->
-    <section id="hero" class="relative pt-32 pb-20 md:pt-56 md:pb-40 px-6 border-b border-gray-100">
-        <div class="absolute inset-0 z-0 opacity-[0.03] dot-grid"></div>
+    <section id="hero" class="relative pt-24 pb-16 md:pt-40 md:pb-28 px-6 border-b border-gray-50">
+        <div class="absolute inset-0 z-0 opacity-[0.02] dot-grid"></div>
         
-        <div class="max-w-5xl mx-auto text-center relative z-10">
-            <h1 class="text-5xl md:text-8xl font-extrabold tracking-tighter mb-8 text-black leading-[1.1]">
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tighter mb-6 text-black leading-[1.05]">
                 Build and deploy <br class="hidden md:block" /> operational excellence.
             </h1>
             
-            <p class="text-lg md:text-xl text-gray-500 mb-10 max-w-2xl mx-auto leading-relaxed tracking-tight">
+            <p class="text-base md:text-lg text-gray-500 mb-8 max-w-xl mx-auto leading-relaxed tracking-tight">
                 ironbyte Systems provides the tools and infrastructure <br class="hidden md:block" /> to build, scale, and secure a more efficient warehouse.
             </p>
             
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <button class="w-full sm:w-auto bg-black text-white px-10 py-3.5 rounded-full font-semibold text-base hover:shadow-lg transition-all flex items-center justify-center gap-2 group">
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+                <button class="w-full sm:w-auto bg-black text-white px-7 py-2.5 rounded-full font-bold text-[13px] hover:shadow-md transition-all flex items-center justify-center gap-2 group">
                     Start Deploying 
-                    <svg class="group-hover:translate-x-1 transition-transform" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    <svg class="group-hover:translate-x-0.5 transition-transform" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                 </button>
-                <button class="w-full sm:w-auto bg-white border border-gray-200 text-gray-600 px-10 py-3.5 rounded-full font-semibold text-base hover:bg-gray-50 hover:text-black transition-all">
+                <button class="w-full sm:w-auto bg-white border border-gray-200 text-gray-500 px-7 py-2.5 rounded-full font-bold text-[13px] hover:bg-gray-50 hover:text-black transition-all">
                     Get a Demo
                 </button>
             </div>
@@ -132,87 +132,87 @@
     </section>
 
     <!-- Problem Section -->
-    <section id="problems" class="py-24 px-6 border-b border-gray-100 bg-white relative overflow-hidden">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex flex-col items-center text-center mb-20">
-                <span class="text-[10px] font-bold uppercase tracking-[0.3em] text-red-500 mb-4 bg-red-50 px-3 py-1 rounded-full">Operational Friction</span>
-                <h2 class="text-3xl md:text-6xl font-extrabold tracking-tighter mb-6 max-w-3xl leading-tight">
+    <section id="problems" class="py-16 px-6 border-b border-gray-50 bg-white relative overflow-hidden">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col items-center text-center mb-12">
+                <span class="text-[9px] font-bold uppercase tracking-[0.3em] text-red-400 mb-3 bg-red-50/50 px-2.5 py-0.5 rounded-full">Operational Friction</span>
+                <h2 class="text-2xl md:text-4xl font-extrabold tracking-tighter mb-4 max-w-2xl leading-tight">
                     Warehouse chaos is the <br/> silent killer of growth.
                 </h2>
-                <p class="text-gray-500 text-lg max-w-2xl">
+                <p class="text-gray-400 text-[15px] max-w-lg">
                     Legacy systems and manual workflows create bottlenecks that scale faster than your revenue.
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-gray-100 border border-gray-100 rounded-3xl overflow-hidden shadow-sm">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-gray-100 border border-gray-100 rounded-2xl overflow-hidden">
                 <!-- Problem Card 1 -->
-                <div class="bg-white p-8 group hover:bg-gray-50/50 transition-colors">
-                    <div class="mb-6 text-gray-400">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"></polyline><path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"></path></svg>
+                <div class="bg-white p-6 group hover:bg-gray-50/30 transition-colors">
+                    <div class="mb-4 text-gray-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"></polyline><path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"></path></svg>
                     </div>
-                    <h3 class="text-lg font-bold mb-3 tracking-tight">Memory Reliance</h3>
-                    <p class="text-gray-500 text-sm leading-relaxed">Staff struggling to remember thousands of product details, leading to picking errors and slow onboarding.</p>
+                    <h3 class="text-[15px] font-bold mb-2 tracking-tight">Memory Reliance</h3>
+                    <p class="text-gray-400 text-[13px] leading-relaxed">Staff struggling to remember details, leading to picking errors.</p>
                 </div>
                 <!-- Problem Card 2 -->
-                <div class="bg-white p-8 group hover:bg-gray-50/50 transition-colors">
-                    <div class="mb-6 text-gray-400">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                <div class="bg-white p-6 group hover:bg-gray-50/30 transition-colors">
+                    <div class="mb-4 text-gray-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
                     </div>
-                    <h3 class="text-lg font-bold mb-3 tracking-tight">Search Fatigue</h3>
-                    <p class="text-gray-500 text-sm leading-relaxed">Workers spending up to 30% of their shift simply searching for misplaced items or stock locations.</p>
+                    <h3 class="text-[15px] font-bold mb-2 tracking-tight">Search Fatigue</h3>
+                    <p class="text-gray-400 text-[13px] leading-relaxed">Workers spend up to 30% of their shift simply searching for items.</p>
                 </div>
                 <!-- Problem Card 3 -->
-                <div class="bg-white p-8 group hover:bg-gray-50/50 transition-colors">
-                    <div class="mb-6 text-gray-400">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>
+                <div class="bg-white p-6 group hover:bg-gray-50/30 transition-colors">
+                    <div class="mb-4 text-gray-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>
                     </div>
-                    <h3 class="text-lg font-bold mb-3 tracking-tight">Zero Visibility</h3>
-                    <p class="text-gray-500 text-sm leading-relaxed">Managers lacking real-time data on stock velocity or best-selling products, making forecasting a guessing game.</p>
+                    <h3 class="text-[15px] font-bold mb-2 tracking-tight">Zero Visibility</h3>
+                    <p class="text-gray-400 text-[13px] leading-relaxed">Managers lack real-time data on stock velocity or bestselling products.</p>
                 </div>
                 <!-- Problem Card 4 -->
-                <div class="bg-white p-8 group hover:bg-gray-50/50 transition-colors">
-                    <div class="mb-6 text-gray-400">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                <div class="bg-white p-6 group hover:bg-gray-50/30 transition-colors">
+                    <div class="mb-4 text-gray-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
                     </div>
-                    <h3 class="text-lg font-bold mb-3 tracking-tight">Disorganized Flow</h3>
-                    <p class="text-gray-500 text-sm leading-relaxed">Unoptimized dispatch paths creating physical traffic jams and dangerous warehouse conditions.</p>
+                    <h3 class="text-[15px] font-bold mb-2 tracking-tight">Disorganized Flow</h3>
+                    <p class="text-gray-400 text-[13px] leading-relaxed">Unoptimized paths creating physical traffic jams and dangerous conditions.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- DispatchMate Section -->
-    <section id="dispatchmate" class="py-24 px-6 bg-[#fafafa] border-b border-gray-100">
-        <div class="max-w-7xl mx-auto">
-            <div class="max-w-2xl mb-16">
-                <h2 class="text-3xl md:text-5xl font-bold tracking-tighter mb-6 underline decoration-gray-200 underline-offset-8 leading-tight">DispatchMate</h2>
-                <p class="text-gray-500 text-lg leading-relaxed tracking-tight">
-                    Our flagship solution designed to eliminate the chaos of manual warehouse management. DispatchMate helps your staff find, verify, and dispatch products with algorithmic precision.
+    <section id="dispatchmate" class="py-20 px-6 bg-[#fafafa] border-b border-gray-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="max-w-xl mb-12">
+                <h2 class="text-2xl md:text-3xl font-bold tracking-tighter mb-4 underline decoration-gray-200 underline-offset-4">DispatchMate</h2>
+                <p class="text-gray-500 text-[15px] leading-relaxed">
+                    Eliminate the chaos of manual management. Find, verify, and dispatch products with algorithmic precision.
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <div class="bg-white border border-gray-200 rounded-2xl p-8 hover:border-gray-300 transition-all shadow-sm group">
-                    <div class="p-2 bg-gray-50 rounded-lg w-fit mb-6 group-hover:bg-blue-50 transition-colors">
-                        <svg class="text-gray-400 group-hover:text-blue-500" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white border border-gray-100 rounded-xl p-6 hover:border-gray-200 transition-all group">
+                    <div class="p-2 bg-gray-50 rounded-lg w-fit mb-4 group-hover:bg-blue-50/50 transition-colors">
+                        <svg class="text-gray-300 group-hover:text-blue-400" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
                     </div>
-                    <h3 class="text-xl font-bold mb-2 text-black tracking-tight">Instant Awareness</h3>
-                    <p class="text-gray-500 mb-6 text-sm leading-relaxed">Eliminate memory reliance. Search specs, high-res images, and locations in milliseconds.</p>
-                    <div class="h-48 bg-gray-50 rounded-xl border border-gray-100 flex items-center justify-center relative overflow-hidden">
-                        <div class="absolute inset-0 opacity-[0.2] dot-grid" style="background-size:16px 16px;"></div>
-                        <span class="text-xs font-mono text-gray-400 bg-white px-3 py-1 rounded-full border border-gray-100 relative z-10 tracking-widest uppercase">Search_Module</span>
+                    <h3 class="text-[17px] font-bold mb-1 text-black tracking-tight">Instant Awareness</h3>
+                    <p class="text-gray-400 mb-4 text-[13px]">Search specs, high-res images, and locations in milliseconds.</p>
+                    <div class="h-32 bg-gray-50 rounded-lg border border-gray-50 flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 opacity-[0.1] dot-grid" style="background-size:12px 12px;"></div>
+                        <span class="text-[9px] font-mono text-gray-400 bg-white px-2.5 py-0.5 rounded-full border border-gray-100 relative z-10 tracking-[0.2em] uppercase">Search_Module</span>
                     </div>
                 </div>
 
-                <div class="bg-white border border-gray-200 rounded-2xl p-8 hover:border-gray-300 transition-all shadow-sm group">
-                    <div class="p-2 bg-gray-50 rounded-lg w-fit mb-6 group-hover:bg-purple-50 transition-colors">
-                        <svg class="text-gray-400 group-hover:text-purple-500" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                <div class="bg-white border border-gray-100 rounded-xl p-6 hover:border-gray-200 transition-all group">
+                    <div class="p-2 bg-gray-50 rounded-lg w-fit mb-4 group-hover:bg-purple-50/50 transition-colors">
+                        <svg class="text-gray-300 group-hover:text-purple-400" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
                     </div>
-                    <h3 class="text-xl font-bold mb-2 text-black tracking-tight">Intelligent Analytics</h3>
-                    <p class="text-gray-500 mb-6 text-sm leading-relaxed">Predictive trending reveals which items will move next week, before the orders even arrive.</p>
-                    <div class="h-48 bg-gray-50 rounded-xl border border-gray-100 flex items-center justify-center relative overflow-hidden">
-                        <div class="absolute inset-0 opacity-[0.2] dot-grid" style="background-size:16px_16px;"></div>
-                        <span class="text-xs font-mono text-gray-400 bg-white px-3 py-1 rounded-full border border-gray-100 relative z-10 tracking-widest uppercase">Predict_Core</span>
+                    <h3 class="text-[17px] font-bold mb-1 text-black tracking-tight">Intelligent Analytics</h3>
+                    <p class="text-gray-400 mb-4 text-[13px]">Predictive trending reveals which items will move next week.</p>
+                    <div class="h-32 bg-gray-50 rounded-lg border border-gray-50 flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 opacity-[0.1] dot-grid" style="background-size:12px 12px;"></div>
+                        <span class="text-[9px] font-mono text-gray-400 bg-white px-2.5 py-0.5 rounded-full border border-gray-100 relative z-10 tracking-[0.2em] uppercase">Predict_Core</span>
                     </div>
                 </div>
             </div>
@@ -220,42 +220,42 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-24 md:py-32 px-6 bg-white border-b border-gray-100">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20">
+    <section id="about" class="py-20 md:py-24 px-6 bg-white border-b border-gray-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
                 <div>
-                    <span class="text-[11px] font-bold uppercase tracking-[0.2em] text-gray-400 mb-4 block">Our Mission</span>
-                    <h2 class="text-3xl md:text-5xl font-bold tracking-tighter mb-8 leading-tight">
+                    <span class="text-[9px] font-bold uppercase tracking-[0.2em] text-gray-300 mb-3 block">Our Mission</span>
+                    <h2 class="text-2xl md:text-4xl font-bold tracking-tighter mb-6 leading-tight">
                         Software forged on the <br/> warehouse floor.
                     </h2>
-                    <p class="text-gray-500 text-lg leading-relaxed mb-6 tracking-tight">
+                    <p class="text-gray-400 text-[15px] leading-relaxed mb-4">
                         At ironbyte Systems, we don't believe in "one-size-fits-all" enterprise software. We believe in tools that respect the complexity of physical labor. 
                     </p>
-                    <p class="text-gray-500 text-lg leading-relaxed tracking-tight">
-                        Our philosophy is simple: technology should reduce cognitive load, not increase it. We build software that feels like a natural extension of a worker's expertise.
+                    <p class="text-gray-400 text-[15px] leading-relaxed tracking-tight">
+                        Our philosophy is simple: technology should reduce cognitive load, not increase it. 
                     </p>
                 </div>
 
-                <div class="bg-gray-50 border border-gray-200 rounded-3xl p-8 md:p-12 relative shadow-inner">
+                <div class="bg-gray-50/50 border border-gray-100 rounded-2xl p-8 relative">
                     <div class="flex flex-col h-full">
-                        <div class="mb-8">
-                            <div class="w-16 h-16 bg-white border border-gray-200 rounded-full flex items-center justify-center mb-6 shadow-sm text-gray-400">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                        <div class="mb-6">
+                            <div class="w-12 h-12 bg-white border border-gray-100 rounded-full flex items-center justify-center mb-4 shadow-sm text-gray-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
                             </div>
-                            <h3 class="text-2xl font-bold mb-2 tracking-tight">Leon Nyaramb</h3>
-                            <p class="text-blue-600 font-medium text-sm tracking-widest uppercase mb-6">Founder & Lead Engineer</p>
-                            <p class="text-gray-600 italic leading-relaxed tracking-tight text-lg">
-                                "DispatchMate wasn't born in a startup incubator. It was born from the frustration of working in real warehouses, seeing dispatch teams struggle with outdated systems and sheer memory reliance."
+                            <h3 class="text-lg font-bold mb-1 tracking-tight">Leon Nyaramb</h3>
+                            <p class="text-blue-500 font-bold text-[9px] tracking-[0.2em] uppercase mb-4">Founder & Lead Engineer</p>
+                            <p class="text-gray-500 italic leading-relaxed text-[15px]">
+                                "DispatchMate wasn't born in a startup incubator. It was born from the frustration of seeing teams struggle with outdated systems."
                             </p>
                         </div>
-                        <div class="mt-auto pt-8 border-t border-gray-200 flex gap-4">
+                        <div class="mt-auto pt-4 border-t border-gray-100 flex gap-4">
                             <div class="flex flex-col">
-                                <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Experience</span>
-                                <span class="text-sm font-medium">Ops & Logistics Eng.</span>
+                                <span class="text-[8px] font-bold text-gray-300 uppercase tracking-widest">Experience</span>
+                                <span class="text-[11px] font-semibold text-gray-600">Ops & Logistics Eng.</span>
                             </div>
-                            <div class="flex flex-col border-l border-gray-200 pl-4">
-                                <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Focus</span>
-                                <span class="text-sm font-medium">Operational UX</span>
+                            <div class="flex flex-col border-l border-gray-100 pl-4">
+                                <span class="text-[8px] font-bold text-gray-300 uppercase tracking-widest">Focus</span>
+                                <span class="text-[11px] font-semibold text-gray-600">Operational UX</span>
                             </div>
                         </div>
                     </div>
@@ -265,34 +265,33 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-24 px-6 bg-[#fafafa]">
-        <div class="max-w-4xl mx-auto border border-gray-200 rounded-3xl bg-white p-8 md:p-16 shadow-sm">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold tracking-tighter mb-4 text-black">Connect with ironbyte</h2>
-                <p class="text-gray-500 tracking-tight">Interested in DispatchMate? Let's discuss your operations.</p>
+    <section id="contact" class="py-20 px-6 bg-[#fafafa]">
+        <div class="max-w-3xl mx-auto border border-gray-100 rounded-2xl bg-white p-8 md:p-12 shadow-sm">
+            <div class="text-center mb-10">
+                <h2 class="text-2xl font-bold tracking-tighter mb-2 text-black">Connect with ironbyte</h2>
+                <p class="text-gray-400 text-[14px]">Interested in DispatchMate? Let's discuss your operations.</p>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="space-y-4">
                     <div>
-                        <label class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2 block">Full Name</label>
-                        <input type="text" placeholder="Leon Nyaramb" class="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-black/5 transition-all" />
+                        <label class="text-[9px] font-bold text-gray-400 uppercase tracking-widest mb-1.5 block">Full Name</label>
+                        <input type="text" placeholder="Leon Nyaramb" class="w-full bg-gray-50/50 border border-gray-100 rounded-lg px-3.5 py-2.5 text-[13px] focus:outline-none focus:ring-1 focus:ring-black/5 transition-all" />
                     </div>
                     <div>
-                        <label class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2 block">Email Address</label>
-                        <input type="email" placeholder="leon@ironbyte.systems" class="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-black/5 transition-all" />
+                        <label class="text-[9px] font-bold text-gray-400 uppercase tracking-widest mb-1.5 block">Email Address</label>
+                        <input type="email" placeholder="leon@ironbyte.systems" class="w-full bg-gray-50/50 border border-gray-100 rounded-lg px-3.5 py-2.5 text-[13px] focus:outline-none focus:ring-1 focus:ring-black/5 transition-all" />
                     </div>
                     <div>
-                        <label class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2 block">Organization</label>
-                        <input type="text" placeholder="Company Name" class="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-black/5 transition-all" />
+                        <label class="text-[9px] font-bold text-gray-400 uppercase tracking-widest mb-1.5 block">Organization</label>
+                        <input type="text" placeholder="Company Name" class="w-full bg-gray-50/50 border border-gray-100 rounded-lg px-3.5 py-2.5 text-[13px] focus:outline-none focus:ring-1 focus:ring-black/5 transition-all" />
                     </div>
                 </div>
                 <div class="flex flex-col h-full">
-                    <label class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2 block">Message</label>
-                    <textarea placeholder="How can we help your dispatch operations?" class="flex-1 w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 text-sm min-h-[150px] focus:outline-none focus:ring-2 focus:ring-black/5 transition-all"></textarea>
-                    <button class="mt-4 w-full bg-black text-white py-4 rounded-lg font-bold flex items-center justify-center gap-2 hover:bg-gray-900 transition-all active:scale-[0.98]">
+                    <label class="text-[9px] font-bold text-gray-400 uppercase tracking-widest mb-1.5 block">Message</label>
+                    <textarea placeholder="How can we help?" class="flex-1 w-full bg-gray-50/50 border border-gray-100 rounded-lg px-3.5 py-2.5 text-[13px] min-h-[120px] focus:outline-none focus:ring-1 focus:ring-black/5 transition-all"></textarea>
+                    <button class="mt-4 w-full bg-black text-white py-3 rounded-lg text-[13px] font-bold flex items-center justify-center gap-2 hover:bg-gray-900 transition-all active:scale-[0.98]">
                         Send Message 
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
                     </button>
                 </div>
             </div>
@@ -300,76 +299,67 @@
     </section>
 
     <!-- Footer -->
-    <footer class="py-20 bg-white border-t border-gray-100 px-6">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-12 mb-16">
-                <div class="space-y-4">
-                    <h4 class="text-[10px] font-bold uppercase tracking-[0.2em] text-black">Platform</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-sm text-gray-500 hover:text-black transition-colors">Deploy</a></li>
-                        <li><a href="#" class="text-sm text-gray-500 hover:text-black transition-colors">Infrastructure</a></li>
-                        <li><a href="#" class="text-sm text-gray-500 hover:text-black transition-colors">Enterprise</a></li>
-                        <li><a href="#" class="text-sm text-gray-500 hover:text-black transition-colors">Security</a></li>
+    <footer class="py-16 bg-white border-t border-gray-50 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-10 mb-12">
+                <div class="space-y-3">
+                    <h4 class="text-[9px] font-bold uppercase tracking-[0.2em] text-black">Platform</h4>
+                    <ul class="space-y-1.5">
+                        <li><a href="#" class="text-[12px] text-gray-400 hover:text-black transition-colors">Deploy</a></li>
+                        <li><a href="#" class="text-[12px] text-gray-400 hover:text-black transition-colors">Infrastructure</a></li>
+                        <li><a href="#" class="text-[12px] text-gray-400 hover:text-black transition-colors">Enterprise</a></li>
                     </ul>
                 </div>
-                <div class="space-y-4">
-                    <h4 class="text-[10px] font-bold uppercase tracking-[0.2em] text-black">Solutions</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-sm text-gray-500 hover:text-black transition-colors">DispatchMate</a></li>
-                        <li><a href="#" class="text-sm text-gray-500 hover:text-black transition-colors">Product Search</a></li>
-                        <li><a href="#" class="text-sm text-gray-500 hover:text-black transition-colors">Inventory Cloud</a></li>
-                        <li><a href="#" class="text-sm text-gray-500 hover:text-black transition-colors">API Access</a></li>
+                <div class="space-y-3">
+                    <h4 class="text-[9px] font-bold uppercase tracking-[0.2em] text-black">Solutions</h4>
+                    <ul class="space-y-1.5">
+                        <li><a href="#" class="text-[12px] text-gray-400 hover:text-black transition-colors">DispatchMate</a></li>
+                        <li><a href="#" class="text-[12px] text-gray-400 hover:text-black transition-colors">Product Search</a></li>
                     </ul>
                 </div>
-                <div class="space-y-4">
-                    <h4 class="text-[10px] font-bold uppercase tracking-[0.2em] text-black">Company</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-sm text-gray-500 hover:text-black transition-colors">About ironbyte</a></li>
-                        <li><a href="#" class="text-sm text-gray-500 hover:text-black transition-colors">Our Philosophy</a></li>
-                        <li><a href="#" class="text-sm text-gray-500 hover:text-black transition-colors">Founder Story</a></li>
-                        <li><a href="#" class="text-sm text-gray-500 hover:text-black transition-colors">Contact</a></li>
+                <div class="space-y-3">
+                    <h4 class="text-[9px] font-bold uppercase tracking-[0.2em] text-black">Company</h4>
+                    <ul class="space-y-1.5">
+                        <li><a href="#" class="text-[12px] text-gray-400 hover:text-black transition-colors">About</a></li>
+                        <li><a href="#" class="text-[12px] text-gray-400 hover:text-black transition-colors">Philosophy</a></li>
                     </ul>
                 </div>
-                <div class="space-y-4">
-                    <h4 class="text-[10px] font-bold uppercase tracking-[0.2em] text-black">Legal</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-sm text-gray-500 hover:text-black transition-colors">Privacy Policy</a></li>
-                        <li><a href="#" class="text-sm text-gray-500 hover:text-black transition-colors">Terms of Service</a></li>
-                        <li><a href="#" class="text-sm text-gray-500 hover:text-black transition-colors">Cookie Policy</a></li>
+                <div class="space-y-3">
+                    <h4 class="text-[9px] font-bold uppercase tracking-[0.2em] text-black">Legal</h4>
+                    <ul class="space-y-1.5">
+                        <li><a href="#" class="text-[12px] text-gray-400 hover:text-black transition-colors">Privacy</a></li>
+                        <li><a href="#" class="text-[12px] text-gray-400 hover:text-black transition-colors">Terms</a></li>
                     </ul>
                 </div>
             </div>
             
-            <div class="pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="pt-6 border-t border-gray-50 flex flex-col md:flex-row justify-between items-center gap-4">
                 <div class="flex items-center gap-2">
-                    <div class="relative w-5 h-5">
+                    <div class="relative w-4 h-4">
                         <div class="absolute inset-0 bg-black rounded-sm transform -translate-y-0.5"></div>
                         <div class="absolute inset-0 bg-gray-400 rounded-sm translate-y-0.5 opacity-50"></div>
                     </div>
-                    <span class="font-bold tracking-tighter">ironbyte Systems</span>
+                    <span class="text-sm font-bold tracking-tighter">ironbyte Systems</span>
                 </div>
-                <div class="text-gray-400 text-xs tracking-tight">© <span id="year"></span> ironbyte Systems Inc.</div>
+                <div class="text-gray-300 text-[10px] tracking-tight">© <span id="year"></span> ironbyte Systems Inc.</div>
             </div>
         </div>
     </footer>
 
     <script>
-        // Update year
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        // Navbar Scroll Effect
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 20) {
-                navbar.classList.add('bg-white/80', 'backdrop-blur-md', 'border-gray-200');
+                navbar.classList.add('bg-white/80', 'backdrop-blur-md', 'border-gray-100');
                 navbar.classList.remove('border-transparent');
             } else {
-                navbar.classList.remove('bg-white/80', 'backdrop-blur-md', 'border-gray-200');
+                navbar.classList.remove('bg-white/80', 'backdrop-blur-md', 'border-gray-100');
                 navbar.classList.add('border-transparent');
             }
         });
 
-        // Mobile Menu Toggle
         const menuToggle = document.getElementById('menu-toggle');
         const mobileMenu = document.getElementById('mobile-menu');
         const menuIcon = document.getElementById('menu-icon');
@@ -387,17 +377,9 @@
                 menuIcon.innerHTML = '<line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line>';
             }
         });
-
-        // Close menu on link click
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                isMenuOpen = false;
-                mobileMenu.classList.add('hidden');
-                menuIcon.innerHTML = '<line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line>';
-            });
-        });
     </script>
 </body>
 </html>
 
-           
+                                                       <h4 class="text-[10px] font-bold uppercase tracking-[0.2em] text-black">Legal</h4>
+                    
