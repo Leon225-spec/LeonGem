@@ -16,7 +16,7 @@
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: #ffffff;
             color: #334155;
-            overflow-x: hidden;
+            overflow: hidden; /* Prevent scrolling if possible for full-screen feel */
         }
 
         .gradient-bg {
@@ -25,8 +25,8 @@
             left: 50%;
             transform: translateX(-50%);
             width: 100vw;
-            height: 600px;
-            background: radial-gradient(circle at 50% -20%, rgba(79, 70, 229, 0.05) 0%, rgba(255, 255, 255, 0) 70%);
+            height: 100vh;
+            background: radial-gradient(circle at 50% -10%, rgba(79, 70, 229, 0.05) 0%, rgba(255, 255, 255, 0) 60%);
             z-index: -1;
         }
 
@@ -45,9 +45,9 @@
             content: '';
             position: absolute;
             left: 0;
-            top: 50%;
+            top: 55%;
             width: 100%;
-            height: 4px;
+            height: 3px;
             background: #ef4444;
             transform: rotate(-3deg);
             border-radius: 2px;
@@ -55,66 +55,68 @@
         }
 
         .btn-shadow {
-            box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.3);
+            box-shadow: 0 4px 12px -2px rgba(79, 70, 229, 0.2);
+        }
+
+        /* Ensure content fits height on small screens */
+        @media (max-height: 700px) {
+            .hero-title { font-size: 2.25rem !important; }
+            .hero-desc { font-size: 0.95rem !important; margin-bottom: 1.5rem !important; }
+            .hero-main { padding-top: 1rem !important; }
         }
     </style>
 </head>
-<body>
+<body class="min-h-screen flex flex-col">
 
 <div class="gradient-bg"></div>
 
-<!-- Navigation -->
-<nav class="max-w-7xl mx-auto px-6 py-8 flex justify-between items-center">
+<!-- Compact Navigation -->
+<nav class="w-full max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
     <div class="flex items-center">
-        <span class="text-2xl font-extrabold tracking-tighter text-slate-900">ironbyte</span>
+        <span class="text-xl font-extrabold tracking-tighter text-slate-900">ironbyte</span>
     </div>
     
-    <div class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-600">
-        <a href="#" class="hover:text-indigo-600 transition-colors">Platform</a>
-        <a href="#" class="hover:text-indigo-600 transition-colors">Solutions</a>
-        <a href="#" class="hover:text-indigo-600 transition-colors">Pricing</a>
-    </div>
-
     <button class="p-2 text-slate-600">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
         </svg>
     </button>
 </nav>
 
-<main class="max-w-5xl mx-auto px-6 pt-20 md:pt-32 pb-32 text-center">
+<!-- Hero Main - Centered and Reduced Sizes -->
+<main class="flex-grow flex flex-col justify-center items-center px-6 text-center hero-main">
     <!-- Hero Content -->
-    <div class="mb-8">
-        <span class="text-[12px] uppercase font-bold tracking-[0.2em] text-slate-500">Efficiency Studio</span>
+    <div class="mb-4">
+        <span class="text-[10px] uppercase font-bold tracking-[0.2em] text-slate-400">Efficiency Studio</span>
     </div>
 
-    <h1 class="hero-title text-5xl md:text-8xl font-extrabold text-slate-900 mb-8">
-        Operations <span class="strikethrough px-2">chaotic</span><br/>
+    <h1 class="hero-title text-4xl md:text-7xl font-extrabold text-slate-900 mb-4">
+        Operations <span class="strikethrough px-1">chaotic</span><br/>
         <span class="text-indigo-600">made simple.</span>
     </h1>
 
-    <p class="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto mb-12 leading-relaxed">
-        Track inventory, manage products, and scale your business without the overhead. DispatchMate is the operating system for modern commerce.
+    <p class="hero-desc text-base md:text-xl text-slate-500 max-w-md mx-auto mb-8 leading-relaxed">
+        Track inventory and manage products with DispatchMate, the operating system for modern commerce.
     </p>
 
-    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="#" class="btn-shadow w-full sm:w-auto px-10 py-5 bg-indigo-600 text-white rounded-xl font-bold text-lg hover:bg-indigo-700 transition-all active:scale-95 flex items-center justify-center gap-2">
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-3 w-full max-w-xs sm:max-w-none">
+        <a href="#" class="btn-shadow w-full sm:w-auto px-8 py-3.5 bg-indigo-600 text-white rounded-lg font-bold text-base hover:bg-indigo-700 transition-all active:scale-95 flex items-center justify-center gap-2">
             Get Started 
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
         </a>
-        <a href="#" class="w-full sm:w-auto px-10 py-5 bg-white text-slate-700 border border-slate-200 rounded-xl font-bold text-lg hover:bg-slate-50 transition-all flex items-center justify-center">
+        <a href="#" class="w-full sm:w-auto px-8 py-3.5 bg-white text-slate-700 border border-slate-200 rounded-lg font-bold text-base hover:bg-slate-50 transition-all flex items-center justify-center">
             Contact Us
         </a>
     </div>
 </main>
 
-<section class="max-w-7xl mx-auto px-6 py-16 border-t border-slate-100 text-center">
-    <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-10">Trusted by logistics teams worldwide</p>
-    <div class="flex flex-wrap justify-center gap-8 md:gap-20 opacity-40 grayscale">
-        <div class="text-xl font-black italic tracking-tighter text-slate-900">FORGE</div>
-        <div class="text-xl font-black italic tracking-tighter text-slate-900">VELOCITY</div>
-        <div class="text-xl font-black italic tracking-tighter text-slate-900">STRATOS</div>
-        <div class="text-xl font-black italic tracking-tighter text-slate-900">NEXUS</div>
+<!-- Compact Footer Logos -->
+<section class="w-full max-w-7xl mx-auto px-6 py-6 mt-auto">
+    <div class="flex flex-wrap justify-center gap-6 md:gap-12 opacity-30 grayscale items-center">
+        <div class="text-xs font-black italic tracking-tighter text-slate-900 uppercase">Forge</div>
+        <div class="text-xs font-black italic tracking-tighter text-slate-900 uppercase">Velocity</div>
+        <div class="text-xs font-black italic tracking-tighter text-slate-900 uppercase">Stratos</div>
+        <div class="text-xs font-black italic tracking-tighter text-slate-900 uppercase">Nexus</div>
     </div>
 </section>
 
