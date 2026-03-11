@@ -1,9 +1,11 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hero Section - IronByte Systems</title>
+    <title>Hero Section - Ironbyte UI</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -41,17 +43,14 @@
             letter-spacing: -0.04em;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 4px;
         }
 
         .logo-box {
-            border: 2px solid #0ea5e9; /* Sky blue accent */
+            border: 2px solid #6366f1;
             padding: 0 4px;
             border-radius: 4px;
             position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
 
         .logo-box::before, .logo-box::after {
@@ -60,7 +59,7 @@
             width: 6px;
             height: 6px;
             background: white;
-            border: 1px solid #0ea5e9;
+            border: 1px solid #6366f1;
         }
         .logo-box::before { top: -4px; left: -4px; }
         .logo-box::after { bottom: -4px; right: -4px; }
@@ -83,6 +82,12 @@
             margin-bottom: 1.5rem;
         }
 
+        .strikethrough {
+            text-decoration: line-through;
+            text-decoration-thickness: 3px;
+            color: #94a3b8;
+        }
+
         .hero-description {
             font-size: 1.125rem;
             font-weight: 400;
@@ -93,7 +98,7 @@
         }
 
         .btn-primary {
-            background-color: #0ea5e9; /* Sky blue accent */
+            background-color: #4f46e5;
             color: white;
             padding: 14px 28px;
             border-radius: 8px;
@@ -108,7 +113,7 @@
 
         .btn-secondary {
             background-color: white;
-            color: #0ea5e9; /* Sky blue accent */
+            color: #4f46e5;
             padding: 14px 28px;
             border-radius: 8px;
             font-weight: 600;
@@ -133,37 +138,32 @@
         <section class="hero-section">
             <header class="logo-container">
                 <div class="logo-text">
-                    IRONBYTE
-                    <span class="logo-box">
-                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M2 17l10 5 10-5M2 12l10 5 10-5M12 2L2 7l10 5 10-5-10-5z"/>
-                        </svg>
-                    </span>
+                    Practical <span class="logo-box">UI</span>
                 </div>
                 <button class="p-2">
                     <svg class="w-8 h-8 text-slate-800" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                 </button>
             </header>
 
-            <div class="hero-eyebrow">Software Studio</div>
+            <div class="hero-eyebrow">UI Design Book</div>
             <h1 class="hero-title">
-                Software built for real business operations
+                UI design <span class="strikethrough">is hard</span> just got easier
             </h1>
             <p class="hero-description">
-                IronByte Systems creates practical tools that help teams find products faster, reduce mistakes, and run warehouse and shop operations smoothly.
+                Learn a logic-driven approach to design intuitive, accessible, and beautiful interfaces using quick and practical guidelines.
             </p>
             
             <div class="flex flex-col sm:flex-row gap-2">
-                <a href="#" class="btn-primary">View DispatchMate</a>
-                <a href="#" class="btn-secondary">Learn More</a>
+                <a href="#" class="btn-primary">View pricing</a>
+                <a href="#" class="btn-secondary">Free preview</a>
             </div>
 
             <!-- Social Proof -->
             <div class="mt-12 flex items-center gap-4">
                 <div class="flex -space-x-2">
-                    <img src="https://i.pravatar.cc/100?u=tech1" class="w-10 h-10 rounded-full border-2 border-white" alt="user">
-                    <img src="https://i.pravatar.cc/100?u=tech2" class="w-10 h-10 rounded-full border-2 border-white" alt="user">
-                    <img src="https://i.pravatar.cc/100?u=tech3" class="w-10 h-10 rounded-full border-2 border-white" alt="user">
+                    <img src="https://i.pravatar.cc/100?u=molly" class="w-10 h-10 rounded-full border-2 border-white" alt="user">
+                    <img src="https://i.pravatar.cc/100?u=adrian" class="w-10 h-10 rounded-full border-2 border-white" alt="user">
+                    <img src="https://i.pravatar.cc/100?u=jordan" class="w-10 h-10 rounded-full border-2 border-white" alt="user">
                 </div>
                 <div>
                     <div class="flex text-yellow-400">
