@@ -16,10 +16,8 @@
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: #ffffff;
             color: #334155;
-            overflow: hidden;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
+            overflow-x: hidden;
+            /* Allow scrolling now that we have more content */
         }
 
         .gradient-bg {
@@ -29,7 +27,7 @@
             transform: translateX(-50%);
             width: 100vw;
             height: 100vh;
-            background: radial-gradient(circle at 50% -5%, rgba(79, 70, 229, 0.06) 0%, rgba(255, 255, 255, 0) 50%);
+            background: radial-gradient(circle at 50% -5%, rgba(79, 70, 229, 0.04) 0%, rgba(255, 255, 255, 0) 50%);
             z-index: -1;
         }
 
@@ -61,12 +59,12 @@
             box-shadow: 0 4px 12px -2px rgba(79, 70, 229, 0.2);
         }
 
-        /* Responsive scaling for shorter viewports */
-        @media (max-height: 740px) {
-            .hero-title { font-size: 2.5rem !important; }
-            .hero-desc { font-size: 0.95rem !important; margin-bottom: 1.25rem !important; }
-            .nav-container { padding-top: 1rem !important; padding-bottom: 1rem !important; }
-            .eyebrow-container { margin-bottom: 1rem !important; }
+        .mockup-shadow {
+            box-shadow: 0 20px 50px -12px rgba(0, 0, 0, 0.15);
+        }
+
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.75rem; }
         }
     </style>
 </head>
@@ -74,12 +72,11 @@
 
 <div class="gradient-bg"></div>
 
-<!-- Compact Navigation -->
-<nav class="nav-container w-full max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+<!-- Navigation -->
+<nav class="w-full max-w-7xl mx-auto px-6 py-5 flex justify-between items-center relative z-10">
     <div class="flex items-center">
         <span class="text-xl font-extrabold tracking-tighter text-slate-900">ironbyte</span>
     </div>
-    
     <button class="p-2 text-slate-600">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 10h16M4 16h16"></path>
@@ -87,36 +84,78 @@
     </button>
 </nav>
 
-<!-- Hero Main - Proportional Vertical Spacing -->
-<main class="flex-grow flex flex-col justify-center items-center px-6 text-center">
-    
-    <div class="eyebrow-container mb-6">
-        <span class="text-[10px] md:text-[11px] uppercase font-bold tracking-[0.25em] text-slate-400">Efficiency Studio</span>
-    </div>
+<!-- Hero Main -->
+<main class="max-w-7xl mx-auto px-6 pt-8 md:pt-16 pb-12">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+        
+        <!-- Left: Typography & Actions -->
+        <div class="text-center lg:text-left order-2 lg:order-1">
+            <div class="mb-4">
+                <span class="text-[10px] md:text-[11px] uppercase font-bold tracking-[0.25em] text-slate-400">Efficiency Studio</span>
+            </div>
 
-    <h1 class="hero-title text-4xl md:text-7xl font-extrabold text-slate-900 mb-5">
-        Operations <span class="strikethrough px-1">chaotic</span><br/>
-        <span class="text-indigo-600">made simple.</span>
-    </h1>
+            <h1 class="hero-title text-5xl md:text-7xl font-extrabold text-slate-900 mb-5">
+                Operations <span class="strikethrough px-1">chaotic</span><br/>
+                <span class="text-indigo-600">made simple.</span>
+            </h1>
 
-    <p class="hero-desc text-[15px] md:text-xl text-slate-500 max-w-[320px] md:max-w-md mx-auto mb-10 leading-relaxed">
-        Track inventory and manage products with DispatchMate, the operating system for modern commerce.
-    </p>
+            <p class="text-[16px] md:text-lg text-slate-500 max-w-md mx-auto lg:mx-0 mb-8 leading-relaxed">
+                Track inventory and manage products with DispatchMate, the operating system for modern commerce.
+            </p>
 
-    <div class="flex flex-col sm:flex-row items-center justify-center gap-3 w-full max-w-[280px] sm:max-w-none">
-        <a href="#" class="btn-shadow w-full sm:w-auto px-8 py-3.5 bg-indigo-600 text-white rounded-lg font-bold text-base hover:bg-indigo-700 transition-all active:scale-95 flex items-center justify-center gap-2">
-            Get Started 
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-        </a>
-        <a href="#" class="w-full sm:w-auto px-8 py-3.5 bg-white text-slate-700 border border-slate-200 rounded-lg font-bold text-base hover:bg-slate-50 transition-all flex items-center justify-center">
-            Contact Us
-        </a>
+            <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 mb-10">
+                <a href="#" class="btn-shadow w-full sm:w-auto px-8 py-3.5 bg-indigo-600 text-white rounded-lg font-bold text-base hover:bg-indigo-700 transition-all flex items-center justify-center gap-2">
+                    Get Started 
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                </a>
+                <a href="#" class="w-full sm:w-auto px-8 py-3.5 bg-white text-slate-700 border border-slate-200 rounded-lg font-bold text-base hover:bg-slate-50 transition-all flex items-center justify-center">
+                    Contact Us
+                </a>
+            </div>
+
+            <!-- Social Proof (Ref: Practical UI screenshot) -->
+            <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4 border-t border-slate-100 lg:border-none">
+                <div class="flex -space-x-3">
+                    <img class="w-10 h-10 rounded-full border-2 border-white bg-slate-200" src="https://i.pravatar.cc/100?u=1" alt="User">
+                    <img class="w-10 h-10 rounded-full border-2 border-white bg-slate-200" src="https://i.pravatar.cc/100?u=2" alt="User">
+                    <img class="w-10 h-10 rounded-full border-2 border-white bg-slate-200" src="https://i.pravatar.cc/100?u=3" alt="User">
+                </div>
+                <div class="text-left">
+                    <div class="flex text-amber-400">
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    </div>
+                    <p class="text-xs font-bold text-slate-500 uppercase tracking-tight">Loved by 2,000+ businesses</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right: Visual Screenshot -->
+        <div class="order-1 lg:order-2 flex justify-center">
+            <div class="relative w-full max-w-sm lg:max-w-md">
+                <!-- Decorative element behind image -->
+                <div class="absolute -inset-4 bg-indigo-50 rounded-[2.5rem] -rotate-2 -z-10"></div>
+                <!-- Mockup Image -->
+                <div class="mockup-shadow rounded-2xl border-4 border-white overflow-hidden bg-slate-100 aspect-[4/5] flex items-center justify-center">
+                    <div class="text-slate-300 flex flex-col items-center">
+                        <svg class="w-16 h-16 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        <span class="text-xs font-bold tracking-widest uppercase">Visual Preview</span>
+                    </div>
+                    <!-- Replace the div above with this img tag when you have the URL:
+                    <img src="YOUR_IMAGE_URL" class="w-full h-full object-cover" alt="App Screenshot">
+                    -->
+                </div>
+            </div>
+        </div>
     </div>
 </main>
 
-<!-- Proportional Footer -->
-<footer class="w-full max-w-7xl mx-auto px-6 py-8">
-    <div class="flex justify-center gap-8 md:gap-12 opacity-30 grayscale items-center">
+<!-- Footer Logos -->
+<footer class="w-full max-w-7xl mx-auto px-6 py-12 border-t border-slate-50">
+    <div class="flex flex-wrap justify-center gap-8 md:gap-16 opacity-30 grayscale items-center">
         <div class="text-[10px] font-black italic tracking-tighter text-slate-900 uppercase">Forge</div>
         <div class="text-[10px] font-black italic tracking-tighter text-slate-900 uppercase">Velocity</div>
         <div class="text-[10px] font-black italic tracking-tighter text-slate-900 uppercase">Stratos</div>
