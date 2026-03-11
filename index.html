@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+   <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -58,36 +58,27 @@
             box-shadow: 0 4px 12px -2px rgba(79, 70, 229, 0.2);
         }
 
-        .mockup-container {
-            perspective: 1000px;
+        /* Mockup container with deep shadow for the screenshot */
+        .screenshot-container {
+            position: relative;
+            width: 100%;
+            max-width: 540px;
+            margin: 0 auto;
         }
 
-        .mockup-card {
+        .screenshot-frame {
             background: #ffffff;
-            border-radius: 24px;
-            box-shadow: 0 30px 60px -12px rgba(15, 23, 42, 0.12);
+            border-radius: 16px;
+            box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.15);
             border: 1px solid rgba(241, 245, 249, 1);
             overflow: hidden;
-            transition: transform 0.3s ease;
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .inventory-item {
-            border: 1px solid #f1f5f9;
-            border-radius: 12px;
-            padding: 12px;
-            margin-bottom: 12px;
-            background: white;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .tag {
-            font-size: 10px;
-            font-weight: 700;
-            padding: 2px 8px;
-            border-radius: 99px;
-            text-transform: uppercase;
+        .screenshot-frame img {
+            width: 100%;
+            height: auto;
+            display: block;
         }
 
         @media (max-width: 768px) {
@@ -113,10 +104,10 @@
 
 <!-- Hero Main -->
 <main class="max-w-7xl mx-auto px-6 pt-8 md:pt-16 pb-20">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-12 items-center">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-8 items-center">
         
-        <!-- Left: Typography & Actions (Top on Mobile) -->
-        <div class="text-center lg:text-left">
+        <!-- Left: Typography & Actions -->
+        <div class="text-center lg:text-left order-1">
             <div class="mb-4">
                 <span class="text-[10px] md:text-[11px] uppercase font-bold tracking-[0.25em] text-slate-400">Efficiency Studio</span>
             </div>
@@ -160,62 +151,29 @@
             </div>
         </div>
 
-        <!-- Right: Visual Review Mockup (Bottom on Mobile) -->
-        <div class="mockup-container flex justify-center lg:justify-end">
-            <div class="mockup-card w-full max-w-[380px] p-6 lg:transform lg:rotate-2">
-                <!-- Mockup Header -->
-                <div class="flex items-center justify-between mb-8">
-                    <div class="flex gap-1.5">
-                        <div class="w-2 h-2 rounded-full bg-slate-200"></div>
-                        <div class="w-2 h-2 rounded-full bg-slate-200"></div>
-                        <div class="w-2 h-2 rounded-full bg-slate-200"></div>
-                    </div>
-                    <span class="text-[9px] font-bold text-slate-300 uppercase tracking-widest">Inventory List</span>
-                </div>
-
-                <!-- Product 1 -->
-                <div class="inventory-item">
-                    <div class="w-16 h-16 rounded-lg bg-slate-50 flex items-center justify-center border border-slate-100 p-2">
-                        <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&q=80&w=100" class="w-full h-full object-contain mix-blend-multiply" alt="Laptop">
-                    </div>
-                    <div class="flex-grow">
-                        <div class="flex justify-between items-start mb-1">
-                            <span class="text-[10px] font-bold text-slate-400">LPT-7890</span>
-                            <span class="tag bg-amber-50 text-amber-600">8 in stock</span>
+        <!-- Right: Visual Screenshot Container -->
+        <div class="order-2 lg:order-2">
+            <div class="screenshot-container">
+                <!-- Background decorative shape -->
+                <div class="absolute -inset-8 bg-indigo-50/50 rounded-full blur-3xl -z-10"></div>
+                
+                <div class="screenshot-frame lg:rotate-1 hover:rotate-0">
+                    <!-- Placeholder representing your app screenshot -->
+                    <div class="bg-slate-50 aspect-video lg:aspect-[4/3] flex flex-col items-center justify-center p-8">
+                        <div class="w-full h-full border-2 border-dashed border-slate-200 rounded-lg flex flex-col items-center justify-center gap-4 text-slate-400">
+                            <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                            </svg>
+                            <div class="text-center">
+                                <p class="text-xs font-bold uppercase tracking-widest">App Screenshot</p>
+                                <p class="text-[10px] mt-1 opacity-60 italic">Replace with your Hero.png</p>
+                            </div>
                         </div>
-                        <h4 class="text-xs font-extrabold text-slate-900 mb-0.5">TechBook Pro 15.6"</h4>
-                        <p class="text-[11px] font-bold text-indigo-600">$899.99</p>
                     </div>
-                </div>
-
-                <!-- Product 2 -->
-                <div class="inventory-item">
-                    <div class="w-16 h-16 rounded-lg bg-slate-50 flex items-center justify-center border border-slate-100 p-2">
-                        <img src="https://images.unsplash.com/photo-1583394838336-acd977730f90?auto=format&fit=crop&q=80&w=100" class="w-full h-full object-contain mix-blend-multiply" alt="Cable">
-                    </div>
-                    <div class="flex-grow">
-                        <div class="flex justify-between items-start mb-1">
-                            <span class="text-[10px] font-bold text-slate-400">CBL-1122</span>
-                            <span class="tag bg-amber-50 text-amber-600">5 in stock</span>
-                        </div>
-                        <h4 class="text-xs font-extrabold text-slate-900 mb-0.5">USB-C Fast Charge 2m</h4>
-                        <p class="text-[11px] font-bold text-indigo-600">$12.99</p>
-                    </div>
-                </div>
-
-                <!-- Product 3 -->
-                <div class="inventory-item">
-                    <div class="w-16 h-16 rounded-lg bg-slate-50 flex items-center justify-center border border-slate-100 p-2">
-                        <img src="https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?auto=format&fit=crop&q=80&w=100" class="w-full h-full object-contain mix-blend-multiply" alt="Mouse">
-                    </div>
-                    <div class="flex-grow">
-                        <div class="flex justify-between items-start mb-1">
-                            <span class="text-[10px] font-bold text-slate-400">MSE-3344</span>
-                            <span class="tag bg-emerald-50 text-emerald-600">120 in stock</span>
-                        </div>
-                        <h4 class="text-xs font-extrabold text-slate-900 mb-0.5">ErgoGlide Wireless Mouse</h4>
-                        <p class="text-[11px] font-bold text-indigo-600">$29.99</p>
-                    </div>
+                    
+                    <!-- If you want to use the actual image file when hosted:
+                    <img src="Hero.png" alt="App Dashboard Screenshot">
+                    -->
                 </div>
             </div>
         </div>
@@ -235,3 +193,4 @@
 </body>
 </html>
 
+                     
