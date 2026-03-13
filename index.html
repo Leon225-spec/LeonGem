@@ -1,4 +1,4 @@
-       <!DOCTYPE html>
+      <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -117,25 +117,85 @@
             opacity: 0.3;
         }
 
-        /* Feature Rotating Pills Animation */
-        .feature-pill {
-            position: absolute;
-            opacity: 0;
-            animation: feature-cycle 9s infinite ease-in-out;
+        /* ==========================================================
+           Magical Orbital Animation System (Atom Style)
+           ========================================================== */
+        @keyframes orbit-spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
-        .feature-pill-1 { animation-delay: 0s; }
-        .feature-pill-2 { animation-delay: 3s; }
-        .feature-pill-3 { animation-delay: 6s; }
+        @keyframes orbit-spin-reverse {
+            from { transform: rotate(360deg); }
+            to { transform: rotate(0deg); }
+        }
 
-        @keyframes feature-cycle {
-            0% { opacity: 0; transform: translateY(20px) scale(0.95); }
-            5%, 28% { opacity: 1; transform: translateY(0) scale(1); }
-            33.33% { opacity: 0; transform: translateY(-20px) scale(0.95); }
-            34%, 100% { opacity: 0; transform: translateY(20px) scale(0.95); }
+        /* The circular track the atoms follow */
+        .orbit-track {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            border: 1px dashed;
+            z-index: 10;
+        }
+        .orbit-track-blue { border-color: rgba(59, 130, 246, 0.3); }
+        .orbit-track-purple { border-color: rgba(168, 85, 247, 0.3); }
+
+        /* The rotating container */
+        .orbit-spinner {
+            position: absolute;
+            inset: 0;
+            animation: orbit-spin linear infinite;
+        }
+        .orbit-spinner-reverse {
+            position: absolute;
+            inset: 0;
+            animation: orbit-spin-reverse linear infinite;
+        }
+
+        /* Positions the pill at the edge of the track */
+        .orbit-element {
+            position: absolute;
+            transform: translate(-50%, -50%);
+            z-index: 20;
+        }
+        .orbit-pos-top { top: 0; left: 50%; }
+        .orbit-pos-bottom { top: 100%; left: 50%; }
+        .orbit-pos-left { top: 50%; left: 0; }
+        .orbit-pos-right { top: 50%; left: 100%; }
+
+        /* Counter-spin keeps text upright while orbiting */
+        .counter-spin {
+            animation: orbit-spin-reverse linear infinite;
+            white-space: nowrap;
+        }
+        .counter-spin-reverse {
+            animation: orbit-spin linear infinite;
+            white-space: nowrap;
+        }
+
+        /* Glowing Central Cores */
+        .core-glow-blue {
+            box-shadow: 0 0 20px 4px rgba(59, 130, 246, 0.2);
+            animation: core-pulse-blue 3s ease-in-out infinite alternate;
+        }
+        .core-glow-purple {
+            box-shadow: 0 0 20px 4px rgba(168, 85, 247, 0.2);
+            animation: core-pulse-purple 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes core-pulse-blue {
+            0% { box-shadow: 0 0 15px 2px rgba(59, 130, 246, 0.2); }
+            100% { box-shadow: 0 0 35px 8px rgba(59, 130, 246, 0.4); }
+        }
+        @keyframes core-pulse-purple {
+            0% { box-shadow: 0 0 15px 2px rgba(168, 85, 247, 0.2); }
+            100% { box-shadow: 0 0 35px 8px rgba(168, 85, 247, 0.4); }
         }
 
         /* Prevent scrolling when mobile menu is open */
-        .overflow-hidden {
+        .overflow-hidden-nav {
             overflow: hidden;
         }
     </style>
@@ -145,7 +205,6 @@
     <!-- Navigation -->
     <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 border-b border-transparent bg-white/80 backdrop-blur-md">
         <div class="max-w-6xl mx-auto px-6 md:px-12 lg:px-20 h-16 flex items-center justify-between">
-            <!-- Adjusted Logo -->
             <div class="flex items-center gap-1 group cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
                 <div class="logo-stack scale-[0.85] origin-left">
                     <div class="logo-layer-1"></div>
@@ -235,10 +294,9 @@
         <div class="guide-line-h bottom-0"></div>
     </section>
 
-    <!-- Problem / Features Section (Streamlined to be Direct) -->
+    <!-- Core Infrastructure Section -->
     <section id="problems" class="py-20 md:py-24 px-6 md:px-16 lg:px-20 border-b border-gray-100 bg-white relative">
         <div class="max-w-6xl mx-auto">
-            <!-- Vercel style direct header -->
             <div class="mb-10 flex items-end justify-between">
                 <div>
                     <h2 class="text-2xl md:text-3xl font-semibold tracking-tighter text-gray-900">Core Infrastructure.</h2>
@@ -283,10 +341,9 @@
         </div>
     </section>
 
-    <!-- DispatchMate Section (Streamlined) -->
+    <!-- DispatchMate Section -->
     <section id="dispatchmate" class="py-20 md:py-32 px-6 md:px-16 lg:px-20 bg-[#fafafa] relative border-b border-gray-100">
         <div class="max-w-6xl mx-auto">
-            <!-- Vercel style product header -->
             <div class="mb-12">
                 <h2 class="text-3xl md:text-4xl font-semibold tracking-tighter text-gray-900 mb-3">DispatchMate</h2>
                 <p class="text-gray-500 text-[15px] sm:text-base max-w-xl">
@@ -295,63 +352,115 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-gray-200 border border-gray-200 rounded-[24px] overflow-hidden shadow-sm">
-                <!-- Box 1 -->
-                <div class="bg-white p-8 md:p-12 group transition-all">
+                <!-- Box 1: Awareness -->
+                <div class="bg-white p-8 md:p-12 group transition-all flex flex-col">
                     <div class="p-3 bg-gray-50 rounded-xl w-fit mb-8 border border-gray-100 group-hover:bg-blue-50 group-hover:border-blue-100 transition-colors">
                         <svg class="text-gray-400 group-hover:text-blue-500 transition-colors" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
                     </div>
                     <h3 class="text-xl font-semibold mb-2 text-gray-900 tracking-tight">Instant Awareness</h3>
                     <p class="text-gray-500 mb-10 text-[14px] leading-relaxed">Search specifications, high-res images, and physical locations in milliseconds.</p>
                     
-                    <div class="h-64 bg-[#fafafa] rounded-xl border border-gray-100 flex items-center justify-center relative overflow-hidden group-hover:bg-white transition-colors">
+                    <!-- Box 1 Magical Orbit Area -->
+                    <div class="h-80 w-full mt-auto bg-[#fafafa] rounded-xl border border-gray-100 flex items-center justify-center relative overflow-hidden group-hover:bg-white transition-colors">
                         <div class="absolute inset-0 bg-[linear-gradient(to_right,#eaeaea_1px,transparent_1px),linear-gradient(to_bottom,#eaeaea_1px,transparent_1px)] bg-[size:1rem_1rem] opacity-50"></div>
                         <div class="guide-line-h top-1/2"></div>
                         <div class="guide-line-v left-1/2"></div>
                         
-                        <!-- Rotating Features Container -->
-                        <div class="relative z-10 flex items-center justify-center w-full h-full">
-                            <div class="feature-pill feature-pill-1 flex items-center gap-2.5 bg-white px-5 py-2.5 rounded-full border border-gray-200 shadow-[0_4px_16px_rgba(0,0,0,0.06)]">
-                                <svg class="text-blue-500" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                                <span class="text-[13px] font-medium text-gray-800 tracking-tight">Real-time Item Locator</span>
+                        <!-- Glowing Central Core -->
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 w-12 h-12 bg-white rounded-full border border-blue-200 flex items-center justify-center core-glow-blue">
+                            <svg class="text-blue-500" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                        </div>
+
+                        <!-- Orbit Track 1 -->
+                        <div class="orbit-track orbit-track-blue w-[140px] h-[140px]">
+                            <div class="orbit-spinner" style="animation-duration: 14s;">
+                                <div class="orbit-element orbit-pos-top">
+                                    <div class="flex items-center gap-2.5 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full border border-gray-200/80 shadow-sm counter-spin" style="animation-duration: 14s;">
+                                        <svg class="text-blue-500 shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                                        <span class="text-[12px] font-medium text-gray-800 tracking-tight">Real-time Item Locator</span>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="feature-pill feature-pill-2 flex items-center gap-2.5 bg-white px-5 py-2.5 rounded-full border border-gray-200 shadow-[0_4px_16px_rgba(0,0,0,0.06)]">
-                                <svg class="text-blue-500" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-                                <span class="text-[13px] font-medium text-gray-800 tracking-tight">Instant Spec Verification</span>
+                        </div>
+
+                        <!-- Orbit Track 2 -->
+                        <div class="orbit-track orbit-track-blue w-[230px] h-[230px]">
+                            <div class="orbit-spinner-reverse" style="animation-duration: 20s;">
+                                <div class="orbit-element orbit-pos-bottom">
+                                    <div class="flex items-center gap-2.5 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full border border-gray-200/80 shadow-sm counter-spin-reverse" style="animation-duration: 20s;">
+                                        <svg class="text-blue-500 shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                                        <span class="text-[12px] font-medium text-gray-800 tracking-tight">Instant Spec Verification</span>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="feature-pill feature-pill-3 flex items-center gap-2.5 bg-white px-5 py-2.5 rounded-full border border-gray-200 shadow-[0_4px_16px_rgba(0,0,0,0.06)]">
-                                <svg class="text-blue-500" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-                                <span class="text-[13px] font-medium text-gray-800 tracking-tight">Millisecond Queries</span>
+                        </div>
+
+                        <!-- Orbit Track 3 -->
+                        <div class="orbit-track orbit-track-blue w-[320px] h-[320px]">
+                            <div class="orbit-spinner" style="animation-duration: 26s;">
+                                <div class="orbit-element orbit-pos-left">
+                                    <div class="flex items-center gap-2.5 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full border border-gray-200/80 shadow-sm counter-spin" style="animation-duration: 26s;">
+                                        <svg class="text-blue-500 shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                                        <span class="text-[12px] font-medium text-gray-800 tracking-tight">Millisecond Queries</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Box 2 -->
-                <div class="bg-white p-8 md:p-12 group transition-all">
+                <!-- Box 2: Analytics -->
+                <div class="bg-white p-8 md:p-12 group transition-all flex flex-col">
                     <div class="p-3 bg-gray-50 rounded-xl w-fit mb-8 border border-gray-100 group-hover:bg-purple-50 group-hover:border-purple-100 transition-colors">
                         <svg class="text-gray-400 group-hover:text-purple-500 transition-colors" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
                     </div>
                     <h3 class="text-xl font-semibold mb-2 text-gray-900 tracking-tight">Predictive Analytics</h3>
                     <p class="text-gray-500 mb-10 text-[14px] leading-relaxed">Forecast volume spikes and automate restocking before orders arrive.</p>
                     
-                    <div class="h-64 bg-[#fafafa] rounded-xl border border-gray-100 flex items-center justify-center relative overflow-hidden group-hover:bg-white transition-colors">
+                    <!-- Box 2 Magical Orbit Area -->
+                    <div class="h-80 w-full mt-auto bg-[#fafafa] rounded-xl border border-gray-100 flex items-center justify-center relative overflow-hidden group-hover:bg-white transition-colors">
                          <div class="absolute inset-0 bg-[linear-gradient(to_right,#eaeaea_1px,transparent_1px),linear-gradient(to_bottom,#eaeaea_1px,transparent_1px)] bg-[size:1rem_1rem] opacity-50"></div>
                         <div class="guide-line-h top-1/2"></div>
                         <div class="guide-line-v left-1/2"></div>
                         
-                        <!-- Rotating Features Container -->
-                        <div class="relative z-10 flex items-center justify-center w-full h-full">
-                            <div class="feature-pill feature-pill-1 flex items-center gap-2.5 bg-white px-5 py-2.5 rounded-full border border-gray-200 shadow-[0_4px_16px_rgba(0,0,0,0.06)]">
-                                <svg class="text-purple-500" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
-                                <span class="text-[13px] font-medium text-gray-800 tracking-tight">Velocity Forecasting</span>
+                        <!-- Glowing Central Core -->
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 w-12 h-12 bg-white rounded-full border border-purple-200 flex items-center justify-center core-glow-purple">
+                            <svg class="text-purple-500" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                        </div>
+
+                        <!-- Orbit Track 1 -->
+                        <div class="orbit-track orbit-track-purple w-[140px] h-[140px]">
+                            <div class="orbit-spinner-reverse" style="animation-duration: 15s;">
+                                <div class="orbit-element orbit-pos-right">
+                                    <div class="flex items-center gap-2.5 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full border border-gray-200/80 shadow-sm counter-spin-reverse" style="animation-duration: 15s;">
+                                        <svg class="text-purple-500 shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                                        <span class="text-[12px] font-medium text-gray-800 tracking-tight">Velocity Forecasting</span>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="feature-pill feature-pill-2 flex items-center gap-2.5 bg-white px-5 py-2.5 rounded-full border border-gray-200 shadow-[0_4px_16px_rgba(0,0,0,0.06)]">
-                                <svg class="text-purple-500" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
-                                <span class="text-[13px] font-medium text-gray-800 tracking-tight">Smart Restocking</span>
+                        </div>
+
+                        <!-- Orbit Track 2 -->
+                        <div class="orbit-track orbit-track-purple w-[230px] h-[230px]">
+                            <div class="orbit-spinner" style="animation-duration: 21s;">
+                                <div class="orbit-element orbit-pos-top">
+                                    <div class="flex items-center gap-2.5 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full border border-gray-200/80 shadow-sm counter-spin" style="animation-duration: 21s;">
+                                        <svg class="text-purple-500 shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                                        <span class="text-[12px] font-medium text-gray-800 tracking-tight">Smart Restocking</span>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="feature-pill feature-pill-3 flex items-center gap-2.5 bg-white px-5 py-2.5 rounded-full border border-gray-200 shadow-[0_4px_16px_rgba(0,0,0,0.06)]">
-                                <svg class="text-purple-500" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-                                <span class="text-[13px] font-medium text-gray-800 tracking-tight">Bottleneck Alerts</span>
+                        </div>
+
+                        <!-- Orbit Track 3 -->
+                        <div class="orbit-track orbit-track-purple w-[320px] h-[320px]">
+                            <div class="orbit-spinner-reverse" style="animation-duration: 27s;">
+                                <div class="orbit-element orbit-pos-bottom">
+                                    <div class="flex items-center gap-2.5 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full border border-gray-200/80 shadow-sm counter-spin-reverse" style="animation-duration: 27s;">
+                                        <svg class="text-purple-500 shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                                        <span class="text-[12px] font-medium text-gray-800 tracking-tight">Bottleneck Alerts</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -459,12 +568,12 @@
             if (isMenuOpen) {
                 mobileMenu.classList.remove('hidden');
                 mobileMenu.classList.add('flex');
-                body.classList.add('overflow-hidden');
+                body.classList.add('overflow-hidden-nav');
                 menuIcon.innerHTML = '<line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>';
             } else {
                 mobileMenu.classList.add('hidden');
                 mobileMenu.classList.remove('flex');
-                body.classList.remove('overflow-hidden');
+                body.classList.remove('overflow-hidden-nav');
                 menuIcon.innerHTML = '<line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line>';
             }
         });
@@ -473,7 +582,7 @@
             link.addEventListener('click', () => {
                 isMenuOpen = false;
                 mobileMenu.classList.add('hidden');
-                body.classList.remove('overflow-hidden');
+                body.classList.remove('overflow-hidden-nav');
                 menuIcon.innerHTML = '<line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line>';
             });
         });
@@ -481,5 +590,5 @@
 </body>
 </html>
 
-                                                              
-            
+                 
+                            
