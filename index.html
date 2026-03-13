@@ -1,4 +1,4 @@
-           <!DOCTYPE html>
+     <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -97,24 +97,6 @@
             opacity: 0.3;
         }
 
-        /* Feature Rotating Pills Animation */
-        .feature-pill {
-            position: absolute;
-            opacity: 0;
-            animation: feature-cycle 9s infinite ease-in-out;
-            white-space: nowrap;
-        }
-        .feature-pill-1 { animation-delay: 0s; }
-        .feature-pill-2 { animation-delay: 3s; }
-        .feature-pill-3 { animation-delay: 6s; }
-
-        @keyframes feature-cycle {
-            0% { opacity: 0; transform: translateY(20px) scale(0.9); }
-            8%, 28% { opacity: 1; transform: translateY(0) scale(1); }
-            33.33% { opacity: 0; transform: translateY(-20px) scale(0.9); }
-            34%, 100% { opacity: 0; transform: translateY(20px) scale(0.9); }
-        }
-
         /* Orbiting Circles Styling */
         .orbit-container {
             position: relative;
@@ -123,19 +105,35 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: visible;
         }
 
         .orbit-circle {
             position: absolute;
             border-radius: 50%;
-            border: 1px solid rgba(0,0,0,0.04);
+            border: 1px solid rgba(0,0,0,0.06);
             pointer-events: none;
         }
 
         .orbit-1 { width: 140px; height: 140px; border-style: dashed; }
-        .orbit-2 { width: 260px; height: 260px; border-style: solid; }
-        .orbit-3 { width: 400px; height: 400px; border-style: solid; opacity: 0.5; }
+        .orbit-2 { width: 280px; height: 280px; border-style: solid; }
+        .orbit-3 { width: 420px; height: 420px; border-style: solid; opacity: 0.5; }
+        .orbit-4 { width: 560px; height: 560px; border-style: dashed; opacity: 0.3; }
+
+        /* Floating Feature Pills Animation (Updated for unified visual) */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+        
+        .feature-pill {
+            position: absolute;
+            animation: float 6s infinite ease-in-out;
+            white-space: nowrap;
+        }
+        .feature-pill-1 { animation-delay: 0s; top: 15%; left: 10%; }
+        .feature-pill-2 { animation-delay: -2s; bottom: 20%; right: 10%; }
+        .feature-pill-3 { animation-delay: -4s; top: 22%; right: 15%; }
+        .feature-pill-4 { animation-delay: -1.5s; bottom: 25%; left: 15%; }
 
         /* Prevent scrolling when mobile menu is open */
         .overflow-hidden {
@@ -220,119 +218,143 @@
         </div>
     </section>
 
-    <!-- Core Infrastructure -->
-    <section id="problems" class="py-24 px-6 md:px-16 lg:px-20 border-b border-gray-100 bg-white relative">
+    <!-- Core Infrastructure (Vercel Style: Typographic Grid, No Cards) -->
+    <section id="problems" class="py-24 md:py-32 px-6 md:px-16 lg:px-20 border-b border-gray-100 bg-white relative">
         <div class="max-w-6xl mx-auto">
-            <div class="mb-12">
-                <h2 class="text-2xl md:text-3xl font-semibold tracking-tighter text-gray-900">Core Infrastructure.</h2>
-                <p class="text-gray-500 mt-2 text-sm md:text-base">Primitives for modern warehouse operations.</p>
+            
+            <div class="max-w-3xl mb-16 md:mb-24">
+                <h2 class="text-[32px] md:text-4xl font-semibold tracking-tighter text-gray-900 mb-4">Core Infrastructure</h2>
+                <p class="text-gray-500 text-[16px] md:text-lg leading-relaxed">
+                    Primitives for modern warehouse operations. Built from the ground up to replace manual memory with programmatic precision across your floor.
+                </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-gray-100 border border-gray-200 rounded-2xl overflow-hidden shadow-sm">
-                <div class="bg-white p-10 group hover:bg-gray-50/50 transition-colors">
-                    <div class="mb-6 text-gray-400 group-hover:text-gray-900 transition-colors">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"></polyline><path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"></path></svg>
+            <!-- Features Grid (No Backgrounds or Borders) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-16">
+                <!-- Feature 1 -->
+                <div class="group">
+                    <div class="mb-5 text-gray-900">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"></polyline><path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"></path></svg>
                     </div>
-                    <h3 class="text-base font-semibold mb-2 tracking-tight text-gray-900">State Management</h3>
-                    <p class="text-gray-500 text-[14px] leading-relaxed">Replace manual memory with programmatic precision across your floor.</p>
+                    <h3 class="text-base font-semibold mb-3 tracking-tight text-gray-900">State Management</h3>
+                    <p class="text-gray-500 text-[14px] leading-relaxed">Synchronize physical inventory with digital reality. Maintain state automatically without human intervention.</p>
                 </div>
-                <div class="bg-white p-10 group hover:bg-gray-50/50 transition-colors">
-                    <div class="mb-6 text-gray-400 group-hover:text-gray-900 transition-colors">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                
+                <!-- Feature 2 -->
+                <div class="group">
+                    <div class="mb-5 text-gray-900">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
                     </div>
-                    <h3 class="text-base font-semibold mb-2 tracking-tight text-gray-900">Instant Discovery</h3>
-                    <p class="text-gray-500 text-[14px] leading-relaxed">Locate physical inventory and assets in milliseconds, not minutes.</p>
+                    <h3 class="text-base font-semibold mb-3 tracking-tight text-gray-900">Instant Discovery</h3>
+                    <p class="text-gray-500 text-[14px] leading-relaxed">Locate physical inventory and assets in milliseconds, not minutes. Full spatial awareness.</p>
                 </div>
-                <div class="bg-white p-10 group hover:bg-gray-50/50 transition-colors">
-                    <div class="mb-6 text-gray-400 group-hover:text-gray-900 transition-colors">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>
+                
+                <!-- Feature 3 -->
+                <div class="group">
+                    <div class="mb-5 text-gray-900">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>
                     </div>
-                    <h3 class="text-base font-semibold mb-2 tracking-tight text-gray-900">Live Telemetry</h3>
-                    <p class="text-gray-500 text-[14px] leading-relaxed">Real-time data streams on stock velocity, placement, and condition.</p>
+                    <h3 class="text-base font-semibold mb-3 tracking-tight text-gray-900">Live Telemetry</h3>
+                    <p class="text-gray-500 text-[14px] leading-relaxed">Subscribe to real-time data streams on stock velocity, precise placement, and physical condition.</p>
                 </div>
-                <div class="bg-white p-10 group hover:bg-gray-50/50 transition-colors">
-                    <div class="mb-6 text-gray-400 group-hover:text-gray-900 transition-colors">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                
+                <!-- Feature 4 -->
+                <div class="group">
+                    <div class="mb-5 text-gray-900">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
                     </div>
-                    <h3 class="text-base font-semibold mb-2 tracking-tight text-gray-900">Optimized Routing</h3>
-                    <p class="text-gray-500 text-[14px] leading-relaxed">Algorithmic pathfinding to eliminate physical traffic and bottlenecks.</p>
+                    <h3 class="text-base font-semibold mb-3 tracking-tight text-gray-900">Optimized Routing</h3>
+                    <p class="text-gray-500 text-[14px] leading-relaxed">Algorithmic pathfinding seamlessly applied to your floor plan to eliminate physical traffic bottlenecks.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- DispatchMate Section -->
-    <section id="dispatchmate" class="py-24 px-6 md:px-16 lg:px-20 bg-[#fafafa] relative border-b border-gray-100 overflow-hidden">
+    <!-- DispatchMate Section (Vercel Style: Left Timeline, Right Visual Block) -->
+    <section id="dispatchmate" class="py-24 md:py-32 px-6 md:px-16 lg:px-20 bg-white relative border-b border-gray-100 overflow-hidden">
         <div class="max-w-6xl mx-auto">
-            <div class="mb-12">
-                <h2 class="text-3xl md:text-4xl font-semibold tracking-tighter text-gray-900 mb-3">DispatchMate</h2>
-                <p class="text-gray-500 text-[15px] sm:text-base max-w-xl">
-                    The operating system for your warehouse floor. Find, verify, and route products with algorithmic precision.
-                </p>
-            </div>
+            
+            <div class="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
+                
+                <!-- Left Content: Vertical Stepper -->
+                <div class="w-full lg:w-5/12">
+                    <h2 class="text-[32px] md:text-4xl font-semibold tracking-tighter text-gray-900 mb-6">DispatchMate</h2>
+                    <p class="text-gray-500 text-[16px] md:text-lg leading-relaxed mb-12">
+                        The operating system for your warehouse floor. Find, verify, and route products with algorithmic precision.
+                    </p>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-gray-200 border border-gray-200 rounded-[32px] overflow-hidden shadow-sm">
-                <!-- Feature 1: Instant Awareness -->
-                <div class="bg-white p-8 md:p-14 group transition-all">
-                    <div class="p-3 bg-gray-50 rounded-xl w-fit mb-8 border border-gray-100 group-hover:bg-blue-50 group-hover:border-blue-100 transition-colors">
-                        <svg class="text-gray-400 group-hover:text-blue-500 transition-colors" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    <div class="space-y-10 relative before:absolute before:inset-y-2 before:left-[11px] before:w-[1px] before:bg-gray-100">
+                        
+                        <!-- Step 1 -->
+                        <div class="relative pl-10 group">
+                            <div class="absolute left-0 top-1 w-6 h-6 bg-white border border-gray-200 rounded-full flex items-center justify-center transition-colors group-hover:border-gray-900">
+                                <div class="w-2 h-2 bg-gray-300 rounded-full transition-colors group-hover:bg-gray-900"></div>
+                            </div>
+                            <h3 class="text-lg font-semibold mb-2 text-gray-900 tracking-tight transition-colors">Instant Awareness</h3>
+                            <p class="text-gray-500 text-[14px] leading-relaxed">Search specifications, high-res images, and physical locations in milliseconds. Instantly query your entire floor directly from the interface.</p>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div class="relative pl-10 group">
+                            <div class="absolute left-0 top-1 w-6 h-6 bg-white border border-gray-200 rounded-full flex items-center justify-center transition-colors group-hover:border-gray-900">
+                                <div class="w-2 h-2 bg-gray-300 rounded-full transition-colors group-hover:bg-gray-900"></div>
+                            </div>
+                            <h3 class="text-lg font-semibold mb-2 text-gray-900 tracking-tight transition-colors">Predictive Analytics</h3>
+                            <p class="text-gray-500 text-[14px] leading-relaxed">Forecast volume spikes and automate restocking workflows before orders arrive. Prevent bottlenecks autonomously.</p>
+                        </div>
+                        
+                        <!-- Step 3 -->
+                        <div class="relative pl-10 group">
+                            <div class="absolute left-0 top-1 w-6 h-6 bg-white border border-gray-200 rounded-full flex items-center justify-center transition-colors group-hover:border-gray-900">
+                                <div class="w-2 h-2 bg-gray-300 rounded-full transition-colors group-hover:bg-gray-900"></div>
+                            </div>
+                            <h3 class="text-lg font-semibold mb-2 text-gray-900 tracking-tight transition-colors">Unified Deployment</h3>
+                            <p class="text-gray-500 text-[14px] leading-relaxed">Deploy changes across scanners, terminals, and manager dashboards instantly with zero downtime.</p>
+                        </div>
+
                     </div>
-                    <h3 class="text-xl font-semibold mb-2 text-gray-900 tracking-tight">Instant Awareness</h3>
-                    <p class="text-gray-500 mb-12 text-[14px] leading-relaxed max-w-sm">Search specifications, high-res images, and physical locations in milliseconds.</p>
-                    
-                    <!-- Fixed Container with Orbits -->
-                    <div class="h-72 bg-[#fcfcfc] rounded-2xl border border-gray-100 relative flex items-center justify-center overflow-visible">
-                        <div class="orbit-container">
+                </div>
+
+                <!-- Right Content: Consolidated Visual Presentation -->
+                <div class="w-full lg:w-7/12">
+                    <div class="w-full aspect-[4/3] md:aspect-video lg:aspect-square bg-[#fafafa] rounded-2xl border border-gray-200 shadow-sm relative flex items-center justify-center overflow-hidden">
+                        <!-- Subtle Background Grid -->
+                        <div class="tech-grid opacity-40"></div>
+                        
+                        <!-- Consolidated Orbit Visual -->
+                        <div class="orbit-container scale-[0.6] sm:scale-75 md:scale-90 lg:scale-100">
                             <div class="orbit-circle orbit-1"></div>
                             <div class="orbit-circle orbit-2"></div>
                             <div class="orbit-circle orbit-3"></div>
+                            <div class="orbit-circle orbit-4"></div>
                             
-                            <div class="feature-pill feature-pill-1 flex items-center gap-2.5 bg-white px-5 py-2.5 rounded-full border border-gray-200 shadow-sm">
-                                <svg class="text-blue-500" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                                <span class="text-[13px] font-medium text-gray-800 tracking-tight">Real-time Item Locator</span>
+                            <!-- Center Point -->
+                            <div class="absolute w-4 h-4 bg-gray-900 rounded-full shadow-[0_0_0_8px_rgba(17,17,17,0.1)]"></div>
+                            
+                            <!-- Floating Data Pills -->
+                            <div class="feature-pill feature-pill-1 flex items-center gap-2.5 bg-white px-4 py-2 rounded-full border border-gray-200 shadow-sm">
+                                <span class="w-2 h-2 rounded-full bg-blue-500"></span>
+                                <span class="text-[13px] font-medium text-gray-800 tracking-tight">Real-time Locator</span>
                             </div>
-                            <div class="feature-pill feature-pill-2 flex items-center gap-2.5 bg-white px-5 py-2.5 rounded-full border border-gray-200 shadow-sm">
-                                <svg class="text-blue-500" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                            
+                            <div class="feature-pill feature-pill-2 flex items-center gap-2.5 bg-white px-4 py-2 rounded-full border border-gray-200 shadow-sm">
+                                <span class="w-2 h-2 rounded-full bg-purple-500"></span>
+                                <span class="text-[13px] font-medium text-gray-800 tracking-tight">Velocity Forecast</span>
+                            </div>
+                            
+                            <div class="feature-pill feature-pill-3 flex items-center gap-2.5 bg-white px-4 py-2 rounded-full border border-gray-200 shadow-sm">
+                                <span class="w-2 h-2 rounded-full bg-gray-900"></span>
                                 <span class="text-[13px] font-medium text-gray-800 tracking-tight">Spec Verification</span>
                             </div>
-                            <div class="feature-pill feature-pill-3 flex items-center gap-2.5 bg-white px-5 py-2.5 rounded-full border border-gray-200 shadow-sm">
-                                <svg class="text-blue-500" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-                                <span class="text-[13px] font-medium text-gray-800 tracking-tight">Millisecond Queries</span>
+                            
+                            <div class="feature-pill feature-pill-4 flex items-center gap-2.5 bg-white px-4 py-2 rounded-full border border-gray-200 shadow-sm">
+                                <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                                <span class="text-[13px] font-medium text-gray-800 tracking-tight">Smart Restocking</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Feature 2: Predictive Analytics -->
-                <div class="bg-white p-8 md:p-14 group transition-all border-l border-gray-200">
-                    <div class="p-3 bg-gray-50 rounded-xl w-fit mb-8 border border-gray-100 group-hover:bg-purple-50 group-hover:border-purple-100 transition-colors">
-                        <svg class="text-gray-400 group-hover:text-purple-500 transition-colors" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2 text-gray-900 tracking-tight">Predictive Analytics</h3>
-                    <p class="text-gray-500 mb-12 text-[14px] leading-relaxed max-w-sm">Forecast volume spikes and automate restocking before orders arrive.</p>
-                    
-                    <!-- Fixed Container with Orbits -->
-                    <div class="h-72 bg-[#fcfcfc] rounded-2xl border border-gray-100 relative flex items-center justify-center overflow-visible">
-                        <div class="orbit-container">
-                            <div class="orbit-circle orbit-1"></div>
-                            <div class="orbit-circle orbit-2"></div>
-                            <div class="orbit-circle orbit-3"></div>
-                            
-                            <div class="feature-pill feature-pill-1 flex items-center gap-2.5 bg-white px-5 py-2.5 rounded-full border border-gray-200 shadow-sm">
-                                <svg class="text-purple-500" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
-                                <span class="text-[13px] font-medium text-gray-800 tracking-tight">Velocity Forecasting</span>
-                            </div>
-                            <div class="feature-pill feature-pill-2 flex items-center gap-2.5 bg-white px-5 py-2.5 rounded-full border border-gray-200 shadow-sm">
-                                <svg class="text-purple-500" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
-                                <span class="text-[13px] font-medium text-gray-800 tracking-tight">Smart Restocking</span>
-                            </div>
-                            <div class="feature-pill feature-pill-3 flex items-center gap-2.5 bg-white px-5 py-2.5 rounded-full border border-gray-200 shadow-sm">
-                                <svg class="text-purple-500" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line></svg>
-                                <span class="text-[13px] font-medium text-gray-800 tracking-tight">Bottleneck Alerts</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -452,7 +474,5 @@
 </body>
 </html>
 
-           
-                                            <div class="h-80 w-full mt-auto bg-[#fafafa] rounded-xl border border-gray-100 flex items-center justify-center relative overflow-hidden group-hover:bg-white transition-colors">
-                                                 <li><a href="#" class="text-[14px] text-gray-500 hover:text-gray-900 transition-colors">Enterprise</a></li>
-                    
+              
+                        
