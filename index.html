@@ -1,4 +1,4 @@
-           <!DOCTYPE html>
+               <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -44,10 +44,8 @@
             overflow-x: hidden;
             background-color: #ffffff;
         }
-        /* Refined Typography classes to match the vibe */
         .tracking-tight { letter-spacing: -0.02em; }
         .tracking-tighter { letter-spacing: -0.04em; }
-        .tracking-widest { letter-spacing: 0.15em; }
         
         /* Vercel-style Tech Grid & Guides */
         .tech-grid {
@@ -105,19 +103,20 @@
             opacity: 0;
             animation: feature-cycle 9s infinite ease-in-out;
             white-space: nowrap;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
         .feature-pill-1 { animation-delay: 0s; }
         .feature-pill-2 { animation-delay: 3s; }
         .feature-pill-3 { animation-delay: 6s; }
 
         @keyframes feature-cycle {
-            0% { opacity: 0; transform: translateY(20px) scale(0.9); }
+            0% { opacity: 0; transform: translateY(20px) scale(0.95); }
             8%, 28% { opacity: 1; transform: translateY(0) scale(1); }
-            33.33% { opacity: 0; transform: translateY(-20px) scale(0.9); }
-            34%, 100% { opacity: 0; transform: translateY(20px) scale(0.9); }
+            33.33% { opacity: 0; transform: translateY(-20px) scale(0.95); }
+            34%, 100% { opacity: 0; transform: translateY(20px) scale(0.95); }
         }
 
-        /* Orbiting Circles Styling - Subtly adjusted for clean background */
+        /* Orbiting Circles Styling */
         .orbit-container {
             position: relative;
             width: 100%;
@@ -131,7 +130,7 @@
         .orbit-circle {
             position: absolute;
             border-radius: 50%;
-            border: 1px solid rgba(0,0,0,0.04);
+            border: 1px solid rgba(0,0,0,0.06);
             pointer-events: none;
         }
 
@@ -140,12 +139,6 @@
         .orbit-3 { width: 400px; height: 400px; border-style: solid; opacity: 0.5; }
 
         .overflow-hidden { overflow: hidden; }
-        
-        /* Thin horizontal divider style */
-        .vercel-divider {
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(0,0,0,0.08) 15%, rgba(0,0,0,0.08) 85%, transparent);
-        }
     </style>
 </head>
 <body class="min-h-screen bg-white text-gray-900 selection:bg-gray-900 selection:text-white tracking-tight">
@@ -192,16 +185,16 @@
     </div>
 
     <!-- Hero Section -->
-    <section id="hero" class="relative pt-32 pb-16 md:pt-48 md:pb-32 px-6 md:px-16 lg:px-20 border-b border-gray-100 overflow-hidden flex items-center justify-center min-h-[85vh]">
+    <section id="hero" class="relative pt-32 pb-16 md:pt-48 md:pb-32 px-6 md:px-16 lg:px-20 border-b border-gray-200 overflow-hidden flex items-center justify-center min-h-[85vh]">
         <div class="tech-grid"></div>
         
         <div class="max-w-4xl mx-auto text-center relative z-10 w-full">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-gray-200 bg-white shadow-sm mb-10">
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-gray-200 bg-white shadow-sm mb-10 transition-colors hover:border-gray-300 cursor-pointer">
                 <span class="relative flex h-2 w-2">
                   <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
                   <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
                 </span>
-                <span class="text-[12px] font-medium text-gray-600">DispatchMate v2.4 Now Available</span>
+                <span class="text-[12px] font-medium text-gray-900">DispatchMate v2.4 Now Available</span>
             </div>
 
             <h1 class="text-[40px] sm:text-5xl md:text-6xl lg:text-[72px] font-semibold tracking-tighter mb-6 text-gray-900 leading-[1.05]">
@@ -214,170 +207,169 @@
             </p>
             
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <button class="w-full sm:w-auto bg-gray-900 text-white px-8 py-3.5 rounded-full font-medium text-sm hover:bg-black hover:shadow-lg transition-all flex items-center justify-center gap-2 group">
+                <button class="w-full sm:w-auto bg-gray-900 text-white px-8 py-3.5 rounded-full font-medium text-[14px] hover:bg-black hover:shadow-lg transition-all flex items-center justify-center gap-2 group border border-transparent">
                     Start Deploying 
                     <svg class="group-hover:translate-x-1 transition-transform" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                 </button>
-                <button class="w-full sm:w-auto bg-white border border-gray-200 text-gray-700 px-8 py-3.5 rounded-full font-medium text-sm hover:bg-gray-50 hover:border-gray-300 transition-all shadow-sm">
+                <button class="w-full sm:w-auto bg-white border border-gray-200 text-gray-900 px-8 py-3.5 rounded-full font-medium text-[14px] hover:bg-gray-50 hover:border-gray-300 transition-all shadow-sm">
                     Read the Docs
                 </button>
             </div>
         </div>
     </section>
 
-    <!-- REDESIGNED: Core Infrastructure -->
-    <section id="problems" class="py-24 md:py-32 px-6 md:px-16 lg:px-20 bg-white relative">
-        <div class="max-w-6xl mx-auto">
+    <!-- Core Infrastructure (Redesigned - Vercel Split Layout) -->
+    <section id="problems" class="py-24 md:py-32 px-6 md:px-16 lg:px-20 border-b border-gray-200 bg-white relative">
+        <div class="max-w-6xl mx-auto flex flex-col lg:flex-row gap-16 lg:gap-24">
             
-            <!-- Vercel-style Split Header -->
-            <div class="flex flex-col lg:flex-row lg:items-end justify-between border-b border-gray-200 pb-12 mb-16 gap-8">
-                <div class="max-w-3xl">
-                    <!-- Eyebrow -->
-                    <h2 class="text-[12px] font-semibold text-gray-400 tracking-[0.2em] uppercase mb-4">Core Infrastructure</h2>
-                    <!-- Main Typography mix of black and gray -->
-                    <h3 class="text-[32px] md:text-[44px] lg:text-[48px] font-medium tracking-tighter text-gray-900 leading-[1.1]">
-                        ironbyte is the enterprise platform <br class="hidden md:block" />
-                        <span class="text-gray-400">for warehouse operations.</span>
-                    </h3>
-                </div>
-                <div class="lg:mb-2">
-                    <p class="text-gray-500 text-[15px] max-w-sm leading-relaxed">
-                        Replace manual memory with programmatic precision across your floor using our foundational primitives.
-                    </p>
-                </div>
+            <!-- Left: Prominent Text block -->
+            <div class="lg:w-1/3 shrink-0">
+                <h2 class="text-[13px] font-semibold tracking-[0.15em] text-gray-500 uppercase mb-4">Core Infrastructure</h2>
+                <p class="text-[32px] md:text-[40px] leading-[1.1] font-semibold tracking-tighter text-gray-900">
+                    Primitives for modern operations.
+                </p>
             </div>
-
-            <!-- Borderless Column Layout -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+            
+            <!-- Right: Typographic List / Grid -->
+            <div class="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
                 
-                <!-- Item 1 -->
-                <div class="flex flex-col group">
+                <!-- Primitive 1 -->
+                <div>
                     <div class="mb-5 text-gray-900">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"></polyline><path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"></path></svg>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"></polyline><path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"></path></svg>
                     </div>
-                    <h4 class="text-[15px] font-semibold mb-2 tracking-tight text-gray-900">State Management</h4>
-                    <p class="text-gray-500 text-[14px] leading-relaxed">Ensure absolute truth. Replace manual memory with programmatic precision across your floor.</p>
+                    <h3 class="text-[17px] font-semibold mb-2.5 tracking-tight text-gray-900">State Management</h3>
+                    <p class="text-gray-500 text-[15px] leading-relaxed">Replace manual memory with programmatic precision across your floor. Maintain absolute truth of inventory.</p>
                 </div>
 
-                <!-- Item 2 -->
-                <div class="flex flex-col group">
+                <!-- Primitive 2 -->
+                <div>
                     <div class="mb-5 text-gray-900">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
                     </div>
-                    <h4 class="text-[15px] font-semibold mb-2 tracking-tight text-gray-900">Instant Discovery</h4>
-                    <p class="text-gray-500 text-[14px] leading-relaxed">Locate physical inventory and critical assets in milliseconds, rather than minutes.</p>
+                    <h3 class="text-[17px] font-semibold mb-2.5 tracking-tight text-gray-900">Instant Discovery</h3>
+                    <p class="text-gray-500 text-[15px] leading-relaxed">Locate physical inventory and assets in milliseconds, not minutes. Query the physical world like a database.</p>
                 </div>
 
-                <!-- Item 3 -->
-                <div class="flex flex-col group">
+                <!-- Primitive 3 -->
+                <div>
                     <div class="mb-5 text-gray-900">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>
                     </div>
-                    <h4 class="text-[15px] font-semibold mb-2 tracking-tight text-gray-900">Live Telemetry</h4>
-                    <p class="text-gray-500 text-[14px] leading-relaxed">Tap into real-time data streams monitoring stock velocity, placement, and condition.</p>
+                    <h3 class="text-[17px] font-semibold mb-2.5 tracking-tight text-gray-900">Live Telemetry</h3>
+                    <p class="text-gray-500 text-[15px] leading-relaxed">Real-time data streams on stock velocity, placement, and condition. Push events directly to your dashboard.</p>
                 </div>
 
-                <!-- Item 4 -->
-                <div class="flex flex-col group">
+                <!-- Primitive 4 -->
+                <div>
                     <div class="mb-5 text-gray-900">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
                     </div>
-                    <h4 class="text-[15px] font-semibold mb-2 tracking-tight text-gray-900">Optimized Routing</h4>
-                    <p class="text-gray-500 text-[14px] leading-relaxed">Leverage algorithmic pathfinding to eliminate physical traffic and operational bottlenecks.</p>
+                    <h3 class="text-[17px] font-semibold mb-2.5 tracking-tight text-gray-900">Optimized Routing</h3>
+                    <p class="text-gray-500 text-[15px] leading-relaxed">Algorithmic pathfinding to eliminate physical traffic and bottlenecks. Compute the fastest route instantly.</p>
                 </div>
 
             </div>
         </div>
     </section>
 
-    <!-- REDESIGNED: DispatchMate Section -->
-    <section id="dispatchmate" class="pt-16 pb-32 px-6 md:px-16 lg:px-20 bg-white relative">
-        
-        <div class="vercel-divider w-full max-w-6xl mx-auto mb-24"></div>
-
+    <!-- DispatchMate Section (Redesigned - Vercel Feature Blocks) -->
+    <section id="dispatchmate" class="py-24 md:py-32 px-6 md:px-16 lg:px-20 bg-white relative border-b border-gray-200 overflow-hidden">
         <div class="max-w-6xl mx-auto">
-            <!-- Centralized Vercel-style heading -->
-            <div class="text-center max-w-3xl mx-auto mb-20">
-                <h2 class="text-[12px] font-semibold text-gray-400 tracking-[0.2em] uppercase mb-4">DispatchMate OS</h2>
-                <h3 class="text-[32px] md:text-[44px] font-medium tracking-tighter text-gray-900 leading-[1.15] mb-6">
-                    Your complete toolkit for <br class="hidden md:block"/>
-                    <span class="text-gray-400">the warehouse floor.</span>
-                </h3>
-                <p class="text-gray-500 text-[16px] max-w-xl mx-auto leading-relaxed">
-                    Find, verify, and route products with algorithmic precision. Scale from a single facility to a global network effortlessly.
+            
+            <!-- Section Header -->
+            <div class="flex flex-col items-center text-center mb-24">
+                <div class="w-12 h-12 rounded-[14px] bg-gradient-to-b from-gray-800 to-gray-900 flex items-center justify-center mb-6 shadow-[0_2px_10px_rgba(0,0,0,0.1)] border border-gray-900">
+                    <svg class="text-white" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+                </div>
+                <h2 class="text-[32px] md:text-[48px] font-semibold tracking-tighter text-gray-900 mb-5 leading-[1.1]">
+                    The operating system <br class="hidden sm:block" /> for your warehouse floor.
+                </h2>
+                <p class="text-[17px] md:text-[19px] text-gray-500 max-w-2xl leading-relaxed">
+                    Find, verify, and route products with algorithmic precision. DispatchMate turns physical chaos into structured data.
                 </p>
             </div>
 
-            <!-- Clean, borderless split layout -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+            <!-- Alternating Feature Blocks -->
+            <div class="space-y-32 md:space-y-40">
                 
-                <!-- Feature 1: Instant Awareness -->
-                <div class="flex flex-col">
-                    <!-- Tech visual floating cleanly without harsh card borders -->
-                    <div class="h-72 w-full mb-10 relative flex items-center justify-center bg-[#fafafa]/50 rounded-lg border border-gray-100">
-                        <div class="orbit-container">
-                            <div class="orbit-circle orbit-1"></div>
-                            <div class="orbit-circle orbit-2"></div>
-                            <div class="orbit-circle orbit-3"></div>
-                            
-                            <div class="feature-pill feature-pill-1 flex items-center gap-2.5 bg-white px-4 py-2 rounded-full border border-gray-200 shadow-[0_2px_8px_rgba(0,0,0,0.04)]">
-                                <svg class="text-blue-500" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                                <span class="text-[12px] font-medium text-gray-800 tracking-tight">Real-time Item Locator</span>
-                            </div>
-                            <div class="feature-pill feature-pill-2 flex items-center gap-2.5 bg-white px-4 py-2 rounded-full border border-gray-200 shadow-[0_2px_8px_rgba(0,0,0,0.04)]">
-                                <svg class="text-blue-500" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
-                                <span class="text-[12px] font-medium text-gray-800 tracking-tight">Spec Verification</span>
-                            </div>
-                            <div class="feature-pill feature-pill-3 flex items-center gap-2.5 bg-white px-4 py-2 rounded-full border border-gray-200 shadow-[0_2px_8px_rgba(0,0,0,0.04)]">
-                                <svg class="text-blue-500" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-                                <span class="text-[12px] font-medium text-gray-800 tracking-tight">Millisecond Queries</span>
-                            </div>
+                <!-- Block 1: Instant Awareness -->
+                <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
+                    <div class="lg:w-[45%] space-y-6">
+                        <div class="flex items-center gap-2.5 text-[14px] font-semibold text-blue-600 tracking-tight">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                            Instant Awareness
                         </div>
+                        <h3 class="text-[28px] md:text-[36px] font-semibold tracking-tighter text-gray-900 leading-[1.15]">
+                            Search specs, high-res images, and locations.
+                        </h3>
+                        <p class="text-[16px] text-gray-500 leading-relaxed">
+                            No more wandering the aisles. Instantly query your entire floor plan and pinpoint exactly where an item is located, verified by real-time inventory specifications.
+                        </p>
                     </div>
                     
-                    <div>
-                        <div class="flex items-center gap-3 mb-3">
-                            <span class="text-[12px] font-semibold text-gray-900 bg-gray-100 px-2 py-0.5 rounded-sm">01</span>
-                            <h4 class="text-[18px] font-medium tracking-tight text-gray-900">Instant Awareness</h4>
+                    <div class="lg:w-[55%] w-full">
+                        <!-- Clean Minimal UI Window -->
+                        <div class="h-[360px] md:h-[420px] w-full rounded-2xl border border-gray-200 bg-gray-50 relative overflow-hidden flex items-center justify-center shadow-sm">
+                            <div class="orbit-container">
+                                <div class="orbit-circle orbit-1"></div>
+                                <div class="orbit-circle orbit-2 border-gray-200"></div>
+                                <div class="orbit-circle orbit-3 border-gray-200"></div>
+                                
+                                <div class="feature-pill feature-pill-1 flex items-center gap-2.5 bg-white px-4 py-2.5 rounded-lg border border-gray-200">
+                                    <svg class="text-blue-500" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                                    <span class="text-[13px] font-medium text-gray-900">Real-time Item Locator</span>
+                                </div>
+                                <div class="feature-pill feature-pill-2 flex items-center gap-2.5 bg-white px-4 py-2.5 rounded-lg border border-gray-200">
+                                    <svg class="text-blue-500" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                                    <span class="text-[13px] font-medium text-gray-900">Spec Verification</span>
+                                </div>
+                                <div class="feature-pill feature-pill-3 flex items-center gap-2.5 bg-white px-4 py-2.5 rounded-lg border border-gray-200">
+                                    <svg class="text-blue-500" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                                    <span class="text-[13px] font-medium text-gray-900">Millisecond Queries</span>
+                                </div>
+                            </div>
                         </div>
-                        <p class="text-gray-500 text-[15px] leading-relaxed">
-                            Search specifications, high-res images, and physical locations in milliseconds. Enable your team to find exactly what they need, the moment they need it.
-                        </p>
                     </div>
                 </div>
 
-                <!-- Feature 2: Predictive Analytics -->
-                <div class="flex flex-col">
-                    <!-- Tech visual floating cleanly -->
-                    <div class="h-72 w-full mb-10 relative flex items-center justify-center bg-[#fafafa]/50 rounded-lg border border-gray-100">
-                        <div class="orbit-container">
-                            <div class="orbit-circle orbit-1"></div>
-                            <div class="orbit-circle orbit-2"></div>
-                            <div class="orbit-circle orbit-3"></div>
-                            
-                            <div class="feature-pill feature-pill-1 flex items-center gap-2.5 bg-white px-4 py-2 rounded-full border border-gray-200 shadow-[0_2px_8px_rgba(0,0,0,0.04)]">
-                                <svg class="text-purple-500" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
-                                <span class="text-[12px] font-medium text-gray-800 tracking-tight">Velocity Forecasting</span>
-                            </div>
-                            <div class="feature-pill feature-pill-2 flex items-center gap-2.5 bg-white px-4 py-2 rounded-full border border-gray-200 shadow-[0_2px_8px_rgba(0,0,0,0.04)]">
-                                <svg class="text-purple-500" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
-                                <span class="text-[12px] font-medium text-gray-800 tracking-tight">Smart Restocking</span>
-                            </div>
-                            <div class="feature-pill feature-pill-3 flex items-center gap-2.5 bg-white px-4 py-2 rounded-full border border-gray-200 shadow-[0_2px_8px_rgba(0,0,0,0.04)]">
-                                <svg class="text-purple-500" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line></svg>
-                                <span class="text-[12px] font-medium text-gray-800 tracking-tight">Bottleneck Alerts</span>
-                            </div>
+                <!-- Block 2: Predictive Analytics (Reversed Layout) -->
+                <div class="flex flex-col lg:flex-row-reverse items-center gap-12 lg:gap-24">
+                    <div class="lg:w-[45%] space-y-6">
+                        <div class="flex items-center gap-2.5 text-[14px] font-semibold text-purple-600 tracking-tight">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                            Predictive Analytics
                         </div>
+                        <h3 class="text-[28px] md:text-[36px] font-semibold tracking-tighter text-gray-900 leading-[1.15]">
+                            Forecast spikes and automate restocking.
+                        </h3>
+                        <p class="text-[16px] text-gray-500 leading-relaxed">
+                            Anticipate demand with intelligent forecasting. DispatchMate identifies bottlenecks and suggests optimal restocking patterns proactively before orders even arrive.
+                        </p>
                     </div>
                     
-                    <div>
-                        <div class="flex items-center gap-3 mb-3">
-                            <span class="text-[12px] font-semibold text-gray-900 bg-gray-100 px-2 py-0.5 rounded-sm">02</span>
-                            <h4 class="text-[18px] font-medium tracking-tight text-gray-900">Predictive Analytics</h4>
+                    <div class="lg:w-[55%] w-full">
+                        <!-- Clean Minimal UI Window -->
+                        <div class="h-[360px] md:h-[420px] w-full rounded-2xl border border-gray-200 bg-gray-50 relative overflow-hidden flex items-center justify-center shadow-sm">
+                            <div class="orbit-container">
+                                <div class="orbit-circle orbit-1"></div>
+                                <div class="orbit-circle orbit-2 border-gray-200"></div>
+                                <div class="orbit-circle orbit-3 border-gray-200"></div>
+                                
+                                <div class="feature-pill feature-pill-1 flex items-center gap-2.5 bg-white px-4 py-2.5 rounded-lg border border-gray-200">
+                                    <svg class="text-purple-500" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                                    <span class="text-[13px] font-medium text-gray-900">Velocity Forecasting</span>
+                                </div>
+                                <div class="feature-pill feature-pill-2 flex items-center gap-2.5 bg-white px-4 py-2.5 rounded-lg border border-gray-200">
+                                    <svg class="text-purple-500" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+                                    <span class="text-[13px] font-medium text-gray-900">Smart Restocking</span>
+                                </div>
+                                <div class="feature-pill feature-pill-3 flex items-center gap-2.5 bg-white px-4 py-2.5 rounded-lg border border-gray-200">
+                                    <svg class="text-purple-500" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line></svg>
+                                    <span class="text-[13px] font-medium text-gray-900">Bottleneck Alerts</span>
+                                </div>
+                            </div>
                         </div>
-                        <p class="text-gray-500 text-[15px] leading-relaxed">
-                            Forecast volume spikes and automate restocking before orders arrive. Turn reactive fire-drills into proactive operational planning.
-                        </p>
                     </div>
                 </div>
 
@@ -386,18 +378,18 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="py-24 md:py-32 px-6 md:px-16 lg:px-20 relative overflow-hidden bg-[#111]">
+    <section class="py-24 md:py-32 px-6 md:px-16 lg:px-20 relative overflow-hidden bg-gray-900">
         <div class="tech-grid tech-grid-dark absolute inset-0 z-0"></div>
         
         <div class="max-w-3xl mx-auto text-center relative z-10">
-            <h2 class="text-[32px] sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tighter mb-8 text-white leading-[1.1]">
+            <h2 class="text-[32px] sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tighter mb-6 text-white leading-[1.1]">
                 Scale your operations today.
             </h2>
-            <p class="text-gray-400 text-[16px] md:text-lg leading-relaxed mb-12 max-w-xl mx-auto">
+            <p class="text-gray-400 text-[16px] md:text-lg leading-relaxed mb-10 max-w-xl mx-auto">
                 Deploy DispatchMate to your floor in minutes and give your team the tools they need to execute.
             </p>
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="#contact" class="w-full sm:w-auto bg-white text-gray-900 px-10 py-4 rounded-full font-medium text-[15px] hover:bg-gray-100 transition-all flex items-center justify-center gap-2">
+                <a href="#contact" class="w-full sm:w-auto bg-white text-gray-900 px-8 py-3.5 rounded-full font-medium text-[14px] hover:bg-gray-100 transition-all flex items-center justify-center gap-2 border border-transparent shadow-sm">
                     Request a Demo
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                 </a>
@@ -410,28 +402,28 @@
         <div class="max-w-6xl mx-auto">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-12 mb-20">
                 <div class="space-y-5">
-                    <h4 class="text-[11px] font-semibold text-gray-900 tracking-[0.1em] uppercase">Platform</h4>
+                    <h4 class="text-[13px] font-semibold text-gray-900">Platform</h4>
                     <ul class="space-y-3">
                         <li><a href="#" class="text-[14px] text-gray-500 hover:text-gray-900 transition-colors">Infrastructure</a></li>
                         <li><a href="#" class="text-[14px] text-gray-500 hover:text-gray-900 transition-colors">Enterprise</a></li>
                     </ul>
                 </div>
                 <div class="space-y-5">
-                    <h4 class="text-[11px] font-semibold text-gray-900 tracking-[0.1em] uppercase">Solutions</h4>
+                    <h4 class="text-[13px] font-semibold text-gray-900">Solutions</h4>
                     <ul class="space-y-3">
                         <li><a href="#" class="text-[14px] text-gray-500 hover:text-gray-900 transition-colors">DispatchMate</a></li>
                         <li><a href="#" class="text-[14px] text-gray-500 hover:text-gray-900 transition-colors">Inventory Cloud</a></li>
                     </ul>
                 </div>
                 <div class="space-y-5">
-                    <h4 class="text-[11px] font-semibold text-gray-900 tracking-[0.1em] uppercase">Company</h4>
+                    <h4 class="text-[13px] font-semibold text-gray-900">Company</h4>
                     <ul class="space-y-3">
                         <li><a href="#" class="text-[14px] text-gray-500 hover:text-gray-900 transition-colors">About</a></li>
                         <li><a href="#" class="text-[14px] text-gray-500 hover:text-gray-900 transition-colors">Philosophy</a></li>
                     </ul>
                 </div>
                 <div class="space-y-5">
-                    <h4 class="text-[11px] font-semibold text-gray-900 tracking-[0.1em] uppercase">Social</h4>
+                    <h4 class="text-[13px] font-semibold text-gray-900">Social</h4>
                     <ul class="space-y-3">
                         <li><a href="#" class="text-[14px] text-gray-500 hover:text-gray-900 transition-colors">LinkedIn</a></li>
                         <li><a href="#" class="text-[14px] text-gray-500 hover:text-gray-900 transition-colors">GitHub</a></li>
@@ -448,7 +440,7 @@
                     </div>
                     <span class="text-[15px] font-semibold tracking-tight text-gray-900">ironbyte Inc.</span>
                 </div>
-                <div class="text-gray-400 text-[13px]">© <span id="year"></span> Operational Excellence for All.</div>
+                <div class="text-gray-500 text-[14px]">© <span id="year"></span> Operational Excellence for All.</div>
             </div>
         </div>
     </footer>
@@ -500,4 +492,3 @@
 </body>
 </html>
 
-                             
