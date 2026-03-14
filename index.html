@@ -1,9 +1,9 @@
-       <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IronByte | Game-Changing Platforms</title>
+    <title>ironbyte | Game-Changing Platforms</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -62,7 +62,7 @@
         }
 
         .text-gradient {
-            background: linear-gradient(180deg, #ffffff 30%, rgba(255, 255, 255, 0.4) 100%);
+            background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.5) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -101,12 +101,11 @@
             z-index: -1;
         }
 
-        /* Stacked Logo Mark - Redesigned to be a larger perfect square */
+        /* Stacked Logo Mark - Cleaned up margins for tighter text fitting */
         .logo-stack { 
             position: relative; 
             width: 22px; 
             height: 22px; 
-            margin-right: 6px; 
             margin-left: 4px;
         }
         .logo-layer {
@@ -116,7 +115,6 @@
             border: 1px solid rgba(255, 255, 255, 0.15);
             box-shadow: 0 4px 12px rgba(0,0,0,0.5);
         }
-        /* Translating diagonally keeps the aspect ratio exactly 1:1 */
         .logo-layer-1 { background: #fff; transform: translate(-3px, -3px); z-index: 3; }
         .logo-layer-2 { background: #a1a1aa; transform: translate(0px, 0px); z-index: 2; opacity: 0.8; }
         .logo-layer-3 { background: #52525b; transform: translate(3px, 3px); z-index: 1; opacity: 0.5; }
@@ -159,15 +157,16 @@
     <!-- Navigation -->
     <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 border-b border-white/5 bg-black/60 backdrop-blur-xl">
         <div class="max-w-6xl mx-auto px-6 md:px-12 lg:px-20 h-16 flex items-center justify-between">
-            <div class="flex items-center gap-2 group cursor-pointer" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+            <!-- Removed gap-2 to bring text flush with the icon stack -->
+            <div class="flex items-center group cursor-pointer" onclick="window.scrollTo({top:0,behavior:'smooth'})">
                 <!-- Enlarged, squared logo -->
-                <div class="logo-stack">
+                <div class="logo-stack mr-2.5">
                     <div class="logo-layer logo-layer-1"></div>
                     <div class="logo-layer logo-layer-2"></div>
                     <div class="logo-layer logo-layer-3"></div>
                 </div>
-                <!-- Removed 'Systems' -->
-                <span class="text-[15px] font-medium tracking-tight text-white ml-1">IronByte</span>
+                <!-- Lowercase, removed extra left margin, tightened tracking slightly -->
+                <span class="text-[16px] font-medium tracking-tight text-white">ironbyte</span>
             </div>
 
             <div class="hidden md:flex items-center gap-8">
@@ -211,16 +210,16 @@
         <div class="hero-glow"></div>
 
         <div class="max-w-4xl mx-auto text-center relative z-10 w-full">
-            <!-- Introducing tag entirely removed as requested -->
 
-            <h1 class="fade-up text-[42px] sm:text-6xl md:text-7xl lg:text-[80px] font-medium tracking-[-0.03em] mb-6 leading-[1.05] text-gradient">
+            <!-- Reduced typography sizes (from 80px down to 72px max), tightened letter-spacing (tracking-[-0.035em]) to perfectly match the sleek "Linear" style -->
+            <h1 class="fade-up text-[38px] sm:text-[48px] md:text-[60px] lg:text-[72px] font-medium tracking-[-0.035em] mb-6 leading-[1.05] text-gradient">
                 Build and deploy <br class="hidden sm:block" />
                 game-changing platforms.
             </h1>
 
-            <!-- Upgraded Linear-style Typography: text-[#8a8f98], text-[21px], leading-[1.6], tracking-[-0.01em] -->
-            <p class="fade-up delay-100 text-[17px] md:text-[21px] text-linearGray mb-10 max-w-2xl mx-auto leading-[1.6] tracking-[-0.01em] font-normal px-2 sm:px-0">
-                IronByte develops software and AI agents that transform how businesses operate. Starting on the warehouse floor. Scaling to the world.
+            <!-- Adjusted sub-headline slightly down in size to balance with the new h1 -->
+            <p class="fade-up delay-100 text-[16px] md:text-[20px] text-linearGray mb-10 max-w-2xl mx-auto leading-[1.6] tracking-[-0.01em] font-normal px-2 sm:px-0">
+                ironbyte develops software and AI agents that transform how businesses operate. Starting on the warehouse floor. Scaling to the world.
             </p>
 
             <div class="fade-up delay-200 flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -240,7 +239,8 @@
         <div class="max-w-6xl mx-auto">
             <div class="flex flex-col mb-16 text-left relative">
                 <div class="w-px h-16 bg-gradient-to-b from-blue-500 to-transparent absolute -top-16 left-0 hidden md:block opacity-50"></div>
-                <h2 class="text-[32px] sm:text-4xl md:text-[48px] font-medium tracking-tight mb-4 max-w-2xl leading-[1.1] text-gradient">
+                <!-- Refined section heading typography -->
+                <h2 class="text-[32px] sm:text-4xl md:text-[44px] font-medium tracking-[-0.02em] mb-4 max-w-2xl leading-[1.1] text-gradient">
                     The warehouse floor is broken.<br class="hidden md:block"/> We've seen it firsthand.
                 </h2>
                 <p class="text-linearGray text-[16px] md:text-[19px] leading-[1.6] tracking-[-0.01em] max-w-xl">
@@ -294,7 +294,7 @@
         <div class="max-w-6xl mx-auto">
             <div class="max-w-2xl mb-16 text-left">
                 <span class="text-[12px] font-medium text-blue-500 mb-4 block tracking-wide px-3 py-1 rounded-full w-fit bg-blue-500/10 border border-blue-500/20">First Product</span>
-                <h2 class="text-[32px] sm:text-4xl md:text-[48px] font-medium tracking-tight mb-5 leading-tight text-white">DispatchMate</h2>
+                <h2 class="text-[32px] sm:text-4xl md:text-[44px] font-medium tracking-[-0.02em] mb-5 leading-tight text-white">DispatchMate</h2>
                 <p class="text-linearGray text-[16px] md:text-[19px] leading-[1.6] tracking-[-0.01em]">
                     The intelligent dispatch layer your warehouse never had. Built from real experience on the floor — receipt in hand, items to find, customers waiting.
                 </p>
@@ -307,7 +307,7 @@
                         <div class="p-4 rounded-2xl w-fit mb-8 bg-gradient-to-br from-blue-500/20 to-transparent border border-blue-500/20">
                             <svg class="text-blue-400" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
                         </div>
-                        <h3 class="text-2xl font-medium mb-3 text-white tracking-tight">Warehouse Navigation</h3>
+                        <h3 class="text-[22px] font-medium mb-3 text-white tracking-tight">Warehouse Navigation</h3>
                         <p class="text-linearGray mb-10 text-[16px] leading-[1.6]">Receipt arrives — DispatchMate tells you exactly where every item lives. No more wandering. No more guessing. Just execute.</p>
                         
                         <!-- Abstract UI -->
@@ -335,7 +335,7 @@
                         <div class="p-4 rounded-2xl w-fit mb-8 bg-gradient-to-br from-purple-500/20 to-transparent border border-purple-500/20">
                             <svg class="text-purple-400" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
                         </div>
-                        <h3 class="text-2xl font-medium mb-3 text-white tracking-tight">Management Insights</h3>
+                        <h3 class="text-[22px] font-medium mb-3 text-white tracking-tight">Management Insights</h3>
                         <p class="text-linearGray mb-10 text-[16px] leading-[1.6]">Live dashboards surface the most sold items, most asked-for products, and demand signals — so managers can act on data.</p>
                         
                         <!-- Abstract UI -->
@@ -363,12 +363,12 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
                 <div class="max-w-lg">
                     <span class="text-[12px] font-medium text-[#8a8f98] mb-4 block tracking-wide border border-white/10 bg-white/5 px-3 py-1 rounded-full w-fit">Our Vision</span>
-                    <h2 class="text-[32px] sm:text-4xl md:text-[48px] font-medium tracking-tight mb-8 leading-[1.1] text-gradient">
+                    <h2 class="text-[32px] sm:text-4xl md:text-[44px] font-medium tracking-[-0.02em] mb-8 leading-[1.1] text-gradient">
                         Software born from the <br class="hidden sm:block"/> work, not the boardroom.
                     </h2>
                     <div class="space-y-6">
                         <p class="text-linearGray text-[16px] md:text-[19px] leading-[1.6] tracking-[-0.01em]">
-                            IronByte started as an idea on a warehouse floor — where the frustration of broken systems, missing items, and blind management was a daily reality.
+                            ironbyte started as an idea on a warehouse floor — where the frustration of broken systems, missing items, and blind management was a daily reality.
                         </p>
                         <p class="text-linearGray text-[16px] md:text-[19px] leading-[1.6] tracking-[-0.01em]">
                             We're building the platforms we wish existed. Products that reshape how teams work, moving them from chaotic guesswork to streamlined execution.
@@ -385,7 +385,7 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                             </div>
                             <h3 class="text-[19px] font-medium mb-1 tracking-tight text-white">Leon Nyarambi</h3>
-                            <p class="text-[#8a8f98] font-medium text-[13px] tracking-wide mb-10">Founder · IronByte</p>
+                            <p class="text-[#8a8f98] font-medium text-[13px] tracking-wide mb-10">Founder · ironbyte</p>
                             <p class="text-gray-300 italic leading-[1.6] text-[16px] md:text-[18px] mb-10 font-light">
                                 "I built DispatchMate because I lived the problem. A receipt in hand, a messy warehouse, and no system to help. That ends now."
                             </p>
@@ -412,10 +412,10 @@
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-blue-600/20 blur-[120px] rounded-full pointer-events-none"></div>
 
         <div class="max-w-3xl mx-auto text-center relative z-10 card-content">
-            <h2 class="text-[36px] sm:text-5xl md:text-6xl font-medium tracking-[-0.02em] mb-6 text-white leading-[1.05]">
+            <h2 class="text-[36px] sm:text-5xl md:text-5xl lg:text-[56px] font-medium tracking-[-0.03em] mb-6 text-white leading-[1.05]">
                 Ready to change how your operations run?
             </h2>
-            <p class="text-linearGray text-[17px] md:text-[21px] leading-[1.6] tracking-[-0.01em] mb-10 md:mb-12 max-w-xl mx-auto px-2 sm:px-0">
+            <p class="text-linearGray text-[17px] md:text-[20px] leading-[1.6] tracking-[-0.01em] mb-10 md:mb-12 max-w-xl mx-auto px-2 sm:px-0">
                 Be among the first to deploy DispatchMate. Early access is open — reach out and let's talk.
             </p>
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -469,15 +469,16 @@
             </div>
 
             <div class="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6">
-                <div class="flex items-center gap-2 opacity-80">
-                    <div class="logo-stack scale-[0.8] origin-left">
+                <!-- Removed inner gaps and adjusted logo spacing for footer as well -->
+                <div class="flex items-center opacity-80">
+                    <div class="logo-stack scale-[0.8] origin-left mr-1">
                         <div class="logo-layer logo-layer-1"></div>
                         <div class="logo-layer logo-layer-2"></div>
                         <div class="logo-layer logo-layer-3"></div>
                     </div>
-                    <span class="text-[14px] font-medium tracking-tight text-white">IronByte</span>
+                    <span class="text-[15px] font-medium tracking-tight text-white">ironbyte</span>
                 </div>
-                <div class="text-[#8a8f98] text-[13px]">© <span id="year"></span> IronByte. All rights reserved.</div>
+                <div class="text-[#8a8f98] text-[13px]">© <span id="year"></span> ironbyte. All rights reserved.</div>
             </div>
         </div>
     </footer>
@@ -553,6 +554,5 @@
 </body>
 </html>
 
-                                       <div class="w-12 h-[80%] bg-gradient-to-t from-purple-500/20 to-purple-400/40 border border-purple-500/30 rounded-t-md relative group/bar shadow-[0_0_20px_rgba(168,85,247,0.2)]"></div>
-                                            </a>
+
                         
