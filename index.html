@@ -1,4 +1,4 @@
-    <!DOCTYPE html>
+   <!DOCTYPE html>
 <html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
@@ -6,7 +6,7 @@
     <title>IronByte Systems | Game-Changing Platforms</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <!-- Tailwind Config MUST be before the Tailwind script -->
     <script>
@@ -34,7 +34,7 @@
                         }
                     },
                     backgroundImage: {
-                        'grid-white': 'linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px)',
+                        'grid-white': 'linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px), linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px)',
                     }
                 }
             }
@@ -44,7 +44,16 @@
     
     <style>
         html { scroll-behavior: smooth; background-color: #000; color: #fff; }
-        body { font-family: 'Inter', sans-serif; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+        
+        body { 
+            font-family: 'Inter', sans-serif; 
+            overflow-x: hidden; 
+            /* Essential for the "Linear" crispness */
+            -webkit-font-smoothing: antialiased; 
+            -moz-osx-font-smoothing: grayscale;
+            /* Modifies Inter to look like a premium geometric font */
+            font-feature-settings: "cv11", "ss01", "ss03", "cv02";
+        }
 
         ::selection {
             background: rgba(255, 255, 255, 0.2);
@@ -69,12 +78,12 @@
         }
 
         .glass-panel:hover {
-            border-color: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.15);
         }
 
         /* Tech Grids */
         .bg-grid {
-            background-size: 40px 40px;
+            background-size: 32px 32px;
             mask-image: radial-gradient(circle at center, black 0%, transparent 80%);
             -webkit-mask-image: radial-gradient(circle at center, black 0%, transparent 80%);
         }
@@ -86,7 +95,7 @@
             transform: translateX(-50%);
             width: 80vw;
             height: 60vh;
-            background: radial-gradient(ellipse at top, rgba(59, 130, 246, 0.15), transparent 70%);
+            background: radial-gradient(ellipse at top, rgba(59, 130, 246, 0.12), transparent 70%);
             pointer-events: none;
             z-index: -1;
         }
@@ -126,7 +135,7 @@
             position: absolute;
             width: 300px;
             height: 300px;
-            background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 60%);
+            background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 60%);
             opacity: 0;
             transition: opacity 0.3s ease;
             pointer-events: none;
@@ -135,7 +144,7 @@
         .card-content { position: relative; z-10; }
     </style>
 </head>
-<body class="min-h-screen bg-black text-white tracking-tight">
+<body class="min-h-screen bg-black text-white">
 
     <!-- Navigation -->
     <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 border-b border-white/5 bg-black/60 backdrop-blur-xl">
@@ -146,14 +155,14 @@
                     <div class="logo-layer logo-layer-2"></div>
                     <div class="logo-layer logo-layer-3"></div>
                 </div>
-                <span class="text-[15px] font-medium tracking-tight text-white -ml-1">IronByte Systems</span>
+                <span class="text-[14px] font-medium tracking-tight text-white -ml-1">IronByte Systems</span>
             </div>
 
             <div class="hidden md:flex items-center gap-8">
-                <a href="#problems" class="nav-link text-[13px] font-medium">Problems</a>
-                <a href="#dispatchmate" class="nav-link text-[13px] font-medium">DispatchMate</a>
-                <a href="#about" class="nav-link text-[13px] font-medium">About</a>
-                <a href="#contact" class="bg-white text-black px-4 py-1.5 rounded-full text-[13px] font-medium hover:bg-gray-200 transition-all shadow-[0_0_15px_rgba(255,255,255,0.2)] hover:shadow-[0_0_20px_rgba(255,255,255,0.4)] active:scale-95">
+                <a href="#problems" class="nav-link text-[13px] font-medium tracking-tight">Problems</a>
+                <a href="#dispatchmate" class="nav-link text-[13px] font-medium tracking-tight">DispatchMate</a>
+                <a href="#about" class="nav-link text-[13px] font-medium tracking-tight">About</a>
+                <a href="#contact" class="bg-white text-black px-4 py-1.5 rounded-full text-[13px] font-medium tracking-tight hover:bg-gray-200 transition-all shadow-[0_0_15px_rgba(255,255,255,0.15)] hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] active:scale-95">
                     Get Early Access
                 </a>
             </div>
@@ -172,12 +181,12 @@
     <div id="mobile-menu" class="fixed inset-0 z-40 bg-black/95 backdrop-blur-2xl hidden flex-col md:hidden border-t border-white/10 mt-16">
         <div class="flex flex-col pt-12 px-8 pb-12 h-full overflow-y-auto">
             <div class="flex flex-col gap-6">
-                <a href="#problems" class="mobile-link text-2xl font-medium tracking-tight text-gray-400 hover:text-white transition-colors">Problems</a>
-                <a href="#dispatchmate" class="mobile-link text-2xl font-medium tracking-tight text-gray-400 hover:text-white transition-colors">DispatchMate</a>
-                <a href="#about" class="mobile-link text-2xl font-medium tracking-tight text-gray-400 hover:text-white transition-colors">About</a>
+                <a href="#problems" class="mobile-link text-xl font-normal tracking-tight text-gray-400 hover:text-white transition-colors">Problems</a>
+                <a href="#dispatchmate" class="mobile-link text-xl font-normal tracking-tight text-gray-400 hover:text-white transition-colors">DispatchMate</a>
+                <a href="#about" class="mobile-link text-xl font-normal tracking-tight text-gray-400 hover:text-white transition-colors">About</a>
             </div>
             <div class="mt-12 pt-8 border-t border-white/10 w-full">
-                <a href="#contact" class="mobile-link flex items-center justify-center w-full bg-white text-black px-6 py-3.5 rounded-full font-medium text-[15px] active:scale-95 transition-all shadow-[0_0_20px_rgba(255,255,255,0.2)]">
+                <a href="#contact" class="mobile-link flex items-center justify-center w-full bg-white text-black px-6 py-3.5 rounded-full font-medium text-[15px] tracking-tight active:scale-95 transition-all shadow-[0_0_20px_rgba(255,255,255,0.15)]">
                     Get Early Access
                 </a>
             </div>
@@ -186,7 +195,7 @@
 
     <!-- Hero -->
     <section id="hero" class="relative pt-32 pb-20 md:pt-48 md:pb-32 px-6 md:px-16 lg:px-20 border-b border-white/5 overflow-hidden flex items-center justify-center min-h-[85vh]">
-        <div class="absolute inset-0 bg-grid-white bg-grid opacity-30"></div>
+        <div class="absolute inset-0 bg-grid-white bg-grid opacity-40"></div>
         <div class="hero-glow"></div>
 
         <div class="max-w-4xl mx-auto text-center relative z-10 w-full">
@@ -198,7 +207,8 @@
                 <span class="text-[12px] font-medium text-gray-300 tracking-wide">Introducing DispatchMate — Now in Alpha</span>
             </div>
 
-            <h1 class="fade-up delay-100 text-[42px] sm:text-6xl md:text-7xl lg:text-[80px] font-bold tracking-tighter mb-6 leading-[1.05] text-gradient">
+            <!-- Changed from font-bold to font-medium, kept tracking-tighter -->
+            <h1 class="fade-up delay-100 text-[42px] sm:text-6xl md:text-7xl lg:text-[80px] font-medium tracking-tighter mb-6 leading-[1.05] text-gradient">
                 Build and deploy <br class="hidden sm:block" />
                 game-changing platforms.
             </h1>
@@ -208,11 +218,11 @@
             </p>
 
             <div class="fade-up delay-300 flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="#dispatchmate" class="w-full sm:w-auto bg-white text-black px-8 py-3.5 rounded-full font-medium text-[14px] hover:bg-gray-200 hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] transition-all flex items-center justify-center gap-2 group">
+                <a href="#dispatchmate" class="w-full sm:w-auto bg-white text-black px-8 py-3 rounded-full font-medium text-[14px] tracking-tight hover:bg-gray-200 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] transition-all flex items-center justify-center gap-2 group">
                     Explore Products
                     <svg class="group-hover:translate-x-1 transition-transform" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                 </a>
-                <a href="#contact" class="w-full sm:w-auto bg-white/5 border border-white/10 text-white px-8 py-3.5 rounded-full font-medium text-[14px] hover:bg-white/10 hover:border-white/20 transition-all backdrop-blur-sm">
+                <a href="#contact" class="w-full sm:w-auto bg-white/5 border border-white/10 text-white px-8 py-3 rounded-full font-medium text-[14px] tracking-tight hover:bg-white/10 hover:border-white/20 transition-all backdrop-blur-sm">
                     Get Early Access
                 </a>
             </div>
@@ -224,7 +234,8 @@
         <div class="max-w-6xl mx-auto">
             <div class="flex flex-col mb-16 text-left relative">
                 <div class="w-px h-16 bg-gradient-to-b from-blue-500 to-transparent absolute -top-16 left-0 hidden md:block opacity-50"></div>
-                <h2 class="text-[32px] sm:text-4xl md:text-[48px] font-semibold tracking-tighter mb-4 max-w-2xl leading-[1.1] text-gradient">
+                <!-- Changed from font-semibold to font-medium -->
+                <h2 class="text-[32px] sm:text-4xl md:text-[48px] font-medium tracking-tighter mb-4 max-w-2xl leading-[1.1] text-gradient">
                     The warehouse floor is broken.<br class="hidden md:block"/> We've seen it firsthand.
                 </h2>
                 <p class="text-gray-400 text-base md:text-lg max-w-xl leading-relaxed">
@@ -234,38 +245,39 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 <div class="glass-panel rounded-2xl p-8 group transition-all duration-300">
-                    <div class="mb-6 w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 group-hover:text-white group-hover:bg-white/10 group-hover:border-white/20 transition-all shadow-lg">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                    <div class="mb-6 w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 group-hover:text-white group-hover:bg-white/10 group-hover:border-white/20 transition-all shadow-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
                     </div>
                     <div class="card-content">
-                        <h3 class="text-lg font-medium mb-2 tracking-tight text-white">No Item Locations</h3>
+                        <!-- Standardized card headings: font-medium, tracking-tight -->
+                        <h3 class="text-[17px] font-medium mb-2 tracking-tight text-white">No Item Locations</h3>
                         <p class="text-gray-400 text-[14px] leading-relaxed">Dispatchers waste shifts hunting through a disorganized warehouse with no system to guide them.</p>
                     </div>
                 </div>
                 <div class="glass-panel rounded-2xl p-8 group transition-all duration-300">
-                    <div class="mb-6 w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 group-hover:text-white group-hover:bg-white/10 group-hover:border-white/20 transition-all shadow-lg">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    <div class="mb-6 w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 group-hover:text-white group-hover:bg-white/10 group-hover:border-white/20 transition-all shadow-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                     </div>
                     <div class="card-content">
-                        <h3 class="text-lg font-medium mb-2 tracking-tight text-white">Frustrated Customers</h3>
+                        <h3 class="text-[17px] font-medium mb-2 tracking-tight text-white">Frustrated Customers</h3>
                         <p class="text-gray-400 text-[14px] leading-relaxed">Staff can't confidently answer product questions, leaving customers waiting — and losing trust.</p>
                     </div>
                 </div>
                 <div class="glass-panel rounded-2xl p-8 group transition-all duration-300">
-                    <div class="mb-6 w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 group-hover:text-white group-hover:bg-white/10 group-hover:border-white/20 transition-all shadow-lg">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+                    <div class="mb-6 w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 group-hover:text-white group-hover:bg-white/10 group-hover:border-white/20 transition-all shadow-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
                     </div>
                     <div class="card-content">
-                        <h3 class="text-lg font-medium mb-2 tracking-tight text-white">Zero Visibility</h3>
+                        <h3 class="text-[17px] font-medium mb-2 tracking-tight text-white">Zero Visibility</h3>
                         <p class="text-gray-400 text-[14px] leading-relaxed">Managers have no real-time data on what's moving, what's being asked for, or what to stock next.</p>
                     </div>
                 </div>
                 <div class="glass-panel rounded-2xl p-8 group transition-all duration-300">
-                    <div class="mb-6 w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 group-hover:text-white group-hover:bg-white/10 group-hover:border-white/20 transition-all shadow-lg">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/><path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg>
+                    <div class="mb-6 w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 group-hover:text-white group-hover:bg-white/10 group-hover:border-white/20 transition-all shadow-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/><path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg>
                     </div>
                     <div class="card-content">
-                        <h3 class="text-lg font-medium mb-2 tracking-tight text-white">Manual Everything</h3>
+                        <h3 class="text-[17px] font-medium mb-2 tracking-tight text-white">Manual Everything</h3>
                         <p class="text-gray-400 text-[14px] leading-relaxed">Receipts, picking, product lookup — all done by memory and guesswork instead of intelligent systems.</p>
                     </div>
                 </div>
@@ -278,7 +290,8 @@
         <div class="max-w-6xl mx-auto">
             <div class="max-w-2xl mb-16 text-left">
                 <span class="text-[11px] font-mono text-blue-500 mb-4 block tracking-widest uppercase border border-blue-500/20 bg-blue-500/10 px-3 py-1 rounded-full w-fit">First Product</span>
-                <h2 class="text-[32px] sm:text-4xl md:text-[48px] font-semibold tracking-tighter mb-5 leading-tight text-white">DispatchMate</h2>
+                <!-- Changed from font-semibold to font-medium -->
+                <h2 class="text-[32px] sm:text-4xl md:text-[48px] font-medium tracking-tighter mb-5 leading-tight text-white">DispatchMate</h2>
                 <p class="text-gray-400 text-base md:text-lg leading-relaxed">
                     The intelligent dispatch layer your warehouse never had. Built from real experience on the floor — receipt in hand, items to find, customers waiting.
                 </p>
@@ -289,7 +302,7 @@
                 <div class="glass-panel rounded-[32px] p-8 md:p-12 group transition-all">
                     <div class="card-content">
                         <div class="p-4 rounded-2xl w-fit mb-8 bg-gradient-to-br from-blue-500/20 to-transparent border border-blue-500/20">
-                            <svg class="text-blue-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                            <svg class="text-blue-400" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
                         </div>
                         <h3 class="text-2xl font-medium mb-3 text-white tracking-tight">Warehouse Navigation</h3>
                         <p class="text-gray-400 mb-10 text-[15px] leading-relaxed">Receipt arrives — DispatchMate tells you exactly where every item lives. No more wandering. No more guessing. Just execute.</p>
@@ -317,7 +330,7 @@
                 <div class="glass-panel rounded-[32px] p-8 md:p-12 group transition-all">
                     <div class="card-content">
                         <div class="p-4 rounded-2xl w-fit mb-8 bg-gradient-to-br from-purple-500/20 to-transparent border border-purple-500/20">
-                            <svg class="text-purple-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+                            <svg class="text-purple-400" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
                         </div>
                         <h3 class="text-2xl font-medium mb-3 text-white tracking-tight">Management Insights</h3>
                         <p class="text-gray-400 mb-10 text-[15px] leading-relaxed">Live dashboards surface the most sold items, most asked-for products, and demand signals — so managers can act on data.</p>
@@ -347,7 +360,8 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
                 <div class="max-w-lg">
                     <span class="text-[11px] font-mono text-gray-400 mb-4 block tracking-widest uppercase border border-white/10 bg-white/5 px-3 py-1 rounded-full w-fit">Our Vision</span>
-                    <h2 class="text-[32px] sm:text-4xl md:text-[48px] font-semibold tracking-tighter mb-8 leading-[1.1] text-gradient">
+                    <!-- Changed from font-semibold to font-medium -->
+                    <h2 class="text-[32px] sm:text-4xl md:text-[48px] font-medium tracking-tighter mb-8 leading-[1.1] text-gradient">
                         Software born from the <br class="hidden sm:block"/> work, not the boardroom.
                     </h2>
                     <div class="space-y-6">
@@ -365,10 +379,10 @@
                         <div class="absolute -top-32 -right-32 w-96 h-96 bg-blue-500/10 rounded-full blur-[80px] pointer-events-none"></div>
                         
                         <div class="relative z-10 card-content">
-                            <div class="w-14 h-14 bg-gradient-to-br from-white/10 to-transparent border border-white/20 rounded-full flex items-center justify-center mb-8 shadow-inner backdrop-blur-md text-white">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                            <div class="w-12 h-12 bg-gradient-to-br from-white/10 to-transparent border border-white/20 rounded-full flex items-center justify-center mb-8 shadow-inner backdrop-blur-md text-white">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                             </div>
-                            <h3 class="text-2xl font-medium mb-1 tracking-tight text-white">Leon Nyarambi</h3>
+                            <h3 class="text-[19px] font-medium mb-1 tracking-tight text-white">Leon Nyarambi</h3>
                             <p class="text-gray-500 font-mono text-[11px] tracking-widest uppercase mb-10">Founder · IronByte Systems</p>
                             <p class="text-gray-300 italic leading-relaxed text-[16px] md:text-[18px] mb-10 font-light">
                                 "I built DispatchMate because I lived the problem. A receipt in hand, a messy warehouse, and no system to help. That ends now."
@@ -376,11 +390,11 @@
                             <div class="flex gap-10 border-t border-white/10 pt-8">
                                 <div>
                                     <span class="text-[10px] font-mono text-gray-500 uppercase tracking-widest block mb-2">Background</span>
-                                    <span class="text-[14px] font-medium text-white">Dispatch & Logistics</span>
+                                    <span class="text-[14px] font-medium tracking-tight text-white">Dispatch & Logistics</span>
                                 </div>
                                 <div>
                                     <span class="text-[10px] font-mono text-gray-500 uppercase tracking-widest block mb-2">Focus</span>
-                                    <span class="text-[14px] font-medium text-white">AI-Powered Platforms</span>
+                                    <span class="text-[14px] font-medium tracking-tight text-white">AI Platforms</span>
                                 </div>
                             </div>
                         </div>
@@ -396,18 +410,19 @@
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-blue-600/20 blur-[120px] rounded-full pointer-events-none"></div>
 
         <div class="max-w-3xl mx-auto text-center relative z-10 card-content">
-            <h2 class="text-[36px] sm:text-5xl md:text-6xl font-bold tracking-tighter mb-6 text-white leading-[1.05]">
+            <!-- Changed from font-bold to font-medium -->
+            <h2 class="text-[36px] sm:text-5xl md:text-6xl font-medium tracking-tighter mb-6 text-white leading-[1.05]">
                 Ready to change how your operations run?
             </h2>
             <p class="text-gray-400 text-base md:text-xl leading-relaxed mb-10 md:mb-12 max-w-xl mx-auto px-2 sm:px-0">
                 Be among the first to deploy DispatchMate. Early access is open — reach out and let's talk.
             </p>
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="mailto:hello@ironbytesystems.com" class="w-full sm:w-auto bg-white text-black px-8 py-4 rounded-full font-medium text-[15px] hover:bg-gray-200 hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] transition-all flex items-center justify-center gap-2">
+                <a href="mailto:hello@ironbytesystems.com" class="w-full sm:w-auto bg-white text-black px-8 py-3.5 rounded-full font-medium text-[15px] tracking-tight hover:bg-gray-200 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] transition-all flex items-center justify-center gap-2">
                     Get Early Access
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                 </a>
-                <a href="mailto:hello@ironbytesystems.com" class="w-full sm:w-auto bg-white/5 border border-white/10 text-white px-8 py-4 rounded-full font-medium text-[15px] hover:bg-white/10 hover:border-white/20 transition-all backdrop-blur-sm flex items-center justify-center">
+                <a href="mailto:hello@ironbytesystems.com" class="w-full sm:w-auto bg-white/5 border border-white/10 text-white px-8 py-3.5 rounded-full font-medium text-[15px] tracking-tight hover:bg-white/10 hover:border-white/20 transition-all backdrop-blur-sm flex items-center justify-center">
                     hello@ironbytesystems.com
                 </a>
             </div>
@@ -459,7 +474,7 @@
                         <div class="logo-layer logo-layer-2"></div>
                         <div class="logo-layer logo-layer-3"></div>
                     </div>
-                    <span class="text-[14px] font-medium tracking-tight text-white">IronByte Systems</span>
+                    <span class="text-[13px] font-medium tracking-tight text-white">IronByte Systems</span>
                 </div>
                 <div class="text-gray-500 text-[13px]">© <span id="year"></span> IronByte Systems. All rights reserved.</div>
             </div>
@@ -537,8 +552,5 @@
 </body>
 </html>
 
-
-       
-      
-            
+                     
     
