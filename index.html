@@ -1,143 +1,415 @@
 <!DOCTYPE html>
-<html lang="en" class="antialiased">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ironbyte - Build and Deploy</title>
-    
-    <!-- Import Inter font for that premium, clean look -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IronByte Systems</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Font Configuration (matching the sans-serif look) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
 
-    <!-- Tailwind Config and Custom Animations -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        background: '#FFFFFF',
-                        foreground: '#0A0A0A',
-                        muted: '#737373',
-                    },
-                    letterSpacing: {
-                        tighter: '-0.04em',
-                        tight: '-0.02em',
-                    },
-                    animation: {
-                        'fade-in-up': 'fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-                    },
-                    keyframes: {
-                        fadeInUp: {
-                            '0%': { opacity: '0', transform: 'translateY(20px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-
-    <style>
-        /* Base styles to ensure light mode and smooth rendering */
-        body {
-            background-color: #FFFFFF;
-            color: #0A0A0A;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        /* Techy Grid Background with fade-out mask */
-        .bg-grid {
-            background-size: 40px 40px;
-            background-image:
-                linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
-            -webkit-mask-image: radial-gradient(ellipse at center top, black 20%, transparent 70%);
-            mask-image: radial-gradient(ellipse at center top, black 20%, transparent 70%);
-        }
-
-        /* Staggered animation delays for the hero elements */
-        .animate-delay-100 { animation-delay: 100ms; }
-        .animate-delay-200 { animation-delay: 200ms; }
-        .animate-delay-300 { animation-delay: 300ms; }
-
-        /* Subtle button hover shadow */
-        .btn-secondary:hover {
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-        }
-    </style>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-<body class="relative min-h-screen flex flex-col overflow-x-hidden selection:bg-black/10 selection:text-black">
+<body class="min-h-screen bg-[#000000] text-white font-sans selection:bg-white/20 selection:text-white">
 
-    <!-- Techy subtle grid background (fades out at edges) -->
-    <div class="absolute inset-0 bg-grid -z-10 pointer-events-none"></div>
-
-    <!-- Subtle top glow for depth -->
-    <div class="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[80%] max-w-[800px] h-[500px] bg-slate-200/[0.5] blur-[120px] rounded-full pointer-events-none -z-10"></div>
-
-    <!-- Navigation -->
-    <nav class="w-full px-6 py-5 flex justify-between items-center z-50">
-        <a href="#" class="flex items-center gap-3 transition-opacity hover:opacity-80">
-            <!-- Recreated Ironbyte Logo (Dark for light mode) -->
-            <div class="w-7 h-7 bg-black rounded-lg shadow-[0_2px_10px_rgba(0,0,0,0.1)]"></div>
-            <span class="font-medium text-lg tracking-tight text-black">ironbyte</span>
-        </a>
-        <button class="text-black/70 hover:text-black transition-colors" aria-label="Menu">
-            <i data-lucide="menu" class="w-6 h-6"></i>
-        </button>
-    </nav>
-
-    <!-- Hero Section -->
-    <main class="flex-1 flex flex-col items-center justify-center px-6 pt-12 pb-24 text-center z-10 relative">
+  <!-- NAVBAR -->
+  <nav class="fixed top-0 z-50 w-full bg-black/80 backdrop-blur-md border-b border-white/[0.08]">
+    <div class="max-w-[1200px] mx-auto px-6 h-14 flex items-center justify-between">
+      <div class="flex items-center gap-2 cursor-pointer">
+        <!-- Linear-style logo (striped circle) -->
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-white">
+          <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M4.5 17L17 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M7.5 20.5L20.5 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M3.5 13.5L13.5 3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="text-white font-medium text-[15px] tracking-tight ml-1">IronByte</span>
+      </div>
+      
+      <!-- Desktop Nav -->
+      <div class="hidden md:flex items-center gap-6">
+        <a href="#product" class="text-[13px] text-[#8A8F98] hover:text-white transition-colors font-medium">Product</a>
+        <a href="#services" class="text-[13px] text-[#8A8F98] hover:text-white transition-colors font-medium">Services</a>
+        <a href="#customers" class="text-[13px] text-[#8A8F98] hover:text-white transition-colors font-medium">Customers</a>
+        <a href="#pricing" class="text-[13px] text-[#8A8F98] hover:text-white transition-colors font-medium">Pricing</a>
+        <a href="#contact" class="text-[13px] text-[#8A8F98] hover:text-white transition-colors font-medium">Contact</a>
         
-        <div class="max-w-[800px] w-full flex flex-col items-center">
-            
-            <!-- Headline -->
-            <h1 class="text-[44px] sm:text-[64px] md:text-[80px] font-medium leading-[1.05] tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-black to-black/70 mb-6 opacity-0 animate-fade-in-up">
-                Build and deploy<br class="hidden sm:block" />
-                game-changing<br class="hidden sm:block" />
-                platforms.
-            </h1>
-            
-            <!-- Subtitle -->
-            <p class="text-[17px] sm:text-[20px] text-muted leading-[1.5] max-w-[480px] sm:max-w-[600px] mb-10 opacity-0 animate-fade-in-up animate-delay-100 font-normal">
-                ironbyte develops software and AI agents that transform how businesses operate. Starting on the warehouse floor. Scaling to the world.
-            </p>
-            
-            <!-- CTA Buttons -->
-            <div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto opacity-0 animate-fade-in-up animate-delay-200">
-                
-                <!-- Primary Button -->
-                <a href="#" class="group relative flex items-center justify-center gap-2 w-full sm:w-auto bg-black text-white px-8 py-3.5 rounded-full font-medium text-[15px] transition-all hover:bg-[#1A1A1A] active:scale-[0.98] shadow-[0_4px_14px_0_rgba(0,0,0,0.1)]">
-                    Explore Products
-                    <i data-lucide="arrow-right" class="w-4 h-4 transition-transform group-hover:translate-x-0.5"></i>
-                </a>
-                
-                <!-- Secondary Button -->
-                <a href="#" class="btn-secondary flex items-center justify-center w-full sm:w-auto bg-white text-black px-8 py-3.5 rounded-full font-medium text-[15px] border border-black/10 transition-all hover:bg-gray-50 active:scale-[0.98]">
-                    Get Early Access
-                </a>
-                
+        <div class="w-[1px] h-4 bg-white/10 mx-2"></div>
+        
+        <a href="#" class="text-[13px] text-[#8A8F98] hover:text-white transition-colors font-medium">Log in</a>
+        <button class="bg-white text-black hover:bg-[#f4f4f5] px-3 py-1.5 rounded-[4px] text-[13px] font-medium transition-colors">
+          Sign up
+        </button>
+      </div>
+
+      <!-- Mobile Toggle -->
+      <button id="mobile-menu-btn" class="md:hidden text-[#8A8F98] hover:text-white">
+        <i data-lucide="menu" id="menu-icon" class="w-5 h-5 block"></i>
+        <i data-lucide="x" id="close-icon" class="w-5 h-5 hidden"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Nav -->
+    <div id="mobile-menu" class="hidden md:hidden bg-black px-6 py-4 flex-col gap-4 border-b border-white/[0.08]">
+      <a href="#product" class="text-[14px] text-[#8A8F98] hover:text-white">Product</a>
+      <a href="#services" class="text-[14px] text-[#8A8F98] hover:text-white">Services</a>
+      <button class="bg-white text-black px-4 py-2 rounded-[4px] text-[14px] font-medium mt-2 w-fit">
+        Sign up
+      </button>
+    </div>
+  </nav>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="pt-40 pb-20 px-6 flex flex-col items-center text-center relative overflow-hidden">
+      <!-- Subtle background gradient glow -->
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-white/[0.04] blur-[120px] rounded-full pointer-events-none"></div>
+      
+      <h1 class="text-[56px] md:text-[80px] font-semibold tracking-tighter text-white leading-[1.05] max-w-4xl mb-6">
+        The software systems <br />
+        for modern operations.
+      </h1>
+      
+      <div class="flex items-center gap-3 mb-10">
+        <p class="text-[19px] text-[#8A8F98] max-w-2xl font-normal">
+          Purpose-built for efficiency and scale. Designed for the AI era.
+        </p>
+        <div class="hidden md:flex items-center gap-2 group cursor-pointer ml-4">
+          <span class="bg-white/10 text-white text-[11px] font-semibold px-2 py-0.5 rounded-sm uppercase tracking-wider">New</span>
+          <span class="text-[14px] text-[#8A8F98] group-hover:text-white transition-colors">DispatchMate (Beta)</span>
+          <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-[#8A8F98] group-hover:text-white transition-colors"></i>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap justify-center items-center gap-3 z-10">
+        <button class="bg-white text-black hover:bg-[#f4f4f5] px-5 py-2.5 rounded-[5px] text-[14px] font-medium transition-colors">
+          Get started
+        </button>
+        <button class="bg-[#1A1B1E] hover:bg-[#2C2D30] text-white border border-white/[0.08] px-5 py-2.5 rounded-[5px] text-[14px] font-medium transition-colors shadow-sm">
+          Contact sales
+        </button>
+      </div>
+      
+      <!-- LinearStyleMockup -->
+      <div class="w-full max-w-[1000px] mx-auto mt-20 relative text-left">
+        <!-- Subtle glow behind mockup -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-white/[0.03] blur-[100px] rounded-full pointer-events-none"></div>
+        
+        <div class="relative rounded-xl border border-white/[0.12] bg-[#0A0A0A] shadow-2xl overflow-hidden flex flex-col md:flex-row h-[500px]">
+          <!-- Sidebar -->
+          <div class="w-60 bg-[#121212] border-r border-white/[0.08] hidden md:flex flex-col p-3">
+            <div class="flex items-center gap-2 px-2 py-1.5 mb-4 hover:bg-white/[0.05] rounded cursor-pointer">
+              <div class="w-4 h-4 rounded-sm bg-white/10 flex items-center justify-center">
+                <span class="text-[10px] text-white font-bold">I</span>
+              </div>
+              <span class="text-[13px] text-white font-medium">IronByte</span>
+              <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-[#8A8F98] ml-auto"></i>
             </div>
             
+            <div class="flex flex-col gap-0.5">
+              <div class="flex items-center gap-2 px-2 py-1.5 text-[#8A8F98] hover:text-white hover:bg-white/[0.05] rounded cursor-pointer">
+                <i data-lucide="inbox" class="w-4 h-4"></i>
+                <span class="text-[13px]">Inbox</span>
+              </div>
+              <div class="flex items-center gap-2 px-2 py-1.5 text-[#8A8F98] hover:text-white hover:bg-white/[0.05] rounded cursor-pointer">
+                <i data-lucide="circle-dot" class="w-4 h-4"></i>
+                <span class="text-[13px]">My issues</span>
+              </div>
+              <div class="flex items-center gap-2 px-2 py-1.5 text-[#8A8F98] hover:text-white hover:bg-white/[0.05] rounded cursor-pointer">
+                <i data-lucide="layout-grid" class="w-4 h-4"></i>
+                <span class="text-[13px]">Views</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Main Content -->
+          <div class="flex-1 bg-[#0A0A0A] flex flex-col">
+            <!-- Top bar -->
+            <div class="h-12 border-b border-white/[0.08] flex items-center px-4 justify-between">
+              <div class="flex items-center gap-2">
+                <div class="flex items-center gap-1.5 px-2 py-1 bg-white/[0.08] rounded text-white text-[12px] font-medium">
+                  <span class="text-[#F5C451]">★</span> DispatchMate rollout
+                </div>
+                <span class="text-[12px] text-[#8A8F98] ml-2">02 / 145</span>
+              </div>
+            </div>
+            
+            <!-- Issue content area -->
+            <div class="p-8 flex-1 flex flex-col gap-6">
+              <div>
+                <h2 class="text-2xl font-semibold text-white tracking-tight mb-2">Automate warehouse dispatch flow</h2>
+                <p class="text-[14px] text-[#8A8F98] leading-relaxed max-w-2xl">
+                  Implement the new AI-driven location tracking protocol. Ensure the UI renders before vehicle state synchronization completes to reduce perceived latency for ground staff.
+                </p>
+              </div>
+              
+              <div class="flex-1 border border-white/[0.08] rounded-lg bg-[#121212] p-4 font-mono text-[13px] text-[#8A8F98]">
+                <div class="flex items-center gap-2 mb-4 border-b border-white/[0.08] pb-2">
+                  <i data-lucide="code" class="w-4 h-4 text-white"></i> <span class="text-white">dispatch_controller.ts</span>
+                </div>
+                <div class="flex">
+                  <div class="text-[#565A65] w-6">1</div> <div><span class="text-[#C678DD]">import</span> { syncState } <span class="text-[#C678DD]">from</span> <span class="text-[#98C379]">'@core/sync'</span>;</div>
+                </div>
+                <div class="flex"><div class="text-[#565A65] w-6">2</div> <div></div></div>
+                <div class="flex">
+                  <div class="text-[#565A65] w-6">3</div> <div><span class="text-[#C678DD]">export async function</span> <span class="text-[#61AFEF]">initializeDispatch</span>() {</div>
+                </div>
+                <div class="flex">
+                  <div class="text-[#565A65] w-6">4</div> <div>&nbsp;&nbsp;<span class="text-[#565A65]">// TODO: Implement predictive caching</span></div>
+                </div>
+                <div class="flex">
+                  <div class="text-[#565A65] w-6">5</div> <div>&nbsp;&nbsp;<span class="text-[#E5C07B]">await</span> <span class="text-[#61AFEF]">syncState</span>({ priority: <span class="text-[#D19A66]">true</span> });</div>
+                </div>
+                <div class="flex">
+                  <div class="text-[#565A65] w-6">6</div> <div>}</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-    </main>
+      </div>
+    </section>
 
-    <script>
-        // Initialize icons
-        lucide.createIcons();
-    </script>
+    <!-- SERVICES / FEATURES SECTION (Line Art Style) -->
+    <section id="services" class="max-w-[1200px] mx-auto px-6 py-32">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 border-t border-white/[0.08] pt-12">
+        
+        <!-- Feature 1 -->
+        <div class="flex flex-col">
+          <div class="text-[10px] text-[#565A65] font-mono tracking-[0.2em] mb-12 uppercase">Fig 0.1</div>
+          <svg width="100%" height="160" viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg" class="opacity-40 mb-6">
+            <path d="M100 20L170 50L100 80L30 50L100 20Z" stroke="white" stroke-width="1" stroke-linejoin="round"/>
+            <path d="M170 50V70L100 100L30 70V50" stroke="white" stroke-width="1" stroke-linejoin="round"/>
+            <path d="M170 70V90L100 120L30 90V70" stroke="white" stroke-width="1" stroke-linejoin="round"/>
+            <path d="M170 90V110L100 140L30 110V90" stroke="white" stroke-width="1" stroke-linejoin="round"/>
+            <ellipse cx="100" cy="50" rx="30" ry="12" stroke="white" stroke-width="1"/>
+            <line x1="75" y1="50" x2="125" y2="50" stroke="white" stroke-width="1"/>
+            <line x1="80" y1="55" x2="120" y2="55" stroke="white" stroke-width="1"/>
+            <line x1="85" y1="45" x2="115" y2="45" stroke="white" stroke-width="1"/>
+          </svg>
+          <h3 class="text-[17px] font-semibold text-white mb-2 tracking-tight">Built for purpose</h3>
+          <p class="text-[15px] text-[#8A8F98] leading-relaxed pr-4">
+            IronByte is shaped by the practices and principles of world-class operational teams, streamlining complex infrastructure.
+          </p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="flex flex-col">
+          <div class="text-[10px] text-[#565A65] font-mono tracking-[0.2em] mb-12 uppercase">Fig 0.2</div>
+          <svg width="100%" height="160" viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg" class="opacity-40 mb-6">
+            <path d="M60 40L90 55L60 70L30 55L60 40Z" stroke="white" stroke-width="1" stroke-linejoin="round"/>
+            <path d="M90 55V95L60 110L30 95V55" stroke="white" stroke-width="1" stroke-linejoin="round"/>
+            
+            <path d="M130 60L160 75L130 90L100 75L130 60Z" stroke="white" stroke-width="1" stroke-linejoin="round"/>
+            <path d="M160 75V115L130 130L100 115V75" stroke="white" stroke-width="1" stroke-linejoin="round"/>
+            
+            <path d="M100 20L130 35L100 50L70 35L100 20Z" stroke="white" stroke-width="1" stroke-linejoin="round"/>
+            <path d="M130 35V60L100 75L70 60V35" stroke="white" stroke-width="1" stroke-linejoin="round"/>
+            
+            <!-- Grid patterns on top -->
+            <path d="M60 45L65 47.5M55 47.5L60 50" stroke="white" stroke-width="0.5"/>
+            <path d="M130 65L135 67.5M125 67.5L130 70" stroke="white" stroke-width="0.5"/>
+          </svg>
+          <h3 class="text-[17px] font-semibold text-white mb-2 tracking-tight">Powered by AI agents</h3>
+          <p class="text-[15px] text-[#8A8F98] leading-relaxed pr-4">
+            Designed for workflows shared by humans and intelligent agents, automating repetitive logic seamlessly.
+          </p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="flex flex-col">
+          <div class="text-[10px] text-[#565A65] font-mono tracking-[0.2em] mb-12 uppercase">Fig 0.3</div>
+          <svg width="100%" height="160" viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg" class="opacity-40 mb-6">
+            <path d="M150 140L160 135V40L150 45V140Z" stroke="white" stroke-width="1" stroke-linejoin="round"/>
+            <path d="M140 132L150 127V48L140 53V132Z" stroke="white" stroke-width="1" stroke-linejoin="round"/>
+            <path d="M130 124L140 119V56L130 61V124Z" stroke="white" stroke-width="1" stroke-linejoin="round"/>
+            <path d="M120 116L130 111V64L120 69V116Z" stroke="white" stroke-width="1" stroke-linejoin="round"/>
+            <path d="M110 108L120 103V72L110 77V108Z" stroke="white" stroke-width="1" stroke-linejoin="round"/>
+            <path d="M100 100L110 95V80L100 85V100Z" stroke="white" stroke-width="1" stroke-linejoin="round"/>
+            <path d="M90 92L100 87V88L90 93V92Z" stroke="white" stroke-width="1" stroke-linejoin="round"/>
+            <path d="M80 84L90 79V96L80 101V84Z" stroke="white" stroke-width="1" stroke-linejoin="round"/>
+            <path d="M70 76L80 71V104L70 109V76Z" stroke="white" stroke-width="1" stroke-linejoin="round"/>
+            <path d="M60 68L70 63V112L60 117V68Z" stroke="white" stroke-width="1" stroke-linejoin="round"/>
+            <path d="M60 60L160 10" stroke="white" stroke-width="1" stroke-dasharray="2 2"/>
+          </svg>
+          <h3 class="text-[17px] font-semibold text-white mb-2 tracking-tight">Designed for speed</h3>
+          <p class="text-[15px] text-[#8A8F98] leading-relaxed pr-4">
+            Reduces noise and restores momentum to help businesses ship and operate with high velocity and absolute focus.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- DETAILS SECTION -->
+    <section class="border-t border-white/[0.08] bg-[#0A0A0A] py-32">
+      <div class="max-w-[1200px] mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+        <div>
+          <div class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-white/[0.05] border border-white/[0.08] mb-6">
+            <i data-lucide="command" class="w-5 h-5 text-white"></i>
+          </div>
+          <h2 class="text-[32px] md:text-[40px] font-semibold tracking-tight text-white leading-tight mb-6">
+            Meet DispatchMate.<br/>
+            Intelligent routing, simplified.
+          </h2>
+          <p class="text-[16px] text-[#8A8F98] leading-relaxed mb-8">
+            A smart dispatch assistant designed to help workers find products faster, manage checklists autonomously, and provide real-time operational insights for managers without the clutter of legacy systems.
+          </p>
+          
+          <div class="flex flex-col gap-4">
+            <div class="flex items-center gap-3 border-b border-white/[0.04] pb-3">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-white/50"></i>
+              <span class="text-[14px] text-white/90">Smart product location tracking</span>
+            </div>
+            <div class="flex items-center gap-3 border-b border-white/[0.04] pb-3">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-white/50"></i>
+              <span class="text-[14px] text-white/90">Automated dispatch checklist system</span>
+            </div>
+            <div class="flex items-center gap-3 border-b border-white/[0.04] pb-3">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-white/50"></i>
+              <span class="text-[14px] text-white/90">AI-powered product assistant</span>
+            </div>
+            <div class="flex items-center gap-3 border-b border-white/[0.04] pb-3">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-white/50"></i>
+              <span class="text-[14px] text-white/90">Live sales and demand insights</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Minimal App Window -->
+        <div class="rounded-xl border border-white/[0.08] bg-black p-4 md:p-8 shadow-2xl relative">
+          <div class="absolute top-4 left-4 flex gap-1.5">
+            <div class="w-2.5 h-2.5 rounded-full bg-white/[0.15]"></div>
+            <div class="w-2.5 h-2.5 rounded-full bg-white/[0.15]"></div>
+            <div class="w-2.5 h-2.5 rounded-full bg-white/[0.15]"></div>
+          </div>
+          
+          <div class="mt-8 flex flex-col gap-3">
+            <div class="h-8 w-full bg-white/[0.03] rounded flex items-center px-3 border border-white/[0.05]">
+              <i data-lucide="search" class="w-3.5 h-3.5 text-[#565A65] mr-2"></i>
+              <span class="text-[12px] text-[#565A65] font-mono">Search inventory...</span>
+            </div>
+            
+            <div class="flex items-center justify-between p-3 rounded bg-white/[0.02] border border-white/[0.04] hover:bg-white/[0.04] transition-colors cursor-pointer">
+              <div class="flex items-center gap-3">
+                <span class="text-[12px] text-[#565A65] font-mono w-12">IM-204</span>
+                <span class="text-[14px] text-[#E8E8E8] font-medium">Industrial Servo Motor</span>
+              </div>
+              <span class="text-[11px] text-[#8A8F98] bg-white/[0.05] px-2 py-0.5 rounded-sm">In Stock</span>
+            </div>
+
+            <div class="flex items-center justify-between p-3 rounded bg-white/[0.02] border border-white/[0.04] hover:bg-white/[0.04] transition-colors cursor-pointer">
+              <div class="flex items-center gap-3">
+                <span class="text-[12px] text-[#565A65] font-mono w-12">CW-092</span>
+                <span class="text-[14px] text-[#E8E8E8] font-medium">Copper Wiring Bundle</span>
+              </div>
+              <span class="text-[11px] text-[#8A8F98] bg-white/[0.05] px-2 py-0.5 rounded-sm">Low Stock</span>
+            </div>
+
+            <div class="flex items-center justify-between p-3 rounded bg-white/[0.02] border border-white/[0.04] hover:bg-white/[0.04] transition-colors cursor-pointer">
+              <div class="flex items-center gap-3">
+                <span class="text-[12px] text-[#565A65] font-mono w-12">HD-110</span>
+                <span class="text-[14px] text-[#E8E8E8] font-medium">Heavy Duty Casters</span>
+              </div>
+              <span class="text-[11px] text-[#8A8F98] bg-white/[0.05] px-2 py-0.5 rounded-sm">In Stock</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MINIMAL FOOTER -->
+  <footer class="border-t border-white/[0.08] bg-black pt-20 pb-12">
+    <div class="max-w-[1200px] mx-auto px-6 grid grid-cols-2 md:grid-cols-6 gap-8 mb-16">
+      <div class="col-span-2">
+        <div class="flex items-center gap-2 mb-4">
+           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-white">
+            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="2"/>
+            <path d="M4.5 17L17 4.5" stroke="currentColor" stroke-width="2"/>
+          </svg>
+          <span class="text-white font-medium text-[14px] tracking-tight">IronByte</span>
+        </div>
+        <p class="text-[#565A65] text-[13px] mb-6">Built for the future.<br/>Available today.</p>
+      </div>
+      
+      <div class="flex flex-col gap-3">
+        <h4 class="text-white font-medium text-[13px] mb-2">Product</h4>
+        <a href="#" class="text-[13px] text-[#8A8F98] hover:text-white transition-colors">Features</a>
+        <a href="#" class="text-[13px] text-[#8A8F98] hover:text-white transition-colors">Integrations</a>
+        <a href="#" class="text-[13px] text-[#8A8F98] hover:text-white transition-colors">Pricing</a>
+        <a href="#" class="text-[13px] text-[#8A8F98] hover:text-white transition-colors">Changelog</a>
+      </div>
+
+      <div class="flex flex-col gap-3">
+        <h4 class="text-white font-medium text-[13px] mb-2">Company</h4>
+        <a href="#" class="text-[13px] text-[#8A8F98] hover:text-white transition-colors">About</a>
+        <a href="#" class="text-[13px] text-[#8A8F98] hover:text-white transition-colors">Blog</a>
+        <a href="#" class="text-[13px] text-[#8A8F98] hover:text-white transition-colors">Careers</a>
+        <a href="#" class="text-[13px] text-[#8A8F98] hover:text-white transition-colors">Customers</a>
+      </div>
+
+      <div class="flex flex-col gap-3">
+        <h4 class="text-white font-medium text-[13px] mb-2">Resources</h4>
+        <a href="#" class="text-[13px] text-[#8A8F98] hover:text-white transition-colors">Documentation</a>
+        <a href="#" class="text-[13px] text-[#8A8F98] hover:text-white transition-colors">Help Center</a>
+        <a href="#" class="text-[13px] text-[#8A8F98] hover:text-white transition-colors">Contact</a>
+      </div>
+
+      <div class="flex flex-col gap-3">
+        <h4 class="text-white font-medium text-[13px] mb-2">Legal</h4>
+        <a href="#" class="text-[13px] text-[#8A8F98] hover:text-white transition-colors">Privacy</a>
+        <a href="#" class="text-[13px] text-[#8A8F98] hover:text-white transition-colors">Terms</a>
+        <a href="#" class="text-[13px] text-[#8A8F98] hover:text-white transition-colors">Security</a>
+      </div>
+    </div>
+    
+    <div class="max-w-[1200px] mx-auto px-6 flex justify-between items-center text-[12px] text-[#565A65]">
+      <span>© 2026 IronByte Systems</span>
+      <div class="flex items-center gap-4">
+        <a href="#" class="hover:text-[#8A8F98] transition-colors">Twitter</a>
+        <a href="#" class="hover:text-[#8A8F98] transition-colors">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Mobile Menu Toggle Logic
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    const menuIcon = document.getElementById('menu-icon');
+    const closeIcon = document.getElementById('close-icon');
+
+    btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+      menu.classList.toggle('flex');
+      
+      // Toggle icons manually since lucide replaces the elements
+      if (menu.classList.contains('hidden')) {
+        menuIcon.style.display = 'block';
+        closeIcon.style.display = 'none';
+      } else {
+        menuIcon.style.display = 'none';
+        closeIcon.style.display = 'block';
+      }
+    });
+  </script>
 </body>
 </html>
-
-
