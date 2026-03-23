@@ -1,415 +1,304 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth overflow-x-hidden">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IronByte Systems</title>
-  
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- Font Configuration (matching the sans-serif look) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-    }
-  </style>
-
-  <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest"></script>
-</head>
-<body class="min-h-screen bg-[#000000] text-white font-sans selection:bg-white/20 selection:text-white">
-
-  <!-- NAVBAR -->
-  <nav class="fixed top-0 z-50 w-full bg-black/80 backdrop-blur-md border-b border-white/[0.08]">
-    <div class="max-w-[1200px] mx-auto px-6 h-14 flex items-center justify-between">
-      <div class="flex items-center gap-2 cursor-pointer">
-        <!-- Linear-style logo (striped circle) -->
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-white">
-          <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M4.5 17L17 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M7.5 20.5L20.5 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M3.5 13.5L13.5 3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <span class="text-white font-medium text-[15px] tracking-tight ml-1">IronByte</span>
-      </div>
-      
-      <!-- Desktop Nav -->
-      <div class="hidden md:flex items-center gap-6">
-        <a href="#product" class="text-[13px] text-[#8A8F98] hover:text-white transition-colors font-medium">Product</a>
-        <a href="#services" class="text-[13px] text-[#8A8F98] hover:text-white transition-colors font-medium">Services</a>
-        <a href="#customers" class="text-[13px] text-[#8A8F98] hover:text-white transition-colors font-medium">Customers</a>
-        <a href="#pricing" class="text-[13px] text-[#8A8F98] hover:text-white transition-colors font-medium">Pricing</a>
-        <a href="#contact" class="text-[13px] text-[#8A8F98] hover:text-white transition-colors font-medium">Contact</a>
-        
-        <div class="w-[1px] h-4 bg-white/10 mx-2"></div>
-        
-        <a href="#" class="text-[13px] text-[#8A8F98] hover:text-white transition-colors font-medium">Log in</a>
-        <button class="bg-white text-black hover:bg-[#f4f4f5] px-3 py-1.5 rounded-[4px] text-[13px] font-medium transition-colors">
-          Sign up
-        </button>
-      </div>
-
-      <!-- Mobile Toggle -->
-      <button id="mobile-menu-btn" class="md:hidden text-[#8A8F98] hover:text-white">
-        <i data-lucide="menu" id="menu-icon" class="w-5 h-5 block"></i>
-        <i data-lucide="x" id="close-icon" class="w-5 h-5 hidden"></i>
-      </button>
-    </div>
-
-    <!-- Mobile Nav -->
-    <div id="mobile-menu" class="hidden md:hidden bg-black px-6 py-4 flex-col gap-4 border-b border-white/[0.08]">
-      <a href="#product" class="text-[14px] text-[#8A8F98] hover:text-white">Product</a>
-      <a href="#services" class="text-[14px] text-[#8A8F98] hover:text-white">Services</a>
-      <button class="bg-white text-black px-4 py-2 rounded-[4px] text-[14px] font-medium mt-2 w-fit">
-        Sign up
-      </button>
-    </div>
-  </nav>
-
-  <main>
-    <!-- HERO SECTION -->
-    <section class="pt-40 pb-20 px-6 flex flex-col items-center text-center relative overflow-hidden">
-      <!-- Subtle background gradient glow -->
-      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-white/[0.04] blur-[120px] rounded-full pointer-events-none"></div>
-      
-      <h1 class="text-[56px] md:text-[80px] font-semibold tracking-tighter text-white leading-[1.05] max-w-4xl mb-6">
-        The software systems <br />
-        for modern operations.
-      </h1>
-      
-      <div class="flex items-center gap-3 mb-10">
-        <p class="text-[19px] text-[#8A8F98] max-w-2xl font-normal">
-          Purpose-built for efficiency and scale. Designed for the AI era.
-        </p>
-        <div class="hidden md:flex items-center gap-2 group cursor-pointer ml-4">
-          <span class="bg-white/10 text-white text-[11px] font-semibold px-2 py-0.5 rounded-sm uppercase tracking-wider">New</span>
-          <span class="text-[14px] text-[#8A8F98] group-hover:text-white transition-colors">DispatchMate (Beta)</span>
-          <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-[#8A8F98] group-hover:text-white transition-colors"></i>
-        </div>
-      </div>
-
-      <div class="flex flex-wrap justify-center items-center gap-3 z-10">
-        <button class="bg-white text-black hover:bg-[#f4f4f5] px-5 py-2.5 rounded-[5px] text-[14px] font-medium transition-colors">
-          Get started
-        </button>
-        <button class="bg-[#1A1B1E] hover:bg-[#2C2D30] text-white border border-white/[0.08] px-5 py-2.5 rounded-[5px] text-[14px] font-medium transition-colors shadow-sm">
-          Contact sales
-        </button>
-      </div>
-      
-      <!-- LinearStyleMockup -->
-      <div class="w-full max-w-[1000px] mx-auto mt-20 relative text-left">
-        <!-- Subtle glow behind mockup -->
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-white/[0.03] blur-[100px] rounded-full pointer-events-none"></div>
-        
-        <div class="relative rounded-xl border border-white/[0.12] bg-[#0A0A0A] shadow-2xl overflow-hidden flex flex-col md:flex-row h-[500px]">
-          <!-- Sidebar -->
-          <div class="w-60 bg-[#121212] border-r border-white/[0.08] hidden md:flex flex-col p-3">
-            <div class="flex items-center gap-2 px-2 py-1.5 mb-4 hover:bg-white/[0.05] rounded cursor-pointer">
-              <div class="w-4 h-4 rounded-sm bg-white/10 flex items-center justify-center">
-                <span class="text-[10px] text-white font-bold">I</span>
-              </div>
-              <span class="text-[13px] text-white font-medium">IronByte</span>
-              <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-[#8A8F98] ml-auto"></i>
-            </div>
-            
-            <div class="flex flex-col gap-0.5">
-              <div class="flex items-center gap-2 px-2 py-1.5 text-[#8A8F98] hover:text-white hover:bg-white/[0.05] rounded cursor-pointer">
-                <i data-lucide="inbox" class="w-4 h-4"></i>
-                <span class="text-[13px]">Inbox</span>
-              </div>
-              <div class="flex items-center gap-2 px-2 py-1.5 text-[#8A8F98] hover:text-white hover:bg-white/[0.05] rounded cursor-pointer">
-                <i data-lucide="circle-dot" class="w-4 h-4"></i>
-                <span class="text-[13px]">My issues</span>
-              </div>
-              <div class="flex items-center gap-2 px-2 py-1.5 text-[#8A8F98] hover:text-white hover:bg-white/[0.05] rounded cursor-pointer">
-                <i data-lucide="layout-grid" class="w-4 h-4"></i>
-                <span class="text-[13px]">Views</span>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Main Content -->
-          <div class="flex-1 bg-[#0A0A0A] flex flex-col">
-            <!-- Top bar -->
-            <div class="h-12 border-b border-white/[0.08] flex items-center px-4 justify-between">
-              <div class="flex items-center gap-2">
-                <div class="flex items-center gap-1.5 px-2 py-1 bg-white/[0.08] rounded text-white text-[12px] font-medium">
-                  <span class="text-[#F5C451]">★</span> DispatchMate rollout
-                </div>
-                <span class="text-[12px] text-[#8A8F98] ml-2">02 / 145</span>
-              </div>
-            </div>
-            
-            <!-- Issue content area -->
-            <div class="p-8 flex-1 flex flex-col gap-6">
-              <div>
-                <h2 class="text-2xl font-semibold text-white tracking-tight mb-2">Automate warehouse dispatch flow</h2>
-                <p class="text-[14px] text-[#8A8F98] leading-relaxed max-w-2xl">
-                  Implement the new AI-driven location tracking protocol. Ensure the UI renders before vehicle state synchronization completes to reduce perceived latency for ground staff.
-                </p>
-              </div>
-              
-              <div class="flex-1 border border-white/[0.08] rounded-lg bg-[#121212] p-4 font-mono text-[13px] text-[#8A8F98]">
-                <div class="flex items-center gap-2 mb-4 border-b border-white/[0.08] pb-2">
-                  <i data-lucide="code" class="w-4 h-4 text-white"></i> <span class="text-white">dispatch_controller.ts</span>
-                </div>
-                <div class="flex">
-                  <div class="text-[#565A65] w-6">1</div> <div><span class="text-[#C678DD]">import</span> { syncState } <span class="text-[#C678DD]">from</span> <span class="text-[#98C379]">'@core/sync'</span>;</div>
-                </div>
-                <div class="flex"><div class="text-[#565A65] w-6">2</div> <div></div></div>
-                <div class="flex">
-                  <div class="text-[#565A65] w-6">3</div> <div><span class="text-[#C678DD]">export async function</span> <span class="text-[#61AFEF]">initializeDispatch</span>() {</div>
-                </div>
-                <div class="flex">
-                  <div class="text-[#565A65] w-6">4</div> <div>&nbsp;&nbsp;<span class="text-[#565A65]">// TODO: Implement predictive caching</span></div>
-                </div>
-                <div class="flex">
-                  <div class="text-[#565A65] w-6">5</div> <div>&nbsp;&nbsp;<span class="text-[#E5C07B]">await</span> <span class="text-[#61AFEF]">syncState</span>({ priority: <span class="text-[#D19A66]">true</span> });</div>
-                </div>
-                <div class="flex">
-                  <div class="text-[#565A65] w-6">6</div> <div>}</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SERVICES / FEATURES SECTION (Line Art Style) -->
-    <section id="services" class="max-w-[1200px] mx-auto px-6 py-32">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 border-t border-white/[0.08] pt-12">
-        
-        <!-- Feature 1 -->
-        <div class="flex flex-col">
-          <div class="text-[10px] text-[#565A65] font-mono tracking-[0.2em] mb-12 uppercase">Fig 0.1</div>
-          <svg width="100%" height="160" viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg" class="opacity-40 mb-6">
-            <path d="M100 20L170 50L100 80L30 50L100 20Z" stroke="white" stroke-width="1" stroke-linejoin="round"/>
-            <path d="M170 50V70L100 100L30 70V50" stroke="white" stroke-width="1" stroke-linejoin="round"/>
-            <path d="M170 70V90L100 120L30 90V70" stroke="white" stroke-width="1" stroke-linejoin="round"/>
-            <path d="M170 90V110L100 140L30 110V90" stroke="white" stroke-width="1" stroke-linejoin="round"/>
-            <ellipse cx="100" cy="50" rx="30" ry="12" stroke="white" stroke-width="1"/>
-            <line x1="75" y1="50" x2="125" y2="50" stroke="white" stroke-width="1"/>
-            <line x1="80" y1="55" x2="120" y2="55" stroke="white" stroke-width="1"/>
-            <line x1="85" y1="45" x2="115" y2="45" stroke="white" stroke-width="1"/>
-          </svg>
-          <h3 class="text-[17px] font-semibold text-white mb-2 tracking-tight">Built for purpose</h3>
-          <p class="text-[15px] text-[#8A8F98] leading-relaxed pr-4">
-            IronByte is shaped by the practices and principles of world-class operational teams, streamlining complex infrastructure.
-          </p>
-        </div>
-
-        <!-- Feature 2 -->
-        <div class="flex flex-col">
-          <div class="text-[10px] text-[#565A65] font-mono tracking-[0.2em] mb-12 uppercase">Fig 0.2</div>
-          <svg width="100%" height="160" viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg" class="opacity-40 mb-6">
-            <path d="M60 40L90 55L60 70L30 55L60 40Z" stroke="white" stroke-width="1" stroke-linejoin="round"/>
-            <path d="M90 55V95L60 110L30 95V55" stroke="white" stroke-width="1" stroke-linejoin="round"/>
-            
-            <path d="M130 60L160 75L130 90L100 75L130 60Z" stroke="white" stroke-width="1" stroke-linejoin="round"/>
-            <path d="M160 75V115L130 130L100 115V75" stroke="white" stroke-width="1" stroke-linejoin="round"/>
-            
-            <path d="M100 20L130 35L100 50L70 35L100 20Z" stroke="white" stroke-width="1" stroke-linejoin="round"/>
-            <path d="M130 35V60L100 75L70 60V35" stroke="white" stroke-width="1" stroke-linejoin="round"/>
-            
-            <!-- Grid patterns on top -->
-            <path d="M60 45L65 47.5M55 47.5L60 50" stroke="white" stroke-width="0.5"/>
-            <path d="M130 65L135 67.5M125 67.5L130 70" stroke="white" stroke-width="0.5"/>
-          </svg>
-          <h3 class="text-[17px] font-semibold text-white mb-2 tracking-tight">Powered by AI agents</h3>
-          <p class="text-[15px] text-[#8A8F98] leading-relaxed pr-4">
-            Designed for workflows shared by humans and intelligent agents, automating repetitive logic seamlessly.
-          </p>
-        </div>
-
-        <!-- Feature 3 -->
-        <div class="flex flex-col">
-          <div class="text-[10px] text-[#565A65] font-mono tracking-[0.2em] mb-12 uppercase">Fig 0.3</div>
-          <svg width="100%" height="160" viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg" class="opacity-40 mb-6">
-            <path d="M150 140L160 135V40L150 45V140Z" stroke="white" stroke-width="1" stroke-linejoin="round"/>
-            <path d="M140 132L150 127V48L140 53V132Z" stroke="white" stroke-width="1" stroke-linejoin="round"/>
-            <path d="M130 124L140 119V56L130 61V124Z" stroke="white" stroke-width="1" stroke-linejoin="round"/>
-            <path d="M120 116L130 111V64L120 69V116Z" stroke="white" stroke-width="1" stroke-linejoin="round"/>
-            <path d="M110 108L120 103V72L110 77V108Z" stroke="white" stroke-width="1" stroke-linejoin="round"/>
-            <path d="M100 100L110 95V80L100 85V100Z" stroke="white" stroke-width="1" stroke-linejoin="round"/>
-            <path d="M90 92L100 87V88L90 93V92Z" stroke="white" stroke-width="1" stroke-linejoin="round"/>
-            <path d="M80 84L90 79V96L80 101V84Z" stroke="white" stroke-width="1" stroke-linejoin="round"/>
-            <path d="M70 76L80 71V104L70 109V76Z" stroke="white" stroke-width="1" stroke-linejoin="round"/>
-            <path d="M60 68L70 63V112L60 117V68Z" stroke="white" stroke-width="1" stroke-linejoin="round"/>
-            <path d="M60 60L160 10" stroke="white" stroke-width="1" stroke-dasharray="2 2"/>
-          </svg>
-          <h3 class="text-[17px] font-semibold text-white mb-2 tracking-tight">Designed for speed</h3>
-          <p class="text-[15px] text-[#8A8F98] leading-relaxed pr-4">
-            Reduces noise and restores momentum to help businesses ship and operate with high velocity and absolute focus.
-          </p>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- DETAILS SECTION -->
-    <section class="border-t border-white/[0.08] bg-[#0A0A0A] py-32">
-      <div class="max-w-[1200px] mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-        <div>
-          <div class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-white/[0.05] border border-white/[0.08] mb-6">
-            <i data-lucide="command" class="w-5 h-5 text-white"></i>
-          </div>
-          <h2 class="text-[32px] md:text-[40px] font-semibold tracking-tight text-white leading-tight mb-6">
-            Meet DispatchMate.<br/>
-            Intelligent routing, simplified.
-          </h2>
-          <p class="text-[16px] text-[#8A8F98] leading-relaxed mb-8">
-            A smart dispatch assistant designed to help workers find products faster, manage checklists autonomously, and provide real-time operational insights for managers without the clutter of legacy systems.
-          </p>
-          
-          <div class="flex flex-col gap-4">
-            <div class="flex items-center gap-3 border-b border-white/[0.04] pb-3">
-              <i data-lucide="check-circle-2" class="w-4 h-4 text-white/50"></i>
-              <span class="text-[14px] text-white/90">Smart product location tracking</span>
-            </div>
-            <div class="flex items-center gap-3 border-b border-white/[0.04] pb-3">
-              <i data-lucide="check-circle-2" class="w-4 h-4 text-white/50"></i>
-              <span class="text-[14px] text-white/90">Automated dispatch checklist system</span>
-            </div>
-            <div class="flex items-center gap-3 border-b border-white/[0.04] pb-3">
-              <i data-lucide="check-circle-2" class="w-4 h-4 text-white/50"></i>
-              <span class="text-[14px] text-white/90">AI-powered product assistant</span>
-            </div>
-            <div class="flex items-center gap-3 border-b border-white/[0.04] pb-3">
-              <i data-lucide="check-circle-2" class="w-4 h-4 text-white/50"></i>
-              <span class="text-[14px] text-white/90">Live sales and demand insights</span>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Minimal App Window -->
-        <div class="rounded-xl border border-white/[0.08] bg-black p-4 md:p-8 shadow-2xl relative">
-          <div class="absolute top-4 left-4 flex gap-1.5">
-            <div class="w-2.5 h-2.5 rounded-full bg-white/[0.15]"></div>
-            <div class="w-2.5 h-2.5 rounded-full bg-white/[0.15]"></div>
-            <div class="w-2.5 h-2.5 rounded-full bg-white/[0.15]"></div>
-          </div>
-          
-          <div class="mt-8 flex flex-col gap-3">
-            <div class="h-8 w-full bg-white/[0.03] rounded flex items-center px-3 border border-white/[0.05]">
-              <i data-lucide="search" class="w-3.5 h-3.5 text-[#565A65] mr-2"></i>
-              <span class="text-[12px] text-[#565A65] font-mono">Search inventory...</span>
-            </div>
-            
-            <div class="flex items-center justify-between p-3 rounded bg-white/[0.02] border border-white/[0.04] hover:bg-white/[0.04] transition-colors cursor-pointer">
-              <div class="flex items-center gap-3">
-                <span class="text-[12px] text-[#565A65] font-mono w-12">IM-204</span>
-                <span class="text-[14px] text-[#E8E8E8] font-medium">Industrial Servo Motor</span>
-              </div>
-              <span class="text-[11px] text-[#8A8F98] bg-white/[0.05] px-2 py-0.5 rounded-sm">In Stock</span>
-            </div>
-
-            <div class="flex items-center justify-between p-3 rounded bg-white/[0.02] border border-white/[0.04] hover:bg-white/[0.04] transition-colors cursor-pointer">
-              <div class="flex items-center gap-3">
-                <span class="text-[12px] text-[#565A65] font-mono w-12">CW-092</span>
-                <span class="text-[14px] text-[#E8E8E8] font-medium">Copper Wiring Bundle</span>
-              </div>
-              <span class="text-[11px] text-[#8A8F98] bg-white/[0.05] px-2 py-0.5 rounded-sm">Low Stock</span>
-            </div>
-
-            <div class="flex items-center justify-between p-3 rounded bg-white/[0.02] border border-white/[0.04] hover:bg-white/[0.04] transition-colors cursor-pointer">
-              <div class="flex items-center gap-3">
-                <span class="text-[12px] text-[#565A65] font-mono w-12">HD-110</span>
-                <span class="text-[14px] text-[#E8E8E8] font-medium">Heavy Duty Casters</span>
-              </div>
-              <span class="text-[11px] text-[#8A8F98] bg-white/[0.05] px-2 py-0.5 rounded-sm">In Stock</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- MINIMAL FOOTER -->
-  <footer class="border-t border-white/[0.08] bg-black pt-20 pb-12">
-    <div class="max-w-[1200px] mx-auto px-6 grid grid-cols-2 md:grid-cols-6 gap-8 mb-16">
-      <div class="col-span-2">
-        <div class="flex items-center gap-2 mb-4">
-           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-white">
-            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="2"/>
-            <path d="M4.5 17L17 4.5" stroke="currentColor" stroke-width="2"/>
-          </svg>
-          <span class="text-white font-medium text-[14px] tracking-tight">IronByte</span>
-        </div>
-        <p class="text-[#565A65] text-[13px] mb-6">Built for the future.<br/>Available today.</p>
-      </div>
-      
-      <div class="flex flex-col gap-3">
-        <h4 class="text-white font-medium text-[13px] mb-2">Product</h4>
-        <a href="#" class="text-[13px] text-[#8A8F98] hover:text-white transition-colors">Features</a>
-        <a href="#" class="text-[13px] text-[#8A8F98] hover:text-white transition-colors">Integrations</a>
-        <a href="#" class="text-[13px] text-[#8A8F98] hover:text-white transition-colors">Pricing</a>
-        <a href="#" class="text-[13px] text-[#8A8F98] hover:text-white transition-colors">Changelog</a>
-      </div>
-
-      <div class="flex flex-col gap-3">
-        <h4 class="text-white font-medium text-[13px] mb-2">Company</h4>
-        <a href="#" class="text-[13px] text-[#8A8F98] hover:text-white transition-colors">About</a>
-        <a href="#" class="text-[13px] text-[#8A8F98] hover:text-white transition-colors">Blog</a>
-        <a href="#" class="text-[13px] text-[#8A8F98] hover:text-white transition-colors">Careers</a>
-        <a href="#" class="text-[13px] text-[#8A8F98] hover:text-white transition-colors">Customers</a>
-      </div>
-
-      <div class="flex flex-col gap-3">
-        <h4 class="text-white font-medium text-[13px] mb-2">Resources</h4>
-        <a href="#" class="text-[13px] text-[#8A8F98] hover:text-white transition-colors">Documentation</a>
-        <a href="#" class="text-[13px] text-[#8A8F98] hover:text-white transition-colors">Help Center</a>
-        <a href="#" class="text-[13px] text-[#8A8F98] hover:text-white transition-colors">Contact</a>
-      </div>
-
-      <div class="flex flex-col gap-3">
-        <h4 class="text-white font-medium text-[13px] mb-2">Legal</h4>
-        <a href="#" class="text-[13px] text-[#8A8F98] hover:text-white transition-colors">Privacy</a>
-        <a href="#" class="text-[13px] text-[#8A8F98] hover:text-white transition-colors">Terms</a>
-        <a href="#" class="text-[13px] text-[#8A8F98] hover:text-white transition-colors">Security</a>
-      </div>
-    </div>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - ironbyte Systems</title>
     
-    <div class="max-w-[1200px] mx-auto px-6 flex justify-between items-center text-[12px] text-[#565A65]">
-      <span>© 2026 IronByte Systems</span>
-      <div class="flex items-center gap-4">
-        <a href="#" class="hover:text-[#8A8F98] transition-colors">Twitter</a>
-        <a href="#" class="hover:text-[#8A8F98] transition-colors">GitHub</a>
-      </div>
-    </div>
-  </footer>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Google Material Symbols for Hamburger Icon -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Config to match Vercel's aesthetic -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        softBlack: '#000000',
+                        softGray: '#fafafa',
+                        borderGray: '#eaeaea',
+                        textGray: '#666666'
+                    },
+                    boxShadow: {
+                        'vercel-button': '0 2px 8px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04)',
+                        'vercel-glow': '0 0 120px 40px rgba(0, 0, 0, 0.05)',
+                    }
+                }
+            }
+        }
+    </script>
 
-  <!-- Scripts -->
-  <script>
-    // Initialize Lucide Icons
-    lucide.createIcons();
+    <style>
+        /* Extremely subtle, widely spaced grid lines */
+        .tech-grid {
+            position: absolute;
+            inset: 0;
+            z-index: -10;
+            background-size: 60px 60px;
+            background-image: 
+                linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+            -webkit-mask-image: linear-gradient(to bottom, black 0%, transparent 80%);
+            mask-image: linear-gradient(to bottom, black 0%, transparent 80%);
+        }
 
-    // Mobile Menu Toggle Logic
-    const btn = document.getElementById('mobile-menu-btn');
-    const menu = document.getElementById('mobile-menu');
-    const menuIcon = document.getElementById('menu-icon');
-    const closeIcon = document.getElementById('close-icon');
+        /* Vercel-esque soft glowing background orb */
+        .ambient-glow {
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(144, 194, 255, 0.15) 0%, rgba(255, 180, 200, 0.1) 40%, rgba(255, 255, 255, 0) 70%);
+            z-index: -5;
+            pointer-events: none;
+            border-radius: 50%;
+            filter: blur(40px);
+        }
 
-    btn.addEventListener('click', () => {
-      menu.classList.toggle('hidden');
-      menu.classList.toggle('flex');
-      
-      // Toggle icons manually since lucide replaces the elements
-      if (menu.classList.contains('hidden')) {
-        menuIcon.style.display = 'block';
-        closeIcon.style.display = 'none';
-      } else {
-        menuIcon.style.display = 'none';
-        closeIcon.style.display = 'block';
-      }
-    });
-  </script>
+        ::selection {
+            background-color: #000;
+            color: #fff;
+        }
+    </style>
+</head>
+<body class="bg-white text-softBlack font-sans antialiased relative min-h-screen flex flex-col selection:bg-softBlack selection:text-white overflow-x-hidden">
+
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 w-full bg-white/80 backdrop-blur-md border-b border-borderGray">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 flex items-center justify-between h-14">
+            
+            <!-- Left: Logo -->
+            <a href="/" class="flex items-center gap-2.5 cursor-pointer group">
+                <span class="font-bold text-[15px] tracking-tight">ironbyte</span>
+            </a>
+
+            <!-- Right: Desktop Links -->
+            <nav class="hidden md:flex items-center gap-6">
+                <!-- Links changed to point back to the root/home page sections -->
+                <a href="/#dispatchmate" class="text-[14px] text-textGray hover:text-softBlack transition-colors font-medium">DispatchMate</a>
+                <a href="/about" class="text-[14px] text-softBlack transition-colors font-medium">About</a> <!-- Active state -->
+                <a href="/#contact" class="text-[13px] font-medium bg-white text-softBlack border border-borderGray px-3 py-1.5 rounded-md hover:bg-softGray transition-colors shadow-sm tracking-tight">
+                    Contact
+                </a>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden flex items-center gap-4">
+                <button id="mobile-menu-btn" class="p-1 text-softBlack focus:outline-none hover:bg-softGray rounded-md transition-colors flex items-center justify-center">
+                    <span class="material-symbols-outlined text-[24px]">menu</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-14 left-0 w-full bg-white border-b border-borderGray shadow-sm">
+            <div class="px-4 py-4 flex flex-col gap-4">
+                <a href="/#dispatchmate" class="text-[14px] font-medium text-textGray hover:text-softBlack">DispatchMate</a>
+                <a href="/about" class="text-[14px] font-medium text-softBlack">About</a>
+                <div class="pt-3 mt-1 border-t border-borderGray">
+                    <a href="/#contact" class="block text-center w-full text-[14px] font-medium bg-softBlack text-white px-4 py-2 rounded-md hover:bg-gray-800 transition-colors">
+                        Contact
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Background Elements -->
+    <div class="tech-grid"></div>
+    <div class="ambient-glow"></div>
+
+    <!-- Main Content Wrapper -->
+    <main class="flex-grow flex flex-col overflow-hidden relative z-10">
+        
+        <!-- 1. Intro Section -->
+        <section class="flex flex-col items-center justify-center w-full pt-20 pb-16 sm:pt-28 sm:pb-24">
+            <div class="max-w-3xl mx-auto px-4 sm:px-6 flex flex-col items-center text-center w-full">
+                <!-- Headline -->
+                <h1 class="text-[32px] sm:text-[40px] md:text-[52px] font-semibold tracking-tight leading-[1.15] text-softBlack mb-6">
+                    About ironbyte Systems
+                </h1>
+                <!-- Subtext -->
+                <p class="text-[16px] sm:text-[18px] text-textGray leading-[1.6] max-w-2xl">
+                    ironbyte Systems is a software studio focused on building practical tools for real businesses.
+                </p>
+            </div>
+        </section>
+
+        <!-- 2 & 3. Story & Founder Section -->
+        <section class="w-full py-16 sm:py-24 border-t border-borderGray/50 bg-white/50 backdrop-blur-sm relative z-10">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 w-full flex flex-col gap-16">
+                
+                <!-- The Story -->
+                <div>
+                    <h2 class="text-[24px] sm:text-[28px] font-semibold tracking-tight leading-[1.2] text-softBlack mb-6">
+                        The Story
+                    </h2>
+                    <div class="flex flex-col gap-5 text-[15px] sm:text-[16px] text-textGray leading-[1.6]">
+                        <p>
+                            ironbyte Systems was inspired by real experience working in warehouse and retail environments.
+                        </p>
+                        <p>
+                            Daily operations often rely on memory, manual processes, and unstructured workflows. Finding products in a warehouse can be difficult, and assisting customers requires knowledge that is not always easily accessible.
+                        </p>
+                        <p>
+                            These challenges revealed the need for simple, structured tools that support workers and improve how businesses operate.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- The Founder (Highlighted Card for Credibility) -->
+                <div class="bg-white border border-borderGray rounded-2xl p-6 sm:p-10 shadow-sm hover:shadow-vercel-button transition-all duration-300">
+                    <div class="flex flex-col sm:flex-row gap-6 sm:gap-8 items-start">
+                        <!-- Minimal Avatar Placeholder -->
+                        <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-softGray border border-borderGray flex items-center justify-center text-softBlack flex-shrink-0 text-xl font-bold shadow-sm">
+                            LN
+                        </div>
+                        
+                        <div>
+                            <h2 class="text-[20px] sm:text-[24px] font-semibold tracking-tight leading-[1.2] text-softBlack mb-4">
+                                Founder
+                            </h2>
+                            <div class="flex flex-col gap-4 text-[15px] sm:text-[16px] text-textGray leading-[1.6]">
+                                <p>
+                                    ironbyte Systems was founded by <span class="font-medium text-softBlack">Leon Nyaramb</span>, a developer and aspiring systems engineer.
+                                </p>
+                                <p>
+                                    While working as a dispatcher, he experienced firsthand the challenges of manual workflows, disorganized inventory, and limited access to product information.
+                                </p>
+                                <p>
+                                    These real-world experiences became the foundation for building DispatchMate and shaping the direction of ironbyte Systems.
+                                </p>
+                                <p class="text-softBlack font-medium pt-2 border-t border-borderGray/60 mt-2">
+                                    His focus is on creating software that is not only functional, but truly useful in everyday business environments.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 4, 5, 6. Values Grid (Mission, Philosophy, Vision) -->
+        <section class="w-full py-20 sm:py-32 border-t border-borderGray relative z-10 bg-white">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 w-full">
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
+                    
+                    <!-- Mission -->
+                    <div class="flex flex-col">
+                        <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-lg bg-softGray border border-borderGray flex items-center justify-center text-softBlack shadow-sm mb-5">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <circle cx="12" cy="12" r="6"></circle>
+                                <circle cx="12" cy="12" r="2"></circle>
+                            </svg>
+                        </div>
+                        <h3 class="text-[18px] font-semibold text-softBlack tracking-tight mb-3">Our Mission</h3>
+                        <p class="text-[15px] sm:text-[16px] text-textGray leading-[1.6]">
+                            To build simple, powerful software that helps businesses operate with clarity, speed, and confidence.
+                        </p>
+                    </div>
+
+                    <!-- Philosophy / Approach -->
+                    <div class="flex flex-col">
+                        <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-lg bg-softGray border border-borderGray flex items-center justify-center text-softBlack shadow-sm mb-5">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="9" y1="3" x2="9" y2="21"></line>
+                                <line x1="15" y1="3" x2="15" y2="21"></line>
+                                <line x1="3" y1="9" x2="21" y2="9"></line>
+                                <line x1="3" y1="15" x2="21" y2="15"></line>
+                            </svg>
+                        </div>
+                        <h3 class="text-[18px] font-semibold text-softBlack tracking-tight mb-3">Our Approach</h3>
+                        <p class="text-[15px] sm:text-[16px] text-textGray leading-[1.6]">
+                            We believe software should solve real problems, not introduce complexity. Our focus is on building tools that are easy to use, practical, and designed around real workflows. Every system we build is grounded in real-world experience and aims to improve how people work every day.
+                        </p>
+                    </div>
+
+                    <!-- Vision -->
+                    <div class="flex flex-col">
+                        <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-lg bg-softGray border border-borderGray flex items-center justify-center text-softBlack shadow-sm mb-5">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                        </div>
+                        <h3 class="text-[18px] font-semibold text-softBlack tracking-tight mb-3">Looking Ahead</h3>
+                        <p class="text-[15px] sm:text-[16px] text-textGray leading-[1.6]">
+                            ironbyte Systems aims to expand beyond basic operational tools into more intelligent systems that help businesses make better decisions. As technology evolves, we envision building smarter tools and assistants that further simplify business operations and improve efficiency.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CTA Banner -->
+        <section class="w-full py-16 sm:py-24 relative z-10 px-4 sm:px-6">
+            <div class="max-w-4xl mx-auto w-full">
+                <!-- Dark premium card design -->
+                <div class="bg-softBlack rounded-[2rem] p-8 sm:p-14 text-center flex flex-col items-center justify-center shadow-vercel-button relative overflow-hidden group">
+                    <!-- Subtle inner glow -->
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-gradient-to-b from-white/[0.08] to-transparent pointer-events-none rounded-[2rem]"></div>
+                    
+                    <h2 class="text-[28px] sm:text-[36px] font-semibold tracking-tight text-white mb-4 relative z-10">
+                        Ready to simplify your operations?
+                    </h2>
+                    <p class="text-[16px] sm:text-[18px] text-gray-400 leading-[1.6] mb-10 max-w-xl relative z-10">
+                        Let's discuss how our practical tools can fit into your business and solve real-world workflows.
+                    </p>
+                    
+                    <a href="/#contact" class="inline-flex items-center justify-center gap-2 bg-white text-softBlack px-8 py-4 rounded-full font-medium text-[15px] hover:bg-softGray hover:scale-[1.03] transition-all duration-300 shadow-sm tracking-tight relative z-10">
+                        Get in touch
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-borderGray py-8 mt-auto bg-white z-20 relative">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-2">
+                <p class="text-[13px] text-textGray font-medium tracking-tight">© 2026 ironbyte Systems.</p>
+            </div>
+            <div class="flex gap-4">
+                <a href="/about" class="text-[13px] text-textGray hover:text-softBlack transition-colors font-medium tracking-tight">About</a>
+                <a href="/#contact" class="text-[13px] text-textGray hover:text-softBlack transition-colors font-medium tracking-tight">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu Toggle -->
+    <script>
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+    </script>
 </body>
 </html>
+
